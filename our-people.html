@@ -1,0 +1,1622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Our People — RELY Contract Manufacturing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Squada+One&family=Barlow:wght@300;400;500;600;700;800&family=Barlow+Condensed:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange: #EC5826;
+    --orange-dark: #c8431a;
+    --black: #1a1a1a;
+    --black-deep: #0f0f0f;
+    --dark-card: #252525;
+    --gray-border: #2c2c2c;
+    --light-gray: #f2f0eb;
+    --muted: #6b6b6b;
+    --muted-dark: #a0a0a0;
+    --text-dark: #1a1a1a;
+    --text-body: #3a3a3a;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Barlow', 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 400;
+    color: var(--text-dark);
+    background: #fff;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  .squada { font-family: 'Squada One', 'Barlow Condensed', sans-serif; font-weight: 400; letter-spacing: 0.5px; }
+  .label-eyebrow {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 12px;
+    color: var(--orange);
+  }
+
+  /* =====================================================
+     MEDIA PLACEHOLDER SYSTEM
+     ===================================================== */
+  .media-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 24px;
+    z-index: 3;
+    pointer-events: none;
+  }
+  .media-placeholder .mp-icon {
+    width: 48px;
+    height: 48px;
+    border: 2px dashed rgba(255,255,255,0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    color: rgba(255,255,255,0.75);
+    font-size: 20px;
+  }
+  .media-placeholder.dark .mp-icon { border-color: rgba(255,255,255,0.5); color: rgba(255,255,255,0.7); }
+  .media-placeholder .mp-type {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 10px;
+  }
+  .media-placeholder .mp-title {
+    font-family: 'Squada One', sans-serif;
+    font-size: 22px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #fff;
+    margin-bottom: 8px;
+    max-width: 320px;
+    line-height: 1.15;
+  }
+  .media-placeholder .mp-desc {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+    max-width: 360px;
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
+  .media-placeholder .mp-dims {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 600;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    border-top: 1px solid rgba(255,255,255,0.18);
+    padding-top: 8px;
+    margin-top: 4px;
+  }
+  /* Subtle diagonal hash to make the placeholder obviously not final art */
+  .media-placeholder::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+      135deg,
+      transparent 0,
+      transparent 18px,
+      rgba(236, 88, 38, 0.06) 18px,
+      rgba(236, 88, 38, 0.06) 19px
+    );
+    z-index: -1;
+  }
+  .media-placeholder.corner-tag {
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 20px;
+  }
+
+  /* Hero video corner badge (keeps hero content readable) */
+  .hero-video-badge {
+    position: absolute;
+    top: 32px;
+    right: 32px;
+    z-index: 4;
+    background: rgba(0,0,0,0.75);
+    border: 1px dashed rgba(236,88,38,0.6);
+    padding: 14px 18px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    max-width: 360px;
+    backdrop-filter: blur(4px);
+  }
+  .hvb-icon {
+    width: 28px;
+    height: 28px;
+    border: 1.5px solid var(--orange);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--orange);
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+  .hvb-type {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 4px;
+  }
+  .hvb-desc {
+    font-family: 'Barlow', sans-serif;
+    font-size: 11px;
+    line-height: 1.4;
+    color: rgba(255,255,255,0.75);
+  }
+
+  /* =====================================================
+     1. HERO
+     ===================================================== */
+  .hero {
+    position: relative;
+    height: 100vh;
+    min-height: 720px;
+    width: 100%;
+    overflow: hidden;
+    background: #0a0a0a;
+  }
+
+  /* DROP-IN VIDEO TARGET
+     Replace .hero-bg-image with:
+     <video autoplay muted loop playsinline class="hero-video">
+       <source src="workforce-footage.mp4" type="video/mp4">
+     </video>
+  */
+  .hero-bg-image,
+  .hero-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+  .hero-bg-image {
+    background:
+      linear-gradient(135deg, rgba(20,20,20,0.4) 0%, rgba(40,40,40,0.6) 100%),
+      radial-gradient(ellipse at 30% 40%, #3a3a3a 0%, #1a1a1a 60%, #0a0a0a 100%);
+  }
+  .hero-bg-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(90deg, transparent 0, transparent 80px, rgba(255,255,255,0.015) 80px, rgba(255,255,255,0.015) 81px),
+      repeating-linear-gradient(0deg, transparent 0, transparent 80px, rgba(255,255,255,0.015) 80px, rgba(255,255,255,0.015) 81px);
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.6) 40%, rgba(0,0,0,0.2) 70%, rgba(0,0,0,0.4) 100%);
+    z-index: 1;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 64px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .hero-inner { max-width: 720px; }
+
+  .hero-eyebrow {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 13px;
+    color: var(--orange);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    width: 40px;
+    height: 2px;
+    background: var(--orange);
+  }
+
+  .hero h1 {
+    font-family: 'Squada One', sans-serif;
+    font-size: clamp(48px, 7vw, 92px);
+    line-height: 0.98;
+    color: #fff;
+    letter-spacing: 0.5px;
+    margin-bottom: 32px;
+    text-transform: uppercase;
+  }
+
+  .hero-sub {
+    font-size: 19px;
+    line-height: 1.55;
+    color: rgba(255,255,255,0.82);
+    max-width: 580px;
+    margin-bottom: 44px;
+    font-weight: 300;
+  }
+
+  .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 28px;
+    font-family: 'Barlow', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+  .btn-primary { background: var(--orange); color: #fff; }
+  .btn-primary:hover { background: var(--orange-dark); transform: translateY(-2px); }
+  .btn-secondary { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.4); }
+  .btn-secondary:hover { border-color: #fff; background: rgba(255,255,255,0.08); }
+  .btn-arrow { transition: transform 0.25s ease; }
+  .btn:hover .btn-arrow { transform: translateX(4px); }
+
+  .hero-credibility {
+    position: absolute;
+    bottom: 48px;
+    right: 64px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    text-align: right;
+    color: rgba(255,255,255,0.55);
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .hero-credibility span { display: block; }
+
+  /* =====================================================
+     2. OPENING POSITIONING
+     ===================================================== */
+  .positioning {
+    background: #fff;
+    padding: 140px 64px 160px;
+  }
+  .positioning-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .positioning .label-eyebrow {
+    color: var(--orange);
+    margin-bottom: 56px;
+    display: inline-block;
+  }
+  .positioning-main {
+    font-family: 'Squada One', sans-serif;
+    font-size: clamp(36px, 4.8vw, 64px);
+    line-height: 1.05;
+    color: var(--text-dark);
+    text-transform: uppercase;
+    margin-bottom: 56px;
+    letter-spacing: 0.5px;
+  }
+  .positioning-body {
+    max-width: 760px;
+    margin: 0 auto 48px;
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--text-body);
+  }
+  .positioning-body p { margin-bottom: 20px; }
+  .positioning-callout {
+    font-family: 'Squada One', sans-serif;
+    font-size: clamp(28px, 3.4vw, 44px);
+    line-height: 1.15;
+    color: var(--text-dark);
+    max-width: 800px;
+    margin: 64px auto 96px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .positioning-callout .accent { color: var(--orange); }
+
+  /* Capability flow diagram */
+  .flow-diagram {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    gap: 0;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding-top: 24px;
+  }
+  .flow-step {
+    flex: 1;
+    text-align: center;
+    padding: 24px 12px;
+    border-top: 1px solid #e8e8e8;
+    position: relative;
+  }
+  .flow-step::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 8px;
+    background: var(--orange);
+    border-radius: 50%;
+  }
+  .flow-num {
+    font-family: 'Barlow', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--muted);
+    margin-top: 18px;
+    margin-bottom: 8px;
+  }
+  .flow-label {
+    font-family: 'Squada One', sans-serif;
+    font-size: 18px;
+    text-transform: uppercase;
+    color: var(--text-dark);
+    letter-spacing: 0.5px;
+  }
+  .flow-arrow {
+    flex: 0 0 32px;
+    color: #d4d4d4;
+    font-size: 20px;
+    text-align: center;
+    align-self: flex-start;
+    margin-top: 48px;
+  }
+
+  /* =====================================================
+     3. HOW RELY BUILDS TEAMS
+     ===================================================== */
+  .builds-teams {
+    background: var(--light-gray);
+    padding: 140px 64px;
+  }
+  .section-header {
+    max-width: 1000px;
+    margin: 0 auto 80px;
+  }
+  .section-header .label-eyebrow { margin-bottom: 20px; display: inline-block; }
+  .section-header h2 {
+    font-family: 'Squada One', sans-serif;
+    font-size: clamp(38px, 4.6vw, 58px);
+    line-height: 1.05;
+    text-transform: uppercase;
+    max-width: 800px;
+    letter-spacing: 0.5px;
+  }
+  .builds-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+  .build-card {
+    background: transparent;
+  }
+  .build-card-img {
+    width: 100%;
+    height: 320px;
+    background: #2c2c2c;
+    margin-bottom: 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .build-card-img::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+  }
+  .build-card-img.img-1::before {
+    background:
+      linear-gradient(135deg, rgba(236,88,38,0.15) 0%, rgba(0,0,0,0.4) 100%),
+      radial-gradient(ellipse at 60% 40%, #4a4540 0%, #2a2520 70%);
+  }
+  .build-card-img.img-2::before {
+    background:
+      linear-gradient(135deg, rgba(0,0,0,0.3) 0%, rgba(236,88,38,0.2) 100%),
+      radial-gradient(ellipse at 40% 60%, #3d3a36 0%, #1f1d1a 70%);
+  }
+  .build-card-img.img-3::before {
+    background:
+      linear-gradient(135deg, rgba(236,88,38,0.1) 0%, rgba(0,0,0,0.5) 100%),
+      radial-gradient(ellipse at 50% 50%, #423d38 0%, #25221e 70%);
+  }
+  .build-card-img::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 60px;
+    height: 4px;
+    background: var(--orange);
+  }
+  .build-card h3 {
+    font-family: 'Squada One', sans-serif;
+    font-size: 28px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    letter-spacing: 0.5px;
+  }
+  .build-card p {
+    color: var(--text-body);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  .builds-bottom {
+    max-width: 900px;
+    margin: 100px auto 0;
+    text-align: center;
+    font-family: 'Squada One', sans-serif;
+    font-size: clamp(24px, 2.8vw, 36px);
+    line-height: 1.2;
+    text-transform: uppercase;
+    color: var(--text-dark);
+    letter-spacing: 0.5px;
+  }
+  .builds-bottom .accent { color: var(--orange); }
+
+  /* =====================================================
+     4. WHO SUCCEEDS HERE
+     ===================================================== */
+  .succeeds {
+    background: #fff;
+    padding: 0;
+  }
+  .succeeds-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 700px;
+  }
+  .succeeds-img {
+    background:
+      linear-gradient(135deg, rgba(0,0,0,0.3) 0%, rgba(236,88,38,0.15) 100%),
+      radial-gradient(ellipse at 50% 50%, #3a3530 0%, #1a1714 70%);
+    position: relative;
+  }
+  .succeeds-img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(90deg, transparent 0, transparent 60px, rgba(255,255,255,0.02) 60px, rgba(255,255,255,0.02) 61px);
+  }
+  .succeeds-content {
+    padding: 120px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .succeeds-content .label-eyebrow { margin-bottom: 24px; }
+  .succeeds-content h2 {
+    font-family: 'Squada One', sans-serif;
+    font-size: clamp(36px, 3.8vw, 52px);
+    line-height: 1.05;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    letter-spacing: 0.5px;
+  }
+  .succeeds-list {
+    list-style: none;
+    margin-bottom: 48px;
+  }
+  .succeeds-list li {
+    font-family: 'Squada One', sans-serif;
+    font-size: 26px;
+    text-transform: uppercase;
+    padding: 18px 0;
+    border-bottom: 1px solid #ececec;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    color: var(--text-dark);
+  }
+  .succeeds-list li::before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background: var(--orange);
+    flex-shrink: 0;
+  }
+  .pull-quote {
+    font-family: 'Barlow', sans-serif;
+    font-size: 20px;
+    line-height: 1.4;
+    color: var(--text-body);
+    font-style: italic;
+    font-weight: 300;
+    padding-left: 20px;
+    border-left: 3px solid var(--orange);
+  }
+
+  /* =====================================================
+     5. WORKFORCE DIVERSITY
+     ===================================================== */
+  .diversity {
+    background: var(--black);
+    color: #fff;
+    padding: 140px 64px;
+  }
+  .diversity-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .diversity .label-eyebrow {
+    color: var(--orange);
+    display: inline-block;
+    margin-bottom: 28px;
+  }
+  .diversity h2 {
+    font-family: 'Squada One', sans-serif;
+    font-size: clamp(38px, 4.6vw, 58px);
+    line-height: 1.05;
+    text-transform: uppercase;
+    margin-bottom: 36px;
+    letter-spacing: 0.5px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .diversity-sub {
+    max-width: 800px;
+    margin: 0 auto 80px;
+    font-size: 18px;
+    line-height: 1.65;
+    color: rgba(255,255,255,0.7);
+    font-weight: 300;
+  }
+  .horizontal-flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    max-width: 1100px;
+    margin: 0 auto 100px;
+    flex-wrap: nowrap;
+  }
+  .hflow-step {
+    flex: 1;
+    padding: 32px 16px;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    position: relative;
+    text-align: center;
+  }
+  .hflow-step::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 10px;
+    background: var(--orange);
+    border-radius: 50%;
+  }
+  .hflow-label {
+    font-family: 'Squada One', sans-serif;
+    font-size: 19px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #fff;
+  }
+  .hflow-arrow {
+    flex: 0 0 28px;
+    color: var(--orange);
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+  }
+  .diversity-bottom {
+    font-family: 'Squada One', sans-serif;
+    font-size: clamp(26px, 3.2vw, 40px);
+    line-height: 1.2;
+    text-transform: uppercase;
+    max-width: 900px;
+    margin: 0 auto;
+    letter-spacing: 0.5px;
+    color: #fff;
+  }
+  .diversity-bottom .accent { color: var(--orange); }
+
+  /* =====================================================
+     6. EXPANDING ACCESS
+     ===================================================== */
+  .access {
+    background: var(--light-gray);
+    padding: 140px 64px;
+  }
+  .access-header { max-width: 1200px; margin: 0 auto 80px; }
+  .access-header .label-eyebrow { margin-bottom: 20px; display: inline-block; }
+  .access-header h2 {
+    font-family: 'Squada One', sans-serif;
+    font-size: clamp(38px, 4.6vw, 58px);
+    line-height: 1.05;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    max-width: 900px;
+  }
+  .access-grid {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+  .access-card {
+    background: #fff;
+    padding: 0;
+    overflow: hidden;
+  }
+  .access-card-img {
+    width: 100%;
+    height: 360px;
+    position: relative;
+  }
+  .access-card-img.access-1 {
+    background:
+      linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.5) 100%),
+      radial-gradient(ellipse at 40% 50%, #4a4540 0%, #2a2520 70%);
+  }
+  .access-card-img.access-2 {
+    background:
+      linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(236,88,38,0.15) 100%),
+      radial-gradient(ellipse at 60% 50%, #423d38 0%, #25221e 70%);
+  }
+  .access-card-img::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 80px;
+    height: 4px;
+    background: var(--orange);
+  }
+  .access-card-content { padding: 44px 40px 48px; }
+  .access-card h3 {
+    font-family: 'Squada One', sans-serif;
+    font-size: 30px;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+    letter-spacing: 0.5px;
+    color: var(--text-dark);
+  }
+  .access-card p {
+    color: var(--text-body);
+    font-size: 16px;
+    line-height: 1.65;
+    margin-bottom: 16px;
+  }
+  .access-card p:last-child { margin-bottom: 0; }
+  .access-stat {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 16px;
+    background: var(--text-dark);
+    color: #fff;
+    font-family: 'Barlow', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+  }
+  .access-stat .num { color: var(--orange); margin-right: 6px; }
+
+  .access-bottom {
+    max-width: 1000px;
+    margin: 100px auto 0;
+    text-align: center;
+    font-family: 'Squada One', sans-serif;
+    font-size: clamp(26px, 3.2vw, 40px);
+    line-height: 1.2;
+    text-transform: uppercase;
+    color: var(--text-dark);
+    letter-spacing: 0.5px;
+  }
+  .access-bottom .accent { color: var(--orange); }
+
+  /* =====================================================
+     7. PROFESSIONAL DEVELOPMENT
+     ===================================================== */
+  .prof-dev {
+    background: #fff;
+    padding: 140px 64px;
+  }
+  .prof-dev-inner { max-width: 1300px; margin: 0 auto; }
+  .prof-dev-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    margin-bottom: 100px;
+  }
+  .prof-dev-header .label-eyebrow { margin-bottom: 20px; display: inline-block; }
+  .prof-dev-header h2 {
+    font-family: 'Squada One', sans-serif;
+    font-size: clamp(36px, 4.2vw, 54px);
+    line-height: 1.05;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .prof-dev-header p {
+    font-size: 18px;
+    line-height: 1.65;
+    color: var(--text-body);
+  }
+
+  .kpi-band {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 64px 0;
+    margin-bottom: 80px;
+  }
+  .kpi {
+    text-align: center;
+    padding: 0 32px;
+    border-right: 1px solid #e0e0e0;
+    position: relative;
+  }
+  .kpi:last-child { border-right: none; }
+  .kpi-num {
+    font-family: 'Squada One', sans-serif;
+    font-size: clamp(56px, 7vw, 88px);
+    line-height: 1;
+    color: var(--text-dark);
+    margin-bottom: 16px;
+    letter-spacing: 0.5px;
+  }
+  .kpi-num .accent { color: var(--orange); }
+  .kpi-label {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    color: var(--muted);
+  }
+  .kpi-watermark {
+    position: absolute;
+    top: -32px;
+    right: 24px;
+    font-family: 'Squada One', sans-serif;
+    font-size: 50px;
+    color: rgba(0,0,0,0.04);
+    line-height: 1;
+  }
+
+  .partners-band {
+    text-align: center;
+  }
+  .partners-label {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--muted);
+    margin-bottom: 32px;
+  }
+  .partners-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+  }
+  .partner {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-dark);
+    padding: 12px 32px;
+    border-right: 1px solid #d8d8d8;
+  }
+  .partner:last-child { border-right: none; }
+
+  /* =====================================================
+     8. INTERNAL LEADERSHIP DEVELOPMENT
+     ===================================================== */
+  .leadership-dev {
+    background: var(--black);
+    color: #fff;
+    padding: 140px 64px;
+  }
+  .leadership-dev-inner { max-width: 1200px; margin: 0 auto; }
+  .leadership-dev-header { max-width: 900px; margin: 0 auto 100px; text-align: center; }
+  .leadership-dev .label-eyebrow {
+    color: var(--orange);
+    margin-bottom: 24px;
+    display: inline-block;
+  }
+  .leadership-dev h2 {
+    font-family: 'Squada One', sans-serif;
+    font-size: clamp(38px, 4.6vw, 58px);
+    line-height: 1.05;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+    letter-spacing: 0.5px;
+  }
+  .leadership-dev-sub {
+    font-size: 17px;
+    line-height: 1.65;
+    color: rgba(255,255,255,0.7);
+    max-width: 760px;
+    margin: 0 auto;
+    font-weight: 300;
+  }
+
+  .vertical-progression {
+    max-width: 600px;
+    margin: 0 auto 100px;
+    position: relative;
+  }
+  .vp-step {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    padding: 28px 32px;
+    background: rgba(255,255,255,0.03);
+    border-left: 3px solid var(--orange);
+    margin-bottom: 16px;
+    position: relative;
+  }
+  .vp-step:last-child { margin-bottom: 0; }
+  .vp-step::after {
+    content: '';
+    position: absolute;
+    bottom: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 16px;
+    background: var(--orange);
+  }
+  .vp-step:last-child::after { display: none; }
+  .vp-num {
+    font-family: 'Squada One', sans-serif;
+    font-size: 32px;
+    color: var(--orange);
+    line-height: 1;
+    min-width: 40px;
+  }
+  .vp-label {
+    font-family: 'Squada One', sans-serif;
+    font-size: 24px;
+    text-transform: uppercase;
+    color: #fff;
+    letter-spacing: 0.5px;
+  }
+
+  .leadership-dev-bottom {
+    text-align: center;
+    font-family: 'Squada One', sans-serif;
+    font-size: clamp(24px, 2.8vw, 36px);
+    line-height: 1.2;
+    text-transform: uppercase;
+    max-width: 900px;
+    margin: 0 auto;
+    letter-spacing: 0.5px;
+  }
+  .leadership-dev-bottom .accent { color: var(--orange); }
+
+  /* =====================================================
+     9. LEADERSHIP ACCESSIBILITY
+     ===================================================== */
+  .leadership-access {
+    background: #fff;
+  }
+  .la-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 680px;
+  }
+  .la-img {
+    background:
+      linear-gradient(135deg, rgba(0,0,0,0.4) 0%, rgba(236,88,38,0.12) 100%),
+      radial-gradient(ellipse at 45% 55%, #3a3530 0%, #1a1714 70%);
+    position: relative;
+  }
+  .la-img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(0deg, transparent 0, transparent 60px, rgba(255,255,255,0.02) 60px, rgba(255,255,255,0.02) 61px);
+  }
+  .la-content {
+    padding: 120px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .la-content .label-eyebrow { margin-bottom: 24px; }
+  .la-content h2 {
+    font-family: 'Squada One', sans-serif;
+    font-size: clamp(36px, 3.8vw, 52px);
+    line-height: 1.05;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    letter-spacing: 0.5px;
+  }
+  .la-list {
+    list-style: none;
+    margin-bottom: 48px;
+  }
+  .la-list li {
+    font-family: 'Squada One', sans-serif;
+    font-size: 24px;
+    text-transform: uppercase;
+    padding: 18px 0;
+    border-bottom: 1px solid #ececec;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .la-list li::before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background: var(--orange);
+    flex-shrink: 0;
+  }
+
+  /* =====================================================
+     10. WHAT YOU CAN EXPECT
+     ===================================================== */
+  .expect {
+    background: var(--light-gray);
+    padding: 140px 64px;
+  }
+  .expect-inner { max-width: 1300px; margin: 0 auto; }
+  .expect-header { text-align: center; margin-bottom: 80px; }
+  .expect-header .label-eyebrow { margin-bottom: 20px; display: inline-block; }
+  .expect-header h2 {
+    font-family: 'Squada One', sans-serif;
+    font-size: clamp(38px, 4.6vw, 58px);
+    line-height: 1.05;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .expect-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .expect-col h4 {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    color: var(--orange);
+    margin-bottom: 28px;
+  }
+  .expect-col ul {
+    list-style: none;
+  }
+  .expect-col li {
+    padding: 20px 0;
+    border-bottom: 1px solid #d8d4cc;
+    font-family: 'Squada One', sans-serif;
+    font-size: 22px;
+    text-transform: uppercase;
+    color: var(--text-dark);
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .expect-col li::before {
+    content: '→';
+    color: var(--orange);
+    font-weight: 700;
+  }
+  .expect-bottom {
+    max-width: 900px;
+    margin: 100px auto 0;
+    text-align: center;
+    font-family: 'Squada One', sans-serif;
+    font-size: clamp(24px, 2.8vw, 36px);
+    line-height: 1.2;
+    text-transform: uppercase;
+    color: var(--text-dark);
+    letter-spacing: 0.5px;
+  }
+  .expect-bottom .accent { color: var(--orange); }
+
+  /* =====================================================
+     11. FINAL CTA
+     ===================================================== */
+  .final-cta {
+    background: var(--orange);
+    padding: 140px 64px;
+    color: #fff;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .final-cta::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    right: 0;
+    height: 1px;
+    background: rgba(255,255,255,0.2);
+  }
+  .final-cta-inner { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+  .final-cta h2 {
+    font-family: 'Squada One', sans-serif;
+    font-size: clamp(40px, 5.2vw, 68px);
+    line-height: 1.05;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    letter-spacing: 0.5px;
+  }
+  .final-cta p {
+    font-size: 19px;
+    line-height: 1.55;
+    color: rgba(255,255,255,0.92);
+    max-width: 720px;
+    margin: 0 auto 48px;
+    font-weight: 300;
+  }
+  .btn-on-orange {
+    background: #fff;
+    color: var(--orange);
+    padding: 18px 36px;
+    font-size: 15px;
+  }
+  .btn-on-orange:hover { background: var(--text-dark); color: #fff; transform: translateY(-2px); }
+
+  /* =====================================================
+     ANIMATIONS
+     ===================================================== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-in {
+    opacity: 0;
+    animation: fadeUp 0.8s ease-out forwards;
+  }
+  .fade-in.delay-1 { animation-delay: 0.1s; }
+  .fade-in.delay-2 { animation-delay: 0.2s; }
+  .fade-in.delay-3 { animation-delay: 0.3s; }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* =====================================================
+     RESPONSIVE
+     ===================================================== */
+  @media (max-width: 1024px) {
+    .hero-content,
+    .positioning,
+    .builds-teams,
+    .diversity,
+    .access,
+    .prof-dev,
+    .leadership-dev,
+    .expect,
+    .final-cta { padding-left: 40px; padding-right: 40px; }
+    .succeeds-content,
+    .la-content { padding: 80px 48px; }
+    .builds-grid { grid-template-columns: 1fr; gap: 48px; }
+    .access-grid { grid-template-columns: 1fr; }
+    .prof-dev-header { grid-template-columns: 1fr; gap: 32px; }
+    .succeeds-grid,
+    .la-grid { grid-template-columns: 1fr; }
+    .succeeds-img,
+    .la-img { min-height: 380px; }
+    .flow-diagram { flex-wrap: wrap; }
+    .horizontal-flow { flex-direction: column; }
+    .hflow-arrow { transform: rotate(90deg); padding: 8px 0; }
+    .kpi-band { grid-template-columns: 1fr; gap: 48px; }
+    .kpi { border-right: none; border-bottom: 1px solid #e0e0e0; padding-bottom: 48px; }
+    .kpi:last-child { border-bottom: none; padding-bottom: 0; }
+    .expect-grid { grid-template-columns: 1fr; gap: 40px; }
+    .hero-credibility { display: none; }
+  }
+  @media (max-width: 640px) {
+    .hero-content,
+    .positioning,
+    .builds-teams,
+    .diversity,
+    .access,
+    .prof-dev,
+    .leadership-dev,
+    .expect,
+    .final-cta { padding-left: 24px; padding-right: 24px; }
+    .succeeds-content,
+    .la-content { padding: 64px 24px; }
+    .access-card-content { padding: 32px 24px 36px; }
+    .partner { padding: 8px 16px; font-size: 16px; }
+    .vp-step { padding: 20px; gap: 20px; }
+    .hero { padding-top: 60px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ 1. HERO ============ -->
+<section class="hero">
+  <!-- VIDEO TARGET: replace .hero-bg-image with <video> for cinematic workforce footage -->
+  <div class="hero-bg-image">
+    <div class="hero-video-badge">
+      <div class="hvb-icon">▶</div>
+      <div class="hvb-text">
+        <div class="hvb-type">Background Video Placeholder</div>
+        <div class="hvb-desc">Cinematic workforce footage · operators, production meetings, forklift movement, QC checks · 1920×1080 min · MP4 loop, muted</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content">
+    <div class="hero-inner">
+      <div class="hero-eyebrow fade-in">Our People</div>
+      <h1 class="fade-in delay-1">Built Around Capability, Ownership, and Growth</h1>
+      <p class="hero-sub fade-in delay-2">RELY develops manufacturing teams through structured systems, operational accountability, leadership accessibility, and real production experience.</p>
+      <div class="hero-ctas fade-in delay-3">
+        <a href="#cta" class="btn btn-primary">Explore Opportunities <span class="btn-arrow">→</span></a>
+        <a href="#cta" class="btn btn-secondary">Talk With Our Team</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-credibility">
+    <span>10+ Program Graduates Hired</span>
+    <span>4,200+ Training Hours Annually</span>
+    <span>Internal Leadership Development</span>
+    <span>Multi-Vertical Manufacturing Experience</span>
+  </div>
+</section>
+
+<!-- ============ 2. OPENING POSITIONING ============ -->
+<section class="positioning">
+  <div class="positioning-inner">
+    <div class="label-eyebrow reveal">Our People</div>
+    <h2 class="positioning-main reveal">Strong manufacturing systems require strong workforce systems behind them.</h2>
+
+    <div class="positioning-body reveal">
+      <p>RELY believes operational capability is built through structure, accountability, training, and opportunity — not narrow definitions of "qualified."</p>
+      <p>Some of the strongest teams inside RELY are made up of individuals who did not follow traditional paths into manufacturing but were given the systems, expectations, and operational support required to succeed.</p>
+    </div>
+
+    <div class="positioning-callout reveal">
+      We do not lower the bar.<br>
+      We build systems that allow <span class="accent">more people to reach it.</span>
+    </div>
+
+    <div class="flow-diagram reveal">
+      <div class="flow-step">
+        <div class="flow-num">01</div>
+        <div class="flow-label">Opportunity</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="flow-num">02</div>
+        <div class="flow-label">Structured Training</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="flow-num">03</div>
+        <div class="flow-label">Operational Ownership</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="flow-num">04</div>
+        <div class="flow-label">Production Readiness</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="flow-num">05</div>
+        <div class="flow-label">Long-Term Growth</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3. HOW RELY BUILDS TEAMS ============ -->
+<section class="builds-teams">
+  <div class="section-header reveal">
+    <div class="label-eyebrow">How We Build Teams</div>
+    <h2>Operational capability built through structured systems.</h2>
+  </div>
+
+  <div class="builds-grid">
+    <div class="build-card reveal">
+      <div class="build-card-img img-1">
+        <div class="media-placeholder dark">
+          <div class="mp-icon">📷</div>
+          <div class="mp-type">Image · Card 1</div>
+          <div class="mp-title">Structured Training</div>
+          <div class="mp-desc">Real training or onboarding moment. Operator learning from work instruction, visual SOP, or fixture. Hands-on. Shallow depth of field.</div>
+          <div class="mp-dims">~600×400 · landscape · 3:2</div>
+        </div>
+      </div>
+      <h3>Structured Training</h3>
+      <p>Clear systems, visual standards, and operational expectations from day one. Training is designed for fast learning cycles and real production readiness — not extended onboarding.</p>
+    </div>
+    <div class="build-card reveal">
+      <div class="build-card-img img-2">
+        <div class="media-placeholder dark">
+          <div class="mp-icon">📷</div>
+          <div class="mp-type">Image · Card 2</div>
+          <div class="mp-title">Operational Ownership</div>
+          <div class="mp-desc">Production leadership interaction. Lead or supervisor coaching at a station, problem-solving on the floor. NOT posed.</div>
+          <div class="mp-dims">~600×400 · landscape · 3:2</div>
+        </div>
+      </div>
+      <h3>Operational Ownership</h3>
+      <p>Teams are expected to solve problems, improve execution, and contribute beyond narrowly defined roles. Accountability is structural, not personality-driven.</p>
+    </div>
+    <div class="build-card reveal">
+      <div class="build-card-img img-3">
+        <div class="media-placeholder dark">
+          <div class="mp-icon">📷</div>
+          <div class="mp-type">Image · Card 3</div>
+          <div class="mp-title">Capability Growth</div>
+          <div class="mp-desc">Hands-on manufacturing activity. Wire harness build, assembly detail, or skilled task close-up. Cinematic lighting.</div>
+          <div class="mp-dims">~600×400 · landscape · 3:2</div>
+        </div>
+      </div>
+      <h3>Capability Growth</h3>
+      <p>Continuous development is tied directly to operational performance. Training hours, certifications, and leadership exposure compound over time.</p>
+    </div>
+  </div>
+
+  <div class="builds-bottom reveal">
+    The objective is not simply <span class="accent">labor utilization.</span><br>
+    The objective is <span class="accent">workforce capability development.</span>
+  </div>
+</section>
+
+<!-- ============ 4. WHO SUCCEEDS HERE ============ -->
+<section class="succeeds">
+  <div class="succeeds-grid">
+    <div class="succeeds-img">
+      <div class="media-placeholder dark">
+        <div class="mp-icon">📷</div>
+        <div class="mp-type">Image · Section 4</div>
+        <div class="mp-title">Who Succeeds Here</div>
+        <div class="mp-desc">Large cinematic production image. Operator deep in the work. NOT posed. Action shot — assembly, inspection, or kitting in progress. Shallow depth of field.</div>
+        <div class="mp-dims">Half-width hero · ~960×700 · portrait or square crop</div>
+      </div>
+    </div>
+    <div class="succeeds-content reveal">
+      <div class="label-eyebrow">Who Succeeds Here</div>
+      <h2>What RELY Looks for in Team Members</h2>
+      <ul class="succeeds-list">
+        <li>Bias Toward Action</li>
+        <li>Adaptability</li>
+        <li>Pride in Execution</li>
+        <li>Structured Problem Solving</li>
+        <li>Accountability</li>
+        <li>Continuous Improvement Mindset</li>
+      </ul>
+      <div class="pull-quote">
+        The strongest performers are typically the people who improve systems rather than waiting for direction.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5. WORKFORCE DIVERSITY ============ -->
+<section class="diversity">
+  <div class="diversity-inner">
+    <div class="label-eyebrow reveal">Operational Diversity</div>
+    <h2 class="reveal">Why Workforce Diversity Improves Operational Performance</h2>
+    <p class="diversity-sub reveal">RELY intentionally builds teams with broad personal, cultural, and professional backgrounds because different perspectives improve adaptability, problem solving, and operational awareness inside manufacturing environments.</p>
+
+    <div class="horizontal-flow reveal">
+      <div class="hflow-step">
+        <div class="hflow-label">Different Experiences</div>
+      </div>
+      <div class="hflow-arrow">→</div>
+      <div class="hflow-step">
+        <div class="hflow-label">Different Perspectives</div>
+      </div>
+      <div class="hflow-arrow">→</div>
+      <div class="hflow-step">
+        <div class="hflow-label">Better Problem Solving</div>
+      </div>
+      <div class="hflow-arrow">→</div>
+      <div class="hflow-step">
+        <div class="hflow-label">Stronger Execution</div>
+      </div>
+    </div>
+
+    <div class="diversity-bottom reveal">
+      Operational innovation often comes from teams that <span class="accent">do not all think the same way.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6. EXPANDING ACCESS ============ -->
+<section class="access">
+  <div class="access-header reveal">
+    <div class="label-eyebrow">Expanding Access</div>
+    <h2>Building real pathways into manufacturing careers.</h2>
+  </div>
+
+  <div class="access-grid">
+    <div class="access-card reveal">
+      <div class="access-card-img access-1">
+        <div class="media-placeholder dark">
+          <div class="mp-icon">📷</div>
+          <div class="mp-type">Image · Section 6 (Left)</div>
+          <div class="mp-title">Intro to Manufacturing Program</div>
+          <div class="mp-desc">Real training environment. Program graduate or trainee in production setting. Operational, NOT nonprofit/community-service feel.</div>
+          <div class="mp-dims">~640×360 · landscape · 16:9</div>
+        </div>
+      </div>
+      <div class="access-card-content">
+        <h3>Introduction to Manufacturing Program</h3>
+        <p>A workforce development initiative designed to help individuals with disabilities successfully enter manufacturing environments through real production expectations, structured operational training, and floor-readiness discipline.</p>
+        <p>The program focuses on workforce confidence and long-term capability development, not accommodation.</p>
+        <div class="access-stat"><span class="num">10+</span>Program Graduates Hired Into Operations</div>
+      </div>
+    </div>
+
+    <div class="access-card reveal">
+      <div class="access-card-img access-2">
+        <div class="media-placeholder dark">
+          <div class="mp-icon">📷</div>
+          <div class="mp-type">Image · Section 6 (Right)</div>
+          <div class="mp-title">Refugee Workforce Integration</div>
+          <div class="mp-desc">Real production floor. Operator at workstation, focused execution. Visual SOPs or multi-language documentation visible if possible. NOT staged diversity shot.</div>
+          <div class="mp-dims">~640×360 · landscape · 16:9</div>
+        </div>
+      </div>
+      <div class="access-card-content">
+        <h3>Refugee Workforce Integration</h3>
+        <p>RELY employs a large population of legally authorized refugees, including many individuals early in their English language development journey.</p>
+        <p>With the right operational systems, training structures, and performance expectations, these team members consistently perform at a high level and contribute valuable operational perspectives.</p>
+        <div class="access-stat"><span class="num">Multi-Language</span>Floor Documentation Systems</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="access-bottom reveal">
+    The objective is not <span class="accent">workforce accommodation.</span><br>
+    The objective is <span class="accent">workforce capability development.</span>
+  </div>
+</section>
+
+<!-- ============ 7. PROFESSIONAL DEVELOPMENT ============ -->
+<section class="prof-dev">
+  <div class="prof-dev-inner">
+    <div class="prof-dev-header">
+      <div class="reveal">
+        <div class="label-eyebrow">Professional Development</div>
+        <h2>Professional development as an operational requirement.</h2>
+      </div>
+      <div class="reveal">
+        <p>RELY invests heavily in workforce development because operational scalability depends on continuously building internal capability. Development is treated as an operational requirement, not a secondary employee benefit.</p>
+      </div>
+    </div>
+
+    <div class="kpi-band reveal">
+      <div class="kpi">
+        <div class="kpi-watermark">01</div>
+        <div class="kpi-num"><span data-placeholder="training-hours">4,200+</span></div>
+        <div class="kpi-label">Training Hours Completed Annually</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-watermark">02</div>
+        <div class="kpi-num"><span data-placeholder="partners">8+</span></div>
+        <div class="kpi-label">Industry & Education Partners</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-watermark">03</div>
+        <div class="kpi-num"><span data-placeholder="internal-leadership">65<span class="accent">%</span></span></div>
+        <div class="kpi-label">Leadership Roles Filled Internally</div>
+      </div>
+    </div>
+
+    <div class="partners-band reveal">
+      <div class="partners-label">Active Education & Development Partners</div>
+      <div class="partners-list">
+        <div class="partner">Milwaukee Area Technical College</div>
+        <div class="partner">Waukesha County Technical College</div>
+        <div class="partner">University of Wisconsin – Milwaukee</div>
+        <div class="partner">Vistage</div>
+        <div class="partner">Paranet</div>
+        <div class="partner">Executive Agenda</div>
+        <div class="partner">Waukesha County Business Alliance</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 8. INTERNAL LEADERSHIP DEVELOPMENT ============ -->
+<section class="leadership-dev">
+  <div class="leadership-dev-inner">
+    <div class="leadership-dev-header reveal">
+      <div class="label-eyebrow">Leadership From Within</div>
+      <h2>Promoting Operational Leadership From Within</h2>
+      <p class="leadership-dev-sub">The majority of RELY's indirect and leadership roles are filled internally by team members who began in direct production positions and expanded their responsibilities over time. This creates leadership teams that understand production realities firsthand and lead with operational credibility.</p>
+    </div>
+
+    <div class="vertical-progression">
+      <div class="vp-step reveal">
+        <div class="vp-num">01</div>
+        <div class="vp-label">Production Team Member</div>
+      </div>
+      <div class="vp-step reveal">
+        <div class="vp-num">02</div>
+        <div class="vp-label">Indirect Support</div>
+      </div>
+      <div class="vp-step reveal">
+        <div class="vp-num">03</div>
+        <div class="vp-label">Team Leadership</div>
+      </div>
+      <div class="vp-step reveal">
+        <div class="vp-num">04</div>
+        <div class="vp-label">Operational Management</div>
+      </div>
+    </div>
+
+    <div class="leadership-dev-bottom reveal">
+      Operational leadership is strongest when it is built <span class="accent">close to the work itself.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 9. LEADERSHIP ACCESSIBILITY ============ -->
+<section class="leadership-access">
+  <div class="la-grid">
+    <div class="la-content reveal">
+      <div class="label-eyebrow">Leadership Accessibility</div>
+      <h2>Leadership That Stays Close to the Work</h2>
+      <ul class="la-list">
+        <li>Real-Time Operational Support</li>
+        <li>Fast Decision-Making</li>
+        <li>Problem-Solving Access</li>
+        <li>Low Bureaucracy</li>
+        <li>High Accountability</li>
+      </ul>
+      <div class="pull-quote">
+        Leadership exists to improve execution, remove obstacles, and help teams scale successfully.
+      </div>
+    </div>
+    <div class="la-img">
+      <div class="media-placeholder dark">
+        <div class="mp-icon">📷</div>
+        <div class="mp-type">Image · Section 9</div>
+        <div class="mp-title">Leadership on the Floor</div>
+        <div class="mp-desc">Leadership engaged with production. Supervisor, manager, or executive in active conversation with operator. On the floor, NOT a conference room. Operational, credible, unposed.</div>
+        <div class="mp-dims">Half-width hero · ~960×700 · landscape</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 10. WHAT YOU CAN EXPECT ============ -->
+<section class="expect">
+  <div class="expect-inner">
+    <div class="expect-header reveal">
+      <div class="label-eyebrow">What You Can Expect</div>
+      <h2>Environments designed for responsibility, growth, and operational ownership.</h2>
+    </div>
+
+    <div class="expect-grid">
+      <div class="expect-col reveal">
+        <h4>The Environment</h4>
+        <ul>
+          <li>Fast-Paced Manufacturing Environments</li>
+          <li>Real Responsibility Early</li>
+          <li>Clear Systems & Operational Structure</li>
+        </ul>
+      </div>
+      <div class="expect-col reveal">
+        <h4>The Opportunity</h4>
+        <ul>
+          <li>Leadership Accessibility</li>
+          <li>Growth Opportunities</li>
+          <li>Operational Ownership & Accountability</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="expect-bottom reveal">
+      RELY environments are designed to accelerate capability growth through <span class="accent">real operational experience.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 11. FINAL CTA ============ -->
+<section class="final-cta" id="cta">
+  <div class="final-cta-inner">
+    <h2 class="reveal">Looking for a team where you can build real capability and grow quickly?</h2>
+    <p class="reveal">RELY is always looking for individuals who want responsibility, operational growth, and the opportunity to contribute inside fast-moving manufacturing environments.</p>
+    <a href="#" class="btn btn-on-orange reveal">Explore Opportunities <span class="btn-arrow">→</span></a>
+  </div>
+</section>
+
+<script>
+  // Reveal-on-scroll animation
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
