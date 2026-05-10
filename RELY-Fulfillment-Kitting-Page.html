@@ -1,0 +1,1519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fulfillment, Kitting & Value-Added Services | RELY Contract Manufacturing</title>
+<style>
+  /* ============ DESIGN TOKENS ============ */
+  :root {
+    --orange: #EC5826;
+    --orange-hover: #d44a1c;
+    --black: #0a0a0a;
+    --near-black: #1a1a1a;
+    --dark-gray: #2C2C2C;
+    --mid-gray: #3a3a3a;
+    --light-gray: #f2f0eb;
+    --off-white: #fafaf8;
+    --white: #ffffff;
+    --muted: #8a8a8a;
+    --text-muted: #555555;
+    --border-dark: #2a2a2a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: var(--near-black);
+    background: var(--white);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Barlow Condensed', 'Barlow', sans-serif;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+  }
+
+  .eyebrow {
+    font-family: 'Barlow', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--orange);
+  }
+
+  .container {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  /* ============ HERO ============ */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
+    background:
+      linear-gradient(110deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.75) 45%, rgba(0,0,0,0.35) 100%),
+      radial-gradient(ellipse at 75% 50%, #3a2818 0%, #1a1410 45%, #0a0a0a 100%);
+    color: var(--white);
+    padding: 120px 0 80px;
+    text-align: left;
+  }
+
+  .hero .container { text-align: left; width: 100%; }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(90deg, transparent 0%, transparent 49.5%, rgba(236,88,38,0.04) 49.5%, rgba(236,88,38,0.04) 50%, transparent 50%, transparent 100%),
+      linear-gradient(0deg, transparent 0%, transparent 49.5%, rgba(255,255,255,0.02) 49.5%, rgba(255,255,255,0.02) 50%, transparent 50%, transparent 100%);
+    background-size: 80px 80px, 80px 80px;
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.4) 100%);
+    pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 760px;
+    margin-right: auto;
+    margin-left: 0;
+    text-align: left;
+  }
+
+  .hero-label {
+    display: inline-block;
+    padding: 8px 14px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(0,0,0,0.4);
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 32px;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  .hero h1 {
+    font-size: clamp(44px, 6vw, 76px);
+    font-weight: 800;
+    margin-bottom: 28px;
+    text-transform: uppercase;
+    color: var(--white);
+  }
+
+  .hero p.hero-sub {
+    font-size: clamp(18px, 1.5vw, 22px);
+    color: rgba(255,255,255,0.92);
+    max-width: 660px;
+    margin-bottom: 24px;
+    line-height: 1.45;
+    font-weight: 500;
+  }
+
+  .hero p.hero-intro {
+    font-size: 16px;
+    color: rgba(255,255,255,0.72);
+    max-width: 640px;
+    margin-bottom: 40px;
+    line-height: 1.65;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 32px;
+    font-family: 'Barlow', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    border: none;
+  }
+
+  .btn-primary { background: var(--orange); color: var(--white); }
+  .btn-primary:hover { background: var(--orange-hover); transform: translateY(-1px); }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--white);
+    border: 1px solid rgba(255,255,255,0.4);
+  }
+  .btn-secondary:hover { background: rgba(255,255,255,0.08); border-color: var(--white); }
+
+  .btn-arrow { font-size: 16px; line-height: 1; }
+
+  .hero-credibility {
+    position: absolute;
+    bottom: 48px;
+    right: 40px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 0.06em;
+  }
+
+  .hero-credibility span {
+    border-right: 2px solid var(--orange);
+    padding-right: 12px;
+  }
+
+  /* ============ SECTION 1 — WHERE RELY FITS ============ */
+  .where-fits {
+    background: var(--white);
+    padding: 140px 0;
+  }
+
+  .where-fits-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .where-fits .eyebrow { display: block; margin-bottom: 20px; }
+
+  .where-fits h2 {
+    font-size: clamp(36px, 3.6vw, 52px);
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--near-black);
+    line-height: 1.1;
+    margin-bottom: 32px;
+  }
+
+  .where-fits p {
+    font-size: 17px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .supports-block {
+    background: var(--light-gray);
+    padding: 40px 36px;
+    border-left: 3px solid var(--orange);
+  }
+
+  .supports-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 24px;
+  }
+
+  .supports-list {
+    list-style: none;
+  }
+
+  .supports-list li {
+    padding: 14px 0;
+    border-bottom: 1px solid #d8d6d1;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: var(--near-black);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .supports-list li:last-child { border-bottom: none; }
+
+  .supports-list li::before {
+    content: '';
+    width: 16px;
+    height: 2px;
+    background: var(--orange);
+    flex-shrink: 0;
+  }
+
+  /* ============ SECTION 2 — FULFILLMENT CAPABILITIES ============ */
+  .capabilities {
+    background: var(--near-black);
+    color: var(--white);
+    padding: 140px 0;
+  }
+
+  .capabilities .eyebrow { display: block; margin-bottom: 20px; }
+
+  .capabilities h2 {
+    font-size: clamp(36px, 3.6vw, 52px);
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 32px;
+    max-width: 800px;
+  }
+
+  .capabilities p.lead {
+    font-size: 17px;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.7;
+    max-width: 800px;
+    margin-bottom: 64px;
+  }
+
+  .cap-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    border-left: 1px solid rgba(255,255,255,0.15);
+  }
+
+  .cap-item {
+    padding: 28px 32px;
+    border-right: 1px solid rgba(255,255,255,0.15);
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    transition: background 0.3s ease;
+  }
+
+  .cap-item:hover { background: rgba(236,88,38,0.08); }
+
+  .cap-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    color: var(--orange);
+    flex-shrink: 0;
+    min-width: 28px;
+  }
+
+  .cap-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: var(--white);
+    line-height: 1.3;
+  }
+
+  /* ============ SECTION 3 — CUSTOM KITTING ============ */
+  .kitting {
+    background: var(--light-gray);
+    padding: 140px 0;
+  }
+
+  .kitting .eyebrow { display: block; margin-bottom: 20px; }
+
+  .kitting h2 {
+    font-size: clamp(36px, 3.6vw, 52px);
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--near-black);
+    line-height: 1.1;
+    margin-bottom: 32px;
+    max-width: 880px;
+  }
+
+  .kitting p.lead {
+    font-size: 17px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    max-width: 880px;
+    margin-bottom: 64px;
+  }
+
+  .kit-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .kit-card {
+    background: var(--white);
+    padding: 40px 36px;
+    border-top: 3px solid var(--orange);
+  }
+
+  .kit-card h4 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 24px;
+  }
+
+  .kit-card ul {
+    list-style: none;
+  }
+
+  .kit-card ul li {
+    padding: 12px 0;
+    border-bottom: 1px solid #e5e3de;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: var(--near-black);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .kit-card ul li:last-child { border-bottom: none; }
+
+  .kit-card ul li::before {
+    content: '';
+    width: 14px;
+    height: 2px;
+    background: var(--orange);
+    flex-shrink: 0;
+  }
+
+  /* ============ SECTION 4 — CO-PACKING / POP ============ */
+  .copacking {
+    background: var(--white);
+    padding: 140px 0;
+  }
+
+  .copacking .eyebrow { display: block; margin-bottom: 20px; }
+
+  .copacking h2 {
+    font-size: clamp(36px, 3.6vw, 52px);
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--near-black);
+    line-height: 1.1;
+    margin-bottom: 32px;
+    max-width: 880px;
+  }
+
+  .copacking p.lead {
+    font-size: 17px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    max-width: 880px;
+    margin-bottom: 64px;
+  }
+
+  .copack-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top: 1px solid #e5e3de;
+    border-left: 1px solid #e5e3de;
+  }
+
+  .copack-item {
+    padding: 28px 28px;
+    border-right: 1px solid #e5e3de;
+    border-bottom: 1px solid #e5e3de;
+    background: var(--white);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .copack-item:hover {
+    background: var(--near-black);
+  }
+
+  .copack-item:hover .copack-label { color: var(--white); }
+  .copack-item:hover .copack-num { color: var(--orange); }
+
+  .copack-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    color: var(--orange);
+    flex-shrink: 0;
+    min-width: 24px;
+    transition: color 0.3s ease;
+  }
+
+  .copack-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: var(--near-black);
+    line-height: 1.3;
+    transition: color 0.3s ease;
+  }
+
+  /* ============ SECTION 5 — VALUE-ADDED & REVERSE LOGISTICS (COMBINED) ============ */
+  .value-added {
+    background: var(--black);
+    color: var(--white);
+    padding: 140px 0;
+  }
+
+  .value-added .eyebrow { display: block; margin-bottom: 20px; }
+
+  .value-added h2 {
+    font-size: clamp(36px, 3.6vw, 52px);
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 32px;
+    max-width: 900px;
+  }
+
+  .value-added p.lead {
+    font-size: 17px;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.7;
+    max-width: 900px;
+    margin-bottom: 64px;
+  }
+
+  .value-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .value-card {
+    background: #151515;
+    padding: 48px 40px;
+    border-top: 3px solid var(--orange);
+  }
+
+  .value-card-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .value-card h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 24px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 28px;
+  }
+
+  .value-card ul {
+    list-style: none;
+  }
+
+  .value-card ul li {
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    font-size: 14px;
+    color: rgba(255,255,255,0.88);
+    line-height: 1.5;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .value-card ul li:last-child { border-bottom: none; }
+
+  .value-card ul li::before {
+    content: '';
+    width: 14px;
+    height: 2px;
+    background: var(--orange);
+    flex-shrink: 0;
+    margin-top: 10px;
+  }
+
+  /* ============ SECTION 6 — LIFECYCLE & SCALE ============ */
+  .lifecycle {
+    background: var(--white);
+    padding: 140px 0;
+  }
+
+  .lifecycle .eyebrow { display: block; margin-bottom: 20px; }
+
+  .lifecycle h2 {
+    font-size: clamp(36px, 3.6vw, 52px);
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--near-black);
+    line-height: 1.1;
+    margin-bottom: 32px;
+    max-width: 800px;
+  }
+
+  .lifecycle p.lead {
+    font-size: 17px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    max-width: 800px;
+    margin-bottom: 80px;
+  }
+
+  .lifecycle-flow {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top: 1px solid #e5e3de;
+    border-bottom: 1px solid #e5e3de;
+    margin-bottom: 80px;
+  }
+
+  .lifecycle-stage {
+    padding: 40px 28px;
+    border-right: 1px solid #e5e3de;
+    border-bottom: 1px solid #e5e3de;
+    background: var(--white);
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .lifecycle-stage:nth-child(3n) { border-right: none; }
+  .lifecycle-stage:nth-last-child(-n+3) { border-bottom: none; }
+
+  .lifecycle-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--orange);
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .lifecycle-stage h4 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--near-black);
+    line-height: 1.2;
+  }
+
+  .lifecycle-stage:hover {
+    background: var(--near-black);
+  }
+
+  .lifecycle-stage:hover h4 { color: var(--white); }
+
+  /* Proof points strip */
+  .proof-strip {
+    background: var(--light-gray);
+    padding: 56px 48px;
+    border-left: 4px solid var(--orange);
+  }
+
+  .proof-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 32px;
+    display: block;
+  }
+
+  .proof-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+  }
+
+  .proof-item-number {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(28px, 2.8vw, 38px);
+    font-weight: 800;
+    color: var(--near-black);
+    line-height: 1.05;
+    margin-bottom: 8px;
+  }
+
+  .proof-item-label {
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.45;
+    letter-spacing: 0.02em;
+  }
+
+  /* ============ SECTION 7 — WHY IT MATTERS / WITH-WITHOUT ============ */
+  .why-matters {
+    background: var(--light-gray);
+    padding: 140px 0;
+  }
+
+  .why-matters-header {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+
+  .why-matters-header .eyebrow { display: block; margin-bottom: 24px; }
+
+  .why-matters-header h2 {
+    font-size: clamp(36px, 3.8vw, 56px);
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--near-black);
+    max-width: 920px;
+    margin: 0 auto 28px;
+    line-height: 1.1;
+  }
+
+  .why-matters-header p {
+    font-size: 17px;
+    color: var(--text-muted);
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.65;
+  }
+
+  /* LOCKED with/without comparison format */
+  .comparison-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .comparison-col {
+    padding: 56px 56px;
+    position: relative;
+  }
+
+  .comparison-col.without {
+    background: #3a3a3a;
+    color: var(--white);
+  }
+
+  .comparison-col.with {
+    background: var(--orange);
+    color: var(--white);
+  }
+
+  .comp-header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding-bottom: 24px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+  }
+
+  .comparison-col.with .comp-header { border-bottom-color: rgba(255,255,255,0.25); }
+
+  .comp-pill {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    padding: 8px 14px;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .comparison-col.without .comp-pill { background: #1f1f1f; color: var(--white); }
+  .comparison-col.with .comp-pill { background: #b8421d; color: var(--white); }
+
+  .comp-headline {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    line-height: 1.15;
+    color: var(--white);
+    margin: 0;
+  }
+
+  .comp-list {
+    list-style: none;
+    margin-top: 32px;
+  }
+
+  .comp-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    font-size: 15px;
+    line-height: 1.55;
+    color: rgba(255,255,255,0.92);
+  }
+
+  .comparison-col.with .comp-list li { border-bottom-color: rgba(255,255,255,0.22); }
+
+  .comp-list li:last-child { border-bottom: none; }
+
+  .comp-icon {
+    flex-shrink: 0;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Barlow', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 1;
+    margin-top: 1px;
+  }
+
+  .comparison-col.without .comp-icon { background: #1f1f1f; color: var(--white); }
+  .comparison-col.with .comp-icon { background: rgba(255,255,255,0.22); color: var(--white); }
+
+  /* Approach strip */
+  .approach-strip {
+    margin-top: 80px;
+    background: var(--white);
+    padding: 56px 48px;
+    text-align: center;
+  }
+
+  .approach-strip .approach-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 24px;
+  }
+
+  .approach-strip h3 {
+    font-size: 28px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--near-black);
+    margin-bottom: 36px;
+  }
+
+  .approach-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+  }
+
+  .approach-pill {
+    padding: 12px 20px;
+    background: var(--off-white);
+    border: 1px solid #d8d6d1;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--near-black);
+  }
+
+  .approach-pill.featured {
+    background: var(--orange);
+    color: var(--white);
+    border-color: var(--orange);
+  }
+
+  /* ============ KPI ============ */
+  .kpi-section {
+    background: var(--black);
+    color: var(--white);
+    padding: 140px 0;
+  }
+
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border-dark);
+    border: 1px solid var(--border-dark);
+  }
+
+  .kpi-tile {
+    background: #0f0f0f;
+    padding: 56px 32px;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .kpi-watermark {
+    position: absolute;
+    bottom: -12px;
+    right: -8px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 140px;
+    font-weight: 800;
+    color: rgba(255,255,255,0.04);
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .kpi-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--orange);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    display: block;
+    position: relative;
+  }
+
+  .kpi-main {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(26px, 2.4vw, 32px);
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 1.05;
+    color: var(--white);
+    position: relative;
+  }
+
+  .kpi-sub {
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 16px;
+    letter-spacing: 0.04em;
+    position: relative;
+  }
+
+  /* ============ FINAL CTA ============ */
+  .final-cta {
+    background: var(--orange);
+    color: var(--white);
+    padding: 120px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .final-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(45deg, rgba(255,255,255,0.04) 0px, rgba(255,255,255,0.04) 1px, transparent 1px, transparent 24px);
+    pointer-events: none;
+  }
+
+  .final-cta-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 880px;
+    margin: 0 auto;
+  }
+
+  .final-cta .eyebrow {
+    color: rgba(255,255,255,0.85);
+    display: block;
+    margin-bottom: 24px;
+  }
+
+  .final-cta h2 {
+    font-size: clamp(40px, 4.5vw, 64px);
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 1.05;
+    margin-bottom: 32px;
+    color: var(--white);
+  }
+
+  .final-cta p {
+    font-size: 18px;
+    color: rgba(255,255,255,0.92);
+    margin-bottom: 48px;
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.55;
+  }
+
+  .btn-cta {
+    background: var(--white);
+    color: var(--orange);
+    padding: 18px 40px;
+    font-size: 14px;
+  }
+
+  .btn-cta:hover { background: var(--near-black); color: var(--white); }
+
+  /* ============ ANIMATIONS ============ */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .fade-up.in { opacity: 1; transform: translateY(0); }
+
+  /* ============ MEDIA PLACEHOLDERS ============ */
+  .media-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 32px 40px;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .media-tag {
+    display: inline-block;
+    align-self: flex-start;
+    background: var(--orange);
+    color: var(--white);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    margin-bottom: 16px;
+  }
+
+  .media-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: rgba(255,255,255,0.95);
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+
+  .media-spec {
+    font-family: 'Barlow', sans-serif;
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.55;
+    max-width: 360px;
+  }
+
+  .media-spec strong {
+    color: rgba(255,255,255,0.85);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .hero-media-tag {
+    position: absolute;
+    top: 24px;
+    left: 40px;
+    z-index: 3;
+    background: rgba(236,88,38,0.95);
+    color: var(--white);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+  }
+
+  .hero-media-spec {
+    position: absolute;
+    bottom: 24px;
+    left: 40px;
+    z-index: 3;
+    color: rgba(255,255,255,0.5);
+    font-family: 'Barlow', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    max-width: 440px;
+    line-height: 1.5;
+    padding: 10px 14px;
+    border-left: 2px solid var(--orange);
+    background: rgba(0,0,0,0.4);
+  }
+
+  .hero-media-spec strong {
+    color: rgba(255,255,255,0.9);
+    display: block;
+    font-weight: 700;
+    font-family: 'Barlow Condensed', sans-serif;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-size: 11px;
+    margin-bottom: 4px;
+  }
+
+  .section-banner {
+    position: relative;
+    aspect-ratio: 21 / 6;
+    background:
+      linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.75) 100%),
+      linear-gradient(135deg, #1f1f1f 0%, #0a0a0a 100%);
+    overflow: hidden;
+  }
+
+  .section-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(45deg, rgba(255,255,255,0.025) 0px, rgba(255,255,255,0.025) 1px, transparent 1px, transparent 10px);
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 960px) {
+    .container { padding: 0 24px; }
+    .hero { min-height: auto; padding: 100px 0 80px; }
+    .hero-credibility { position: static; align-items: flex-start; margin-top: 48px; }
+    .hero-credibility span { border-right: none; border-left: 2px solid var(--orange); padding-right: 0; padding-left: 12px; }
+    .where-fits-grid { grid-template-columns: 1fr; gap: 48px; }
+    .cap-grid { grid-template-columns: 1fr; }
+    .kit-split { grid-template-columns: 1fr; }
+    .copack-grid { grid-template-columns: 1fr 1fr; }
+    .copack-item:nth-child(3n) { border-right: 1px solid #e5e3de; }
+    .copack-item:nth-child(2n) { border-right: none; }
+    .value-split { grid-template-columns: 1fr; }
+    .lifecycle-flow { grid-template-columns: 1fr 1fr; }
+    .lifecycle-stage:nth-child(3n) { border-right: 1px solid #e5e3de; }
+    .lifecycle-stage:nth-child(2n) { border-right: none; }
+    .proof-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+    .kpi-grid { grid-template-columns: 1fr 1fr; }
+    .comparison-grid { grid-template-columns: 1fr; gap: 16px; }
+    .where-fits, .capabilities, .kitting, .copacking, .value-added,
+    .lifecycle, .why-matters, .kpi-section { padding: 80px 0; }
+    .media-placeholder { padding: 24px; }
+    .media-title { font-size: 16px; }
+    .media-spec { font-size: 11px; }
+    .hero-media-spec { display: none; }
+  }
+
+  @media (max-width: 600px) {
+    .copack-grid { grid-template-columns: 1fr; }
+    .copack-item { border-right: none !important; }
+    .lifecycle-flow { grid-template-columns: 1fr; }
+    .lifecycle-stage { border-right: none !important; }
+    .proof-grid { grid-template-columns: 1fr; }
+    .kpi-grid { grid-template-columns: 1fr; }
+    .comparison-col { padding: 40px 28px; }
+    .approach-strip, .proof-strip { padding: 40px 24px; }
+    .value-card { padding: 36px 28px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-media-tag">▶ HERO VIDEO ZONE</div>
+  <div class="hero-media-spec">
+    <strong>Background Video — Fulfillment & Kitting Floor</strong>
+    Pick-pack stations, barcode scanning, kits being assembled at workstations, labeling, retail-ready packouts moving through inspection, conveyor or stacked boxes ready for shipment. Controlled, organized, high-throughput energy. Loop, muted, autoplay. Heavy black gradient overlay on left 50%.
+  </div>
+  <div class="container">
+    <div class="hero-content">
+      <span class="hero-label">Fulfillment, Kitting & Value-Added Services</span>
+      <h1>Fulfillment Built for Accuracy, Flexibility, and Scale</h1>
+      <p class="hero-sub">Accurate fulfillment, custom kitting, co-packing, and value-added services built for high-SKU, changing-volume, and channel-compliant programs.</p>
+      <p class="hero-intro">Fulfillment problems usually do not start with one bad shipment. They start when complexity increases — more SKUs, more channels, more rules, more chances for small mistakes to create costly downstream issues. RELY takes on the work that slows your internal team down, creates channel risk, or becomes difficult to scale inside your own operation.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-primary">Talk to RELY About Fulfillment & Kitting <span class="btn-arrow">→</span></a>
+        <a href="#capabilities" class="btn btn-secondary">Explore Capabilities</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-credibility">
+    <span>400,000+ Units Fulfilled Annually</span>
+    <span>359% FBA Growth Supported</span>
+    <span>ISO 9001:2015 Certified</span>
+    <span>Multi-Channel Capable</span>
+  </div>
+</section>
+
+<!-- ============ SECTION 1: WHERE RELY FITS ============ -->
+<section class="where-fits" id="capabilities">
+  <div class="container">
+    <div class="where-fits-grid">
+      <div class="fade-up">
+        <span class="eyebrow">Where RELY Fits</span>
+        <h2>Fulfillment Support That Takes Complexity Out of Your Operation</h2>
+        <p>Fulfillment and kitting work can look simple from the outside. In reality, it becomes operationally expensive fast when teams are managing multiple SKUs, shifting demand, channel-specific requirements, packaging changes, substitutions, and customer compliance rules.</p>
+        <p>RELY gives you a controlled outside production path for the work that needs accuracy, repeatability, and flexible labor capacity.</p>
+      </div>
+      <div class="supports-block fade-up">
+        <div class="supports-label">RELY Supports</div>
+        <ul class="supports-list">
+          <li>High-SKU Order Complexity</li>
+          <li>Seasonal & Promotional Volume Spikes</li>
+          <li>Retail Compliance Requirements</li>
+          <li>Amazon FBA & Marketplace Prep</li>
+          <li>Custom Kit Configurations</li>
+          <li>Repackaging & Relabeling</li>
+          <li>Inventory Handling & Reconfiguration</li>
+          <li>Returns, Rework & Reverse Logistics</li>
+          <li>Labor-Intensive Packout Programs</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-banner fade-up" style="margin-top: 80px;">
+      <div class="media-placeholder">
+        <span class="media-tag">Image · Section 1</span>
+        <div class="media-title">Fulfillment Floor Banner</div>
+        <div class="media-spec">
+          <strong>Shot direction</strong>
+          Wide cinematic banner — fulfillment cells active across the floor: pick-pack stations on one side, kitting cells in the middle, palletizing/staging on the other end. Operators working with focus, organized bins, scanners visible. Wide crop (21:6). Industrial lighting.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 2: FULFILLMENT CAPABILITIES ============ -->
+<section class="capabilities">
+  <div class="container">
+    <span class="eyebrow">Fulfillment Capabilities</span>
+    <h2>Built for Accuracy Across Channels</h2>
+    <p class="lead">Accuracy has to be built into the process. One missed component, one label error, one incorrect carton, or one routing mistake can create chargebacks, rejected shipments, customer complaints, and internal fire drills. RELY uses structured workflows and defined verification points to keep fulfillment work controlled from receipt through shipment.</p>
+
+    <div class="cap-grid">
+      <div class="cap-item"><div class="cap-num">01</div><div class="cap-label">Direct-to-Consumer Fulfillment</div></div>
+      <div class="cap-item"><div class="cap-num">02</div><div class="cap-label">B2B & Bulk Shipments</div></div>
+      <div class="cap-item"><div class="cap-num">03</div><div class="cap-label">Pick, Pack & Ship Workflows</div></div>
+      <div class="cap-item"><div class="cap-num">04</div><div class="cap-label">Retail-Compliant Packouts</div></div>
+      <div class="cap-item"><div class="cap-num">05</div><div class="cap-label">Amazon FBA Prep & Direct Fulfillment</div></div>
+      <div class="cap-item"><div class="cap-num">06</div><div class="cap-label">Walmart & Retail Distribution Support</div></div>
+      <div class="cap-item"><div class="cap-num">07</div><div class="cap-label">Multi-Channel Order Routing</div></div>
+      <div class="cap-item"><div class="cap-num">08</div><div class="cap-label">Barcode Scanning & Checkpoint Validation</div></div>
+      <div class="cap-item"><div class="cap-num">09</div><div class="cap-label">Standardized Packing & Inspection Protocols</div></div>
+      <div class="cap-item"><div class="cap-num">10</div><div class="cap-label">Issue Tracking & Resolution Processes</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 3: CUSTOM KITTING ============ -->
+<section class="kitting">
+  <div class="container">
+    <span class="eyebrow">Custom Kitting & Configuration</span>
+    <h2>Kits Packed Correctly, Consistently, and Ready for the Next Step</h2>
+    <p class="lead">Kitting sounds simple until variation enters the process. Multiple components, substitutions, packaging versions, customer-specific documentation, retail requirements, promotional changes, line-side timing, and revision control can create real operational noise. RELY builds custom kits using defined bills of materials, sequenced workflows, visual standards, trained operators, and built-in quality checks.</p>
+
+    <div class="section-banner fade-up" style="margin-bottom: 64px;">
+      <div class="media-placeholder">
+        <span class="media-tag">Image · Section 3</span>
+        <div class="media-title">Custom Kit Assembly Station</div>
+        <div class="media-spec">
+          <strong>Shot direction</strong>
+          Kitting station in action — operator assembling a multi-component kit with organized bins, BOM sheet or tablet visible, labeled components, completed kit staged at the end. Show the structure and discipline of the process. Wide crop (21:6). Industrial lighting.
+        </div>
+      </div>
+    </div>
+
+    <div class="kit-split fade-up">
+      <div class="kit-card">
+        <h4>Common Kitting Programs</h4>
+        <ul>
+          <li>Service Kits</li>
+          <li>Spare Parts Kits</li>
+          <li>Line-Ready Production Kits</li>
+          <li>Variety Packs</li>
+          <li>Promotional Bundles</li>
+          <li>Compliance & Documentation Packs</li>
+          <li>Customer-Specific Configurations</li>
+          <li>Multi-SKU Packouts</li>
+        </ul>
+      </div>
+      <div class="kit-card">
+        <h4>Additional Kitting Support</h4>
+        <ul>
+          <li>Substitutions & Revisions</li>
+          <li>Channel-Specific Packaging</li>
+          <li>Kit Inspection & Verification</li>
+          <li>Labeling & Identification</li>
+          <li>Lot, Batch & Order-Level Documentation</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 4: CO-PACKING / POP ============ -->
+<section class="copacking">
+  <div class="container">
+    <span class="eyebrow">Co-Packing, Bundling & POP Displays</span>
+    <h2>Retail-Ready Programs With Fewer Avoidable Mistakes</h2>
+    <p class="lead">Retail and promotional packaging create risk because small mistakes become visible fast. Wrong count, wrong label, wrong carton configuration, incorrect presentation, missing components, poor palletization, or missed routing requirements can delay shipments and create chargebacks. RELY supports co-packing, bundling, and POP display programs with controlled workflows designed to protect accuracy, presentation, and delivery performance.</p>
+
+    <div class="copack-grid">
+      <div class="copack-item"><div class="copack-num">01</div><div class="copack-label">Multipacks</div></div>
+      <div class="copack-item"><div class="copack-num">02</div><div class="copack-label">Promotional Bundles</div></div>
+      <div class="copack-item"><div class="copack-num">03</div><div class="copack-label">Seasonal Configurations</div></div>
+      <div class="copack-item"><div class="copack-num">04</div><div class="copack-label">Retail-Ready Packouts</div></div>
+      <div class="copack-item"><div class="copack-num">05</div><div class="copack-label">POP Display Assembly</div></div>
+      <div class="copack-item"><div class="copack-num">06</div><div class="copack-label">Pre-Assembly & Install Prep</div></div>
+      <div class="copack-item"><div class="copack-num">07</div><div class="copack-label">Verified Counts & Components</div></div>
+      <div class="copack-item"><div class="copack-num">08</div><div class="copack-label">Labeling & Presentation Checks</div></div>
+      <div class="copack-item"><div class="copack-num">09</div><div class="copack-label">Carton Configuration</div></div>
+      <div class="copack-item"><div class="copack-num">10</div><div class="copack-label">Palletization</div></div>
+      <div class="copack-item"><div class="copack-num">11</div><div class="copack-label">Retail Documentation & Routing</div></div>
+      <div class="copack-item"><div class="copack-num">12</div><div class="copack-label">Shelf-Ready Presentation Control</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 5: VALUE-ADDED & REVERSE LOGISTICS (COMBINED) ============ -->
+<section class="value-added">
+  <div class="container">
+    <span class="eyebrow">Value-Added & Reverse Logistics</span>
+    <h2>More Steps Controlled in One Workflow</h2>
+    <p class="lead">The more times product changes hands, the more opportunities there are for errors, delays, damage, and excess cost. RELY consolidates fulfillment, value-added work, and returns into single controlled workflows whenever possible — reducing unnecessary handling and giving customers better visibility and control.</p>
+
+    <div class="section-banner fade-up" style="margin-bottom: 64px;">
+      <div class="media-placeholder">
+        <span class="media-tag">Image · Section 5</span>
+        <div class="media-title">Value-Added Workflow</div>
+        <div class="media-spec">
+          <strong>Shot direction</strong>
+          Active value-added station — relabeling, repackaging, or inspection of returned product in progress. Show the workflow structure: staging area, work surface, documentation, completed-item area. Wide crop (21:6). Industrial lighting.
+        </div>
+      </div>
+    </div>
+
+    <div class="value-split fade-up">
+      <div class="value-card">
+        <span class="value-card-eyebrow">Value-Added Services</span>
+        <h3>Consolidate Handling Into One Workflow</h3>
+        <ul>
+          <li>Inventory Storage & Management</li>
+          <li>Depalletizing & Downstacking</li>
+          <li>Repackaging & Relabeling</li>
+          <li>Product Reconfiguration</li>
+          <li>Light Assembly</li>
+          <li>Inspection & Verification</li>
+          <li>Documentation Support</li>
+          <li>Packaging Optimization</li>
+          <li>Carton & Void-Fill Efficiency Review</li>
+          <li>Freight & Shipping Cost Reduction Support</li>
+        </ul>
+      </div>
+      <div class="value-card">
+        <span class="value-card-eyebrow">Returns & Reverse Logistics</span>
+        <h3>Recover Value, Keep Product Moving</h3>
+        <ul>
+          <li>Return-to-Stock</li>
+          <li>Inspection & Verification</li>
+          <li>Rework</li>
+          <li>Reconfiguration</li>
+          <li>Repackaging & Relabeling</li>
+          <li>Recycling or Reclamation</li>
+          <li>Proper Disposal When Required</li>
+          <li>Structured Disposition Decision Rules</li>
+          <li>Documentation & Channel Visibility</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 6: LIFECYCLE & SCALE ============ -->
+<section class="lifecycle">
+  <div class="container">
+    <span class="eyebrow">Lifecycle & Scale Support</span>
+    <h2>Built to Scale With Your Program</h2>
+    <p class="lead">Fulfillment needs rarely stay flat. Promotions hit, retail launches move, Amazon volume spikes, new channels get added, seasonal demand changes, SKU counts grow, and customer requirements shift. RELY is built to support that movement without forcing you to permanently staff for peak demand.</p>
+
+    <div class="lifecycle-flow">
+      <div class="lifecycle-stage fade-up"><span class="lifecycle-num">01</span><h4>Seasonal Spikes</h4></div>
+      <div class="lifecycle-stage fade-up"><span class="lifecycle-num">02</span><h4>Promotional Launches</h4></div>
+      <div class="lifecycle-stage fade-up"><span class="lifecycle-num">03</span><h4>New Channel Rollouts</h4></div>
+      <div class="lifecycle-stage fade-up"><span class="lifecycle-num">04</span><h4>SKU Expansion</h4></div>
+      <div class="lifecycle-stage fade-up"><span class="lifecycle-num">05</span><h4>Customer Packout Changes</h4></div>
+      <div class="lifecycle-stage fade-up"><span class="lifecycle-num">06</span><h4>FBA Growth</h4></div>
+      <div class="lifecycle-stage fade-up"><span class="lifecycle-num">07</span><h4>Retail Compliance Programs</h4></div>
+      <div class="lifecycle-stage fade-up"><span class="lifecycle-num">08</span><h4>Short-Term Surge Work</h4></div>
+      <div class="lifecycle-stage fade-up"><span class="lifecycle-num">09</span><h4>Ongoing Fulfillment Programs</h4></div>
+    </div>
+
+    <div class="proof-strip fade-up">
+      <span class="proof-label">Proven Performance</span>
+      <div class="proof-grid">
+        <div>
+          <div class="proof-item-number">400K+</div>
+          <div class="proof-item-label">Units fulfilled annually</div>
+        </div>
+        <div>
+          <div class="proof-item-number">359%</div>
+          <div class="proof-item-label">Growth supported for FBA programs</div>
+        </div>
+        <div>
+          <div class="proof-item-number">Rapid</div>
+          <div class="proof-item-label">Ramp-up for added shifts & surge demand</div>
+        </div>
+        <div>
+          <div class="proof-item-number">High-SKU</div>
+          <div class="proof-item-label">Multi-channel fulfillment & packout</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 7: WHY IT MATTERS / WITH-WITHOUT ============ -->
+<section class="why-matters">
+  <div class="container">
+    <div class="why-matters-header">
+      <span class="eyebrow">Why It Matters</span>
+      <h2>Scale Fulfillment Without Adding Complexity</h2>
+      <p>RELY helps manufacturers and brands scale fulfillment, kitting, co-packing, and value-added work without adding permanent labor, increasing internal complexity, or accepting avoidable errors.</p>
+    </div>
+
+    <div class="comparison-grid fade-up">
+      <div class="comparison-col without">
+        <div class="comp-header">
+          <span class="comp-pill">Without RELY</span>
+          <h3 class="comp-headline">Absorbing It Internally</h3>
+        </div>
+        <ul class="comp-list">
+          <li><span class="comp-icon">×</span><span>Fulfillment complexity consumes internal labor and operational capacity</span></li>
+          <li><span class="comp-icon">×</span><span>Channel-specific compliance and labeling rules create avoidable chargebacks</span></li>
+          <li><span class="comp-icon">×</span><span>SKU expansion, promotions, and seasonal spikes destabilize internal staffing</span></li>
+          <li><span class="comp-icon">×</span><span>Returns and reverse logistics quietly drain margin without clear disposition rules</span></li>
+          <li><span class="comp-icon">×</span><span>Small packout mistakes create rejected shipments, customer complaints, and fire drills</span></li>
+        </ul>
+      </div>
+      <div class="comparison-col with">
+        <div class="comp-header">
+          <span class="comp-pill">With RELY</span>
+          <h3 class="comp-headline">Freeing Up Operational Capacity</h3>
+        </div>
+        <ul class="comp-list">
+          <li><span class="comp-icon">✓</span><span>Fulfillment, kitting, and packout work is managed by a disciplined external team</span></li>
+          <li><span class="comp-icon">✓</span><span>Internal teams stay focused on production and higher-value priorities</span></li>
+          <li><span class="comp-icon">✓</span><span>Structured workflows and barcode verification protect accuracy across channels</span></li>
+          <li><span class="comp-icon">✓</span><span>Flexible staffing capacity absorbs volume swings and seasonal demand</span></li>
+          <li><span class="comp-icon">✓</span><span>Earlier issue detection and clear disposition rules reduce chargebacks and waste</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="approach-strip fade-up">
+      <div class="approach-label">Our Approach Is Built On</div>
+      <h3>Discipline at Every Step</h3>
+      <div class="approach-pills">
+        <span class="approach-pill">Defined Workflows</span>
+        <span class="approach-pill featured">Documented Work Instructions</span>
+        <span class="approach-pill">Barcode Scanning & Verification</span>
+        <span class="approach-pill">Trained Operators</span>
+        <span class="approach-pill featured">Structured Inspection Points</span>
+        <span class="approach-pill">Retail & Marketplace Compliance</span>
+        <span class="approach-pill">Flexible Staffing Capacity</span>
+        <span class="approach-pill featured">Clear Issue Tracking</span>
+        <span class="approach-pill">Scalable Fulfillment Cells</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KPI ============ -->
+<section class="kpi-section">
+  <div class="container">
+    <div class="kpi-grid">
+      <div class="kpi-tile fade-up">
+        <span class="kpi-watermark">01</span>
+        <span class="kpi-eyebrow">Volume</span>
+        <div class="kpi-main">400,000+<br>Units Fulfilled<br>Annually</div>
+        <div class="kpi-sub">Across multiple channels</div>
+      </div>
+      <div class="kpi-tile fade-up">
+        <span class="kpi-watermark">02</span>
+        <span class="kpi-eyebrow">FBA Growth</span>
+        <div class="kpi-main">359%<br>Growth Supported<br>For FBA Programs</div>
+        <div class="kpi-sub">Documented client outcome</div>
+      </div>
+      <div class="kpi-tile fade-up">
+        <span class="kpi-watermark">03</span>
+        <span class="kpi-eyebrow">Capability</span>
+        <div class="kpi-main">High-SKU<br>Multi-Channel<br>Fulfillment</div>
+        <div class="kpi-sub">DTC, retail, marketplace</div>
+      </div>
+      <div class="kpi-tile fade-up">
+        <span class="kpi-watermark">04</span>
+        <span class="kpi-eyebrow">Scale</span>
+        <div class="kpi-main">Rapid Ramp-Up<br>For Surge<br>& Seasonal Demand</div>
+        <div class="kpi-sub">Trained staffing capacity</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final-cta" id="contact">
+  <div class="container">
+    <div class="final-cta-inner">
+      <span class="eyebrow">Let's Talk</span>
+      <h2>Need More Fulfillment or Kitting Capacity?</h2>
+      <p>If fulfillment, kitting, or channel complexity is slowing your growth, we should talk. We'll help you identify where errors, delays, labor constraints, or compliance risks are showing up and show you where RELY can take pressure off your operation.</p>
+      <a href="https://relycm.com/contact/" class="btn btn-cta">Talk to RELY About Fulfillment & Kitting <span class="btn-arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('in'), i * 60);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
