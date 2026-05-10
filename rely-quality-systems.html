@@ -1,0 +1,1927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Quality Systems | RELY Contract Manufacturing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800&family=Barlow+Condensed:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --orange:#EC5826;
+    --black:#1a1a1a;
+    --charcoal:#252525;
+    --graphite:#3a3d3d;
+    --light:#f2f0eb;
+    --white:#ffffff;
+    --muted:#9a9a9a;
+    --muted-dark:#555555;
+    --line:#2e2e2e;
+    --line-light:#e3e0d8;
+    --font-display:'Barlow Condensed','Squada One',Impact,sans-serif;
+    --font-body:'Barlow','Gotham Book',Helvetica,Arial,sans-serif;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--font-body);
+    color:var(--black);
+    background:var(--white);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  /* ============================================================
+     UTILITIES
+     ============================================================ */
+  .container{max-width:1280px;margin:0 auto;padding:0 40px}
+  .container-tight{max-width:980px;margin:0 auto;padding:0 40px}
+  .eyebrow{
+    font-family:var(--font-body);
+    font-weight:700;
+    font-size:12px;
+    letter-spacing:2.5px;
+    text-transform:uppercase;
+    color:var(--orange);
+  }
+  .eyebrow-light{color:#ff7a4d}
+  .display{
+    font-family:var(--font-display);
+    font-weight:800;
+    line-height:1.02;
+    letter-spacing:-0.5px;
+    text-transform:uppercase;
+  }
+
+  /* ============================================================
+     PLACEHOLDER STYLING (for production handoff)
+     ============================================================ */
+  .placeholder{
+    position:relative;
+    background:
+      repeating-linear-gradient(
+        45deg,
+        rgba(236,88,38,0.04) 0,
+        rgba(236,88,38,0.04) 12px,
+        rgba(236,88,38,0.08) 12px,
+        rgba(236,88,38,0.08) 24px
+      ),
+      #1a1a1a;
+    border:2px dashed var(--orange);
+    color:#fff;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding:40px;
+    text-align:center;
+    overflow:hidden;
+  }
+  .placeholder-tag{
+    position:absolute;
+    top:18px;left:18px;
+    background:var(--orange);
+    color:#fff;
+    font-family:var(--font-body);
+    font-weight:700;
+    font-size:10px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    padding:6px 12px;
+  }
+  .placeholder-icon{
+    width:54px;height:54px;
+    border:2px solid var(--orange);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:20px;
+    color:var(--orange);
+    font-size:24px;
+  }
+  .placeholder-title{
+    font-family:var(--font-display);
+    font-weight:800;
+    font-size:18px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    color:#fff;
+    margin-bottom:10px;
+    max-width:90%;
+  }
+  .placeholder-desc{
+    font-family:var(--font-body);
+    font-weight:400;
+    font-size:13px;
+    color:rgba(255,255,255,0.75);
+    line-height:1.5;
+    max-width:85%;
+  }
+  .placeholder-specs{
+    margin-top:14px;
+    padding-top:14px;
+    border-top:1px solid rgba(255,255,255,0.2);
+    font-family:var(--font-body);
+    font-weight:600;
+    font-size:10px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    color:var(--orange);
+    max-width:85%;
+  }
+  /* Light variant for use inside light sections */
+  .placeholder.light{
+    background:
+      repeating-linear-gradient(
+        45deg,
+        rgba(236,88,38,0.04) 0,
+        rgba(236,88,38,0.04) 12px,
+        rgba(236,88,38,0.08) 12px,
+        rgba(236,88,38,0.08) 24px
+      ),
+      #f2f0eb;
+    color:var(--black);
+  }
+  .placeholder.light .placeholder-title{color:var(--black)}
+  .placeholder.light .placeholder-desc{color:var(--muted-dark)}
+
+  /* ============================================================
+     HERO
+     ============================================================ */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    background:var(--black);
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+  }
+  .hero-video{
+    position:absolute;inset:0;
+    background:
+      radial-gradient(ellipse at 70% 50%, rgba(236,88,38,0.08) 0%, transparent 60%),
+      linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+    overflow:hidden;
+  }
+  /* Simulated cinematic operational footage layer */
+  .hero-video::before{
+    content:'';
+    position:absolute;inset:0;
+    background-image:
+      linear-gradient(90deg, transparent 49.5%, rgba(255,255,255,0.02) 50%, transparent 50.5%),
+      linear-gradient(0deg, transparent 49.5%, rgba(255,255,255,0.02) 50%, transparent 50.5%);
+    background-size: 80px 80px;
+    opacity:0.4;
+  }
+  .hero-video::after{
+    content:'';
+    position:absolute;inset:0;
+    background:
+      radial-gradient(circle at 75% 30%, rgba(236,88,38,0.15), transparent 40%),
+      radial-gradient(circle at 85% 70%, rgba(236,88,38,0.08), transparent 30%);
+  }
+  .hero-overlay{
+    position:absolute;inset:0;
+    background:linear-gradient(90deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.75) 45%, rgba(0,0,0,0.35) 75%, rgba(0,0,0,0.2) 100%);
+    z-index:1;
+  }
+  .hero-content{
+    position:relative;z-index:2;
+    max-width:760px;
+    padding:60px 0 60px 80px;
+    margin-left:0;
+  }
+  .hero-eyebrow{
+    display:inline-flex;align-items:center;gap:14px;
+    color:#fff;
+    font-weight:600;
+    font-size:12px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    margin-bottom:32px;
+    opacity:0;
+    animation:fadeUp 0.8s 0.1s forwards;
+  }
+  .hero-eyebrow::before{
+    content:'';
+    width:48px;height:2px;background:var(--orange);
+  }
+  .hero h1{
+    font-family:var(--font-display);
+    font-weight:800;
+    font-size:clamp(48px,6.5vw,92px);
+    line-height:0.98;
+    letter-spacing:-1px;
+    text-transform:uppercase;
+    color:#fff;
+    margin-bottom:28px;
+    opacity:0;
+    animation:fadeUp 0.8s 0.25s forwards;
+  }
+  .hero h1 .accent{color:var(--orange)}
+  .hero-sub{
+    font-size:19px;
+    line-height:1.55;
+    color:#d4d4d4;
+    max-width:600px;
+    margin-bottom:44px;
+    font-weight:400;
+    opacity:0;
+    animation:fadeUp 0.8s 0.4s forwards;
+  }
+  .hero-cta{
+    display:flex;gap:14px;flex-wrap:wrap;
+    opacity:0;
+    animation:fadeUp 0.8s 0.55s forwards;
+  }
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:18px 30px;
+    font-family:var(--font-body);
+    font-weight:600;
+    font-size:14px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    text-decoration:none;
+    transition:all 0.25s ease;
+    cursor:pointer;
+    border:none;
+  }
+  .btn-primary{
+    background:var(--orange);
+    color:#fff;
+  }
+  .btn-primary:hover{background:#d44a1f;transform:translateY(-2px)}
+  .btn-secondary{
+    background:transparent;
+    color:#fff;
+    border:1.5px solid rgba(255,255,255,0.35);
+  }
+  .btn-secondary:hover{border-color:#fff;background:rgba(255,255,255,0.05)}
+  .btn-arrow{font-size:18px;line-height:1}
+
+  .hero-credibility{
+    position:absolute;
+    right:40px;bottom:40px;
+    z-index:2;
+    display:flex;flex-direction:column;gap:10px;
+    text-align:right;
+    opacity:0;
+    animation:fadeUp 0.8s 0.8s forwards;
+  }
+  .hero-credibility-item{
+    font-size:11px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:rgba(255,255,255,0.6);
+    font-weight:500;
+  }
+  .hero-credibility-item .num{color:#fff;font-weight:700}
+
+  /* Hero placeholder badge */
+  .hero-placeholder-badge{
+    position:absolute;
+    top:24px;right:24px;
+    z-index:3;
+    background:var(--orange);
+    color:#fff;
+    padding:10px 16px;
+    font-family:var(--font-body);
+    font-weight:700;
+    font-size:10px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    border:2px dashed #fff;
+  }
+  .hero-placeholder-badge span{
+    display:block;
+    font-weight:400;
+    font-size:9px;
+    letter-spacing:1.2px;
+    color:rgba(255,255,255,0.85);
+    margin-top:4px;
+    text-transform:none;
+  }
+
+  /* ============================================================
+     SECTION 2 — OPENING POSITIONING
+     ============================================================ */
+  .positioning{
+    background:#fff;
+    padding:140px 0 130px;
+  }
+  .positioning-inner{
+    max-width:1100px;
+    margin:0 auto;
+    padding:0 40px;
+    text-align:center;
+  }
+  .positioning .eyebrow{margin-bottom:48px;display:block}
+  .positioning h2{
+    font-family:var(--font-display);
+    font-weight:800;
+    font-size:clamp(36px,4.6vw,64px);
+    line-height:1.04;
+    letter-spacing:-0.5px;
+    text-transform:uppercase;
+    color:var(--black);
+    margin-bottom:40px;
+  }
+  .positioning h2 .accent{color:var(--orange)}
+  .positioning p{
+    font-size:18px;
+    color:var(--muted-dark);
+    line-height:1.7;
+    max-width:720px;
+    margin:0 auto 22px;
+  }
+  .positioning .pull{
+    margin-top:80px;
+    padding:48px 30px;
+    border-top:1px solid var(--line-light);
+    border-bottom:1px solid var(--line-light);
+  }
+  .positioning .pull-text{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:clamp(26px,3.2vw,40px);
+    line-height:1.15;
+    letter-spacing:-0.3px;
+    text-transform:uppercase;
+    color:var(--black);
+  }
+  .positioning .pull-text .accent{color:var(--orange)}
+
+  /* Flow diagram */
+  .flow{
+    margin-top:80px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-wrap:nowrap;
+    gap:clamp(8px,1.2vw,18px);
+    width:100%;
+  }
+  .flow-node{
+    font-family:var(--font-body);
+    font-weight:600;
+    font-size:clamp(9px,1vw,12px);
+    letter-spacing:clamp(0.8px,0.15vw,1.8px);
+    text-transform:uppercase;
+    color:var(--black);
+    padding:clamp(10px,1.2vw,14px) clamp(12px,1.6vw,20px);
+    border:1px solid var(--line-light);
+    background:#fafaf7;
+    white-space:nowrap;
+    flex-shrink:0;
+  }
+  .flow-arrow{
+    color:var(--orange);
+    font-size:clamp(14px,1.4vw,18px);
+    font-weight:700;
+    flex-shrink:0;
+  }
+
+  /* ============================================================
+     SECTION 3 — WHERE QUALITY BREAKS
+     ============================================================ */
+  .breaks{
+    background:var(--light);
+    padding:130px 0;
+  }
+  .breaks-header{
+    max-width:760px;
+    margin:0 auto 70px;
+    text-align:center;
+    padding:0 40px;
+  }
+  .breaks-header .eyebrow{margin-bottom:24px;display:block}
+  .breaks-header h2{
+    font-family:var(--font-display);
+    font-weight:800;
+    font-size:clamp(34px,4.2vw,56px);
+    line-height:1.05;
+    text-transform:uppercase;
+    letter-spacing:-0.4px;
+    color:var(--black);
+  }
+  .breaks-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1px;
+    background:var(--line-light);
+    border-top:1px solid var(--line-light);
+    border-bottom:1px solid var(--line-light);
+  }
+  .break-tile{
+    background:var(--light);
+    padding:42px 36px;
+    transition:background 0.3s ease;
+  }
+  .break-tile:hover{background:#fff}
+  .break-tile .num{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:14px;
+    color:var(--orange);
+    letter-spacing:2px;
+    margin-bottom:18px;
+    display:block;
+  }
+  .break-tile h3{
+    font-family:var(--font-display);
+    font-weight:800;
+    font-size:24px;
+    text-transform:uppercase;
+    letter-spacing:-0.2px;
+    color:var(--black);
+    margin-bottom:10px;
+    line-height:1.1;
+  }
+  .break-tile p{
+    font-size:15px;
+    color:var(--muted-dark);
+    line-height:1.55;
+  }
+  .breaks-footer{
+    text-align:center;
+    margin-top:60px;
+    padding:0 40px;
+  }
+  .breaks-footer p{
+    font-family:var(--font-display);
+    font-weight:600;
+    font-size:clamp(20px,2.4vw,28px);
+    text-transform:uppercase;
+    letter-spacing:-0.2px;
+    color:var(--black);
+    line-height:1.2;
+  }
+  .breaks-footer p .accent{color:var(--orange)}
+
+  /* ============================================================
+     SECTION 4 — HOW RELY OPERATES DIFFERENTLY
+     ============================================================ */
+  .operates{
+    background:var(--black);
+    color:#fff;
+    padding:140px 0;
+  }
+  .operates-header{
+    text-align:center;
+    max-width:820px;
+    margin:0 auto 80px;
+    padding:0 40px;
+  }
+  .operates-header .eyebrow{margin-bottom:28px;display:block}
+  .operates-header h2{
+    font-family:var(--font-display);
+    font-weight:800;
+    font-size:clamp(36px,4.6vw,62px);
+    line-height:1.04;
+    text-transform:uppercase;
+    letter-spacing:-0.5px;
+    color:#fff;
+    margin-bottom:24px;
+  }
+  .operates-header p{
+    font-size:17px;
+    color:#a8a8a8;
+    line-height:1.7;
+    max-width:660px;
+    margin:0 auto;
+  }
+  .operates-flow{
+    max-width:1100px;
+    margin:0 auto;
+    padding:0 40px;
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:0;
+    position:relative;
+  }
+  .op-step{
+    position:relative;
+    padding:36px 18px;
+    text-align:center;
+    border-right:1px solid rgba(255,255,255,0.08);
+  }
+  .op-step:last-child{border-right:none}
+  .op-step .step-num{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:12px;
+    color:var(--orange);
+    letter-spacing:2px;
+    margin-bottom:18px;
+    display:block;
+  }
+  .op-step h4{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:18px;
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+    color:#fff;
+    line-height:1.15;
+  }
+  .op-step::after{
+    content:'';
+    position:absolute;
+    bottom:-1px;left:0;
+    width:0;height:2px;
+    background:var(--orange);
+    transition:width 0.5s ease;
+  }
+  .op-step:hover::after{width:100%}
+
+  /* ============================================================
+     SECTION 5 — STRUCTURED PROGRAM LAUNCH
+     ============================================================ */
+  .launch{
+    background:#fff;
+    padding:0;
+    overflow:hidden;
+  }
+  .launch-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    min-height:680px;
+  }
+  .launch-image{
+    background:var(--charcoal);
+    position:relative;
+    overflow:hidden;
+  }
+  .launch-image::before{
+    content:'';
+    position:absolute;inset:0;
+    background:
+      linear-gradient(135deg, rgba(236,88,38,0.18), transparent 60%),
+      repeating-linear-gradient(0deg, transparent 0, transparent 40px, rgba(255,255,255,0.03) 40px, rgba(255,255,255,0.03) 41px),
+      repeating-linear-gradient(90deg, transparent 0, transparent 40px, rgba(255,255,255,0.03) 40px, rgba(255,255,255,0.03) 41px),
+      linear-gradient(180deg,#2a2a2a,#1a1a1a);
+  }
+  .launch-image-label{
+    position:absolute;
+    bottom:40px;left:40px;
+    color:rgba(255,255,255,0.5);
+    font-size:11px;
+    letter-spacing:2.5px;
+    text-transform:uppercase;
+    font-weight:600;
+  }
+  .launch-image-label::before{
+    content:'';
+    display:inline-block;
+    width:24px;height:1px;
+    background:var(--orange);
+    vertical-align:middle;
+    margin-right:12px;
+  }
+  /* PFMEA-style decorative SVG */
+  .launch-image-art{
+    position:absolute;
+    top:50%;left:50%;
+    transform:translate(-50%,-50%);
+    width:75%;
+    opacity:0.85;
+  }
+  .launch-content{
+    padding:100px 80px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+  .launch-content .eyebrow{margin-bottom:24px;display:block}
+  .launch-content h2{
+    font-family:var(--font-display);
+    font-weight:800;
+    font-size:clamp(32px,3.6vw,48px);
+    line-height:1.05;
+    text-transform:uppercase;
+    letter-spacing:-0.3px;
+    color:var(--black);
+    margin-bottom:24px;
+  }
+  .launch-content > p{
+    font-size:16px;
+    color:var(--muted-dark);
+    line-height:1.65;
+    margin-bottom:36px;
+  }
+  .launch-stack{
+    list-style:none;
+    border-top:1px solid var(--line-light);
+  }
+  .launch-stack li{
+    padding:18px 0;
+    border-bottom:1px solid var(--line-light);
+    font-family:var(--font-display);
+    font-weight:600;
+    font-size:18px;
+    text-transform:uppercase;
+    letter-spacing:0.3px;
+    color:var(--black);
+    display:flex;
+    align-items:center;
+    gap:18px;
+  }
+  .launch-stack li::before{
+    content:'';
+    width:8px;height:8px;
+    background:var(--orange);
+    flex-shrink:0;
+  }
+  .launch-pull{
+    margin-top:40px;
+    padding-left:24px;
+    border-left:3px solid var(--orange);
+    font-size:16px;
+    color:var(--black);
+    font-weight:500;
+    line-height:1.5;
+  }
+
+  /* ============================================================
+     SECTION 6 — VISUAL WORK INSTRUCTIONS
+     ============================================================ */
+  .vwi{
+    background:var(--light);
+    padding:130px 0;
+  }
+  .vwi-header{
+    max-width:880px;
+    margin:0 auto 60px;
+    padding:0 40px;
+    text-align:center;
+  }
+  .vwi-header .eyebrow{margin-bottom:24px;display:block}
+  .vwi-header h2{
+    font-family:var(--font-display);
+    font-weight:800;
+    font-size:clamp(34px,4.2vw,56px);
+    line-height:1.05;
+    text-transform:uppercase;
+    letter-spacing:-0.4px;
+    color:var(--black);
+  }
+  .vwi-image{
+    max-width:1280px;
+    margin:0 auto 70px;
+    padding:0 40px;
+  }
+  .vwi-image-frame{
+    background:var(--charcoal);
+    height:480px;
+    position:relative;
+    overflow:hidden;
+  }
+  .vwi-image-frame::before{
+    content:'';
+    position:absolute;inset:0;
+    background:
+      radial-gradient(ellipse at 30% 60%, rgba(236,88,38,0.12), transparent 50%),
+      linear-gradient(180deg, #2c2c2c, #181818);
+  }
+  .vwi-image-label{
+    position:absolute;
+    bottom:32px;left:32px;
+    color:rgba(255,255,255,0.55);
+    font-size:11px;
+    letter-spacing:2.5px;
+    text-transform:uppercase;
+    font-weight:600;
+  }
+  .vwi-image-label::before{
+    content:'';
+    display:inline-block;
+    width:24px;height:1px;
+    background:var(--orange);
+    vertical-align:middle;
+    margin-right:12px;
+  }
+  .vwi-cols{
+    max-width:1280px;
+    margin:0 auto;
+    padding:0 40px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:60px;
+  }
+  .vwi-col h3{
+    font-family:var(--font-display);
+    font-weight:800;
+    font-size:24px;
+    text-transform:uppercase;
+    letter-spacing:-0.2px;
+    color:var(--black);
+    margin-bottom:14px;
+    padding-bottom:14px;
+    border-bottom:2px solid var(--orange);
+    display:inline-block;
+  }
+  .vwi-col p{
+    font-size:16px;
+    color:var(--muted-dark);
+    line-height:1.6;
+  }
+  .vwi-col .placeholder{
+    height:200px;
+    margin-bottom:24px;
+    padding:24px 20px;
+  }
+  .vwi-col .placeholder-title{font-size:14px;margin-bottom:6px}
+  .vwi-col .placeholder-desc{font-size:11px}
+  .vwi-col .placeholder-icon{
+    width:36px;height:36px;font-size:16px;margin-bottom:12px;
+  }
+  .vwi-footer{
+    text-align:center;
+    margin-top:70px;
+    padding:0 40px;
+  }
+  .vwi-footer p{
+    font-family:var(--font-display);
+    font-weight:600;
+    font-size:clamp(20px,2.4vw,28px);
+    text-transform:uppercase;
+    letter-spacing:-0.2px;
+    color:var(--black);
+    line-height:1.2;
+  }
+
+  /* ============================================================
+     SECTION 7 — WORKFORCE SYSTEMS FOR SCALE
+     ============================================================ */
+  .workforce{
+    background:#fff;
+    padding:140px 0;
+  }
+  .workforce-header{
+    max-width:820px;
+    margin:0 auto 70px;
+    padding:0 40px;
+  }
+  .workforce-header .eyebrow{margin-bottom:24px;display:block}
+  .workforce-header h2{
+    font-family:var(--font-display);
+    font-weight:800;
+    font-size:clamp(34px,4.2vw,56px);
+    line-height:1.05;
+    text-transform:uppercase;
+    letter-spacing:-0.4px;
+    color:var(--black);
+    margin-bottom:24px;
+  }
+  .workforce-header p{
+    font-size:17px;
+    color:var(--muted-dark);
+    line-height:1.7;
+    max-width:680px;
+  }
+  .workforce-bands{
+    max-width:1280px;
+    margin:0 auto;
+    padding:0 40px;
+  }
+  .wf-band{
+    display:grid;
+    grid-template-columns:80px 1fr auto;
+    align-items:center;
+    gap:40px;
+    padding:32px 0;
+    border-top:1px solid var(--line-light);
+    transition:padding-left 0.3s ease, background 0.3s ease;
+    cursor:default;
+  }
+  .wf-band:last-child{border-bottom:1px solid var(--line-light)}
+  .wf-band:hover{padding-left:20px;background:#fafaf7}
+  .wf-band .wf-num{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:36px;
+    color:var(--orange);
+    letter-spacing:-0.5px;
+  }
+  .wf-band .wf-title{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:clamp(22px,2.4vw,32px);
+    text-transform:uppercase;
+    letter-spacing:-0.3px;
+    color:var(--black);
+    line-height:1.1;
+  }
+  .wf-band .wf-meta{
+    font-family:var(--font-body);
+    font-weight:500;
+    font-size:12px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:var(--muted-dark);
+  }
+
+  /* ============================================================
+     SECTION 8 — THE RELY ADVANTAGE
+     ============================================================ */
+  .advantage{
+    background:var(--black);
+    color:#fff;
+    padding:160px 0;
+    position:relative;
+    overflow:hidden;
+  }
+  .advantage::before{
+    content:'';
+    position:absolute;
+    top:0;right:0;
+    width:50%;height:100%;
+    background:radial-gradient(circle at 70% 50%, rgba(236,88,38,0.08), transparent 60%);
+    pointer-events:none;
+  }
+  .advantage-bg-placeholder{
+    position:absolute;
+    top:50%;right:60px;
+    transform:translateY(-50%);
+    width:340px;
+    height:380px;
+    z-index:1;
+    opacity:0.95;
+  }
+  .advantage-bg-placeholder .placeholder{
+    height:100%;
+    background:
+      repeating-linear-gradient(
+        45deg,
+        rgba(236,88,38,0.06) 0,
+        rgba(236,88,38,0.06) 12px,
+        rgba(236,88,38,0.12) 12px,
+        rgba(236,88,38,0.12) 24px
+      ),
+      #1a1a1a;
+  }
+  .advantage-inner{
+    position:relative;
+    z-index:2;
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 40px;
+  }
+  .advantage-inner > .eyebrow,
+  .advantage-inner > h2,
+  .advantage-inner > h3,
+  .advantage-inner > .advantage-copy{
+    max-width:720px;
+  }
+  .advantage .eyebrow{color:var(--orange);margin-bottom:36px;display:block}
+  .advantage h2{
+    font-family:var(--font-display);
+    font-weight:800;
+    font-size:clamp(42px,5.4vw,76px);
+    line-height:0.98;
+    text-transform:uppercase;
+    letter-spacing:-0.8px;
+    color:#fff;
+    margin-bottom:18px;
+  }
+  .advantage h3{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:clamp(28px,3.4vw,44px);
+    line-height:1.05;
+    text-transform:uppercase;
+    letter-spacing:-0.4px;
+    color:var(--orange);
+    margin-bottom:40px;
+  }
+  .advantage-copy{
+    max-width:780px;
+    font-size:17px;
+    color:#bdbdbd;
+    line-height:1.75;
+    margin-bottom:24px;
+  }
+  .advantage-compare{
+    margin-top:90px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0;
+    border-top:1px solid rgba(255,255,255,0.12);
+  }
+  .compare-col{
+    padding:50px 50px 50px 0;
+    border-right:1px solid rgba(255,255,255,0.12);
+  }
+  .compare-col:last-child{
+    padding:50px 0 50px 50px;
+    border-right:none;
+    background:linear-gradient(90deg, rgba(236,88,38,0.06), transparent);
+  }
+  .compare-label{
+    font-family:var(--font-body);
+    font-weight:700;
+    font-size:11px;
+    letter-spacing:2.5px;
+    text-transform:uppercase;
+    color:rgba(255,255,255,0.5);
+    margin-bottom:18px;
+  }
+  .compare-col:last-child .compare-label{color:var(--orange)}
+  .compare-title{
+    font-family:var(--font-display);
+    font-weight:800;
+    font-size:26px;
+    text-transform:uppercase;
+    letter-spacing:-0.2px;
+    color:#fff;
+    margin-bottom:30px;
+    line-height:1.1;
+  }
+  .compare-list{
+    list-style:none;
+  }
+  .compare-list li{
+    padding:14px 0;
+    border-bottom:1px solid rgba(255,255,255,0.08);
+    font-size:15px;
+    color:#cfcfcf;
+    display:flex;
+    align-items:center;
+    gap:14px;
+  }
+  .compare-list li::before{
+    content:'';
+    width:6px;height:6px;
+    background:rgba(255,255,255,0.3);
+    flex-shrink:0;
+  }
+  .compare-col:last-child .compare-list li::before{background:var(--orange)}
+  .advantage-footer{
+    margin-top:70px;
+    padding-top:36px;
+    border-top:1px solid rgba(255,255,255,0.12);
+    font-family:var(--font-display);
+    font-weight:600;
+    font-size:clamp(22px,2.6vw,32px);
+    text-transform:uppercase;
+    letter-spacing:-0.2px;
+    color:#fff;
+    line-height:1.2;
+    max-width:920px;
+  }
+
+  /* ============================================================
+     SECTION 9 — WITHOUT VS WITH RELY
+     ============================================================ */
+  .versus{
+    background:#fff;
+    padding:140px 0;
+  }
+  .versus-header{
+    max-width:780px;
+    margin:0 auto 70px;
+    padding:0 40px;
+    text-align:center;
+  }
+  .versus-header .eyebrow{margin-bottom:24px;display:block}
+  .versus-header h2{
+    font-family:var(--font-display);
+    font-weight:800;
+    font-size:clamp(34px,4.2vw,56px);
+    line-height:1.05;
+    text-transform:uppercase;
+    letter-spacing:-0.4px;
+    color:var(--black);
+  }
+  .versus-grid{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 40px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0;
+  }
+  .versus-col{
+    padding:48px 44px;
+  }
+  .versus-col.without{
+    background:#3a3d3d;
+    border-right:none;
+  }
+  .versus-col.with{
+    background:var(--orange);
+    border-left:none;
+    margin-left:0;
+  }
+  .versus-col h3{
+    font-family:var(--font-display);
+    font-weight:800;
+    font-size:14px;
+    text-transform:uppercase;
+    letter-spacing:2.5px;
+    color:rgba(255,255,255,0.7);
+    margin-bottom:32px;
+  }
+  .versus-col.with h3{color:#1a1a1a}
+  .versus-list{
+    list-style:none;
+  }
+  .versus-list li{
+    padding:18px 0;
+    border-bottom:1px solid rgba(255,255,255,0.15);
+    font-family:var(--font-display);
+    font-weight:600;
+    font-size:18px;
+    text-transform:uppercase;
+    letter-spacing:0.2px;
+    color:#fff;
+    line-height:1.2;
+    display:flex;
+    align-items:flex-start;
+    gap:14px;
+  }
+  .versus-list li:last-child{border-bottom:none}
+  .versus-col.with .versus-list li{
+    color:#1a1a1a;
+    border-bottom:1px solid rgba(26,26,26,0.18);
+  }
+  .versus-col.without .versus-list li::before{
+    content:'×';
+    color:rgba(255,255,255,0.55);
+    font-size:24px;
+    line-height:1;
+    margin-top:-2px;
+    flex-shrink:0;
+  }
+  .versus-col.with .versus-list li::before{
+    content:'';
+    width:12px;height:12px;
+    background:#1a1a1a;
+    flex-shrink:0;
+    margin-top:6px;
+  }
+  .versus-footer{
+    text-align:center;
+    margin-top:60px;
+    padding:0 40px;
+  }
+  .versus-footer p{
+    font-family:var(--font-display);
+    font-weight:600;
+    font-size:clamp(20px,2.4vw,28px);
+    text-transform:uppercase;
+    letter-spacing:-0.2px;
+    color:var(--black);
+    line-height:1.2;
+  }
+
+  /* ============================================================
+     SECTION 10 — CUSTOMER IMPACT
+     ============================================================ */
+  .impact{
+    background:var(--light);
+    padding:140px 0;
+  }
+  .impact-header{
+    max-width:780px;
+    margin:0 auto 70px;
+    padding:0 40px;
+    text-align:center;
+  }
+  .impact-header .eyebrow{margin-bottom:24px;display:block}
+  .impact-header h2{
+    font-family:var(--font-display);
+    font-weight:800;
+    font-size:clamp(34px,4.2vw,56px);
+    line-height:1.05;
+    text-transform:uppercase;
+    letter-spacing:-0.4px;
+    color:var(--black);
+  }
+  .impact-grid{
+    max-width:1280px;
+    margin:0 auto 60px;
+    padding:0 40px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:24px;
+  }
+  .impact-tile{
+    background:#fff;
+    padding:48px 36px;
+    position:relative;
+    overflow:hidden;
+    transition:transform 0.3s ease;
+  }
+  .impact-tile:hover{transform:translateY(-4px)}
+  .impact-tile .imp-eyebrow{
+    font-family:var(--font-body);
+    font-weight:700;
+    font-size:11px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:var(--orange);
+    margin-bottom:20px;
+  }
+  .impact-tile h4{
+    font-family:var(--font-display);
+    font-weight:800;
+    font-size:clamp(34px,3.6vw,48px);
+    line-height:0.95;
+    letter-spacing:-0.5px;
+    text-transform:uppercase;
+    color:var(--black);
+    margin-bottom:14px;
+  }
+  .impact-tile p{
+    font-size:14px;
+    color:var(--muted-dark);
+    line-height:1.5;
+  }
+  .impact-footer{
+    max-width:780px;
+    margin:0 auto;
+    padding:0 40px;
+    text-align:center;
+  }
+  .impact-footer p{
+    font-size:17px;
+    color:var(--muted-dark);
+    line-height:1.7;
+  }
+
+  /* ============================================================
+     SECTION 11 — PROOF POINTS
+     ============================================================ */
+  .proof{
+    background:var(--black);
+    color:#fff;
+    padding:160px 0;
+    position:relative;
+    overflow:hidden;
+  }
+  .proof::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background-image:
+      linear-gradient(90deg, transparent 49.5%, rgba(255,255,255,0.015) 50%, transparent 50.5%),
+      linear-gradient(0deg, transparent 49.5%, rgba(255,255,255,0.015) 50%, transparent 50.5%);
+    background-size:120px 120px;
+    pointer-events:none;
+  }
+  .proof-bg-note{
+    position:absolute;
+    top:24px;right:24px;
+    z-index:3;
+    background:var(--orange);
+    color:#fff;
+    padding:8px 14px;
+    font-family:var(--font-body);
+    font-weight:700;
+    font-size:9px;
+    letter-spacing:1.8px;
+    text-transform:uppercase;
+    border:1.5px dashed #fff;
+    max-width:240px;
+    line-height:1.4;
+  }
+  .proof-bg-note span{
+    display:block;
+    font-weight:400;
+    font-size:9px;
+    letter-spacing:1px;
+    color:rgba(255,255,255,0.9);
+    margin-top:3px;
+    text-transform:none;
+  }
+  .proof-inner{
+    position:relative;
+    max-width:1280px;
+    margin:0 auto;
+    padding:0 40px;
+  }
+  .proof-header{
+    max-width:720px;
+    margin-bottom:90px;
+  }
+  .proof-header .eyebrow{color:var(--orange);margin-bottom:24px;display:block}
+  .proof-header h2{
+    font-family:var(--font-display);
+    font-weight:800;
+    font-size:clamp(38px,4.8vw,68px);
+    line-height:1.02;
+    text-transform:uppercase;
+    letter-spacing:-0.6px;
+    color:#fff;
+  }
+  .proof-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:0;
+    border-top:1px solid rgba(255,255,255,0.12);
+  }
+  .proof-stat{
+    padding:48px 30px 0 0;
+    border-right:1px solid rgba(255,255,255,0.12);
+  }
+  .proof-stat:last-child{border-right:none}
+  .proof-stat .pf-num{
+    font-family:var(--font-display);
+    font-weight:800;
+    font-size:clamp(56px,7vw,96px);
+    line-height:0.95;
+    letter-spacing:-2px;
+    color:#fff;
+    margin-bottom:18px;
+  }
+  .proof-stat .pf-num .accent{color:var(--orange)}
+  .proof-stat .pf-label{
+    font-family:var(--font-body);
+    font-weight:500;
+    font-size:13px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    color:#a8a8a8;
+    line-height:1.4;
+  }
+
+  /* ============================================================
+     SECTION 12 — TOOLS WE ACTUALLY USE
+     ============================================================ */
+  .tools{
+    background:#fff;
+    padding:140px 0;
+  }
+  .tools-header{
+    max-width:820px;
+    margin:0 auto 70px;
+    padding:0 40px;
+  }
+  .tools-header .eyebrow{margin-bottom:24px;display:block}
+  .tools-header h2{
+    font-family:var(--font-display);
+    font-weight:800;
+    font-size:clamp(34px,4.2vw,56px);
+    line-height:1.05;
+    text-transform:uppercase;
+    letter-spacing:-0.4px;
+    color:var(--black);
+    margin-bottom:20px;
+  }
+  .tools-header p{
+    font-size:17px;
+    color:var(--muted-dark);
+    line-height:1.7;
+    max-width:680px;
+  }
+  .tools-grid{
+    max-width:1280px;
+    margin:0 auto;
+    padding:0 40px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:1px;
+    background:var(--line-light);
+    border:1px solid var(--line-light);
+  }
+  .tool-cell{
+    background:#fff;
+    padding:36px 28px;
+    transition:background 0.3s ease;
+    min-height:200px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+  }
+  .tool-cell:hover{background:#fafaf7}
+  .tool-cell .tl-num{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:12px;
+    color:var(--orange);
+    letter-spacing:2px;
+    margin-bottom:auto;
+  }
+  .tool-cell h4{
+    font-family:var(--font-display);
+    font-weight:800;
+    font-size:20px;
+    text-transform:uppercase;
+    letter-spacing:-0.2px;
+    color:var(--black);
+    line-height:1.1;
+    margin-top:30px;
+  }
+  .tool-cell p{
+    font-size:13px;
+    color:var(--muted-dark);
+    line-height:1.5;
+    margin-top:10px;
+  }
+
+  /* ============================================================
+     SECTION 13 — FINAL CTA
+     ============================================================ */
+  .cta{
+    background:var(--orange);
+    padding:130px 0;
+    text-align:center;
+  }
+  .cta-inner{
+    max-width:920px;
+    margin:0 auto;
+    padding:0 40px;
+  }
+  .cta .eyebrow{
+    color:#fff;
+    font-weight:700;
+    margin-bottom:32px;
+    display:block;
+    opacity:0.85;
+  }
+  .cta h2{
+    font-family:var(--font-display);
+    font-weight:800;
+    font-size:clamp(36px,5vw,68px);
+    line-height:1.02;
+    text-transform:uppercase;
+    letter-spacing:-0.6px;
+    color:#fff;
+    margin-bottom:32px;
+  }
+  .cta p{
+    font-size:18px;
+    color:rgba(255,255,255,0.92);
+    line-height:1.6;
+    max-width:680px;
+    margin:0 auto 44px;
+  }
+  .cta .btn-cta{
+    background:#1a1a1a;
+    color:#fff;
+    padding:22px 40px;
+    font-size:14px;
+    letter-spacing:2px;
+  }
+  .cta .btn-cta:hover{
+    background:#000;
+    transform:translateY(-2px);
+  }
+
+  /* ============================================================
+     ANIMATIONS
+     ============================================================ */
+  @keyframes fadeUp{
+    from{opacity:0;transform:translateY(24px)}
+    to{opacity:1;transform:translateY(0)}
+  }
+  .reveal{
+    opacity:0;
+    transform:translateY(24px);
+    transition:opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.in{opacity:1;transform:translateY(0)}
+
+  /* ============================================================
+     RESPONSIVE
+     ============================================================ */
+  @media (max-width:1024px){
+    .advantage-bg-placeholder{display:none}
+    .breaks-grid{grid-template-columns:repeat(2,1fr)}
+    .operates-flow{grid-template-columns:repeat(3,1fr)}
+    .op-step:nth-child(3){border-right:none}
+    .launch-grid{grid-template-columns:1fr}
+    .launch-image{min-height:400px}
+    .launch-content{padding:80px 50px}
+    .vwi-cols{grid-template-columns:1fr;gap:40px}
+    .impact-grid{grid-template-columns:repeat(2,1fr)}
+    .proof-grid{grid-template-columns:repeat(2,1fr)}
+    .proof-stat:nth-child(2){border-right:none}
+    .proof-stat{padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,0.12)}
+    .proof-stat:nth-last-child(-n+2){border-bottom:none}
+    .tools-grid{grid-template-columns:repeat(2,1fr)}
+    .advantage-compare{grid-template-columns:1fr}
+    .compare-col{padding:40px 0!important;border-right:none!important;border-bottom:1px solid rgba(255,255,255,0.12)}
+    .compare-col:last-child{border-bottom:none;background:none}
+    .versus-grid{grid-template-columns:1fr}
+    .versus-col.with{margin-left:0;border-left:none}
+    .versus-col.without{border-right:none}
+  }
+  @media (max-width:680px){
+    .container,.container-tight{padding:0 24px}
+    .hero-content{padding:80px 24px 60px 24px}
+    .hero-credibility{right:24px;bottom:24px}
+    .breaks-grid{grid-template-columns:1fr}
+    .operates-flow{grid-template-columns:repeat(2,1fr)}
+    .op-step:nth-child(2){border-right:none}
+    .op-step{border-bottom:1px solid rgba(255,255,255,0.08)}
+    .impact-grid{grid-template-columns:1fr}
+    .proof-grid{grid-template-columns:1fr}
+    .proof-stat{border-right:none;border-bottom:1px solid rgba(255,255,255,0.12);padding:36px 0}
+    .tools-grid{grid-template-columns:1fr}
+    .launch-content{padding:60px 28px}
+    .wf-band{grid-template-columns:48px 1fr;gap:20px}
+    .wf-band .wf-meta{display:none}
+    .wf-band .wf-num{font-size:24px}
+    .versus-col{padding:36px 28px}
+    .flow{flex-direction:column}
+    .flow-arrow{transform:rotate(90deg)}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     1. HERO
+     ============================================================ -->
+<section class="hero">
+  <div class="hero-video"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-placeholder-badge">
+    Placeholder: Hero Background Video
+    <span>Cinematic QC inspection / sortation / wire harness inspection / traceability scanning</span>
+  </div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Quality Management System</div>
+    <h1>Quality That Holds Up<br>When Everything Else<br><span class="accent">Speeds Up.</span></h1>
+    <p class="hero-sub">RELY's Quality Management System is designed to maintain operational control as production complexity, workforce scale, and customer demands increase.</p>
+    <div class="hero-cta">
+      <a href="#cta" class="btn btn-primary">Talk With Our Team <span class="btn-arrow">→</span></a>
+      <a href="#operates" class="btn btn-secondary">Explore Our Process</a>
+    </div>
+  </div>
+  <div class="hero-credibility">
+    <div class="hero-credibility-item"><span class="num">ISO 9001</span> Aligned</div>
+    <div class="hero-credibility-item"><span class="num">62M+</span> Parts Validated Annually</div>
+    <div class="hero-credibility-item"><span class="num">4-Hour</span> Rapid Deployment</div>
+    <div class="hero-credibility-item"><span class="num">Multi-Layer</span> Inspection Systems</div>
+  </div>
+</section>
+
+<!-- ============================================================
+     2. OPENING POSITIONING
+     ============================================================ -->
+<section class="positioning">
+  <div class="positioning-inner">
+    <span class="eyebrow reveal">Quality Systems</span>
+    <h2 class="reveal">Most quality failures do not start on the <span class="accent">production floor.</span></h2>
+    <p class="reveal">They start upstream inside weak systems, inconsistent execution standards, poor traceability, and uncontrolled operational variation.</p>
+    <p class="reveal">As manufacturing complexity increases, those gaps become more exposed. RELY builds quality systems designed to maintain operational stability as programs scale.</p>
+
+    <div class="pull reveal">
+      <div class="pull-text">Volume does not create quality problems.<br><span class="accent">Weak systems do.</span></div>
+    </div>
+
+    <div class="flow reveal">
+      <div class="flow-node">Weak Systems</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">Operational Variation</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">Process Instability</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">Downstream Risk</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">Quality Failures</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     3. WHERE QUALITY BREAKS
+     ============================================================ -->
+<section class="breaks">
+  <div class="breaks-header reveal">
+    <span class="eyebrow">Where Systems Strain</span>
+    <h2>Where Quality Commonly Breaks During Growth</h2>
+  </div>
+  <div class="container">
+    <div class="breaks-grid">
+      <div class="break-tile reveal">
+        <span class="num">01</span>
+        <h3>High-Mix Complexity</h3>
+        <p>Variation increases execution risk as program count and product diversity grow.</p>
+      </div>
+      <div class="break-tile reveal">
+        <span class="num">02</span>
+        <h3>Supplier Instability</h3>
+        <p>Issues surface late and disrupt production timelines downstream.</p>
+      </div>
+      <div class="break-tile reveal">
+        <span class="num">03</span>
+        <h3>Tribal Knowledge</h3>
+        <p>Uncontrolled execution variability between operators, shifts, and runs.</p>
+      </div>
+      <div class="break-tile reveal">
+        <span class="num">04</span>
+        <h3>Reactive Inspection</h3>
+        <p>Problems identified too late in the process to contain efficiently.</p>
+      </div>
+      <div class="break-tile reveal">
+        <span class="num">05</span>
+        <h3>Workforce Ramp Pressure</h3>
+        <p>Scaling labor under compressed timelines introduces inconsistency.</p>
+      </div>
+      <div class="break-tile reveal">
+        <span class="num">06</span>
+        <h3>Repeat Failures</h3>
+        <p>Root causes addressed temporarily rather than systematically eliminated.</p>
+      </div>
+    </div>
+  </div>
+  <div class="breaks-footer reveal">
+    <p>Most quality instability appears during <span class="accent">operational change</span>, not steady-state production.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     4. HOW RELY OPERATES DIFFERENTLY
+     ============================================================ -->
+<section class="operates" id="operates">
+  <div class="operates-header reveal">
+    <span class="eyebrow">The RELY Approach</span>
+    <h2>Quality Built Directly<br>Into Execution</h2>
+    <p>Quality controls are engineered into training, verification, traceability, and escalation systems across the entire production environment.</p>
+  </div>
+  <div class="operates-flow">
+    <div class="op-step reveal">
+      <span class="step-num">01</span>
+      <h4>Program<br>Launch</h4>
+    </div>
+    <div class="op-step reveal">
+      <span class="step-num">02</span>
+      <h4>Visual<br>Standards</h4>
+    </div>
+    <div class="op-step reveal">
+      <span class="step-num">03</span>
+      <h4>Operator<br>Readiness</h4>
+    </div>
+    <div class="op-step reveal">
+      <span class="step-num">04</span>
+      <h4>Layered<br>Verification</h4>
+    </div>
+    <div class="op-step reveal">
+      <span class="step-num">05</span>
+      <h4>Traceability</h4>
+    </div>
+    <div class="op-step reveal">
+      <span class="step-num">06</span>
+      <h4>Stable<br>Output</h4>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     5. STRUCTURED PROGRAM LAUNCH
+     ============================================================ -->
+<section class="launch">
+  <div class="launch-grid">
+    <div class="launch-image">
+      <div class="placeholder" style="position:absolute;inset:0;border:none;background:#252525">
+        <div class="placeholder-tag">Image Placeholder</div>
+        <div class="placeholder-icon">▦</div>
+        <div class="placeholder-title">Program Launch Documentation</div>
+        <div class="placeholder-desc">Operators or engineers reviewing PFMEAs, process flow diagrams, and control plans at a launch readiness review. Documents visible on table with hands pointing to specific steps. Shallow depth of field.</div>
+        <div class="placeholder-specs">Recommended: 1200 × 1400 · Vertical Orientation</div>
+      </div>
+    </div>
+    <div class="launch-content">
+      <span class="eyebrow">Section 05</span>
+      <h2>Structured Program Launch Systems</h2>
+      <p>Every program begins with defined operational structure before production activity starts. The objective is to reduce variation before volume increases — not after problems surface.</p>
+      <ul class="launch-stack">
+        <li>Process Flow Diagrams</li>
+        <li>Risk Identification (PFMEA)</li>
+        <li>Control Plans</li>
+        <li>Inspection Methods</li>
+        <li>Program-Specific Documentation</li>
+      </ul>
+      <div class="launch-pull">Programs are structured to reduce variation before production volume increases.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     6. VISUAL WORK INSTRUCTIONS
+     ============================================================ -->
+<section class="vwi">
+  <div class="vwi-header reveal">
+    <span class="eyebrow">Execution Clarity</span>
+    <h2>Visual Work Instructions Built for the Floor</h2>
+  </div>
+  <div class="vwi-image reveal">
+    <div class="vwi-image-frame">
+      <div class="placeholder" style="position:absolute;inset:0;border:none;background:#252525">
+        <div class="placeholder-tag">Image Placeholder</div>
+        <div class="placeholder-icon">▦</div>
+        <div class="placeholder-title">Visual Work Instructions on the Production Floor</div>
+        <div class="placeholder-desc">Wide shot of an actual RELY cell showing a posted picture-based work instruction with golden samples and a story bin visible. Operator hands working in foreground, slightly out of focus. Real shop-floor lighting — not staged.</div>
+        <div class="placeholder-specs">Recommended: 2400 × 960 · Horizontal Banner</div>
+      </div>
+    </div>
+  </div>
+  <div class="vwi-cols">
+    <div class="vwi-col reveal">
+      <div class="placeholder">
+        <div class="placeholder-icon">▦</div>
+        <div class="placeholder-title">Picture Work Instruction</div>
+        <div class="placeholder-desc">Close-up of a posted WI with step photos at a work cell</div>
+      </div>
+      <h3>Picture-Based Instructions</h3>
+      <p>Execution clarity at the operator level. Step-by-step visual guidance reduces interpretation and standardizes output across shifts.</p>
+    </div>
+    <div class="vwi-col reveal">
+      <div class="placeholder">
+        <div class="placeholder-icon">▦</div>
+        <div class="placeholder-title">Golden Samples / Story Bin</div>
+        <div class="placeholder-desc">Pass/fail reference samples staged at point of execution</div>
+      </div>
+      <h3>Golden Samples & Story Bins</h3>
+      <p>Real-world pass/fail references positioned at the point of execution. Operators see acceptable and unacceptable conditions side by side.</p>
+    </div>
+    <div class="vwi-col reveal">
+      <div class="placeholder">
+        <div class="placeholder-icon">▦</div>
+        <div class="placeholder-title">Universal Cell Layout</div>
+        <div class="placeholder-desc">Top-down or wide angle of a standardized cell setup</div>
+      </div>
+      <h3>Universal Cell Standards</h3>
+      <p>Consistency across operators, shifts, and programs. The cell is set up the same way, every shift, regardless of who is running it.</p>
+    </div>
+  </div>
+  <div class="vwi-footer reveal">
+    <p>The objective is operational consistency<br>regardless of workforce variability.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     7. WORKFORCE SYSTEMS FOR SCALE
+     ============================================================ -->
+<section class="workforce">
+  <div class="workforce-header reveal">
+    <span class="eyebrow">Workforce Architecture</span>
+    <h2>Quality Systems Designed for Workforce Scaling</h2>
+    <p>RELY assumes workforce composition will evolve during growth and builds systems designed to maintain consistency during that transition. Quality systems become more stable as labor scales — not less.</p>
+  </div>
+  <div class="workforce-bands">
+    <div class="wf-band reveal">
+      <div class="wf-num">01</div>
+      <div class="wf-title">Operator Certifications</div>
+      <div class="wf-meta">Process-Specific</div>
+    </div>
+    <div class="wf-band reveal">
+      <div class="wf-num">02</div>
+      <div class="wf-title">First-Piece Validation</div>
+      <div class="wf-meta">New Operator Gate</div>
+    </div>
+    <div class="wf-band reveal">
+      <div class="wf-num">03</div>
+      <div class="wf-title">In-Process Verification</div>
+      <div class="wf-meta">Continuous</div>
+    </div>
+    <div class="wf-band reveal">
+      <div class="wf-num">04</div>
+      <div class="wf-title">Layered Process Audits</div>
+      <div class="wf-meta">Multi-Tier</div>
+    </div>
+    <div class="wf-band reveal">
+      <div class="wf-num">05</div>
+      <div class="wf-title">Documented Sign-Off Systems</div>
+      <div class="wf-meta">Accountability</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     8. THE RELY ADVANTAGE
+     ============================================================ -->
+<section class="advantage">
+  <div class="advantage-bg-placeholder">
+    <div class="placeholder">
+      <div class="placeholder-tag">Image Placeholder</div>
+      <div class="placeholder-icon">▦</div>
+      <div class="placeholder-title">Sortation / Containment Activity</div>
+      <div class="placeholder-desc">Hands-on QC at a sort table. Defects being separated from good parts. Cinematic, shallow DOF. Shows the volume of defect exposure RELY teams experience.</div>
+      <div class="placeholder-specs">680 × 760 · Vertical</div>
+    </div>
+  </div>
+  <div class="advantage-inner">
+    <span class="eyebrow">The RELY Advantage</span>
+    <h2>Our Teams Don't Just Know<br>What Good Looks Like.</h2>
+    <h3>They've Seen the Cost of Getting It Wrong.</h3>
+    <p class="advantage-copy">Because RELY performs high volumes of sortation, testing, containment, and rework activity, teams are continuously exposed to defects, variation, and downstream operational consequences.</p>
+    <p class="advantage-copy">That exposure fundamentally changes how operators execute production work.</p>
+
+    <div class="advantage-compare">
+      <div class="compare-col">
+        <div class="compare-label">Traditional Production</div>
+        <div class="compare-title">Build-Focused Execution</div>
+        <ul class="compare-list">
+          <li>Build-focused execution</li>
+          <li>Limited defect exposure</li>
+          <li>Reactive issue awareness</li>
+        </ul>
+      </div>
+      <div class="compare-col">
+        <div class="compare-label">The RELY Environment</div>
+        <div class="compare-title">Embedded Quality Awareness</div>
+        <ul class="compare-list">
+          <li>Continuous defect recognition exposure</li>
+          <li>Embedded quality awareness in execution</li>
+          <li>Earlier issue identification</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="advantage-footer">Quality awareness becomes embedded within execution — not isolated to inspection.</div>
+  </div>
+</section>
+
+<!-- ============================================================
+     9. WITHOUT VS WITH RELY
+     ============================================================ -->
+<section class="versus">
+  <div class="versus-header reveal">
+    <span class="eyebrow">Operational Impact</span>
+    <h2>Without RELY vs With RELY</h2>
+  </div>
+  <div class="versus-grid">
+    <div class="versus-col without reveal">
+      <h3>Without RELY</h3>
+      <ul class="versus-list">
+        <li>Issues discovered late in production</li>
+        <li>Rework becomes routine</li>
+        <li>Inconsistent operator execution</li>
+        <li>Problems repeat across shifts</li>
+        <li>Customer-driven corrective action</li>
+      </ul>
+    </div>
+    <div class="versus-col with reveal">
+      <h3>With RELY</h3>
+      <ul class="versus-list">
+        <li>Quality embedded throughout execution</li>
+        <li>Earlier issue containment</li>
+        <li>Structured operational consistency</li>
+        <li>Root cause elimination</li>
+        <li>Stable, audit-ready output</li>
+      </ul>
+    </div>
+  </div>
+  <div class="versus-footer reveal">
+    <p>Structured systems create more stable operational outcomes.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     10. CUSTOMER IMPACT
+     ============================================================ -->
+<section class="impact">
+  <div class="impact-header reveal">
+    <span class="eyebrow">What This Means for Customers</span>
+    <h2>Scalable Operational Consistency — Not Reactive Quality Management</h2>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-tile reveal">
+      <div class="imp-eyebrow">The Result</div>
+      <h4>Faster</h4>
+      <p>Program launches with reduced operational instability.</p>
+    </div>
+    <div class="impact-tile reveal">
+      <div class="imp-eyebrow">The Result</div>
+      <h4>Lower</h4>
+      <p>Cost of poor quality across production runs.</p>
+    </div>
+    <div class="impact-tile reveal">
+      <div class="imp-eyebrow">The Result</div>
+      <h4>Scalable</h4>
+      <p>Workforce consistency through ramp cycles.</p>
+    </div>
+    <div class="impact-tile reveal">
+      <div class="imp-eyebrow">The Result</div>
+      <h4>Stable</h4>
+      <p>High-volume execution without sacrificing consistency.</p>
+    </div>
+  </div>
+  <div class="impact-footer reveal">
+    <p>RELY's quality systems help manufacturers launch programs more consistently, lower the cost of poor quality, and maintain operational confidence during growth cycles.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     11. PROOF POINTS
+     ============================================================ -->
+<section class="proof">
+  <div class="proof-bg-note">
+    Optional Background Image
+    <span>Subtle atmospheric production shot at 10–15% opacity behind grid texture</span>
+  </div>
+  <div class="proof-inner">
+    <div class="proof-header reveal">
+      <span class="eyebrow">Operational Infrastructure</span>
+      <h2>Proof Points<br>That Hold Up Under Scale.</h2>
+    </div>
+    <div class="proof-grid">
+      <div class="proof-stat reveal">
+        <div class="pf-num">62M<span class="accent">+</span></div>
+        <div class="pf-label">Parts sorted, tested, and validated annually</div>
+      </div>
+      <div class="proof-stat reveal">
+        <div class="pf-num">4<span class="accent">-Hr</span></div>
+        <div class="pf-label">Rapid deployment capability for containment</div>
+      </div>
+      <div class="proof-stat reveal">
+        <div class="pf-num">ISO<br><span class="accent">9001</span></div>
+        <div class="pf-label">Aligned Quality Management System</div>
+      </div>
+      <div class="proof-stat reveal">
+        <div class="pf-num">Multi<span class="accent">-Layer</span></div>
+        <div class="pf-label">Inspection systems across all service lines</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     12. TOOLS WE ACTUALLY USE
+     ============================================================ -->
+<section class="tools">
+  <div class="tools-header reveal">
+    <span class="eyebrow">On The Floor</span>
+    <h2>What We Actually Use to Maintain Control</h2>
+    <p>Quality systems are only effective when they function consistently within real production environments. These are the operational tools running across RELY production every day.</p>
+  </div>
+  <div class="tools-grid">
+    <div class="tool-cell reveal">
+      <div class="tl-num">01</div>
+      <h4>Process Flow Diagrams</h4>
+      <p>Tied directly to execution, not paperwork.</p>
+    </div>
+    <div class="tool-cell reveal">
+      <div class="tl-num">02</div>
+      <h4>Picture Work Instructions</h4>
+      <p>With embedded inspection criteria.</p>
+    </div>
+    <div class="tool-cell reveal">
+      <div class="tl-num">03</div>
+      <h4>Golden Samples</h4>
+      <p>Visual pass/fail references on the cell.</p>
+    </div>
+    <div class="tool-cell reveal">
+      <div class="tl-num">04</div>
+      <h4>Inspection Logs</h4>
+      <p>Verification checkpoints across operations.</p>
+    </div>
+    <div class="tool-cell reveal">
+      <div class="tl-num">05</div>
+      <h4>Escalation Triggers</h4>
+      <p>Defined response paths when issues surface.</p>
+    </div>
+    <div class="tool-cell reveal">
+      <div class="tl-num">06</div>
+      <h4>Issue Tracking Systems</h4>
+      <p>Post-launch resolution logs and root cause records.</p>
+    </div>
+    <div class="tool-cell reveal">
+      <div class="tl-num">07</div>
+      <h4>MIE Trak Traceability</h4>
+      <p>ERP-integrated lot and operator accountability.</p>
+    </div>
+    <div class="tool-cell reveal">
+      <div class="tl-num">08</div>
+      <h4>Layered Process Audits</h4>
+      <p>Multi-tier verification of operational discipline.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     13. FINAL CTA
+     ============================================================ -->
+<section class="cta" id="cta">
+  <div class="cta-inner">
+    <span class="eyebrow">Let's Build the System</span>
+    <h2>If Quality Issues Are Limiting Scalability,<br>The System Usually Needs to Change.</h2>
+    <p>RELY helps manufacturers build operational quality systems capable of maintaining consistency under pressure. Tell us what challenges you're facing, and our team will help identify where operational risk exists — and how to reduce it.</p>
+    <a href="#" class="btn btn-cta">Start the Conversation <span class="btn-arrow">→</span></a>
+  </div>
+</section>
+
+<script>
+  // Scroll reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
