@@ -1,0 +1,1426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Electrical Assembly & Wire Harnessing Services | RELY Contract Manufacturing</title>
+<style>
+  /* ============ DESIGN TOKENS ============ */
+  :root {
+    --orange: #EC5826;
+    --orange-hover: #d44a1c;
+    --black: #0a0a0a;
+    --near-black: #1a1a1a;
+    --dark-gray: #2C2C2C;
+    --mid-gray: #3a3a3a;
+    --light-gray: #f2f0eb;
+    --off-white: #fafaf8;
+    --white: #ffffff;
+    --muted: #8a8a8a;
+    --text-muted: #555555;
+    --border-dark: #2a2a2a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: var(--near-black);
+    background: var(--white);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Barlow Condensed', 'Barlow', sans-serif;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+  }
+
+  .eyebrow {
+    font-family: 'Barlow', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--orange);
+  }
+
+  .container {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  /* ============ HERO ============ */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
+    background:
+      linear-gradient(110deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.75) 45%, rgba(0,0,0,0.35) 100%),
+      radial-gradient(ellipse at 75% 50%, #3a2818 0%, #1a1410 45%, #0a0a0a 100%);
+    color: var(--white);
+    padding: 120px 0 80px;
+    text-align: left;
+  }
+
+  .hero .container { text-align: left; width: 100%; }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(90deg, transparent 0%, transparent 49.5%, rgba(236,88,38,0.04) 49.5%, rgba(236,88,38,0.04) 50%, transparent 50%, transparent 100%),
+      linear-gradient(0deg, transparent 0%, transparent 49.5%, rgba(255,255,255,0.02) 49.5%, rgba(255,255,255,0.02) 50%, transparent 50%, transparent 100%);
+    background-size: 80px 80px, 80px 80px;
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.4) 100%);
+    pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 760px;
+    margin-right: auto;
+    margin-left: 0;
+    text-align: left;
+  }
+
+  .hero-label {
+    display: inline-block;
+    padding: 8px 14px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(0,0,0,0.4);
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 32px;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  .hero h1 {
+    font-size: clamp(44px, 6vw, 76px);
+    font-weight: 800;
+    margin-bottom: 28px;
+    text-transform: uppercase;
+    color: var(--white);
+  }
+
+  .hero p.hero-sub {
+    font-size: clamp(18px, 1.5vw, 22px);
+    color: rgba(255,255,255,0.92);
+    max-width: 660px;
+    margin-bottom: 24px;
+    line-height: 1.45;
+    font-weight: 500;
+  }
+
+  .hero p.hero-intro {
+    font-size: 16px;
+    color: rgba(255,255,255,0.72);
+    max-width: 640px;
+    margin-bottom: 40px;
+    line-height: 1.65;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 32px;
+    font-family: 'Barlow', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    border: none;
+  }
+
+  .btn-primary { background: var(--orange); color: var(--white); }
+  .btn-primary:hover { background: var(--orange-hover); transform: translateY(-1px); }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--white);
+    border: 1px solid rgba(255,255,255,0.4);
+  }
+  .btn-secondary:hover { background: rgba(255,255,255,0.08); border-color: var(--white); }
+
+  .btn-arrow { font-size: 16px; line-height: 1; }
+
+  .hero-credibility {
+    position: absolute;
+    bottom: 48px;
+    right: 40px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 0.06em;
+  }
+
+  .hero-credibility span {
+    border-right: 2px solid var(--orange);
+    padding-right: 12px;
+  }
+
+  /* ============ SECTION 1 — WHERE RELY FITS ============ */
+  .where-fits {
+    background: var(--white);
+    padding: 140px 0;
+  }
+
+  .where-fits-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .where-fits .eyebrow { display: block; margin-bottom: 20px; }
+
+  .where-fits h2 {
+    font-size: clamp(36px, 3.6vw, 52px);
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--near-black);
+    line-height: 1.1;
+    margin-bottom: 32px;
+  }
+
+  .where-fits p {
+    font-size: 17px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .supports-block {
+    background: var(--light-gray);
+    padding: 40px 36px;
+    border-left: 3px solid var(--orange);
+  }
+
+  .supports-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 24px;
+  }
+
+  .supports-list {
+    list-style: none;
+  }
+
+  .supports-list li {
+    padding: 14px 0;
+    border-bottom: 1px solid #d8d6d1;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: var(--near-black);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .supports-list li:last-child { border-bottom: none; }
+
+  .supports-list li::before {
+    content: '';
+    width: 16px;
+    height: 2px;
+    background: var(--orange);
+    flex-shrink: 0;
+  }
+
+  /* ============ SECTION 2 — WIRE HARNESSING ============ */
+  .harnessing {
+    background: var(--near-black);
+    color: var(--white);
+    padding: 140px 0;
+  }
+
+  .harnessing .eyebrow { display: block; margin-bottom: 20px; }
+
+  .harnessing h2 {
+    font-size: clamp(36px, 3.6vw, 52px);
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 32px;
+    max-width: 800px;
+  }
+
+  .harnessing p.lead {
+    font-size: 17px;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.7;
+    max-width: 800px;
+    margin-bottom: 64px;
+  }
+
+  .harness-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .harness-image {
+    aspect-ratio: 4 / 5;
+    background:
+      linear-gradient(135deg, rgba(236,88,38,0.08) 0%, transparent 60%),
+      linear-gradient(160deg, #2a2a2a 0%, #0f0f0f 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .harness-image::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(45deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 12px);
+  }
+
+  .corner-mark {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    width: 36px;
+    height: 36px;
+    border-top: 2px solid var(--orange);
+    border-left: 2px solid var(--orange);
+    z-index: 2;
+  }
+
+  .corner-mark.br {
+    top: auto;
+    left: auto;
+    bottom: 24px;
+    right: 24px;
+    border: none;
+    border-bottom: 2px solid var(--orange);
+    border-right: 2px solid var(--orange);
+  }
+
+  .capability-table {
+    display: grid;
+    gap: 0;
+    border-top: 1px solid rgba(255,255,255,0.15);
+  }
+
+  .capability-row {
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .capability-row strong {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--orange);
+  }
+
+  .capability-row span {
+    font-size: 15px;
+    color: rgba(255,255,255,0.9);
+    line-height: 1.5;
+  }
+
+  /* ============ SECTION 3 — CONTROL BOXES ============ */
+  .control-boxes {
+    background: var(--light-gray);
+    padding: 140px 0;
+  }
+
+  .control-boxes .eyebrow { display: block; margin-bottom: 20px; }
+
+  .control-boxes h2 {
+    font-size: clamp(36px, 3.6vw, 52px);
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--near-black);
+    line-height: 1.1;
+    margin-bottom: 32px;
+    max-width: 800px;
+  }
+
+  .control-boxes p.lead {
+    font-size: 17px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    max-width: 800px;
+    margin-bottom: 64px;
+  }
+
+  .control-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .control-card {
+    background: var(--white);
+    padding: 40px 36px;
+    border-top: 3px solid var(--orange);
+  }
+
+  .control-card h4 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 24px;
+  }
+
+  .control-card ul {
+    list-style: none;
+  }
+
+  .control-card ul li {
+    padding: 12px 0;
+    border-bottom: 1px solid #e5e3de;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: var(--near-black);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .control-card ul li:last-child { border-bottom: none; }
+
+  .control-card ul li::before {
+    content: '';
+    width: 14px;
+    height: 2px;
+    background: var(--orange);
+    flex-shrink: 0;
+  }
+
+  /* ============ SECTION 4 — TESTING & TRACEABILITY ============ */
+  .testing {
+    background: var(--black);
+    color: var(--white);
+    padding: 140px 0;
+  }
+
+  .testing .eyebrow { display: block; margin-bottom: 20px; }
+
+  .testing h2 {
+    font-size: clamp(36px, 3.6vw, 52px);
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 32px;
+    max-width: 800px;
+  }
+
+  .testing p.lead {
+    font-size: 17px;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.7;
+    max-width: 800px;
+    margin-bottom: 64px;
+  }
+
+  .testing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+    border-top: 1px solid var(--border-dark);
+    border-bottom: 1px solid var(--border-dark);
+  }
+
+  .testing-item {
+    padding: 28px 24px;
+    border-right: 1px solid var(--border-dark);
+    border-bottom: 1px solid var(--border-dark);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: background 0.3s ease;
+  }
+
+  .testing-item:hover { background: rgba(236,88,38,0.06); }
+
+  .testing-item:nth-child(3n) { border-right: none; }
+  .testing-item:nth-last-child(-n+3) { border-bottom: none; }
+
+  .testing-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    color: var(--orange);
+    flex-shrink: 0;
+    min-width: 24px;
+  }
+
+  .testing-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: var(--white);
+    line-height: 1.3;
+  }
+
+  /* ============ SECTION 5 — LIFECYCLE ============ */
+  .lifecycle {
+    background: var(--white);
+    padding: 140px 0;
+  }
+
+  .lifecycle .eyebrow { display: block; margin-bottom: 20px; }
+
+  .lifecycle h2 {
+    font-size: clamp(36px, 3.6vw, 52px);
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--near-black);
+    line-height: 1.1;
+    margin-bottom: 32px;
+    max-width: 800px;
+  }
+
+  .lifecycle p.lead {
+    font-size: 17px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    max-width: 800px;
+    margin-bottom: 80px;
+  }
+
+  .lifecycle-flow {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-top: 1px solid #e5e3de;
+    border-bottom: 1px solid #e5e3de;
+  }
+
+  .lifecycle-stage {
+    padding: 40px 24px;
+    border-right: 1px solid #e5e3de;
+    border-bottom: 1px solid #e5e3de;
+    background: var(--white);
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .lifecycle-stage:nth-child(4n) { border-right: none; }
+  .lifecycle-stage:nth-last-child(-n+4) { border-bottom: none; }
+
+  .lifecycle-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--orange);
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .lifecycle-stage h4 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--near-black);
+    line-height: 1.2;
+  }
+
+  .lifecycle-stage:hover {
+    background: var(--near-black);
+  }
+
+  .lifecycle-stage:hover h4 { color: var(--white); }
+
+  /* ============ SECTION 6 — WHY IT MATTERS / WITH-WITHOUT ============ */
+  .why-matters {
+    background: var(--light-gray);
+    padding: 140px 0;
+  }
+
+  .why-matters-header {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+
+  .why-matters-header .eyebrow { display: block; margin-bottom: 24px; }
+
+  .why-matters-header h2 {
+    font-size: clamp(36px, 3.8vw, 56px);
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--near-black);
+    max-width: 920px;
+    margin: 0 auto 28px;
+    line-height: 1.1;
+  }
+
+  .why-matters-header p {
+    font-size: 17px;
+    color: var(--text-muted);
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.65;
+  }
+
+  /* LOCKED with/without comparison format */
+  .comparison-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .comparison-col {
+    padding: 56px 56px;
+    position: relative;
+  }
+
+  .comparison-col.without {
+    background: #3a3a3a;
+    color: var(--white);
+  }
+
+  .comparison-col.with {
+    background: var(--orange);
+    color: var(--white);
+  }
+
+  .comp-header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding-bottom: 24px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+  }
+
+  .comparison-col.with .comp-header { border-bottom-color: rgba(255,255,255,0.25); }
+
+  .comp-pill {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    padding: 8px 14px;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .comparison-col.without .comp-pill { background: #1f1f1f; color: var(--white); }
+  .comparison-col.with .comp-pill { background: #b8421d; color: var(--white); }
+
+  .comp-headline {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    line-height: 1.15;
+    color: var(--white);
+    margin: 0;
+  }
+
+  .comp-list {
+    list-style: none;
+    margin-top: 32px;
+  }
+
+  .comp-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    font-size: 15px;
+    line-height: 1.55;
+    color: rgba(255,255,255,0.92);
+  }
+
+  .comparison-col.with .comp-list li { border-bottom-color: rgba(255,255,255,0.22); }
+
+  .comp-list li:last-child { border-bottom: none; }
+
+  .comp-icon {
+    flex-shrink: 0;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Barlow', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 1;
+    margin-top: 1px;
+  }
+
+  .comparison-col.without .comp-icon { background: #1f1f1f; color: var(--white); }
+  .comparison-col.with .comp-icon { background: rgba(255,255,255,0.22); color: var(--white); }
+
+  /* Approach strip */
+  .approach-strip {
+    margin-top: 80px;
+    background: var(--white);
+    padding: 56px 48px;
+    text-align: center;
+  }
+
+  .approach-strip .approach-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 24px;
+  }
+
+  .approach-strip h3 {
+    font-size: 28px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--near-black);
+    margin-bottom: 36px;
+  }
+
+  .approach-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+  }
+
+  .approach-pill {
+    padding: 12px 20px;
+    background: var(--off-white);
+    border: 1px solid #d8d6d1;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--near-black);
+  }
+
+  .approach-pill.featured {
+    background: var(--orange);
+    color: var(--white);
+    border-color: var(--orange);
+  }
+
+  /* ============ KPI ============ */
+  .kpi-section {
+    background: var(--black);
+    color: var(--white);
+    padding: 140px 0;
+  }
+
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border-dark);
+    border: 1px solid var(--border-dark);
+  }
+
+  .kpi-tile {
+    background: #0f0f0f;
+    padding: 56px 32px;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .kpi-watermark {
+    position: absolute;
+    bottom: -12px;
+    right: -8px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 140px;
+    font-weight: 800;
+    color: rgba(255,255,255,0.04);
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .kpi-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--orange);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    display: block;
+    position: relative;
+  }
+
+  .kpi-main {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(26px, 2.4vw, 32px);
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 1.05;
+    color: var(--white);
+    position: relative;
+  }
+
+  .kpi-sub {
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 16px;
+    letter-spacing: 0.04em;
+    position: relative;
+  }
+
+  /* ============ FINAL CTA ============ */
+  .final-cta {
+    background: var(--orange);
+    color: var(--white);
+    padding: 120px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .final-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(45deg, rgba(255,255,255,0.04) 0px, rgba(255,255,255,0.04) 1px, transparent 1px, transparent 24px);
+    pointer-events: none;
+  }
+
+  .final-cta-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 880px;
+    margin: 0 auto;
+  }
+
+  .final-cta .eyebrow {
+    color: rgba(255,255,255,0.85);
+    display: block;
+    margin-bottom: 24px;
+  }
+
+  .final-cta h2 {
+    font-size: clamp(40px, 4.5vw, 64px);
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 1.05;
+    margin-bottom: 32px;
+    color: var(--white);
+  }
+
+  .final-cta p {
+    font-size: 18px;
+    color: rgba(255,255,255,0.92);
+    margin-bottom: 48px;
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.55;
+  }
+
+  .btn-cta {
+    background: var(--white);
+    color: var(--orange);
+    padding: 18px 40px;
+    font-size: 14px;
+  }
+
+  .btn-cta:hover { background: var(--near-black); color: var(--white); }
+
+  /* ============ ANIMATIONS ============ */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .fade-up.in { opacity: 1; transform: translateY(0); }
+
+  /* ============ MEDIA PLACEHOLDERS ============ */
+  .media-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 32px 40px;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .media-tag {
+    display: inline-block;
+    align-self: flex-start;
+    background: var(--orange);
+    color: var(--white);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    margin-bottom: 16px;
+  }
+
+  .media-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: rgba(255,255,255,0.95);
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+
+  .media-spec {
+    font-family: 'Barlow', sans-serif;
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.55;
+    max-width: 360px;
+  }
+
+  .media-spec strong {
+    color: rgba(255,255,255,0.85);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .hero-media-tag {
+    position: absolute;
+    top: 24px;
+    left: 40px;
+    z-index: 3;
+    background: rgba(236,88,38,0.95);
+    color: var(--white);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+  }
+
+  .hero-media-spec {
+    position: absolute;
+    bottom: 24px;
+    left: 40px;
+    z-index: 3;
+    color: rgba(255,255,255,0.5);
+    font-family: 'Barlow', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    max-width: 440px;
+    line-height: 1.5;
+    padding: 10px 14px;
+    border-left: 2px solid var(--orange);
+    background: rgba(0,0,0,0.4);
+  }
+
+  .hero-media-spec strong {
+    color: rgba(255,255,255,0.9);
+    display: block;
+    font-weight: 700;
+    font-family: 'Barlow Condensed', sans-serif;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-size: 11px;
+    margin-bottom: 4px;
+  }
+
+  /* Inline section-level image placeholders */
+  .section-image {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    background:
+      linear-gradient(135deg, rgba(236,88,38,0.08) 0%, transparent 60%),
+      linear-gradient(160deg, #2a2a2a 0%, #0f0f0f 100%);
+    overflow: hidden;
+    margin: 0;
+  }
+
+  .section-image.tall {
+    aspect-ratio: 4 / 5;
+  }
+
+  .section-image.wide {
+    aspect-ratio: 21 / 9;
+  }
+
+  .section-image::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(45deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 12px);
+  }
+
+  /* Inline banner image with full-width treatment in Section 4 */
+  .section-banner {
+    margin-top: 64px;
+    position: relative;
+    aspect-ratio: 21 / 6;
+    background:
+      linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.7) 100%),
+      linear-gradient(135deg, #1f1f1f 0%, #0a0a0a 100%);
+    overflow: hidden;
+  }
+
+  .section-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(45deg, rgba(255,255,255,0.025) 0px, rgba(255,255,255,0.025) 1px, transparent 1px, transparent 10px);
+  }
+
+  /* Light-bg banner needs darker fill for placeholder text contrast */
+  .lifecycle .section-banner,
+  .where-fits .section-image,
+  .control-boxes .section-image {
+    background:
+      linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.75) 100%),
+      linear-gradient(135deg, #1f1f1f 0%, #0a0a0a 100%);
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 960px) {
+    .container { padding: 0 24px; }
+    .hero { min-height: auto; padding: 100px 0 80px; }
+    .hero-credibility { position: static; align-items: flex-start; margin-top: 48px; }
+    .hero-credibility span { border-right: none; border-left: 2px solid var(--orange); padding-right: 0; padding-left: 12px; }
+    .where-fits-grid, .harness-grid { grid-template-columns: 1fr; gap: 48px; }
+    .control-split { grid-template-columns: 1fr; }
+    .testing-grid { grid-template-columns: 1fr 1fr; }
+    .testing-item:nth-child(3n) { border-right: 1px solid var(--border-dark); }
+    .testing-item:nth-child(2n) { border-right: none; }
+    .lifecycle-flow { grid-template-columns: 1fr 1fr; }
+    .lifecycle-stage:nth-child(4n) { border-right: 1px solid #e5e3de; }
+    .lifecycle-stage:nth-child(2n) { border-right: none; }
+    .kpi-grid { grid-template-columns: 1fr 1fr; }
+    .comparison-grid { grid-template-columns: 1fr; gap: 16px; }
+    .where-fits, .harnessing, .control-boxes, .testing, .lifecycle,
+    .why-matters, .kpi-section { padding: 80px 0; }
+    .media-placeholder { padding: 24px; }
+    .media-title { font-size: 16px; }
+    .media-spec { font-size: 11px; }
+    .hero-media-spec { display: none; }
+  }
+
+  @media (max-width: 600px) {
+    .testing-grid { grid-template-columns: 1fr; }
+    .testing-item { border-right: none !important; }
+    .lifecycle-flow { grid-template-columns: 1fr; }
+    .lifecycle-stage { border-right: none !important; }
+    .kpi-grid { grid-template-columns: 1fr; }
+    .comparison-col { padding: 40px 28px; }
+    .approach-strip { padding: 40px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-media-tag">▶ HERO VIDEO ZONE</div>
+  <div class="hero-media-spec">
+    <strong>Background Video — Wire Harness & Control Box Build</strong>
+    Operator hands routing a multi-circuit harness on a build board, terminal crimping, continuity tester in use, control box wiring with labeled circuits. Tight crops, focused lighting, disciplined energy. Loop, muted, autoplay. Heavy black gradient overlay on left 50%.
+  </div>
+  <div class="container">
+    <div class="hero-content">
+      <span class="hero-label">Electrical Assembly & Wire Harnessing</span>
+      <h1>Electrical Assembly Built for Real Production Environments</h1>
+      <p class="hero-sub">Reliable wire harnesses, control boxes, and electromechanical assemblies built with documented process control, trained operators, and 100% testing.</p>
+      <p class="hero-intro">Electrical assemblies create problems when the process behind them is inconsistent. RELY moves electrical assembly and wire harnessing work into a controlled, repeatable process — install-ready, documented, tested, and built to perform.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-primary">Talk to RELY About Electrical Assembly <span class="btn-arrow">→</span></a>
+        <a href="#capabilities" class="btn btn-secondary">Explore Capabilities</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-credibility">
+    <span>IPC/WHMA-A-620 Aligned</span>
+    <span>100% Continuity Tested</span>
+    <span>ISO 9001:2015 Certified</span>
+    <span>Prototype to Production</span>
+  </div>
+</section>
+
+<!-- ============ SECTION 1: WHERE RELY FITS ============ -->
+<section class="where-fits" id="capabilities">
+  <div class="container">
+    <div class="where-fits-grid">
+      <div class="fade-up">
+        <span class="eyebrow">Where RELY Fits</span>
+        <h2>Electrical Assembly That Takes Pressure Off Your Operation</h2>
+        <p>Manufacturers often struggle to keep electrical assembly work stable when demand shifts, documentation is limited, or skilled internal labor is already stretched. RELY gives you a controlled outside production path for electrical assembly work that needs consistency, flexibility, and accountability.</p>
+        <p>We are a strong fit when the work is too labor-intensive, too high-mix, too inconsistent, or too disruptive to keep inside your core production flow.</p>
+      </div>
+      <div class="supports-block fade-up">
+        <div class="supports-label">RELY Supports</div>
+        <ul class="supports-list">
+          <li>Custom Wire Harnesses</li>
+          <li>Power, Signal & Data Harnesses</li>
+          <li>Control Boxes & Panels</li>
+          <li>Electromechanical Modules</li>
+          <li>DIN Rail & Terminal Block Assemblies</li>
+          <li>Prototype, Pilot, Production & Service-Part Builds</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-banner fade-up" style="margin-top: 80px;">
+      <div class="media-placeholder">
+        <span class="media-tag">Image · Section 1</span>
+        <div class="media-title">Electrical Assembly Floor Banner</div>
+        <div class="media-spec">
+          <strong>Shot direction</strong>
+          Wide cinematic banner — multiple electrical builds in progress across the floor: harness build board station on one side, control box assembly on the other, organized component bins, labeled WI sheets visible. Operators working with focus, not posed. Wide crop (21:6). Industrial lighting.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 2: WIRE HARNESSING ============ -->
+<section class="harnessing">
+  <div class="container">
+    <span class="eyebrow">Wire Harnessing</span>
+    <h2>Built for Routing, Continuity, and Repeatability</h2>
+    <p class="lead">RELY builds wire harnesses from simple jumpers to complex multi-circuit assemblies. Every harness is built to reduce misrouting, prevent stress points, support clean installation, and eliminate avoidable troubleshooting. Every harness is also 100% continuity tested before it leaves our facility.</p>
+
+    <div class="harness-grid">
+      <div class="harness-image fade-up">
+        <div class="corner-mark"></div>
+        <div class="corner-mark br"></div>
+        <div class="media-placeholder">
+          <span class="media-tag">Image · Section 2</span>
+          <div class="media-title">Wire Harness Build Board</div>
+          <div class="media-spec">
+            <strong>Shot direction</strong>
+            Custom build board in use — multi-circuit harness laid out on pegboard with labeled terminations, operator hands routing wire, branded labels visible. Tight crop, shallow depth of field, industrial lighting. Vertical (4:5).
+          </div>
+        </div>
+      </div>
+
+      <div class="capability-table fade-up">
+        <div class="capability-row">
+          <strong>Wire Gauge Range</strong>
+          <span>8 to 22 gauge</span>
+        </div>
+        <div class="capability-row">
+          <strong>Insulation Options</strong>
+          <span>PVC, silicone, TPE, GXL, TXL, and application-specific options</span>
+        </div>
+        <div class="capability-row">
+          <strong>Connector Support</strong>
+          <span>Bosch, Delphi/Aptiv, Deutsch, Molex, TE/AMP, and other common platforms</span>
+        </div>
+        <div class="capability-row">
+          <strong>Build Method</strong>
+          <span>Custom build boards with defined routing and wire dressing standards</span>
+        </div>
+        <div class="capability-row">
+          <strong>Identification</strong>
+          <span>Labeling and circuit identification per customer spec</span>
+        </div>
+        <div class="capability-row">
+          <strong>Protection</strong>
+          <span>Strain relief and abrasion protection where required</span>
+        </div>
+        <div class="capability-row">
+          <strong>Verification</strong>
+          <span>100% continuity testing on every harness, every time</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 3: CONTROL BOXES & MODULES ============ -->
+<section class="control-boxes">
+  <div class="container">
+    <span class="eyebrow">Control Boxes & Modules</span>
+    <h2>Install-Ready Electrical Assemblies</h2>
+    <p class="lead">Control boxes and electromechanical assemblies need to arrive ready to install, not ready to diagnose. RELY builds these assemblies with consistent layouts, defined wire paths, secure connections, and clear labeling so your team is not troubleshooting wiring differences from one unit to the next.</p>
+
+    <div class="section-banner fade-up" style="margin-top: 0; margin-bottom: 64px;">
+      <div class="media-placeholder">
+        <span class="media-tag">Image · Section 3</span>
+        <div class="media-title">Control Box Assembly</div>
+        <div class="media-spec">
+          <strong>Shot direction</strong>
+          Hero shot of a completed or in-progress control panel — clean component layout, DIN rail with breakers/relays/terminals, labeled wire routing, technician working on terminations. Show the discipline and organization. Wide crop (21:6). Industrial lighting.
+        </div>
+      </div>
+    </div>
+
+    <div class="control-split fade-up">
+      <div class="control-card">
+        <h4>Common Assemblies</h4>
+        <ul>
+          <li>Breakers</li>
+          <li>Power Supplies</li>
+          <li>Relays</li>
+          <li>Sensors</li>
+          <li>Terminal Blocks</li>
+          <li>DIN Rail Components</li>
+          <li>Control Hardware</li>
+          <li>Mounted or Enclosed Electromechanical Components</li>
+        </ul>
+      </div>
+      <div class="control-card">
+        <h4>Process Controls</h4>
+        <ul>
+          <li>Standardized Component Placement</li>
+          <li>Defined Wire Routing</li>
+          <li>Verified Torque Where Required</li>
+          <li>Secure Terminations & Connections</li>
+          <li>Clear Circuit Identification</li>
+          <li>Visual Inspection vs. Workmanship Standards</li>
+          <li>Final Electrical Verification</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 4: TESTING & TRACEABILITY ============ -->
+<section class="testing">
+  <div class="container">
+    <span class="eyebrow">Testing & Traceability</span>
+    <h2>Verification Built Into the Process</h2>
+    <p class="lead">Testing is built into the process, not treated as a final catch-all. RELY uses controlled inspection and testing steps to catch issues before they move downstream into your facility, your customer's operation, or the field.</p>
+
+    <div class="section-banner fade-up" style="margin-top: 0; margin-bottom: 64px;">
+      <div class="media-placeholder">
+        <span class="media-tag">Image · Section 4</span>
+        <div class="media-title">Continuity Testing Station</div>
+        <div class="media-spec">
+          <strong>Shot direction</strong>
+          Continuity tester in active use on a finished harness — close-up on the test panel, hands operating the tester, pass/fail indicator visible if possible. Documentation or label sheet next to the unit. Tight, focused, technical. Wide crop (21:6). Industrial lighting.
+        </div>
+      </div>
+    </div>
+
+    <div class="testing-grid">
+      <div class="testing-item"><div class="testing-num">01</div><div class="testing-label">Pin-to-Pin Testing</div></div>
+      <div class="testing-item"><div class="testing-num">02</div><div class="testing-label">Continuity Testing</div></div>
+      <div class="testing-item"><div class="testing-num">03</div><div class="testing-label">Insulation Verification</div></div>
+      <div class="testing-item"><div class="testing-num">04</div><div class="testing-label">Visual Inspection</div></div>
+      <div class="testing-item"><div class="testing-num">05</div><div class="testing-label">Label Verification</div></div>
+      <div class="testing-item"><div class="testing-num">06</div><div class="testing-label">Batch-Level Documentation</div></div>
+      <div class="testing-item"><div class="testing-num">07</div><div class="testing-label">Serialized Traceability</div></div>
+      <div class="testing-item"><div class="testing-num">08</div><div class="testing-label">Digital Record Retention</div></div>
+      <div class="testing-item"><div class="testing-num">09</div><div class="testing-label">Customer-Specific Compliance Docs</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 5: LIFECYCLE ============ -->
+<section class="lifecycle">
+  <div class="container">
+    <span class="eyebrow">Lifecycle Support</span>
+    <h2>Built to Scale With Your Program</h2>
+    <p class="lead">Electrical programs change over time. Demand increases, revisions happen, legacy products stay active, and service demand continues long after the original launch. As volume grows, RELY scales through trained operators, structured build cells, documented work instructions, and repeatable production methods.</p>
+
+    <div class="section-banner fade-up" style="margin-top: 0; margin-bottom: 64px;">
+      <div class="media-placeholder">
+        <span class="media-tag">Image · Section 5</span>
+        <div class="media-title">Production Cell Wide Shot</div>
+        <div class="media-spec">
+          <strong>Shot direction</strong>
+          Production cell context shot — multiple operators at workstations, kitted material at each station, work-instruction tablets or printed sheets visible, repeatable build setup. Conveys scale and structure rather than a single moment. Wide crop (21:6). Natural industrial lighting.
+        </div>
+      </div>
+    </div>
+
+    <div class="lifecycle-flow">
+      <div class="lifecycle-stage fade-up"><span class="lifecycle-num">01</span><h4>Prototype Builds</h4></div>
+      <div class="lifecycle-stage fade-up"><span class="lifecycle-num">02</span><h4>Pilot Runs</h4></div>
+      <div class="lifecycle-stage fade-up"><span class="lifecycle-num">03</span><h4>Production Ramp-Up</h4></div>
+      <div class="lifecycle-stage fade-up"><span class="lifecycle-num">04</span><h4>Ongoing Production</h4></div>
+      <div class="lifecycle-stage fade-up"><span class="lifecycle-num">05</span><h4>Service & Warranty</h4></div>
+      <div class="lifecycle-stage fade-up"><span class="lifecycle-num">06</span><h4>Engineering Changes</h4></div>
+      <div class="lifecycle-stage fade-up"><span class="lifecycle-num">07</span><h4>Legacy Product Support</h4></div>
+      <div class="lifecycle-stage fade-up"><span class="lifecycle-num">08</span><h4>Reverse Engineering</h4></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 6: WHY IT MATTERS / WITH-WITHOUT ============ -->
+<section class="why-matters">
+  <div class="container">
+    <div class="why-matters-header">
+      <span class="eyebrow">Why It Matters</span>
+      <h2>Scale Electrical Assembly Without Disruption</h2>
+      <p>RELY gives manufacturers a controlled way to scale electrical assembly and wire harnessing without adding permanent labor, pulling skilled people away from core production, or accepting inconsistent quality.</p>
+    </div>
+
+    <div class="comparison-grid fade-up">
+      <div class="comparison-col without">
+        <div class="comp-header">
+          <span class="comp-pill">Without RELY</span>
+          <h3 class="comp-headline">Absorbing It Internally</h3>
+        </div>
+        <ul class="comp-list">
+          <li><span class="comp-icon">×</span><span>Complex builds consume engineering and technical production capacity</span></li>
+          <li><span class="comp-icon">×</span><span>Product variation and revision changes increase execution risk</span></li>
+          <li><span class="comp-icon">×</span><span>Skilled teams get pulled into assembly, troubleshooting, and rework</span></li>
+          <li><span class="comp-icon">×</span><span>Material coordination and long BOMs create operational strain</span></li>
+          <li><span class="comp-icon">×</span><span>Build inconsistencies create downstream startup, service, and quality issues</span></li>
+        </ul>
+      </div>
+      <div class="comparison-col with">
+        <div class="comp-header">
+          <span class="comp-pill">With RELY</span>
+          <h3 class="comp-headline">Freeing Up Technical Team Capacity</h3>
+        </div>
+        <ul class="comp-list">
+          <li><span class="comp-icon">✓</span><span>Complex harness and control panel builds are managed by a disciplined external team</span></li>
+          <li><span class="comp-icon">✓</span><span>Internal engineering and production teams stay focused on higher-value priorities</span></li>
+          <li><span class="comp-icon">✓</span><span>Structured assembly processes improve consistency across builds and revisions</span></li>
+          <li><span class="comp-icon">✓</span><span>Material coordination and execution support reduce operational drag</span></li>
+          <li><span class="comp-icon">✓</span><span>Earlier issue detection helps reduce rework, startup delays, and downstream risk</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="approach-strip fade-up">
+      <div class="approach-label">Our Approach Is Built On</div>
+      <h3>Discipline at Every Build Step</h3>
+      <div class="approach-pills">
+        <span class="approach-pill">Documented Work Instructions</span>
+        <span class="approach-pill featured">IPC/WHMA-A-620 Aligned</span>
+        <span class="approach-pill">Trained Operators</span>
+        <span class="approach-pill featured">100% Continuity Testing</span>
+        <span class="approach-pill">Structured Inspection</span>
+        <span class="approach-pill">Revision Control</span>
+        <span class="approach-pill">Scalable Production Cells</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KPI ============ -->
+<section class="kpi-section">
+  <div class="container">
+    <div class="kpi-grid">
+      <div class="kpi-tile fade-up">
+        <span class="kpi-watermark">01</span>
+        <span class="kpi-eyebrow">Standard</span>
+        <div class="kpi-main">IPC/WHMA-<br>A-620 Aligned</div>
+        <div class="kpi-sub">Industry workmanship standard</div>
+      </div>
+      <div class="kpi-tile fade-up">
+        <span class="kpi-watermark">02</span>
+        <span class="kpi-eyebrow">Verification</span>
+        <div class="kpi-main">100% Continuity<br>Tested</div>
+        <div class="kpi-sub">Every harness, every time</div>
+      </div>
+      <div class="kpi-tile fade-up">
+        <span class="kpi-watermark">03</span>
+        <span class="kpi-eyebrow">Range</span>
+        <div class="kpi-main">8 to 22<br>Gauge Capability</div>
+        <div class="kpi-sub">Power, signal, and data</div>
+      </div>
+      <div class="kpi-tile fade-up">
+        <span class="kpi-watermark">04</span>
+        <span class="kpi-eyebrow">Lifecycle</span>
+        <div class="kpi-main">Prototype to<br>Legacy Support</div>
+        <div class="kpi-sub">Full program coverage</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final-cta" id="contact">
+  <div class="container">
+    <div class="final-cta-inner">
+      <span class="eyebrow">Let's Talk</span>
+      <h2>Need More Electrical Assembly Capacity?</h2>
+      <p>If your team is dealing with inconsistent electrical builds, labor constraints, install issues, or scaling challenges, we should talk. We'll help you identify where time, quality, or capacity is being lost and show you where RELY can take pressure off your operation.</p>
+      <a href="https://relycm.com/contact/" class="btn btn-cta">Talk to RELY About Electrical Assembly <span class="btn-arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('in'), i * 60);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
