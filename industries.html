@@ -1,0 +1,2483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Industries — RELY Contract Manufacturing</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800&family=Barlow+Condensed:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --rely-orange: #EC5826;
+  --rely-orange-dark: #d44a1c;
+  --bg-base: #0f0f10;
+  --ink: #ffffff;
+  --ink-muted: #b8b8b8;
+  --ink-dim: #888;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+body {
+  font-family: 'Barlow', system-ui, -apple-system, sans-serif;
+  background: var(--bg-base); color: var(--ink); line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ============================================================
+   GLOBAL HERO
+   ============================================================ */
+.global-hero {
+  min-height: 88vh; position: relative; display: flex; align-items: center;
+  padding: 80px 40px; overflow: hidden;
+  background:
+    radial-gradient(ellipse at 70% 30%, rgba(236, 88, 38, 0.12) 0%, transparent 50%),
+    linear-gradient(180deg, #0a0a0a 0%, #131313 100%);
+}
+.hero-bg-grid {
+  position: absolute; inset: 0; opacity: 0.4;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+}
+.hero-bg-frames {
+  position: absolute; inset: 0; display: grid;
+  grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(3, 1fr);
+  gap: 4px; opacity: 0.08; pointer-events: none;
+}
+.hero-bg-frames > div {
+  background: #fff; animation: pulse-frame 6s ease-in-out infinite;
+}
+.hero-bg-frames > div:nth-child(2) { animation-delay: 0.5s; }
+.hero-bg-frames > div:nth-child(5) { animation-delay: 1.2s; }
+.hero-bg-frames > div:nth-child(7) { animation-delay: 2s; }
+.hero-bg-frames > div:nth-child(11) { animation-delay: 3s; }
+@keyframes pulse-frame {
+  0%, 100% { opacity: 0.04; }
+  50% { opacity: 0.16; }
+}
+.hero-content {
+  position: relative; z-index: 2; max-width: 1280px; margin: 0 auto; width: 100%;
+}
+.hero-eyebrow {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 14px;
+  letter-spacing: 4px; color: var(--rely-orange); text-transform: uppercase;
+  margin-bottom: 24px;
+  display: inline-flex; align-items: center; gap: 12px;
+}
+.hero-eyebrow::before {
+  content: ''; width: 32px; height: 1px; background: var(--rely-orange);
+}
+.hero-headline {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 800;
+  font-size: clamp(40px, 6.5vw, 84px); line-height: 0.98;
+  color: #fff; text-transform: uppercase; letter-spacing: -0.5px;
+  margin-bottom: 28px; max-width: 1100px;
+}
+.hero-headline span { color: var(--rely-orange); }
+.hero-sub {
+  font-size: 19px; color: var(--ink-muted); max-width: 720px; line-height: 1.65;
+  margin-bottom: 44px; font-weight: 400;
+}
+.hero-cta-row { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--rely-orange); color: #fff;
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 14px;
+  letter-spacing: 2.5px; text-transform: uppercase; text-decoration: none;
+  padding: 18px 36px; border-radius: 2px; border: none; cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-primary:hover { background: var(--rely-orange-dark); transform: translateY(-1px); }
+.btn-primary svg { width: 16px; height: 16px; transition: transform 0.2s; }
+.btn-primary:hover svg { transform: translateX(4px); }
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: transparent; color: #fff;
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 14px;
+  letter-spacing: 2.5px; text-transform: uppercase; text-decoration: none;
+  padding: 18px 28px; border-radius: 2px;
+  border: 1px solid rgba(255,255,255,0.18);
+  transition: all 0.2s;
+}
+.btn-ghost:hover { border-color: var(--rely-orange); color: var(--rely-orange); }
+
+.hero-scroll-cue {
+  position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  color: rgba(255,255,255,0.4); font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+  animation: bob 2.4s ease-in-out infinite;
+}
+@keyframes bob { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(8px); } }
+
+/* Mini-industry strip in hero */
+.hero-industry-strip {
+  margin-top: 64px; display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0; border-top: 1px solid rgba(255,255,255,0.08);
+}
+.hero-industry-tab {
+  padding: 22px 16px; text-align: left;
+  border-right: 1px solid rgba(255,255,255,0.06);
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 12px;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--ink-muted); text-decoration: none;
+  transition: all 0.25s; cursor: pointer; background: none; border: none;
+  border-right: 1px solid rgba(255,255,255,0.06);
+  position: relative; line-height: 1.3;
+}
+.hero-industry-tab:last-child { border-right: none; }
+.hero-industry-tab:hover { color: #fff; background: rgba(236, 88, 38, 0.06); }
+.hero-industry-tab .tab-num {
+  display: block; font-size: 10px; color: var(--rely-orange); margin-bottom: 8px;
+  letter-spacing: 2px;
+}
+
+/* ============================================================
+   INDUSTRY SECTION CONTAINER
+   ============================================================ */
+.industry {
+  position: relative;
+  /* Per-industry CSS vars defaulted - overridden per industry */
+  --i-bg: #131313;
+  --i-bg-deep: #0c0c0c;
+  --i-surface: #1c1c1c;
+  --i-surface-2: #232323;
+  --i-border: rgba(255,255,255,0.06);
+  --i-mood: #6b7280; /* neutral accent per industry */
+  scroll-margin-top: 72px;
+}
+
+/* ----- per industry mood ----- */
+.industry.automotive { --i-bg: #0e0f11; --i-bg-deep: #07080a; --i-surface: #181a1d; --i-surface-2: #20232a; --i-mood: #4a5568; }
+.industry.electronics { --i-bg: #f5f5f3; --i-bg-deep: #ebebe8; --i-surface: #ffffff; --i-surface-2: #fafaf8; --i-border: rgba(0,0,0,0.06); --i-mood: #3a8db5; --i-ink: #1a1a1a; --i-ink-muted: #555; }
+.industry.electronics { color: var(--i-ink); }
+.industry.electronics .industry-headline { color: #1a1a1a; }
+.industry.food { --i-bg: #1a1310; --i-bg-deep: #14100d; --i-surface: #241b16; --i-surface-2: #2d2218; --i-mood: #c47a3a; }
+.industry.furniture { --i-bg: #1a1714; --i-bg-deep: #14110e; --i-surface: #251f1a; --i-surface-2: #2e2620; --i-mood: #a87d4f; }
+.industry.industrial { --i-bg: #0d0d0f; --i-bg-deep: #08080a; --i-surface: #16171a; --i-surface-2: #1d1f22; --i-mood: #5a6470; }
+.industry.medical { --i-bg: #f7f8fa; --i-bg-deep: #eef0f3; --i-surface: #ffffff; --i-surface-2: #f1f3f6; --i-border: rgba(0,0,0,0.06); --i-mood: #2a7886; --i-ink: #1a1a1a; --i-ink-muted: #555; }
+.industry.medical { color: var(--i-ink); }
+.industry.recreation { --i-bg: #131817; --i-bg-deep: #0d1110; --i-surface: #1c2321; --i-surface-2: #232b29; --i-mood: #5a8a73; }
+
+.industry { background: var(--i-bg); }
+
+/* ============================================================
+   SECTION A — INDUSTRY HERO
+   Always black/dark — every industry gets the same "standalone page"
+   hero treatment, so it feels like a dedicated page when jumped to.
+   ============================================================ */
+.industry-hero {
+  min-height: 92vh; padding: 120px 40px 100px; position: relative; overflow: hidden;
+  display: flex; align-items: center;
+  background: linear-gradient(180deg, #0a0a0a 0%, #131313 100%);
+  color: #fff;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+/* Subtle grid texture on every hero */
+.industry-hero::after {
+  content: ''; position: absolute; inset: 0; opacity: 0.35; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+}
+/* Orange glow accent on every hero */
+.industry-hero::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(ellipse at 75% 25%, rgba(236, 88, 38, 0.14) 0%, transparent 55%);
+}
+.industry-hero-inner {
+  position: relative; z-index: 2; max-width: 1280px; margin: 0 auto; width: 100%;
+  display: grid; grid-template-columns: 1.1fr 1fr; gap: 80px; align-items: center;
+}
+.industry-marker {
+  display: flex; align-items: center; gap: 16px; margin-bottom: 32px;
+}
+.industry-number {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 14px;
+  color: var(--rely-orange); letter-spacing: 3px;
+}
+.industry-marker-line { height: 1px; width: 56px; background: var(--rely-orange); }
+.industry-eyebrow {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 12px;
+  letter-spacing: 2.5px; color: var(--rely-orange); text-transform: uppercase;
+}
+.industry-headline {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 800;
+  font-size: clamp(40px, 5.5vw, 72px); line-height: 1.0;
+  color: #fff !important; text-transform: uppercase; letter-spacing: -0.5px;
+  margin-bottom: 32px;
+}
+.industry-intro {
+  font-size: 18px; color: #b8b8b8 !important; line-height: 1.7; margin-bottom: 16px;
+  max-width: 560px;
+}
+/* Industry hero right-side visual */
+.industry-hero-visual { position: relative; min-height: 480px; display: flex; align-items: center; justify-content: center; }
+.industry-hero-visual svg { width: 100%; height: auto; max-width: 540px; }
+
+/* ============================================================
+   SECTION B — PRESSURE STACK
+   ============================================================ */
+.section-pressure {
+  padding: 100px 40px; position: relative;
+  background: var(--i-bg-deep);
+  border-top: 1px solid var(--i-border);
+  border-bottom: 1px solid var(--i-border);
+}
+.section-inner { max-width: 1280px; margin: 0 auto; }
+.section-head { margin-bottom: 64px; max-width: 880px; }
+.section-eyebrow {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 12px;
+  letter-spacing: 3px; color: var(--rely-orange); text-transform: uppercase;
+  margin-bottom: 16px; display: inline-flex; align-items: center; gap: 12px;
+}
+.section-eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--rely-orange); }
+.section-title {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 800;
+  font-size: clamp(30px, 3.5vw, 44px); line-height: 1.05;
+  color: var(--ink); text-transform: uppercase; letter-spacing: -0.2px;
+}
+.industry.electronics .section-title,
+.industry.medical .section-title { color: #1a1a1a; }
+
+/* Pressure stack — large horizontal */
+.pressure-stack {
+  display: grid; grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+  align-items: stretch; gap: 0;
+}
+.pressure-node {
+  background: var(--i-surface); padding: 36px 28px;
+  border-top: 2px solid var(--rely-orange);
+  position: relative; opacity: 0; transform: translateY(20px);
+  transition: all 0.6s ease-out;
+}
+.pressure-node.in-view { opacity: 1; transform: translateY(0); }
+.pressure-node:nth-child(3) { transition-delay: 0.1s; }
+.pressure-node:nth-child(5) { transition-delay: 0.2s; }
+.pressure-node:nth-child(7) { transition-delay: 0.3s; }
+.pressure-num {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 56px;
+  line-height: 1; color: var(--rely-orange); margin-bottom: 16px; opacity: 0.5;
+}
+.pressure-title {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 18px;
+  color: var(--ink); text-transform: uppercase; letter-spacing: 0.5px;
+  margin-bottom: 12px; line-height: 1.2;
+}
+.industry.electronics .pressure-title,
+.industry.medical .pressure-title { color: #1a1a1a; }
+.pressure-body {
+  font-size: 14px; line-height: 1.55; color: var(--ink-muted);
+}
+.industry.electronics .pressure-body,
+.industry.medical .pressure-body { color: #555; }
+.pressure-arrow {
+  display: flex; align-items: center; justify-content: center;
+  color: var(--rely-orange); font-size: 28px; padding: 0 16px;
+}
+.pressure-result {
+  margin-top: 40px; padding: 28px 36px;
+  background: var(--rely-orange); color: #fff;
+  display: flex; align-items: center; gap: 24px;
+}
+.pressure-result-label {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 14px;
+  letter-spacing: 3px; text-transform: uppercase; opacity: 0.85;
+  padding-right: 24px; border-right: 1px solid rgba(255,255,255,0.3);
+  white-space: nowrap;
+}
+.pressure-result-text {
+  font-family: 'Barlow', sans-serif; font-weight: 500; font-size: 17px;
+  line-height: 1.5;
+}
+
+/* ============================================================
+   SECTION C — WHY COMPANIES USE RELY (pressure grid)
+   ============================================================ */
+.section-why { padding: 100px 40px; }
+.why-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+  background: var(--i-border);
+}
+.why-tile {
+  background: var(--i-bg); padding: 40px 32px; position: relative;
+  transition: all 0.3s; cursor: default;
+}
+.why-tile:hover { background: var(--i-surface); }
+.why-tile::before {
+  content: ''; position: absolute; top: 40px; left: 0; width: 3px; height: 24px;
+  background: var(--rely-orange); transform: scaleY(0); transform-origin: top;
+  transition: transform 0.3s;
+}
+.why-tile:hover::before { transform: scaleY(1); }
+.why-tile-icon {
+  width: 48px; height: 48px; margin-bottom: 24px; color: var(--rely-orange);
+}
+.why-tile-icon svg { width: 100%; height: 100%; stroke: currentColor; fill: none; stroke-width: 1.5; }
+.why-tile-title {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 21px;
+  color: var(--ink); text-transform: uppercase; letter-spacing: 0.3px;
+  margin-bottom: 12px; line-height: 1.15;
+}
+.industry.electronics .why-tile-title,
+.industry.medical .why-tile-title { color: #1a1a1a; }
+.why-tile-body { font-size: 15px; color: var(--ink-muted); line-height: 1.6; }
+.industry.electronics .why-tile-body,
+.industry.medical .why-tile-body { color: #555; }
+
+/* ============================================================
+   SECTION D — HOW RELY HELPS (capability grid)
+   ============================================================ */
+.section-how {
+  padding: 100px 40px; background: var(--i-bg-deep);
+  border-top: 1px solid var(--i-border); border-bottom: 1px solid var(--i-border);
+}
+.how-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+}
+.how-card {
+  background: var(--i-surface); padding: 36px 32px; position: relative; overflow: hidden;
+  transition: all 0.3s; cursor: default; min-height: 260px;
+  display: flex; flex-direction: column; justify-content: space-between;
+}
+.how-card:hover { background: var(--i-surface-2); transform: translateY(-4px); }
+.how-card-num {
+  position: absolute; top: 24px; right: 28px;
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 14px;
+  color: var(--rely-orange); letter-spacing: 2px; opacity: 0.7;
+}
+.how-card-illustration {
+  width: 56px; height: 56px; margin-bottom: 28px; color: var(--rely-orange);
+}
+.how-card-illustration svg { width: 100%; height: 100%; stroke: currentColor; fill: none; stroke-width: 1.4; }
+.how-card-title {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 22px;
+  color: var(--ink); text-transform: uppercase; letter-spacing: 0.3px;
+  margin-bottom: 14px; line-height: 1.15;
+}
+.industry.electronics .how-card-title,
+.industry.medical .how-card-title { color: #1a1a1a; }
+.how-card-body {
+  font-size: 15px; line-height: 1.6; color: var(--ink-muted);
+}
+.industry.electronics .how-card-body,
+.industry.medical .how-card-body { color: #555; }
+.how-card-tag {
+  display: inline-block; margin-top: 20px;
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 11px;
+  letter-spacing: 2px; text-transform: uppercase; color: var(--rely-orange);
+  border-top: 1px solid color-mix(in srgb, var(--rely-orange) 30%, transparent);
+  padding-top: 14px; align-self: flex-start;
+}
+
+/* ============================================================
+   SECTION E — WHY THEY TURN TO RELY (comparison)
+   Without RELY = gray box | With RELY = orange box
+   ============================================================ */
+.section-compare { padding: 100px 40px; background: #000; }
+.section-compare .section-title { color: #fff; }
+.compare-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+}
+.compare-col { padding: 48px 44px; border-radius: 2px; }
+
+/* WITHOUT — gray box */
+.compare-col.without { background: #3a3d40; color: #fff; }
+.compare-col.without .compare-col-head {
+  display: flex; align-items: center; gap: 14px; margin-bottom: 36px;
+  padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.18);
+}
+.compare-col.without .compare-col-tag {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 11px;
+  letter-spacing: 2.5px; text-transform: uppercase;
+  padding: 6px 12px; border-radius: 2px;
+  background: rgba(0,0,0,0.3); color: #fff;
+}
+.compare-col.without .compare-col-title {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 20px;
+  color: #fff; text-transform: uppercase; letter-spacing: 0.5px;
+}
+.compare-col.without .compare-list li {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 14px 0; font-size: 15.5px; line-height: 1.55;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+  color: #e4e4e4;
+}
+.compare-col.without .compare-list li:last-child { border-bottom: none; }
+.compare-col.without .compare-mark {
+  flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 700; margin-top: 2px;
+  background: rgba(0,0,0,0.35); color: #fff;
+}
+
+/* WITH RELY — orange box */
+.compare-col.with { background: var(--rely-orange); color: #fff; }
+.compare-col.with .compare-col-head {
+  display: flex; align-items: center; gap: 14px; margin-bottom: 36px;
+  padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.3);
+}
+.compare-col.with .compare-col-tag {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 11px;
+  letter-spacing: 2.5px; text-transform: uppercase;
+  padding: 6px 12px; border-radius: 2px;
+  background: rgba(0,0,0,0.25); color: #fff;
+}
+.compare-col.with .compare-col-title {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 20px;
+  color: #fff; text-transform: uppercase; letter-spacing: 0.5px;
+}
+.compare-list { list-style: none; }
+.compare-col.with .compare-list li {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 14px 0; font-size: 15.5px; line-height: 1.55;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  color: #fff;
+}
+.compare-col.with .compare-list li:last-child { border-bottom: none; }
+.compare-col.with .compare-mark {
+  flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 700; margin-top: 2px;
+  background: rgba(255,255,255,0.25); color: #fff;
+}
+
+/* ============================================================
+   SECTION F — PROOF POINT (KPI)
+   ============================================================ */
+.section-proof {
+  padding: 120px 40px; position: relative; overflow: hidden;
+  background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+}
+.section-proof::before {
+  content: ''; position: absolute; right: -100px; top: -100px;
+  width: 600px; height: 600px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(236, 88, 38, 0.08) 0%, transparent 70%);
+}
+.proof-inner { position: relative; z-index: 2; max-width: 1280px; margin: 0 auto; }
+.proof-head { margin-bottom: 72px; max-width: 900px; }
+.proof-eyebrow {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 13px;
+  letter-spacing: 4px; color: var(--rely-orange); text-transform: uppercase;
+  margin-bottom: 18px; display: inline-flex; align-items: center; gap: 14px;
+}
+.proof-eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--rely-orange); }
+.proof-title {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 800;
+  font-size: clamp(30px, 3.8vw, 48px); line-height: 1.05;
+  color: #fff; text-transform: uppercase; letter-spacing: -0.2px; margin-bottom: 20px;
+}
+.proof-narrative { font-size: 17px; color: #b8b8b8; line-height: 1.7; }
+.kpi-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;
+  padding: 56px 0 0; border-top: 1px solid #2a2a2a;
+}
+.kpi-tile { position: relative; padding: 8px 0; }
+.kpi-eyebrow {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 11px;
+  letter-spacing: 2.5px; color: var(--rely-orange); text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.kpi-number {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 800;
+  font-size: clamp(56px, 7vw, 92px); line-height: 0.95; color: #fff;
+  margin-bottom: 12px; letter-spacing: -1px;
+}
+.kpi-label {
+  font-family: 'Barlow', sans-serif; font-weight: 500; font-size: 17px;
+  color: #b8b8b8; line-height: 1.4; max-width: 260px;
+}
+
+/* ============================================================
+   SECTION G — INDUSTRY CTA
+   ============================================================ */
+.industry-cta { padding: 80px 40px; text-align: center; }
+.industry-cta-inner { max-width: 720px; margin: 0 auto; }
+.industry-cta-title {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 800;
+  font-size: clamp(26px, 3vw, 36px); line-height: 1.15;
+  color: var(--ink); text-transform: uppercase; letter-spacing: -0.2px;
+  margin-bottom: 20px;
+}
+.industry.electronics .industry-cta-title,
+.industry.medical .industry-cta-title { color: #1a1a1a; }
+.industry-cta-body {
+  font-size: 16px; color: var(--ink-muted); line-height: 1.7; margin-bottom: 32px;
+}
+.industry.electronics .industry-cta-body,
+.industry.medical .industry-cta-body { color: #555; }
+
+/* ============================================================
+   TRANSITION DIVIDER (cinematic moment between industries)
+   Industry name is the lead — quote supports it.
+   ============================================================ */
+.transition {
+  padding: 110px 40px; background: #000; text-align: center;
+  position: relative; overflow: hidden;
+}
+.transition::before, .transition::after {
+  content: ''; position: absolute; left: 50%; transform: translateX(-50%);
+  width: 1px; background: linear-gradient(180deg, transparent, var(--rely-orange), transparent);
+}
+.transition::before { top: 0; height: 60px; }
+.transition::after { bottom: 0; height: 60px; }
+.transition-eyebrow {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 12px;
+  letter-spacing: 4px; color: var(--rely-orange); text-transform: uppercase;
+  margin-bottom: 24px;
+  display: inline-flex; align-items: center; gap: 14px;
+}
+.transition-eyebrow::before, .transition-eyebrow::after {
+  content: ''; width: 32px; height: 1px; background: var(--rely-orange);
+}
+.transition-name {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 800;
+  font-size: clamp(38px, 5.5vw, 68px); line-height: 1.0;
+  color: #fff; max-width: 1100px; margin: 0 auto 36px;
+  text-transform: uppercase; letter-spacing: -0.3px;
+}
+.transition-quote {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 500;
+  font-size: clamp(15px, 1.5vw, 18px); line-height: 1.5;
+  color: rgba(255,255,255,0.55); max-width: 720px; margin: 0 auto;
+  text-transform: uppercase; letter-spacing: 2.5px;
+}
+.transition-quote span { color: var(--rely-orange); font-weight: 700; }
+
+/* ============================================================
+   FINAL CTA
+   ============================================================ */
+.final-cta {
+  background: var(--rely-orange); padding: 120px 40px; text-align: center; position: relative; overflow: hidden;
+}
+.final-cta::before {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+}
+.final-inner { position: relative; z-index: 2; max-width: 1000px; margin: 0 auto; }
+.final-eyebrow {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 13px;
+  letter-spacing: 4px; color: #fff; text-transform: uppercase;
+  margin-bottom: 24px; opacity: 0.85;
+}
+.final-title {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 800;
+  font-size: clamp(36px, 5vw, 64px); line-height: 1.0;
+  color: #fff; text-transform: uppercase; letter-spacing: -0.5px;
+  margin-bottom: 28px;
+}
+.final-sub {
+  font-size: 18px; color: rgba(255,255,255,0.92); line-height: 1.65;
+  max-width: 760px; margin: 0 auto 40px;
+}
+.btn-on-orange {
+  display: inline-flex; align-items: center; gap: 12px;
+  background: #000; color: #fff;
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 15px;
+  letter-spacing: 2.5px; text-transform: uppercase; text-decoration: none;
+  padding: 22px 44px; border-radius: 2px; transition: all 0.2s;
+}
+.btn-on-orange:hover { background: #fff; color: var(--rely-orange); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 1100px) {
+  .industry-hero-inner { grid-template-columns: 1fr; gap: 48px; }
+  .industry-hero-visual { min-height: 300px; }
+  .pressure-stack { grid-template-columns: 1fr; }
+  .pressure-arrow { transform: rotate(90deg); padding: 12px 0; }
+  .how-grid { grid-template-columns: repeat(2, 1fr); }
+  .why-grid { grid-template-columns: repeat(2, 1fr); }
+  .compare-grid { grid-template-columns: 1fr; }
+  .kpi-grid { grid-template-columns: 1fr; gap: 40px; }
+  .hero-industry-strip { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 700px) {
+  .global-hero, .industry-hero, .section-pressure, .section-why, .section-how,
+  .section-compare, .section-proof, .industry-cta, .transition, .final-cta {
+    padding-left: 20px; padding-right: 20px;
+  }
+  .hero-industry-strip { grid-template-columns: 1fr; }
+  .how-grid, .why-grid { grid-template-columns: 1fr; }
+  .compare-col { padding: 32px 24px; }
+  .pressure-result { flex-direction: column; align-items: flex-start; gap: 16px; padding: 24px; }
+  .pressure-result-label { border-right: none; padding-right: 0; padding-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,0.3); width: 100%; }
+}
+
+/* ===== SVG illustration color shortcut ===== */
+.svg-mood-line { stroke: var(--rely-orange); }
+.svg-mood-fill { fill: var(--rely-orange); }
+
+/* ============================================================
+   MEDIA PLACEHOLDERS
+   Visible markers showing the dev team / content team exactly
+   where to swap in photos and video. Remove these classes when
+   real assets are added.
+   ============================================================ */
+.media-placeholder {
+  position: relative; width: 100%;
+  background:
+    repeating-linear-gradient(
+      45deg,
+      rgba(236, 88, 38, 0.08) 0px,
+      rgba(236, 88, 38, 0.08) 10px,
+      rgba(236, 88, 38, 0.14) 10px,
+      rgba(236, 88, 38, 0.14) 20px
+    ),
+    #1a1a1a;
+  border: 2px dashed rgba(236, 88, 38, 0.55);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 32px;
+  color: #fff; overflow: hidden; border-radius: 2px;
+}
+.media-placeholder.light {
+  background:
+    repeating-linear-gradient(
+      45deg,
+      rgba(236, 88, 38, 0.06) 0px,
+      rgba(236, 88, 38, 0.06) 10px,
+      rgba(236, 88, 38, 0.12) 10px,
+      rgba(236, 88, 38, 0.12) 20px
+    ),
+    #f1f1ee;
+  border: 2px dashed rgba(236, 88, 38, 0.55);
+  color: #1a1a1a;
+}
+.media-placeholder-icon {
+  width: 48px; height: 48px; margin-bottom: 16px;
+  border-radius: 50%; background: var(--rely-orange);
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; flex-shrink: 0;
+}
+.media-placeholder-icon svg { width: 22px; height: 22px; stroke: #fff; fill: none; stroke-width: 2; }
+.media-placeholder-type {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 11px;
+  letter-spacing: 3px; color: var(--rely-orange); text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.media-placeholder-title {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 16px;
+  text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.25;
+  margin-bottom: 8px; max-width: 380px;
+}
+.media-placeholder-desc {
+  font-size: 13px; line-height: 1.55; opacity: 0.75; max-width: 420px;
+}
+.media-placeholder.aspect-16-9 { aspect-ratio: 16 / 9; }
+.media-placeholder.aspect-4-3 { aspect-ratio: 4 / 3; }
+.media-placeholder.aspect-1-1 { aspect-ratio: 1 / 1; }
+.media-placeholder.aspect-3-2 { aspect-ratio: 3 / 2; }
+.media-placeholder.full-cover {
+  position: absolute; inset: 0; aspect-ratio: auto;
+  border: 2px dashed rgba(236, 88, 38, 0.4); border-radius: 0;
+  z-index: 0; opacity: 0.6;
+}
+
+/* Proof point side-by-side: KPI grid + supporting image */
+.proof-grid-with-image {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 64px;
+  align-items: start; padding: 56px 0 0; border-top: 1px solid #2a2a2a;
+}
+.proof-grid-with-image .kpi-grid {
+  padding: 0; border-top: none;
+  grid-template-columns: 1fr;
+  gap: 48px;
+}
+.proof-image-side {
+  position: sticky; top: 100px;
+  align-self: stretch;
+}
+.proof-image-side .media-placeholder {
+  height: 100%; min-height: 480px; aspect-ratio: auto;
+}
+
+/* How section — full-width photo strip option */
+.how-photo-strip {
+  margin-top: 64px;
+  display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 16px;
+}
+.how-photo-strip .media-placeholder.aspect-4-3 { aspect-ratio: auto; min-height: 100%; }
+
+@media (max-width: 900px) {
+  .proof-grid-with-image { grid-template-columns: 1fr; gap: 40px; }
+  .proof-image-side { position: relative; top: 0; }
+  .proof-grid-with-image .kpi-grid { grid-template-columns: 1fr; }
+  .how-photo-strip { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     NAV — placeholder. Dev team will add the global menu bar with
+     industry dropdown that links via #anchor to each industry section.
+     ============================================================ -->
+
+<!-- ============================================================
+     GLOBAL HERO
+     ============================================================ -->
+<section class="global-hero" id="top">
+  <!-- ============================================================
+       MEDIA PLACEHOLDER: Global hero background video
+       Asset spec: 1920x1080 (min), MP4 + WebM, 15-25 sec loop,
+       muted autoplay, dark/cinematic grade.
+       Content: rapid montage of RELY operations — automotive sortation,
+       harnessing, fulfillment, medical assembly, QC inspection, packout,
+       production line motion. Cinematic, fast cuts, premium feel.
+       Should sit behind .hero-bg-grid with overlay for text legibility.
+       ============================================================ -->
+  <div class="media-placeholder full-cover" aria-hidden="true">
+    <div class="media-placeholder-icon"><svg viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20 6 4" fill="#fff"/></svg></div>
+    <div class="media-placeholder-type">Background Video</div>
+    <div class="media-placeholder-title">Cinematic operations montage</div>
+    <div class="media-placeholder-desc">15-25 sec loop · 1920x1080 · muted autoplay · MP4+WebM</div>
+  </div>
+  <div class="hero-bg-grid"></div>
+  <div class="hero-bg-frames">
+    <div></div><div></div><div></div><div></div>
+    <div></div><div></div><div></div><div></div>
+    <div></div><div></div><div></div><div></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Industries we serve</div>
+    <h1 class="hero-headline">Built to support<br>complex <span>manufacturing</span> environments</h1>
+    <p class="hero-sub">RELY helps manufacturers absorb execution-heavy operational work across industries where complexity, variation, speed, and operational pressure continue to increase.</p>
+    <div class="hero-cta-row">
+      <button class="btn-primary" onclick="jumpTo('automotive')">
+        Explore Industries
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </button>
+      <a href="#contact" class="btn-ghost">Start a Conversation</a>
+    </div>
+
+    <div class="hero-industry-strip">
+      <button class="hero-industry-tab" data-target="automotive"><span class="tab-num">01</span>Automotive,<br>Transportation & Mobility</button>
+      <button class="hero-industry-tab" data-target="electronics"><span class="tab-num">02</span>Electronics, Appliances<br>& Technology</button>
+      <button class="hero-industry-tab" data-target="food"><span class="tab-num">03</span>Food, Beverage<br>& Consumer Products</button>
+      <button class="hero-industry-tab" data-target="furniture"><span class="tab-num">04</span>Furniture, Hardware<br>& Home Improvement</button>
+      <button class="hero-industry-tab" data-target="industrial"><span class="tab-num">05</span>Industrial &<br>Material Handling</button>
+      <button class="hero-industry-tab" data-target="medical"><span class="tab-num">06</span>Medical, Dental<br>& Healthcare</button>
+      <button class="hero-industry-tab" data-target="recreation"><span class="tab-num">07</span>Recreation, Outdoors<br>& Lifestyle</button>
+    </div>
+  </div>
+  <div class="hero-scroll-cue">
+    <span>Scroll</span>
+    <svg width="14" height="20" viewBox="0 0 14 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 4v12M2 11l5 5 5-5"/></svg>
+  </div>
+</section>
+
+<!-- ============================================================
+     TRANSITION → AUTOMOTIVE (Industry 01)
+     ============================================================ -->
+<div class="transition">
+  <div class="transition-eyebrow">Industry 01</div>
+  <h2 class="transition-name">Automotive, Transportation & Mobility</h2>
+  <p class="transition-quote">Where <span>variant complexity</span> meets supplier risk meets long-tail support.</p>
+</div>
+
+<!-- ============================================================
+     INDUSTRY 1: AUTOMOTIVE
+     ============================================================ -->
+<section class="industry automotive" id="automotive">
+
+  <!-- SECTION A: HERO -->
+  <div class="industry-hero">
+    <div class="industry-hero-inner">
+      <div>
+        <div class="industry-marker">
+          <span class="industry-number">01 / 07</span>
+          <span class="industry-marker-line"></span>
+          <span class="industry-eyebrow">Industry</span>
+        </div>
+        <h2 class="industry-headline">Built for the complexity behind modern automotive programs</h2>
+        <p class="industry-intro">Automotive, transportation, and mobility manufacturers are being asked to do more at once. Programs need to run at volume, but the number of variants, customer-specific requirements, and supply chain disruptions continues to grow.</p>
+        <p class="industry-intro">RELY helps manufacturers absorb that pressure. We step in where operational complexity is highest, taking on the work that is essential to keeping programs moving but difficult to staff, schedule, or manage internally.</p>
+      </div>
+      <div class="industry-hero-visual">
+        <!-- ============================================================
+             MEDIA PLACEHOLDER: industry hero photo or video
+             RECOMMENDED: replace the SVG illustration below with real
+             photography or a short video loop for this industry.
+             Spec: photo OR 10-15s video loop · 4:3 or 1:1 aspect · max 540px wide
+             Content: Sortation line, parts flowing through inspection, supplier QC team at work
+             The SVG below is a structural fallback only.
+             ============================================================ -->
+        <div class="media-placeholder aspect-4-3" style="margin-bottom: 16px;">
+          <div class="media-placeholder-icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1" fill="none" stroke="#fff" stroke-width="2"/><circle cx="8.5" cy="10.5" r="1.5" fill="#fff"/><polyline points="21 15 16 10 5 21" fill="none" stroke="#fff" stroke-width="2"/></svg></div>
+          <div class="media-placeholder-type">Industry hero photo / video</div>
+          <div class="media-placeholder-title">Tier 1 supplier operations in motion</div>
+          <div class="media-placeholder-desc">Sortation line, parts flowing through inspection, supplier QC team at work</div>
+        </div>
+        <!-- Automotive: angular industrial supply-chain network visual -->
+        <svg viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#EC5826" stroke-width="1.2">
+          <defs>
+            <pattern id="autoGrid" width="40" height="40" patternUnits="userSpaceOnUse">
+              <path d="M40 0H0V40" stroke="rgba(255,255,255,0.04)"/>
+            </pattern>
+          </defs>
+          <rect width="500" height="400" fill="url(#autoGrid)"/>
+          <!-- central hub -->
+          <circle cx="250" cy="200" r="50" stroke="#EC5826" stroke-width="1.5"/>
+          <circle cx="250" cy="200" r="80" stroke="rgba(236,88,38,0.4)" stroke-dasharray="2 4"/>
+          <text x="250" y="195" text-anchor="middle" fill="#fff" font-family="Barlow Condensed" font-weight="700" font-size="13" letter-spacing="2">PROGRAM</text>
+          <text x="250" y="212" text-anchor="middle" fill="#EC5826" font-family="Barlow Condensed" font-weight="700" font-size="11" letter-spacing="3">CONTINUITY</text>
+          <!-- outer nodes -->
+          <circle cx="80" cy="80" r="22" stroke="#888" stroke-width="1"/>
+          <circle cx="420" cy="80" r="22" stroke="#888" stroke-width="1"/>
+          <circle cx="80" cy="320" r="22" stroke="#888" stroke-width="1"/>
+          <circle cx="420" cy="320" r="22" stroke="#888" stroke-width="1"/>
+          <circle cx="250" cy="50" r="18" stroke="#888" stroke-width="1"/>
+          <circle cx="250" cy="350" r="18" stroke="#888" stroke-width="1"/>
+          <!-- connectors -->
+          <line x1="100" y1="95" x2="210" y2="180" stroke="rgba(236,88,38,0.6)"/>
+          <line x1="400" y1="95" x2="290" y2="180" stroke="rgba(236,88,38,0.6)"/>
+          <line x1="100" y1="305" x2="210" y2="220" stroke="rgba(136,136,136,0.4)"/>
+          <line x1="400" y1="305" x2="290" y2="220" stroke="rgba(136,136,136,0.4)"/>
+          <line x1="250" y1="68" x2="250" y2="150" stroke="rgba(236,88,38,0.6)"/>
+          <line x1="250" y1="250" x2="250" y2="332" stroke="rgba(136,136,136,0.4)"/>
+          <!-- node labels -->
+          <text x="80" y="85" text-anchor="middle" fill="#999" font-family="Barlow Condensed" font-size="10" letter-spacing="1">VARIANTS</text>
+          <text x="420" y="85" text-anchor="middle" fill="#999" font-family="Barlow Condensed" font-size="10" letter-spacing="1">SUPPLIERS</text>
+          <text x="80" y="325" text-anchor="middle" fill="#666" font-family="Barlow Condensed" font-size="10" letter-spacing="1">SERVICE</text>
+          <text x="420" y="325" text-anchor="middle" fill="#666" font-family="Barlow Condensed" font-size="10" letter-spacing="1">WARRANTY</text>
+          <text x="250" y="55" text-anchor="middle" fill="#999" font-family="Barlow Condensed" font-size="9" letter-spacing="1">LAUNCH</text>
+          <text x="250" y="355" text-anchor="middle" fill="#666" font-family="Barlow Condensed" font-size="9" letter-spacing="1">LONG TAIL</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- SECTION B: COMPARISON (with/without RELY) -->
+  <div class="section-compare">
+    <div class="section-inner">
+      <div class="section-head">
+        <div class="section-eyebrow">The decision</div>
+        <h3 class="section-title">Why automotive manufacturers turn to RELY</h3>
+      </div>
+      <div class="compare-grid">
+        <div class="compare-col without">
+          <div class="compare-col-head">
+            <span class="compare-col-tag">Without</span>
+            <span class="compare-col-title">Absorbing it internally</span>
+          </div>
+          <ul class="compare-list">
+            <li><span class="compare-mark">✕</span>Supplier issues create downstream disruption and internal fire drills</li>
+            <li><span class="compare-mark">✕</span>Production and technical teams get pulled into containment work</li>
+            <li><span class="compare-mark">✕</span>Launches, schedule changes, and long-tail needs compete for resources</li>
+            <li><span class="compare-mark">✕</span>Problems caught late increase line-down risk, teardown, and service exposure</li>
+          </ul>
+        </div>
+        <div class="compare-col with">
+          <div class="compare-col-head">
+            <span class="compare-col-tag">With RELY</span>
+            <span class="compare-col-title">A domestic partner</span>
+          </div>
+          <ul class="compare-list">
+            <li><span class="compare-mark">✓</span>Supplier-driven issues are addressed by a disciplined domestic partner</li>
+            <li><span class="compare-mark">✓</span>Internal teams stay focused on core production and higher-value priorities</li>
+            <li><span class="compare-mark">✓</span>Active programs and long-tail support are easier to manage in parallel</li>
+            <li><span class="compare-mark">✓</span>Faster response and structured execution help protect continuity</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+  <!-- SECTION B: PRESSURE STACK -->
+  <div class="section-pressure">
+    <div class="section-inner">
+      <div class="section-head">
+        <div class="section-eyebrow">The pressure stack</div>
+        <h3 class="section-title">What is driving complexity across automotive programs</h3>
+      </div>
+      <div class="pressure-stack">
+        <div class="pressure-node">
+          <div class="pressure-num">01</div>
+          <div class="pressure-title">More Variants</div>
+          <div class="pressure-body">More configurations, customer-specific requirements, and changing build combinations.</div>
+        </div>
+        <div class="pressure-arrow">→</div>
+        <div class="pressure-node">
+          <div class="pressure-num">02</div>
+          <div class="pressure-title">Broader Supply Chains</div>
+          <div class="pressure-body">More suppliers, more coordination points, and more opportunities for disruption.</div>
+        </div>
+        <div class="pressure-arrow">→</div>
+        <div class="pressure-node">
+          <div class="pressure-num">03</div>
+          <div class="pressure-title">Longer Product Tails</div>
+          <div class="pressure-body">Older configurations stay in market longer and continue requiring support.</div>
+        </div>
+        <div class="pressure-arrow">→</div>
+        <div class="pressure-node">
+          <div class="pressure-num">04</div>
+          <div class="pressure-title">Service & Warranty Complexity</div>
+          <div class="pressure-body">Replacement-part, service, and warranty demands continue long after launch.</div>
+        </div>
+      </div>
+      <div class="pressure-result">
+        <div class="pressure-result-label">The result</div>
+        <div class="pressure-result-text">More operational complexity across current production, supplier management, and long-tail support.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION C: WHY COMPANIES USE RELY -->
+  <div class="section-why">
+    <div class="section-inner">
+      <div class="section-head">
+        <div class="section-eyebrow">Operational pressures</div>
+        <h3 class="section-title">Why automotive and mobility manufacturers use RELY</h3>
+      </div>
+      <div class="why-grid">
+        <div class="why-tile">
+          <div class="why-tile-icon"><svg viewBox="0 0 48 48"><path d="M24 8v8M24 8l-8 8M24 8l8 8M16 16v24M32 16v24M16 24h16M16 32h16"/></svg></div>
+          <div class="why-tile-title">High-Volume Variant Complexity</div>
+          <div class="why-tile-body">More configurations increase execution risk across active programs.</div>
+        </div>
+        <div class="why-tile">
+          <div class="why-tile-icon"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="4"/><circle cx="10" cy="10" r="4"/><circle cx="38" cy="10" r="4"/><circle cx="10" cy="38" r="4"/><circle cx="38" cy="38" r="4"/><path d="M14 14l6 6M34 14l-6 6M14 34l6-6M34 34l-6-6"/></svg></div>
+          <div class="why-tile-title">Broader Supply Chains</div>
+          <div class="why-tile-body">More suppliers create more opportunities for disruption downstream.</div>
+        </div>
+        <div class="why-tile">
+          <div class="why-tile-icon"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18"/><path d="M24 14v10l7 4"/><path d="M14 24a10 10 0 0010 10"/></svg></div>
+          <div class="why-tile-title">Long-Tail Service Support</div>
+          <div class="why-tile-body">Warranty, replacement, and older configurations require ongoing attention.</div>
+        </div>
+        <div class="why-tile">
+          <div class="why-tile-icon"><svg viewBox="0 0 48 48"><path d="M24 6L8 14v10c0 9 7 16 16 19 9-3 16-10 16-19V14L24 6z"/><path d="M17 24l5 5 9-9"/></svg></div>
+          <div class="why-tile-title">Supplier Quality Issues</div>
+          <div class="why-tile-body">Containment, inspection, rework, and sortation must happen fast.</div>
+        </div>
+        <div class="why-tile">
+          <div class="why-tile-icon"><svg viewBox="0 0 48 48"><rect x="8" y="14" width="32" height="22" rx="1"/><path d="M8 22h32M16 14V8h16v6"/></svg></div>
+          <div class="why-tile-title">Labor-Intensive Support Work</div>
+          <div class="why-tile-body">Subassemblies, kits, and execution-heavy work tie up skilled teams.</div>
+        </div>
+        <div class="why-tile">
+          <div class="why-tile-icon"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="16"/><path d="M24 14v10l7 4M38 12l-4 4M10 12l4 4"/></svg></div>
+          <div class="why-tile-title">Launch & Schedule Pressure</div>
+          <div class="why-tile-body">Program changes and urgent requirements leave little room for delay.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION D: HOW RELY HELPS -->
+  <div class="section-how">
+    <div class="section-inner">
+      <div class="section-head">
+        <div class="section-eyebrow">Our capabilities</div>
+        <h3 class="section-title">How RELY supports automotive and mobility programs</h3>
+      </div>
+      <div class="how-grid">
+        <div class="how-card">
+          <div>
+            <div class="how-card-num">01</div>
+            <div class="how-card-illustration"><svg viewBox="0 0 56 56"><circle cx="14" cy="14" r="5"/><circle cx="42" cy="14" r="5"/><circle cx="14" cy="42" r="5"/><circle cx="42" cy="42" r="5"/><path d="M19 14h18M14 19v18M42 19v18M19 42h18"/></svg></div>
+            <div class="how-card-title">Assembly & Subassembly</div>
+            <div class="how-card-body">Support for complex, high-volume builds and labor-intensive production work.</div>
+          </div>
+          <span class="how-card-tag">Core Capability</span>
+        </div>
+        <div class="how-card">
+          <div>
+            <div class="how-card-num">02</div>
+            <div class="how-card-illustration"><svg viewBox="0 0 56 56"><rect x="8" y="16" width="40" height="32" rx="1"/><path d="M8 26h40M18 16V8h20v8M20 36h16"/></svg></div>
+            <div class="how-card-title">Kitting & Line-Side Support</div>
+            <div class="how-card-body">Structured kits and support work for changing schedules and build requirements.</div>
+          </div>
+          <span class="how-card-tag">Core Capability</span>
+        </div>
+        <div class="how-card">
+          <div>
+            <div class="how-card-num">03</div>
+            <div class="how-card-illustration"><svg viewBox="0 0 56 56"><path d="M28 8L10 16v12c0 10 8 18 18 22 10-4 18-12 18-22V16L28 8z"/><path d="M20 28l5 5 11-11"/></svg></div>
+            <div class="how-card-title">Sortation, Testing & Rework</div>
+            <div class="how-card-body">Containment, inspection, rework, and reclamation tied to supplier and quality issues.</div>
+          </div>
+          <span class="how-card-tag">Quality Lens</span>
+        </div>
+        <div class="how-card">
+          <div>
+            <div class="how-card-num">04</div>
+            <div class="how-card-illustration"><svg viewBox="0 0 56 56"><path d="M48 28a20 20 0 11-6-14"/><path d="M48 8v12h-12"/></svg></div>
+            <div class="how-card-title">Service & Warranty Support</div>
+            <div class="how-card-body">Replacement-part and long-tail support for older configurations still in the field.</div>
+          </div>
+          <span class="how-card-tag">Long-Tail Support</span>
+        </div>
+        <div class="how-card">
+          <div>
+            <div class="how-card-num">05</div>
+            <div class="how-card-illustration"><svg viewBox="0 0 56 56"><rect x="6" y="6" width="16" height="16"/><rect x="34" y="6" width="16" height="16"/><rect x="6" y="34" width="16" height="16"/><rect x="34" y="34" width="16" height="16"/><path d="M22 14h12M22 42h12M14 22v12M42 22v12"/></svg></div>
+            <div class="how-card-title">Procurement & Material Coordination</div>
+            <div class="how-card-body">Execution support across broad, variant-heavy supply chains.</div>
+          </div>
+          <span class="how-card-tag">Strategic Layer</span>
+        </div>
+        <div class="how-card">
+          <div>
+            <div class="how-card-num">06</div>
+            <div class="how-card-illustration"><svg viewBox="0 0 56 56"><path d="M32 6l-7 16h7l-7 30 26-34h-12l7-12z"/></svg></div>
+            <div class="how-card-title">Fixtures, Tooling & Automation</div>
+            <div class="how-card-body">Custom equipment, tooling, and process support to improve execution and scale.</div>
+          </div>
+          <span class="how-card-tag">Engineering Support</span>
+        </div>
+      </div>
+    </div>
+  </div><!-- SECTION F: PROOF POINT -->
+  <div class="section-proof">
+    <div class="proof-inner">
+      <div class="proof-head">
+        <div class="proof-eyebrow">Proof point — Tier 1 supplier</div>
+        <h3 class="proof-title">Sortation, testing & rework at scale</h3>
+        <p class="proof-narrative">When supplier-driven quality issues created operational strain, a Tier 1 automotive supplier turned to RELY for disciplined sortation, testing, and rework support. We managed 5 to 7 concurrent supplier sorts while protecting production continuity.</p>
+      </div>
+      <div class="proof-grid-with-image">
+        <div class="kpi-grid">
+          <div class="kpi-tile">
+            <div class="kpi-eyebrow">Volume</div>
+            <div class="kpi-number">4.4M+</div>
+            <div class="kpi-label">Parts processed across active sorts</div>
+          </div>
+          <div class="kpi-tile">
+            <div class="kpi-eyebrow">Scope</div>
+            <div class="kpi-number">30</div>
+            <div class="kpi-label">SKUs supported across the program</div>
+          </div>
+          <div class="kpi-tile">
+            <div class="kpi-eyebrow">Customer impact</div>
+            <div class="kpi-number">8,000+</div>
+            <div class="kpi-label">Customer hours reclaimed</div>
+          </div>
+        </div>
+        <aside class="proof-image-side">
+          <!-- MEDIA PLACEHOLDER: proof-point supporting photo -->
+          <div class="media-placeholder">
+            <div class="media-placeholder-icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1" fill="none" stroke="#fff" stroke-width="2"/><circle cx="8.5" cy="10.5" r="1.5" fill="#fff"/><polyline points="21 15 16 10 5 21" fill="none" stroke="#fff" stroke-width="2"/></svg></div>
+            <div class="media-placeholder-type">Proof point photo</div>
+            <div class="media-placeholder-title">Real moment from this case</div>
+            <div class="media-placeholder-desc">Sortation team mid-shift, parts moving through inspection stations, supplier-quality QC in progress</div>
+          </div>
+        </aside>
+      </div>
+      </div>
+    </div>
+
+  <!-- SECTION G: CTA -->
+  <div class="industry-cta">
+    <div class="industry-cta-inner">
+      <h3 class="industry-cta-title">Ready to support your next automotive program?</h3>
+      <p class="industry-cta-body">Tell us what you are trying to accomplish, and our team will help determine the right next step.</p>
+      <a href="#contact" class="btn-primary">
+        Start the Conversation
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TRANSITION → ELECTRONICS (Industry 02)
+     ============================================================ -->
+<div class="transition">
+  <div class="transition-eyebrow">Industry 02</div>
+  <h2 class="transition-name">Electronics, Appliances & Technology</h2>
+  <p class="transition-quote">The operational pressures may change. The need for <span>disciplined execution</span> does not.</p>
+</div>
+
+<!-- ============================================================
+     INDUSTRY 2: ELECTRONICS (light, clean, precision)
+     ============================================================ -->
+<section class="industry electronics" id="electronics">
+
+  <!-- SECTION A: HERO -->
+  <div class="industry-hero">
+    <div class="industry-hero-inner">
+      <div>
+        <div class="industry-marker">
+          <span class="industry-number">02 / 07</span>
+          <span class="industry-marker-line"></span>
+          <span class="industry-eyebrow">Industry</span>
+        </div>
+        <h2 class="industry-headline">Built for the speed and complexity behind modern product lifecycles</h2>
+        <p class="industry-intro">Electronics, appliance, and technology manufacturers are under pressure to deliver more customized products, faster delivery, and constant innovation without missing critical market windows.</p>
+        <p class="industry-intro">That pressure does not end at launch. SKU-intensive, multi-generation portfolios become harder to manage as service, warranty, replacement, and legacy-model needs continue long after launch.</p>
+      </div>
+      <div class="industry-hero-visual">
+        <!-- ============================================================
+             MEDIA PLACEHOLDER: industry hero photo or video
+             RECOMMENDED: replace the SVG illustration below with real
+             photography or a short video loop for this industry.
+             Spec: photo OR 10-15s video loop · 4:3 or 1:1 aspect · max 540px wide
+             Content: Switch assembly line, injection molding floor, or clean precision packout
+             The SVG below is a structural fallback only.
+             ============================================================ -->
+        <div class="media-placeholder aspect-4-3" style="margin-bottom: 16px;">
+          <div class="media-placeholder-icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1" fill="none" stroke="#fff" stroke-width="2"/><circle cx="8.5" cy="10.5" r="1.5" fill="#fff"/><polyline points="21 15 16 10 5 21" fill="none" stroke="#fff" stroke-width="2"/></svg></div>
+          <div class="media-placeholder-type">Industry hero photo / video</div>
+          <div class="media-placeholder-title">Appliance & electronics assembly</div>
+          <div class="media-placeholder-desc">Switch assembly line, injection molding floor, or clean precision packout</div>
+        </div>
+        <!-- Electronics: clean precision circuit-style lifecycle visual -->
+        <svg viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#3a8db5" stroke-width="1.2">
+          <rect x="40" y="40" width="420" height="320" stroke="rgba(0,0,0,0.06)" stroke-width="0.5" rx="2"/>
+          <!-- lifecycle arc -->
+          <path d="M80 200 Q80 80 250 80 Q420 80 420 200 Q420 320 250 320 Q80 320 80 200 Z" stroke="#3a8db5" stroke-width="1" stroke-dasharray="3 5"/>
+          <!-- waypoints -->
+          <g>
+            <circle cx="80" cy="200" r="14" fill="#fff" stroke="#EC5826" stroke-width="1.5"/>
+            <text x="80" y="205" text-anchor="middle" fill="#EC5826" font-family="Barlow Condensed" font-weight="700" font-size="11">1</text>
+            <text x="80" y="232" text-anchor="middle" fill="#fff" font-family="Barlow Condensed" font-weight="700" font-size="10" letter-spacing="1.5">CONCEPT</text>
+          </g>
+          <g>
+            <circle cx="250" cy="80" r="14" fill="#fff" stroke="#EC5826" stroke-width="1.5"/>
+            <text x="250" y="85" text-anchor="middle" fill="#EC5826" font-family="Barlow Condensed" font-weight="700" font-size="11">2</text>
+            <text x="250" y="58" text-anchor="middle" fill="#fff" font-family="Barlow Condensed" font-weight="700" font-size="10" letter-spacing="1.5">LAUNCH</text>
+          </g>
+          <g>
+            <circle cx="420" cy="200" r="14" fill="#fff" stroke="#EC5826" stroke-width="1.5"/>
+            <text x="420" y="205" text-anchor="middle" fill="#EC5826" font-family="Barlow Condensed" font-weight="700" font-size="11">3</text>
+            <text x="420" y="232" text-anchor="middle" fill="#fff" font-family="Barlow Condensed" font-weight="700" font-size="10" letter-spacing="1.5">CHANNELS</text>
+          </g>
+          <g>
+            <circle cx="250" cy="320" r="14" fill="#fff" stroke="#EC5826" stroke-width="1.5"/>
+            <text x="250" y="325" text-anchor="middle" fill="#EC5826" font-family="Barlow Condensed" font-weight="700" font-size="11">4</text>
+            <text x="250" y="350" text-anchor="middle" fill="#fff" font-family="Barlow Condensed" font-weight="700" font-size="10" letter-spacing="1.5">LONG TAIL</text>
+          </g>
+          <!-- center cluster -->
+          <rect x="200" y="170" width="100" height="60" stroke="#1a1a1a" stroke-width="1" rx="2"/>
+          <text x="250" y="195" text-anchor="middle" fill="#fff" font-family="Barlow Condensed" font-weight="700" font-size="12" letter-spacing="2">PRODUCT</text>
+          <text x="250" y="212" text-anchor="middle" fill="#EC5826" font-family="Barlow Condensed" font-weight="700" font-size="10" letter-spacing="2.5">PORTFOLIO</text>
+          <!-- small detail nodes -->
+          <circle cx="150" cy="130" r="3" fill="#EC5826"/>
+          <circle cx="350" cy="130" r="3" fill="#EC5826"/>
+          <circle cx="150" cy="270" r="3" fill="#EC5826"/>
+          <circle cx="350" cy="270" r="3" fill="#EC5826"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- SECTION B: COMPARISON (with/without RELY) -->
+  <div class="section-compare">
+    <div class="section-inner">
+      <div class="section-head">
+        <div class="section-eyebrow">The decision</div>
+        <h3 class="section-title">Why electronics manufacturers turn to RELY</h3>
+      </div>
+      <div class="compare-grid">
+        <div class="compare-col without">
+          <div class="compare-col-head">
+            <span class="compare-col-tag">Without</span>
+            <span class="compare-col-title">Absorbing it internally</span>
+          </div>
+          <ul class="compare-list">
+            <li><span class="compare-mark">✕</span>Internal teams get pulled into packout, prep, and fulfillment execution</li>
+            <li><span class="compare-mark">✕</span>Launches compete with legacy-model and long-tail support needs</li>
+            <li><span class="compare-mark">✕</span>Retail and channel requirements add strain across multiple programs</li>
+            <li><span class="compare-mark">✕</span>Quality or presentation issues reach the customer too late</li>
+          </ul>
+        </div>
+        <div class="compare-col with">
+          <div class="compare-col-head">
+            <span class="compare-col-tag">With RELY</span>
+            <span class="compare-col-title">A disciplined partner</span>
+          </div>
+          <ul class="compare-list">
+            <li><span class="compare-mark">✓</span>Execution-heavy work is handled by a disciplined external partner</li>
+            <li><span class="compare-mark">✓</span>Internal teams stay focused on innovation and core priorities</li>
+            <li><span class="compare-mark">✓</span>Launches, retailer needs, and long-tail support are easier to manage in parallel</li>
+            <li><span class="compare-mark">✓</span>Customer experience is protected through consistent prep, packout, and fulfillment</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+  <!-- SECTION B: PRESSURE STACK -->
+  <div class="section-pressure">
+    <div class="section-inner">
+      <div class="section-head">
+        <div class="section-eyebrow">The pressure stack</div>
+        <h3 class="section-title">Where complexity compounds across product lifecycles</h3>
+      </div>
+      <div class="pressure-stack">
+        <div class="pressure-node">
+          <div class="pressure-num">01</div>
+          <div class="pressure-title">Faster Launch Cycles</div>
+          <div class="pressure-body">Compressed timelines, retail windows, and promotional commitments.</div>
+        </div>
+        <div class="pressure-arrow">→</div>
+        <div class="pressure-node">
+          <div class="pressure-num">02</div>
+          <div class="pressure-title">More SKU Variation</div>
+          <div class="pressure-body">More configurations, bundles, and channel-specific formats.</div>
+        </div>
+        <div class="pressure-arrow">→</div>
+        <div class="pressure-node">
+          <div class="pressure-num">03</div>
+          <div class="pressure-title">Multi-Generation Portfolios</div>
+          <div class="pressure-body">Older models continue needing service, warranty, and replacement support.</div>
+        </div>
+        <div class="pressure-arrow">→</div>
+        <div class="pressure-node">
+          <div class="pressure-num">04</div>
+          <div class="pressure-title">Channel & Retail Pressure</div>
+          <div class="pressure-body">Retailer requirements, promotions, and multi-channel fulfillment demands.</div>
+        </div>
+      </div>
+      <div class="pressure-result">
+        <div class="pressure-result-label">The result</div>
+        <div class="pressure-result-text">Innovation, launches, and long-tail support compete for the same internal resources at the same time.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION C: WHY -->
+  <div class="section-why">
+    <div class="section-inner">
+      <div class="section-head">
+        <div class="section-eyebrow">Operational pressures</div>
+        <h3 class="section-title">Why electronics and technology manufacturers use RELY</h3>
+      </div>
+      <div class="why-grid">
+        <div class="why-tile">
+          <div class="why-tile-icon"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="16"/><path d="M24 14v10l7 4"/></svg></div>
+          <div class="why-tile-title">Compressed Launch Windows</div>
+          <div class="why-tile-body">Faster cycles leave little room for execution slips.</div>
+        </div>
+        <div class="why-tile">
+          <div class="why-tile-icon"><svg viewBox="0 0 48 48"><path d="M24 8v8M24 8l-8 8M24 8l8 8M16 16v24M32 16v24M16 24h16M16 32h16"/></svg></div>
+          <div class="why-tile-title">SKU & Variant Complexity</div>
+          <div class="why-tile-body">More configurations and bundles increase coordination work.</div>
+        </div>
+        <div class="why-tile">
+          <div class="why-tile-icon"><svg viewBox="0 0 48 48"><rect x="8" y="14" width="32" height="22" rx="1"/><path d="M8 22h32M16 14V8h16v6"/></svg></div>
+          <div class="why-tile-title">Retail & Promotional Demands</div>
+          <div class="why-tile-body">Channel-specific requirements add prep and packout complexity.</div>
+        </div>
+        <div class="why-tile">
+          <div class="why-tile-icon"><svg viewBox="0 0 48 48"><path d="M40 24a16 16 0 11-5-11"/><path d="M40 8v10H30"/></svg></div>
+          <div class="why-tile-title">Long-Tail Service Needs</div>
+          <div class="why-tile-body">Warranty, replacement, and legacy support continue for years.</div>
+        </div>
+        <div class="why-tile">
+          <div class="why-tile-icon"><svg viewBox="0 0 48 48"><rect x="8" y="10" width="32" height="6"/><rect x="8" y="20" width="32" height="6"/><rect x="8" y="30" width="32" height="6"/></svg></div>
+          <div class="why-tile-title">Multi-Generation Portfolios</div>
+          <div class="why-tile-body">Multiple product generations need parallel support.</div>
+        </div>
+        <div class="why-tile">
+          <div class="why-tile-icon"><svg viewBox="0 0 48 48"><rect x="8" y="16" width="32" height="24" rx="1"/><path d="M16 16v-4h16v4M8 24h32"/></svg></div>
+          <div class="why-tile-title">Execution-Heavy Packout</div>
+          <div class="why-tile-body">Prep, multipacks, and value-add work strain internal teams.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION D: HOW -->
+  <div class="section-how">
+    <div class="section-inner">
+      <div class="section-head">
+        <div class="section-eyebrow">Our capabilities</div>
+        <h3 class="section-title">How RELY helps electronics, appliance, and technology manufacturers</h3>
+      </div>
+      <div class="how-grid">
+        <div class="how-card">
+          <div>
+            <div class="how-card-num">01</div>
+            <div class="how-card-illustration"><svg viewBox="0 0 56 56"><path d="M12 44l3-12L40 8l6 6L22 41l-10 3z"/><path d="M34 14l6 6"/></svg></div>
+            <div class="how-card-title">Launch Support</div>
+            <div class="how-card-body">Support for fast-moving new programs, compressed launch windows, and retail or channel readiness.</div>
+          </div>
+          <span class="how-card-tag">Speed Lens</span>
+        </div>
+        <div class="how-card">
+          <div>
+            <div class="how-card-num">02</div>
+            <div class="how-card-illustration"><svg viewBox="0 0 56 56"><rect x="8" y="18" width="40" height="32" rx="1"/><path d="M8 28h40M18 18V10h20v8M22 38h12"/></svg></div>
+            <div class="how-card-title">Packout & Prep</div>
+            <div class="how-card-body">Multipacks, variety packs, gift packs, retail prep, and other value-added execution work.</div>
+          </div>
+          <span class="how-card-tag">Core Capability</span>
+        </div>
+        <div class="how-card">
+          <div>
+            <div class="how-card-num">03</div>
+            <div class="how-card-illustration"><svg viewBox="0 0 56 56"><path d="M28 8L10 16v12c0 10 8 18 18 22 10-4 18-12 18-22V16L28 8z"/><path d="M20 28l5 5 11-11"/></svg></div>
+            <div class="how-card-title">Quality Control & Rework</div>
+            <div class="how-card-body">Inspection, sortation, testing, and rework that help protect quality before problems reach the customer.</div>
+          </div>
+          <span class="how-card-tag">Quality Lens</span>
+        </div>
+        <div class="how-card">
+          <div>
+            <div class="how-card-num">04</div>
+            <div class="how-card-illustration"><svg viewBox="0 0 56 56"><rect x="8" y="20" width="40" height="28" rx="1"/><path d="M18 20v-6h20v6M8 30h40"/></svg></div>
+            <div class="how-card-title">Fulfillment & Channel Support</div>
+            <div class="how-card-body">Execution support for retailer requirements, promotional activity, and multi-channel fulfillment needs.</div>
+          </div>
+          <span class="how-card-tag">Channel Layer</span>
+        </div>
+        <div class="how-card">
+          <div>
+            <div class="how-card-num">05</div>
+            <div class="how-card-illustration"><svg viewBox="0 0 56 56"><circle cx="28" cy="28" r="20"/><path d="M28 16v12l8 5"/><path d="M8 28a20 20 0 0120-20"/></svg></div>
+            <div class="how-card-title">Long-Tail Product Support</div>
+            <div class="how-card-body">Warranty, replacement, service, and legacy-model support for products that remain in the market after launch.</div>
+          </div>
+          <span class="how-card-tag">Long-Tail Support</span>
+        </div>
+        <div class="how-card">
+          <div>
+            <div class="how-card-num">06</div>
+            <div class="how-card-illustration"><svg viewBox="0 0 56 56"><path d="M6 42L20 28l8 8 22-22"/><path d="M50 20h-12M50 20v12"/></svg></div>
+            <div class="how-card-title">Execution Support at Scale</div>
+            <div class="how-card-body">Flexible labor, process discipline, and operational support that help teams stay responsive as complexity grows.</div>
+          </div>
+          <span class="how-card-tag">Scale Layer</span>
+        </div>
+      </div>
+    </div>
+  </div><!-- SECTION F: PROOF -->
+  <div class="section-proof">
+    <div class="proof-inner">
+      <div class="proof-head">
+        <div class="proof-eyebrow">Proof point — appliance OEM</div>
+        <h3 class="proof-title">Absorbing equipment-based appliance switch production</h3>
+        <p class="proof-narrative">When a washing machine hidden-lid switch assembly line became difficult to staff and inconsistent demand created backlog, RELY stepped in to stabilize production. We built work, quality, and PM instructions, then moved the line into RELY's facility, freeing space for three new injection molding presses. Two more appliance switch lines followed.</p>
+      </div>
+      <div class="proof-grid-with-image">
+        <div class="kpi-grid">
+          <div class="kpi-tile">
+            <div class="kpi-eyebrow">Capacity unlocked</div>
+            <div class="kpi-number">3</div>
+            <div class="kpi-label">New injection molding presses installed</div>
+          </div>
+          <div class="kpi-tile">
+            <div class="kpi-eyebrow">Program expansion</div>
+            <div class="kpi-number">3</div>
+            <div class="kpi-label">Switch assembly lines absorbed</div>
+          </div>
+          <div class="kpi-tile">
+            <div class="kpi-eyebrow">Documentation</div>
+            <div class="kpi-number">Full</div>
+            <div class="kpi-label">WI, QI & PM instructions built</div>
+          </div>
+        </div>
+        <aside class="proof-image-side">
+          <!-- MEDIA PLACEHOLDER: proof-point supporting photo -->
+          <div class="media-placeholder">
+            <div class="media-placeholder-icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1" fill="none" stroke="#fff" stroke-width="2"/><circle cx="8.5" cy="10.5" r="1.5" fill="#fff"/><polyline points="21 15 16 10 5 21" fill="none" stroke="#fff" stroke-width="2"/></svg></div>
+            <div class="media-placeholder-type">Proof point photo</div>
+            <div class="media-placeholder-title">Real moment from this case</div>
+            <div class="media-placeholder-desc">Appliance switch assembly line OR injection molding cell — wide shot showing absorbed capacity</div>
+          </div>
+        </aside>
+      </div>
+      </div>
+    </div>
+
+  <!-- SECTION G: CTA -->
+  <div class="industry-cta">
+    <div class="industry-cta-inner">
+      <h3 class="industry-cta-title">Ready to grow sales without the operational lift?</h3>
+      <p class="industry-cta-body">RELY helps electronics, appliance, and technology manufacturers support growth, launches, and channel complexity without building the internal operational burden that comes with them.</p>
+      <a href="#contact" class="btn-primary">
+        Start the Conversation
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TRANSITION → FOOD & BEVERAGE (Industry 03)
+     ============================================================ -->
+<div class="transition">
+  <div class="transition-eyebrow">Industry 03</div>
+  <h2 class="transition-name">Food, Beverage & Consumer Products</h2>
+  <p class="transition-quote">From the factory floor to the <span>first customer impression</span>.</p>
+</div>
+
+<!-- ============================================================
+     INDUSTRY 3: FOOD & BEVERAGE
+     ============================================================ -->
+<section class="industry food" id="food">
+  <div class="industry-hero">
+    <div class="industry-hero-inner">
+      <div>
+        <div class="industry-marker">
+          <span class="industry-number">03 / 07</span>
+          <span class="industry-marker-line"></span>
+          <span class="industry-eyebrow">Industry</span>
+        </div>
+        <h2 class="industry-headline">Built for the speed, seasonality, and brand pressure behind modern consumer products</h2>
+        <p class="industry-intro">Food, beverage, and consumer product manufacturers are under pressure to respond to demand swings, seasonal and promotional ramps, and rising expectations for stronger brand experiences.</p>
+        <p class="industry-intro">Packaging, prep, presentation, and fulfillment shape the first impression, and many brands only get one real shot to earn repeat business.</p>
+      </div>
+      <div class="industry-hero-visual">
+        <!-- ============================================================
+             MEDIA PLACEHOLDER: industry hero photo or video
+             RECOMMENDED: replace the SVG illustration below with real
+             photography or a short video loop for this industry.
+             Spec: photo OR 10-15s video loop · 4:3 or 1:1 aspect · max 540px wide
+             Content: Multipack/variety pack assembly, retail-ready cases through fulfillment, FBA prep
+             The SVG below is a structural fallback only.
+             ============================================================ -->
+        <div class="media-placeholder aspect-4-3" style="margin-bottom: 16px;">
+          <div class="media-placeholder-icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1" fill="none" stroke="#fff" stroke-width="2"/><circle cx="8.5" cy="10.5" r="1.5" fill="#fff"/><polyline points="21 15 16 10 5 21" fill="none" stroke="#fff" stroke-width="2"/></svg></div>
+          <div class="media-placeholder-type">Industry hero photo / video</div>
+          <div class="media-placeholder-title">Branded packout in action</div>
+          <div class="media-placeholder-desc">Multipack/variety pack assembly, retail-ready cases through fulfillment, FBA prep</div>
+        </div>
+        <svg viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#EC5826" stroke-width="1.2">
+          <!-- consumer touchpoints fan -->
+          <circle cx="250" cy="320" r="40" stroke="#EC5826" stroke-width="1.5"/>
+          <text x="250" y="318" text-anchor="middle" fill="#fff" font-family="Barlow Condensed" font-weight="700" font-size="12" letter-spacing="2">BRAND</text>
+          <text x="250" y="334" text-anchor="middle" fill="#EC5826" font-family="Barlow Condensed" font-weight="700" font-size="10" letter-spacing="2">MOMENT</text>
+          <!-- fan rays -->
+          <path d="M250 320 L90 120" stroke="rgba(236,88,38,0.5)"/>
+          <path d="M250 320 L170 80" stroke="rgba(236,88,38,0.5)"/>
+          <path d="M250 320 L250 60" stroke="rgba(236,88,38,0.5)"/>
+          <path d="M250 320 L330 80" stroke="rgba(236,88,38,0.5)"/>
+          <path d="M250 320 L410 120" stroke="rgba(236,88,38,0.5)"/>
+          <!-- end caps -->
+          <rect x="60" y="100" width="60" height="40" stroke="#888" stroke-width="1" rx="2"/>
+          <text x="90" y="125" text-anchor="middle" fill="#999" font-family="Barlow Condensed" font-size="10" letter-spacing="1">RETAIL</text>
+          <rect x="140" y="60" width="60" height="40" stroke="#888" stroke-width="1" rx="2"/>
+          <text x="170" y="85" text-anchor="middle" fill="#999" font-family="Barlow Condensed" font-size="10" letter-spacing="1">PROMOS</text>
+          <rect x="220" y="40" width="60" height="40" stroke="#888" stroke-width="1" rx="2"/>
+          <text x="250" y="65" text-anchor="middle" fill="#999" font-family="Barlow Condensed" font-size="10" letter-spacing="1">PEAK</text>
+          <rect x="300" y="60" width="60" height="40" stroke="#888" stroke-width="1" rx="2"/>
+          <text x="330" y="85" text-anchor="middle" fill="#999" font-family="Barlow Condensed" font-size="10" letter-spacing="1">DTC</text>
+          <rect x="380" y="100" width="60" height="40" stroke="#888" stroke-width="1" rx="2"/>
+          <text x="410" y="125" text-anchor="middle" fill="#999" font-family="Barlow Condensed" font-size="10" letter-spacing="1">FBA</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <!-- SECTION B: COMPARISON (with/without RELY) -->
+  <div class="section-compare">
+    <div class="section-inner">
+      <div class="section-head">
+        <div class="section-eyebrow">The decision</div>
+        <h3 class="section-title">Why consumer product companies turn to RELY</h3>
+      </div>
+      <div class="compare-grid">
+        <div class="compare-col without">
+          <div class="compare-col-head"><span class="compare-col-tag">Without</span><span class="compare-col-title">Absorbing it internally</span></div>
+          <ul class="compare-list">
+            <li><span class="compare-mark">✕</span>Internal teams get pulled into packout, prep, and fulfillment execution</li>
+            <li><span class="compare-mark">✕</span>Promotional activity and seasonal ramps compete with day-to-day operations</li>
+            <li><span class="compare-mark">✕</span>Retail and channel requirements add strain across multiple programs</li>
+            <li><span class="compare-mark">✕</span>Inconsistent prep, presentation, or fulfillment hurts the customer experience</li>
+          </ul>
+        </div>
+        <div class="compare-col with">
+          <div class="compare-col-head"><span class="compare-col-tag">With RELY</span><span class="compare-col-title">A brand-right partner</span></div>
+          <ul class="compare-list">
+            <li><span class="compare-mark">✓</span>Execution-heavy work is handled by a disciplined external partner</li>
+            <li><span class="compare-mark">✓</span>Internal teams stay focused on growth, innovation, and brand priorities</li>
+            <li><span class="compare-mark">✓</span>Promotions, channels, and ongoing demand are easier to manage in parallel</li>
+            <li><span class="compare-mark">✓</span>Customer experience is protected through consistent prep, packout, and fulfillment</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="section-pressure">
+    <div class="section-inner">
+      <div class="section-head">
+        <div class="section-eyebrow">The pressure stack</div>
+        <h3 class="section-title">How complexity compounds across consumer products</h3>
+      </div>
+      <div class="pressure-stack">
+        <div class="pressure-node"><div class="pressure-num">01</div><div class="pressure-title">More Consumer Insight & Customization</div><div class="pressure-body">Better data drives more variation, formats, and occasion-based offerings.</div></div>
+        <div class="pressure-arrow">→</div>
+        <div class="pressure-node"><div class="pressure-num">02</div><div class="pressure-title">More Formats, Bundles & Seasonal</div><div class="pressure-body">Variety packs, gift packs, and limited-time offerings add complexity.</div></div>
+        <div class="pressure-arrow">→</div>
+        <div class="pressure-node"><div class="pressure-num">03</div><div class="pressure-title">Promotional & Channel Complexity</div><div class="pressure-body">Retail, DTC, and e-commerce demand different prep and execution.</div></div>
+        <div class="pressure-arrow">→</div>
+        <div class="pressure-node"><div class="pressure-num">04</div><div class="pressure-title">Brand & Customer Experience Risk</div><div class="pressure-body">Inconsistent presentation hurts the first impression and repeat business.</div></div>
+      </div>
+      <div class="pressure-result">
+        <div class="pressure-result-label">The result</div>
+        <div class="pressure-result-text">More operational pressure across every packout, every promotion, and every customer touchpoint.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-why">
+    <div class="section-inner">
+      <div class="section-head">
+        <div class="section-eyebrow">Operational pressures</div>
+        <h3 class="section-title">Why food, beverage, and consumer product companies use RELY</h3>
+      </div>
+      <div class="why-grid">
+        <div class="why-tile"><div class="why-tile-icon"><svg viewBox="0 0 48 48"><path d="M6 24L24 8l18 16M10 22v18h28V22"/></svg></div><div class="why-tile-title">Seasonal & Promotional Ramps</div><div class="why-tile-body">Volume spikes create strain across packout, prep, and fulfillment.</div></div>
+        <div class="why-tile"><div class="why-tile-icon"><svg viewBox="0 0 48 48"><rect x="8" y="14" width="32" height="26" rx="1"/><path d="M8 22h32M16 14V8h16v6M16 30h16"/></svg></div><div class="why-tile-title">Product & Pack Format Variation</div><div class="why-tile-body">Variety packs, gift packs, and custom formats increase complexity.</div></div>
+        <div class="why-tile"><div class="why-tile-icon"><svg viewBox="0 0 48 48"><path d="M8 18L24 10l16 8v22H8z"/><path d="M18 40V26h12v14"/></svg></div><div class="why-tile-title">Retail & Channel Demands</div><div class="why-tile-body">Different channels create different packaging, prep, and execution needs.</div></div>
+        <div class="why-tile"><div class="why-tile-icon"><svg viewBox="0 0 48 48"><path d="M24 8a8 8 0 018 8c0 5-8 16-8 16s-8-11-8-16a8 8 0 018-8z"/><circle cx="24" cy="16" r="3"/></svg></div><div class="why-tile-title">Brand Representation Risk</div><div class="why-tile-body">Inconsistent presentation can damage the first customer experience.</div></div>
+        <div class="why-tile"><div class="why-tile-icon"><svg viewBox="0 0 48 48"><rect x="8" y="18" width="32" height="22" rx="1"/><path d="M16 18v-6h16v6M22 28h4"/></svg></div><div class="why-tile-title">Execution-Heavy Packout</div><div class="why-tile-body">Multipacks, prep, and value-added work pull focus from core operations.</div></div>
+        <div class="why-tile"><div class="why-tile-icon"><svg viewBox="0 0 48 48"><path d="M24 6L8 14v10c0 9 7 17 16 20 9-3 16-11 16-20V14L24 6z"/><path d="M16 24l5 5 11-11"/></svg></div><div class="why-tile-title">Quality & Fulfillment Pressure</div><div class="why-tile-body">Errors in prep, packout, or fulfillment reach the customer too late.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-how">
+    <div class="section-inner">
+      <div class="section-head">
+        <div class="section-eyebrow">Our capabilities</div>
+        <h3 class="section-title">How RELY helps food, beverage, and consumer product companies</h3>
+      </div>
+      <div class="how-grid">
+        <div class="how-card"><div><div class="how-card-num">01</div><div class="how-card-illustration"><svg viewBox="0 0 56 56"><rect x="8" y="16" width="40" height="32" rx="1"/><path d="M8 26h40M14 16v-6h28v6M14 36h28"/></svg></div><div class="how-card-title">Multipacks & Variety Packs</div><div class="how-card-body">Support for multi-unit packouts and assortment formats that increase complexity.</div></div><span class="how-card-tag">Packout Layer</span></div>
+        <div class="how-card"><div><div class="how-card-num">02</div><div class="how-card-illustration"><svg viewBox="0 0 56 56"><rect x="10" y="22" width="36" height="26" rx="1"/><path d="M10 28h36M28 22v26M16 14l12 8 12-8"/></svg></div><div class="how-card-title">Gift Packs & Promotional Packout</div><div class="how-card-body">Support for seasonal, promotional, and occasion-based pack formats.</div></div><span class="how-card-tag">Brand Layer</span></div>
+        <div class="how-card"><div><div class="how-card-num">03</div><div class="how-card-illustration"><svg viewBox="0 0 56 56"><path d="M18 8h20l4 8H14l4-8z"/><rect x="10" y="16" width="36" height="30" rx="1"/><path d="M20 30l5 5 11-11"/></svg></div><div class="how-card-title">Retail Prep & Customer Prep</div><div class="how-card-body">Prep work that helps products arrive channel-ready and customer-ready.</div></div><span class="how-card-tag">Channel Layer</span></div>
+        <div class="how-card"><div><div class="how-card-num">04</div><div class="how-card-illustration"><svg viewBox="0 0 56 56"><path d="M28 8L10 16v12c0 10 8 18 18 22 10-4 18-12 18-22V16L28 8z"/><path d="M20 28l5 5 11-11"/></svg></div><div class="how-card-title">Quality Control & Rework</div><div class="how-card-body">Inspection, sortation, and rework that protect quality before issues reach the customer.</div></div><span class="how-card-tag">Quality Lens</span></div>
+        <div class="how-card"><div><div class="how-card-num">05</div><div class="how-card-illustration"><svg viewBox="0 0 56 56"><rect x="8" y="22" width="40" height="26" rx="1"/><path d="M14 22v-6h28v6M8 32h40"/></svg></div><div class="how-card-title">Fulfillment & Channel Support</div><div class="how-card-body">Execution support for retail requirements, promotions, and multi-channel fulfillment needs.</div></div><span class="how-card-tag">Fulfillment</span></div>
+        <div class="how-card"><div><div class="how-card-num">06</div><div class="how-card-illustration"><svg viewBox="0 0 56 56"><path d="M8 44L22 30l8 8 22-22"/><path d="M52 16h-12M52 16v12"/></svg></div><div class="how-card-title">Scalable Execution Support</div><div class="how-card-body">Flexible labor and disciplined process support for volume swings and growth.</div></div><span class="how-card-tag">Scale Layer</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="section-proof">
+    <div class="proof-inner">
+      <div class="proof-head">
+        <div class="proof-eyebrow">Proof point — Rishi Tea & Botanicals</div>
+        <h3 class="proof-title">Scaling FBA fulfillment for a fast-growing beverage brand</h3>
+        <p class="proof-narrative">As growth accelerated, Rishi Tea & Botanicals needed a partner that could handle SKU complexity, packout variation, and fulfillment execution without slowing the business down. RELY supported 359% FBA volume growth in six months across 194 SKUs and more than 20 packout formats.</p>
+      </div>
+      <div class="proof-grid-with-image">
+        <div class="kpi-grid">
+          <div class="kpi-tile">
+            <div class="kpi-eyebrow">Growth</div>
+            <div class="kpi-number">359%</div>
+            <div class="kpi-label">FBA volume growth in six months</div>
+          </div>
+          <div class="kpi-tile">
+            <div class="kpi-eyebrow">Scope</div>
+            <div class="kpi-number">194</div>
+            <div class="kpi-label">SKUs supported in parallel</div>
+          </div>
+          <div class="kpi-tile">
+            <div class="kpi-eyebrow">Complexity</div>
+            <div class="kpi-number">20+</div>
+            <div class="kpi-label">Packout formats managed</div>
+          </div>
+        </div>
+        <aside class="proof-image-side">
+          <!-- MEDIA PLACEHOLDER: proof-point supporting photo -->
+          <div class="media-placeholder">
+            <div class="media-placeholder-icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1" fill="none" stroke="#fff" stroke-width="2"/><circle cx="8.5" cy="10.5" r="1.5" fill="#fff"/><polyline points="21 15 16 10 5 21" fill="none" stroke="#fff" stroke-width="2"/></svg></div>
+            <div class="media-placeholder-type">Proof point photo</div>
+            <div class="media-placeholder-title">Real moment from this case</div>
+            <div class="media-placeholder-desc">FBA prep station with Rishi Tea SKUs being packed into Amazon-ready cases</div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+
+  <div class="industry-cta">
+    <div class="industry-cta-inner">
+      <h3 class="industry-cta-title">Ready to grow sales without the operational lift?</h3>
+      <p class="industry-cta-body">RELY helps food, beverage, and consumer product companies support growth, promotions, and channel complexity without the internal operational burden.</p>
+      <a href="#contact" class="btn-primary">Start the Conversation<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TRANSITION → FURNITURE (Industry 04)
+     ============================================================ -->
+<div class="transition">
+  <div class="transition-eyebrow">Industry 04</div>
+  <h2 class="transition-name">Furniture, Hardware & Home Improvement</h2>
+  <p class="transition-quote">When the product is bulky, the <span>support work scales with it</span>.</p>
+</div>
+
+<!-- ============================================================
+     INDUSTRY 4: FURNITURE
+     ============================================================ -->
+<section class="industry furniture" id="furniture">
+  <div class="industry-hero">
+    <div class="industry-hero-inner">
+      <div>
+        <div class="industry-marker">
+          <span class="industry-number">04 / 07</span>
+          <span class="industry-marker-line"></span>
+          <span class="industry-eyebrow">Industry</span>
+        </div>
+        <h2 class="industry-headline">Built for the complexity behind broad product lines and refresh-driven demand</h2>
+        <p class="industry-intro">Furniture, hardware, and home improvement manufacturers often have to manage broad SKU counts, bulky products, frequent product refresh cycles, and large volumes of subkits and accessories that consume space, labor, and attention.</p>
+        <p class="industry-intro">That complexity grows even faster when retailer requirements, packaging demands, and value-added support work begin to pull focus away from core production.</p>
+      </div>
+      <div class="industry-hero-visual">
+        <!-- ============================================================
+             MEDIA PLACEHOLDER: industry hero photo or video
+             RECOMMENDED: replace the SVG illustration below with real
+             photography or a short video loop for this industry.
+             Spec: photo OR 10-15s video loop · 4:3 or 1:1 aspect · max 540px wide
+             Content: Large-product kitting, accessory subkits staged, packaging line in motion
+             The SVG below is a structural fallback only.
+             ============================================================ -->
+        <div class="media-placeholder aspect-4-3" style="margin-bottom: 16px;">
+          <div class="media-placeholder-icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1" fill="none" stroke="#fff" stroke-width="2"/><circle cx="8.5" cy="10.5" r="1.5" fill="#fff"/><polyline points="21 15 16 10 5 21" fill="none" stroke="#fff" stroke-width="2"/></svg></div>
+          <div class="media-placeholder-type">Industry hero photo / video</div>
+          <div class="media-placeholder-title">Bulky product & kitting floor</div>
+          <div class="media-placeholder-desc">Large-product kitting, accessory subkits staged, packaging line in motion</div>
+        </div>
+        <svg viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#EC5826" stroke-width="1.2">
+          <!-- bulky stacked box visual -->
+          <g stroke="#EC5826" stroke-width="1.5">
+            <rect x="120" y="240" width="260" height="80" stroke="#EC5826"/>
+            <rect x="140" y="160" width="220" height="80" stroke="#999"/>
+            <rect x="160" y="80" width="180" height="80" stroke="#666"/>
+          </g>
+          <!-- accessory dots -->
+          <circle cx="80" cy="100" r="6" stroke="#888"/>
+          <circle cx="80" cy="180" r="6" stroke="#888"/>
+          <circle cx="80" cy="260" r="6" stroke="#888"/>
+          <circle cx="80" cy="340" r="6" stroke="#888"/>
+          <circle cx="420" cy="100" r="6" stroke="#888"/>
+          <circle cx="420" cy="180" r="6" stroke="#888"/>
+          <circle cx="420" cy="260" r="6" stroke="#888"/>
+          <circle cx="420" cy="340" r="6" stroke="#888"/>
+          <!-- connectors -->
+          <line x1="86" y1="100" x2="160" y2="120" stroke="rgba(236,88,38,0.4)"/>
+          <line x1="86" y1="180" x2="140" y2="200" stroke="rgba(236,88,38,0.4)"/>
+          <line x1="86" y1="260" x2="120" y2="280" stroke="rgba(236,88,38,0.4)"/>
+          <line x1="414" y1="100" x2="340" y2="120" stroke="rgba(236,88,38,0.4)"/>
+          <line x1="414" y1="180" x2="360" y2="200" stroke="rgba(236,88,38,0.4)"/>
+          <line x1="414" y1="260" x2="380" y2="280" stroke="rgba(236,88,38,0.4)"/>
+          <!-- label -->
+          <text x="250" y="290" text-anchor="middle" fill="#fff" font-family="Barlow Condensed" font-weight="800" font-size="22" letter-spacing="2">PRODUCT</text>
+          <text x="250" y="310" text-anchor="middle" fill="#fff" font-family="Barlow Condensed" font-weight="800" font-size="22" letter-spacing="2">LINE</text>
+          <text x="40" y="375" fill="#666" font-family="Barlow Condensed" font-weight="700" font-size="10" letter-spacing="2">ACCESSORIES</text>
+          <text x="460" y="375" text-anchor="end" fill="#666" font-family="Barlow Condensed" font-weight="700" font-size="10" letter-spacing="2">SUBKITS</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <!-- SECTION B: COMPARISON (with/without RELY) -->
+  <div class="section-compare">
+    <div class="section-inner">
+      <div class="section-head">
+        <div class="section-eyebrow">The decision</div>
+        <h3 class="section-title">Why furniture and home improvement manufacturers turn to RELY</h3>
+      </div>
+      <div class="compare-grid">
+        <div class="compare-col without">
+          <div class="compare-col-head"><span class="compare-col-tag">Without</span><span class="compare-col-title">Absorbing it internally</span></div>
+          <ul class="compare-list">
+            <li><span class="compare-mark">✕</span>Broad SKU counts and refresh cycles compete with core production for space and attention</li>
+            <li><span class="compare-mark">✕</span>Subkits, accessories, packaging, and value-added work consume labor and coordination time</li>
+            <li><span class="compare-mark">✕</span>Retail and channel requirements add pressure across multiple programs and product lines</li>
+            <li><span class="compare-mark">✕</span>Internal teams get pulled into support work that slows higher-value output</li>
+          </ul>
+        </div>
+        <div class="compare-col with">
+          <div class="compare-col-head"><span class="compare-col-tag">With RELY</span><span class="compare-col-title">Operational drag, removed</span></div>
+          <ul class="compare-list">
+            <li><span class="compare-mark">✓</span>Execution-heavy support work is handled by a disciplined external partner</li>
+            <li><span class="compare-mark">✓</span>Core teams stay focused on higher-value production and operational priorities</li>
+            <li><span class="compare-mark">✓</span>Refreshes, kits, packaging, and channel requirements are easier to manage in parallel</li>
+            <li><span class="compare-mark">✓</span>Operational drag is reduced without sacrificing responsiveness or execution quality</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="section-pressure">
+    <div class="section-inner">
+      <div class="section-head">
+        <div class="section-eyebrow">The pressure stack</div>
+        <h3 class="section-title">How operational drag compounds across product lines</h3>
+      </div>
+      <div class="pressure-stack">
+        <div class="pressure-node"><div class="pressure-num">01</div><div class="pressure-title">More SKUs & Refresh Cycles</div><div class="pressure-body">More products, options, and seasonal resets across the product line.</div></div>
+        <div class="pressure-arrow">→</div>
+        <div class="pressure-node"><div class="pressure-num">02</div><div class="pressure-title">More Subkits & Accessories</div><div class="pressure-body">Accessory packs and add-ons add handling and coordination work.</div></div>
+        <div class="pressure-arrow">→</div>
+        <div class="pressure-node"><div class="pressure-num">03</div><div class="pressure-title">More Space, Handling & Packaging</div><div class="pressure-body">Bulky products and packaging needs consume floor space and labor.</div></div>
+        <div class="pressure-arrow">→</div>
+        <div class="pressure-node"><div class="pressure-num">04</div><div class="pressure-title">More Retail & Channel Pressure</div><div class="pressure-body">Customer-specific packaging, labeling, and prep work add drag.</div></div>
+      </div>
+      <div class="pressure-result">
+        <div class="pressure-result-label">The result</div>
+        <div class="pressure-result-text">Operational drag across space, labor, and attention that pulls focus from higher-value production.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-why">
+    <div class="section-inner">
+      <div class="section-head">
+        <div class="section-eyebrow">Operational pressures</div>
+        <h3 class="section-title">Why furniture, hardware, and home improvement manufacturers use RELY</h3>
+      </div>
+      <div class="why-grid">
+        <div class="why-tile"><div class="why-tile-icon"><svg viewBox="0 0 48 48"><rect x="6" y="6" width="14" height="14"/><rect x="28" y="6" width="14" height="14"/><rect x="6" y="28" width="14" height="14"/><rect x="28" y="28" width="14" height="14"/></svg></div><div class="why-tile-title">Broad SKU Counts</div><div class="why-tile-body">More products, options, and configurations create execution strain.</div></div>
+        <div class="why-tile"><div class="why-tile-icon"><svg viewBox="0 0 48 48"><path d="M40 24a16 16 0 11-5-11"/><path d="M40 8v10H30"/></svg></div><div class="why-tile-title">Frequent Refresh Cycles</div><div class="why-tile-body">New versions and retailer resets add recurring operational pressure.</div></div>
+        <div class="why-tile"><div class="why-tile-icon"><svg viewBox="0 0 48 48"><rect x="8" y="20" width="32" height="20"/><rect x="14" y="12" width="20" height="8"/></svg></div><div class="why-tile-title">Bulky Products & Space Constraints</div><div class="why-tile-body">Large products and materials consume floor space quickly.</div></div>
+        <div class="why-tile"><div class="why-tile-icon"><svg viewBox="0 0 48 48"><circle cx="16" cy="16" r="6"/><circle cx="32" cy="32" r="6"/><path d="M22 16h4a6 6 0 016 6v4"/></svg></div><div class="why-tile-title">Subkits & Accessory Complexity</div><div class="why-tile-body">Accessory packs and subkits add handling and coordination work.</div></div>
+        <div class="why-tile"><div class="why-tile-icon"><svg viewBox="0 0 48 48"><rect x="8" y="16" width="32" height="24" rx="1"/><path d="M8 24h32M16 16V8h16v8M16 32h8"/></svg></div><div class="why-tile-title">Retail & Channel Requirements</div><div class="why-tile-body">Packaging, labeling, and customer-specific requirements add pressure.</div></div>
+        <div class="why-tile"><div class="why-tile-icon"><svg viewBox="0 0 48 48"><path d="M10 38L20 28l6 6 16-16"/><path d="M42 12h-10M42 12v10"/></svg></div><div class="why-tile-title">Labor-Intensive Value-Add Work</div><div class="why-tile-body">Prep, packout, rework, and fulfillment work strain internal teams.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-how">
+    <div class="section-inner">
+      <div class="section-head">
+        <div class="section-eyebrow">Our capabilities</div>
+        <h3 class="section-title">How RELY helps furniture, hardware, and home improvement manufacturers</h3>
+      </div>
+      <div class="how-grid">
+        <div class="how-card"><div><div class="how-card-num">01</div><div class="how-card-illustration"><svg viewBox="0 0 56 56"><circle cx="14" cy="14" r="5"/><circle cx="42" cy="14" r="5"/><circle cx="14" cy="42" r="5"/><circle cx="42" cy="42" r="5"/><path d="M19 14h18M14 19v18M42 19v18M19 42h18"/></svg></div><div class="how-card-title">Assembly & Subassembly</div><div class="how-card-body">Support for labor-intensive production work tied to broad product lines.</div></div><span class="how-card-tag">Core Capability</span></div>
+        <div class="how-card"><div><div class="how-card-num">02</div><div class="how-card-illustration"><svg viewBox="0 0 56 56"><rect x="8" y="16" width="40" height="32" rx="1"/><path d="M8 26h40M18 16V8h20v8"/></svg></div><div class="how-card-title">Kitting & Packout</div><div class="how-card-body">Kits, bundled products, and retail-ready packouts that keep programs moving.</div></div><span class="how-card-tag">Core Capability</span></div>
+        <div class="how-card"><div><div class="how-card-num">03</div><div class="how-card-illustration"><svg viewBox="0 0 56 56"><circle cx="18" cy="18" r="7"/><circle cx="38" cy="38" r="7"/><path d="M25 18h6a7 7 0 017 7v6"/></svg></div><div class="how-card-title">Accessory & Subkit Support</div><div class="how-card-body">Execution support for subkits, attachments, and accessory-heavy product lines.</div></div><span class="how-card-tag">Specialty</span></div>
+        <div class="how-card"><div><div class="how-card-num">04</div><div class="how-card-illustration"><svg viewBox="0 0 56 56"><rect x="8" y="20" width="40" height="28" rx="1"/><path d="M8 30h40M18 20v-6h20v6M18 38h12"/></svg></div><div class="how-card-title">Packaging & Fulfillment</div><div class="how-card-body">Packaging, labeling, and fulfillment support tied to retail and channel needs.</div></div><span class="how-card-tag">Channel Layer</span></div>
+        <div class="how-card"><div><div class="how-card-num">05</div><div class="how-card-illustration"><svg viewBox="0 0 56 56"><path d="M28 8L10 16v12c0 10 8 18 18 22 10-4 18-12 18-22V16L28 8z"/><path d="M20 28l5 5 11-11"/></svg></div><div class="how-card-title">Rework & Quality Support</div><div class="how-card-body">Inspection, sortation, and rework before issues create downstream disruption.</div></div><span class="how-card-tag">Quality Lens</span></div>
+        <div class="how-card"><div><div class="how-card-num">06</div><div class="how-card-illustration"><svg viewBox="0 0 56 56"><rect x="6" y="6" width="16" height="16"/><rect x="34" y="6" width="16" height="16"/><rect x="6" y="34" width="16" height="16"/><rect x="34" y="34" width="16" height="16"/><path d="M22 14h12M22 42h12"/></svg></div><div class="how-card-title">Procurement & Material Coordination</div><div class="how-card-body">Support for materials, components, and supply coordination across complex product lines.</div></div><span class="how-card-tag">Strategic Layer</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="section-proof">
+    <div class="proof-inner">
+      <div class="proof-head">
+        <div class="proof-eyebrow">Proof point — water heater manufacturer</div>
+        <h3 class="proof-title">Subassembly and procurement support that freed real capacity</h3>
+        <p class="proof-narrative">When PVC and control panel subassembly work, procurement coordination, and internal space constraints began to create operational drag, a water heater manufacturer turned to RELY for disciplined production support.</p>
+      </div>
+      <div class="proof-grid-with-image">
+        <div class="kpi-grid">
+          <div class="kpi-tile">
+            <div class="kpi-eyebrow">Space recovered</div>
+            <div class="kpi-number">2,000</div>
+            <div class="kpi-label">Square feet freed at the customer site</div>
+          </div>
+          <div class="kpi-tile">
+            <div class="kpi-eyebrow">Labor saved</div>
+            <div class="kpi-number">700</div>
+            <div class="kpi-label">Assembly hours in three months</div>
+          </div>
+          <div class="kpi-tile">
+            <div class="kpi-eyebrow">Scope</div>
+            <div class="kpi-number">2</div>
+            <div class="kpi-label">Complex subassemblies offloaded</div>
+          </div>
+        </div>
+        <aside class="proof-image-side">
+          <!-- MEDIA PLACEHOLDER: proof-point supporting photo -->
+          <div class="media-placeholder">
+            <div class="media-placeholder-icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1" fill="none" stroke="#fff" stroke-width="2"/><circle cx="8.5" cy="10.5" r="1.5" fill="#fff"/><polyline points="21 15 16 10 5 21" fill="none" stroke="#fff" stroke-width="2"/></svg></div>
+            <div class="media-placeholder-type">Proof point photo</div>
+            <div class="media-placeholder-title">Real moment from this case</div>
+            <div class="media-placeholder-desc">Water heater subassembly station — PVC vent or control panel build in progress</div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+
+  <div class="industry-cta">
+    <div class="industry-cta-inner">
+      <h3 class="industry-cta-title">Ready to reduce operational drag across your product line?</h3>
+      <p class="industry-cta-body">Whether you need help with subassemblies, kits, packaging, accessory support, or fulfillment, RELY is ready to step in.</p>
+      <a href="#contact" class="btn-primary">Start the Conversation<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TRANSITION → INDUSTRIAL (Industry 05)
+     ============================================================ -->
+<div class="transition">
+  <div class="transition-eyebrow">Industry 05</div>
+  <h2 class="transition-name">Industrial & Material Handling Equipment</h2>
+  <p class="transition-quote">When a hidden error becomes an <span>expensive one</span> in the field.</p>
+</div>
+
+<!-- ============================================================
+     INDUSTRY 5: INDUSTRIAL
+     ============================================================ -->
+<section class="industry industrial" id="industrial">
+  <div class="industry-hero">
+    <div class="industry-hero-inner">
+      <div>
+        <div class="industry-marker">
+          <span class="industry-number">05 / 07</span>
+          <span class="industry-marker-line"></span>
+          <span class="industry-eyebrow">Industry</span>
+        </div>
+        <h2 class="industry-headline">Built for the complexity buried deep within equipment builds</h2>
+        <p class="industry-intro">Industrial, manufacturing, and material handling equipment manufacturers often have to manage product variation, customer-specific requirements, complex subassemblies, and long bills of material across equipment that is expensive to get wrong.</p>
+        <p class="industry-intro">A missed issue can trigger teardown, costly field service, delayed startup, or downstream customer disruption.</p>
+      </div>
+      <div class="industry-hero-visual">
+        <!-- ============================================================
+             MEDIA PLACEHOLDER: industry hero photo or video
+             RECOMMENDED: replace the SVG illustration below with real
+             photography or a short video loop for this industry.
+             Spec: photo OR 10-15s video loop · 4:3 or 1:1 aspect · max 540px wide
+             Content: Wire harness build station, subassembly bench with detailed components
+             The SVG below is a structural fallback only.
+             ============================================================ -->
+        <div class="media-placeholder aspect-4-3" style="margin-bottom: 16px;">
+          <div class="media-placeholder-icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1" fill="none" stroke="#fff" stroke-width="2"/><circle cx="8.5" cy="10.5" r="1.5" fill="#fff"/><polyline points="21 15 16 10 5 21" fill="none" stroke="#fff" stroke-width="2"/></svg></div>
+          <div class="media-placeholder-type">Industry hero photo / video</div>
+          <div class="media-placeholder-title">Complex equipment assembly</div>
+          <div class="media-placeholder-desc">Wire harness build station, subassembly bench with detailed components</div>
+        </div>
+        <svg viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#EC5826" stroke-width="1.2">
+          <!-- engineering / exploded view feel -->
+          <g stroke="#EC5826" stroke-width="1.5">
+            <rect x="200" y="180" width="100" height="80"/>
+          </g>
+          <g stroke="#888">
+            <rect x="80" y="60" width="60" height="50"/>
+            <rect x="360" y="60" width="60" height="50"/>
+            <rect x="80" y="300" width="60" height="50"/>
+            <rect x="360" y="300" width="60" height="50"/>
+            <rect x="220" y="60" width="60" height="40"/>
+            <rect x="220" y="320" width="60" height="40"/>
+          </g>
+          <!-- dashed exploded lines -->
+          <line x1="140" y1="85" x2="200" y2="180" stroke="#EC5826" stroke-dasharray="3 3"/>
+          <line x1="360" y1="85" x2="300" y2="180" stroke="#EC5826" stroke-dasharray="3 3"/>
+          <line x1="140" y1="325" x2="200" y2="260" stroke="#888" stroke-dasharray="3 3"/>
+          <line x1="360" y1="325" x2="300" y2="260" stroke="#888" stroke-dasharray="3 3"/>
+          <line x1="250" y1="100" x2="250" y2="180" stroke="#EC5826" stroke-dasharray="3 3"/>
+          <line x1="250" y1="260" x2="250" y2="320" stroke="#888" stroke-dasharray="3 3"/>
+          <!-- center label -->
+          <text x="250" y="218" text-anchor="middle" fill="#fff" font-family="Barlow Condensed" font-weight="800" font-size="14" letter-spacing="2">EQUIPMENT</text>
+          <text x="250" y="236" text-anchor="middle" fill="#EC5826" font-family="Barlow Condensed" font-weight="700" font-size="11" letter-spacing="2.5">BUILD</text>
+          <!-- callout pins -->
+          <circle cx="110" cy="85" r="3" fill="#EC5826"/>
+          <circle cx="390" cy="85" r="3" fill="#EC5826"/>
+          <circle cx="250" cy="80" r="3" fill="#EC5826"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <!-- SECTION B: COMPARISON (with/without RELY) -->
+  <div class="section-compare">
+    <div class="section-inner">
+      <div class="section-head">
+        <div class="section-eyebrow">The decision</div>
+        <h3 class="section-title">Why equipment manufacturers turn to RELY</h3>
+      </div>
+      <div class="compare-grid">
+        <div class="compare-col without">
+          <div class="compare-col-head"><span class="compare-col-tag">Without</span><span class="compare-col-title">Absorbing it internally</span></div>
+          <ul class="compare-list">
+            <li><span class="compare-mark">✕</span>Complex builds compete with core production for skilled labor and attention</li>
+            <li><span class="compare-mark">✕</span>Hidden errors are more likely to be discovered late, when the cost to fix them is much higher</li>
+            <li><span class="compare-mark">✕</span>Subassemblies, kits, and support work create drag across already complex programs</li>
+            <li><span class="compare-mark">✕</span>Teardown, field service, and startup delays become more likely when execution slips</li>
+          </ul>
+        </div>
+        <div class="compare-col with">
+          <div class="compare-col-head"><span class="compare-col-tag">With RELY</span><span class="compare-col-title">Risk caught earlier</span></div>
+          <ul class="compare-list">
+            <li><span class="compare-mark">✓</span>Execution-heavy support work is handled by a disciplined external partner</li>
+            <li><span class="compare-mark">✓</span>Core teams stay focused on higher-value production, engineering, and customer priorities</li>
+            <li><span class="compare-mark">✓</span>Complex builds are easier to support with more structure and less operational strain</li>
+            <li><span class="compare-mark">✓</span>Issues are addressed earlier, reducing teardown, service exposure, and downstream disruption</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="section-pressure">
+    <div class="section-inner">
+      <div class="section-head">
+        <div class="section-eyebrow">The pressure stack</div>
+        <h3 class="section-title">How risk compounds across equipment programs</h3>
+      </div>
+      <div class="pressure-stack">
+        <div class="pressure-node"><div class="pressure-num">01</div><div class="pressure-title">More Product Variation</div><div class="pressure-body">More configurations, options, and customer-specific requirements.</div></div>
+        <div class="pressure-arrow">→</div>
+        <div class="pressure-node"><div class="pressure-num">02</div><div class="pressure-title">More Subassembly Complexity</div><div class="pressure-body">Deeper assemblies and longer BOMs create more buried errors.</div></div>
+        <div class="pressure-arrow">→</div>
+        <div class="pressure-node"><div class="pressure-num">03</div><div class="pressure-title">More Downstream Risk</div><div class="pressure-body">Teardown, field service, startup delays, and customer disruption.</div></div>
+        <div class="pressure-arrow">→</div>
+        <div class="pressure-node"><div class="pressure-num">04</div><div class="pressure-title">More Skilled Resource Strain</div><div class="pressure-body">Technical and quality teams get pulled into support work.</div></div>
+      </div>
+      <div class="pressure-result">
+        <div class="pressure-result-label">The result</div>
+        <div class="pressure-result-text">More operational risk across assembly, startup, service, and downstream customer performance.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-why">
+    <div class="section-inner">
+      <div class="section-head">
+        <div class="section-eyebrow">Operational pressures</div>
+        <h3 class="section-title">Why equipment manufacturers use RELY</h3>
+      </div>
+      <div class="why-grid">
+        <div class="why-tile"><div class="why-tile-icon"><svg viewBox="0 0 48 48"><path d="M24 8v8M24 8l-8 8M24 8l8 8M16 16v24M32 16v24"/></svg></div><div class="why-tile-title">Variant-Heavy Builds</div><div class="why-tile-body">More configurations and customer-specific options increase execution risk.</div></div>
+        <div class="why-tile"><div class="why-tile-icon"><svg viewBox="0 0 48 48"><rect x="6" y="6" width="14" height="14"/><rect x="28" y="6" width="14" height="14"/><rect x="6" y="28" width="14" height="14"/><rect x="28" y="28" width="14" height="14"/></svg></div><div class="why-tile-title">Complex Subassemblies</div><div class="why-tile-body">Deeper assemblies create more opportunities for hidden errors.</div></div>
+        <div class="why-tile"><div class="why-tile-icon"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="16"/><path d="M16 24h16M24 16v16"/></svg></div><div class="why-tile-title">Buried Build Risk</div><div class="why-tile-body">Mistakes discovered late can trigger teardown and downstream disruption.</div></div>
+        <div class="why-tile"><div class="why-tile-icon"><svg viewBox="0 0 48 48"><path d="M14 14l20 20M34 14L14 34"/><circle cx="24" cy="24" r="18"/></svg></div><div class="why-tile-title">Field Service Exposure</div><div class="why-tile-body">Poorly executed support work can create costly service calls in the field.</div></div>
+        <div class="why-tile"><div class="why-tile-icon"><svg viewBox="0 0 48 48"><circle cx="24" cy="14" r="6"/><path d="M14 38c0-6 4-10 10-10s10 4 10 10"/></svg></div><div class="why-tile-title">Skilled Team Strain</div><div class="why-tile-body">Execution-heavy work pulls technical teams away from core output.</div></div>
+        <div class="why-tile"><div class="why-tile-icon"><svg viewBox="0 0 48 48"><rect x="6" y="6" width="14" height="14"/><rect x="28" y="6" width="14" height="14"/><rect x="6" y="28" width="14" height="14"/><rect x="28" y="28" width="14" height="14"/><path d="M22 14h12M22 42h12M14 22v12"/></svg></div><div class="why-tile-title">Material & Supply Complexity</div><div class="why-tile-body">Long BOMs and varied components create more coordination pressure.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-how">
+    <div class="section-inner">
+      <div class="section-head">
+        <div class="section-eyebrow">Our capabilities</div>
+        <h3 class="section-title">How RELY helps industrial and equipment manufacturers</h3>
+      </div>
+      <div class="how-grid">
+        <div class="how-card"><div><div class="how-card-num">01</div><div class="how-card-illustration"><svg viewBox="0 0 56 56"><circle cx="14" cy="14" r="5"/><circle cx="42" cy="14" r="5"/><circle cx="14" cy="42" r="5"/><circle cx="42" cy="42" r="5"/><path d="M19 14h18M14 19v18M42 19v18M19 42h18"/></svg></div><div class="how-card-title">Assembly & Subassembly</div><div class="how-card-body">Support for labor-intensive builds and complex production work tied to equipment programs.</div></div><span class="how-card-tag">Core Capability</span></div>
+        <div class="how-card"><div><div class="how-card-num">02</div><div class="how-card-illustration"><svg viewBox="0 0 56 56"><rect x="8" y="16" width="40" height="32" rx="1"/><path d="M8 26h40M18 16V8h20v8"/></svg></div><div class="how-card-title">Kitting & Component Prep</div><div class="how-card-body">Structured kits, staging, and prep work that support complex builds and changing requirements.</div></div><span class="how-card-tag">Core Capability</span></div>
+        <div class="how-card"><div><div class="how-card-num">03</div><div class="how-card-illustration"><svg viewBox="0 0 56 56"><path d="M28 8L10 16v12c0 10 8 18 18 22 10-4 18-12 18-22V16L28 8z"/><path d="M20 28l5 5 11-11"/></svg></div><div class="how-card-title">Quality Control & Rework</div><div class="how-card-body">Inspection, testing, sortation, and rework that catch issues before they create downstream cost.</div></div><span class="how-card-tag">Quality Lens</span></div>
+        <div class="how-card"><div><div class="how-card-num">04</div><div class="how-card-illustration"><svg viewBox="0 0 56 56"><rect x="6" y="6" width="16" height="16"/><rect x="34" y="6" width="16" height="16"/><rect x="6" y="34" width="16" height="16"/><rect x="34" y="34" width="16" height="16"/><path d="M22 14h12M22 42h12"/></svg></div><div class="how-card-title">Procurement & Material Coordination</div><div class="how-card-body">Support for long BOMs, varied components, and supply coordination across complex builds.</div></div><span class="how-card-tag">Strategic Layer</span></div>
+        <div class="how-card"><div><div class="how-card-num">05</div><div class="how-card-illustration"><svg viewBox="0 0 56 56"><path d="M32 6l-7 16h7l-7 30 26-34h-12l7-12z"/></svg></div><div class="how-card-title">Fixtures, Tooling & Automation</div><div class="how-card-body">Custom fixtures, tooling, and automation support that improve consistency and scale.</div></div><span class="how-card-tag">Engineering Support</span></div>
+        <div class="how-card"><div><div class="how-card-num">06</div><div class="how-card-illustration"><svg viewBox="0 0 56 56"><path d="M48 28a20 20 0 11-6-14"/><path d="M48 8v12h-12"/></svg></div><div class="how-card-title">Service & Aftermarket Support</div><div class="how-card-body">Execution support for replacement-part, service, and long-tail equipment needs after launch.</div></div><span class="how-card-tag">Long-Tail Support</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="section-proof">
+    <div class="proof-inner">
+      <div class="proof-head">
+        <div class="proof-eyebrow">Proof point — thermal management manufacturer</div>
+        <h3 class="proof-title">Complex wire harness production, taken off the engineering team</h3>
+        <p class="proof-narrative">When complex wire harness builds, stagnant inventory, and engineering burden began to create operational drag, a thermal management manufacturer turned to RELY for disciplined production support. We helped free engineering capacity, eliminate stagnant inventory, and outsource complex harness builds without sacrificing speed or quality.</p>
+      </div>
+      <div class="proof-grid-with-image">
+        <div class="kpi-grid">
+          <div class="kpi-tile">
+            <div class="kpi-eyebrow">Engineering capacity</div>
+            <div class="kpi-number">2,000+</div>
+            <div class="kpi-label">Engineering hours freed for higher-value work</div>
+          </div>
+          <div class="kpi-tile">
+            <div class="kpi-eyebrow">Scope</div>
+            <div class="kpi-number">Complex</div>
+            <div class="kpi-label">Wire harness builds outsourced cleanly</div>
+          </div>
+          <div class="kpi-tile">
+            <div class="kpi-eyebrow">Inventory impact</div>
+            <div class="kpi-number">Zero</div>
+            <div class="kpi-label">Stagnant inventory remaining post-transfer</div>
+          </div>
+        </div>
+        <aside class="proof-image-side">
+          <!-- MEDIA PLACEHOLDER: proof-point supporting photo -->
+          <div class="media-placeholder">
+            <div class="media-placeholder-icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1" fill="none" stroke="#fff" stroke-width="2"/><circle cx="8.5" cy="10.5" r="1.5" fill="#fff"/><polyline points="21 15 16 10 5 21" fill="none" stroke="#fff" stroke-width="2"/></svg></div>
+            <div class="media-placeholder-type">Proof point photo</div>
+            <div class="media-placeholder-title">Real moment from this case</div>
+            <div class="media-placeholder-desc">Wire harness build bench — complex thermal management harness mid-assembly</div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+
+  <div class="industry-cta">
+    <div class="industry-cta-inner">
+      <h3 class="industry-cta-title">Ready to reduce build risk without adding operational drag?</h3>
+      <p class="industry-cta-body">Whether you need help with subassemblies, kitting, quality control, procurement coordination, or tooling support, RELY is ready to step in.</p>
+      <a href="#contact" class="btn-primary">Start the Conversation<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TRANSITION → MEDICAL (Industry 06)
+     ============================================================ -->
+<div class="transition">
+  <div class="transition-eyebrow">Industry 06</div>
+  <h2 class="transition-name">Medical, Dental & Healthcare</h2>
+  <p class="transition-quote">Where the work must be done right <span>every time</span>.</p>
+</div>
+
+<!-- ============================================================
+     INDUSTRY 6: MEDICAL (light, controlled, precision)
+     ============================================================ -->
+<section class="industry medical" id="medical">
+  <div class="industry-hero">
+    <div class="industry-hero-inner">
+      <div>
+        <div class="industry-marker">
+          <span class="industry-number">06 / 07</span>
+          <span class="industry-marker-line"></span>
+          <span class="industry-eyebrow">Industry</span>
+        </div>
+        <h2 class="industry-headline">Built for the control and consistency behind products that affect patient outcomes</h2>
+        <p class="industry-intro">Medical, dental, and healthcare manufacturers operate in environments where strict quality expectations, traceability demands, and high testing requirements leave little room for error.</p>
+        <p class="industry-intro">RELY helps manufacturers absorb that burden by taking on the execution-heavy work that can pull focus away from the science, engineering, and advancements that directly impact patient outcomes.</p>
+      </div>
+      <div class="industry-hero-visual">
+        <!-- ============================================================
+             MEDIA PLACEHOLDER: industry hero photo or video
+             RECOMMENDED: replace the SVG illustration below with real
+             photography or a short video loop for this industry.
+             Spec: photo OR 10-15s video loop · 4:3 or 1:1 aspect · max 540px wide
+             Content: Bright workstation, inspection under magnification, traceability-ready kit packout
+             The SVG below is a structural fallback only.
+             ============================================================ -->
+        <div class="media-placeholder aspect-4-3" style="margin-bottom: 16px;">
+          <div class="media-placeholder-icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1" fill="none" stroke="#fff" stroke-width="2"/><circle cx="8.5" cy="10.5" r="1.5" fill="#fff"/><polyline points="21 15 16 10 5 21" fill="none" stroke="#fff" stroke-width="2"/></svg></div>
+          <div class="media-placeholder-type">Industry hero photo / video</div>
+          <div class="media-placeholder-title">Controlled, quality-critical work</div>
+          <div class="media-placeholder-desc">Bright workstation, inspection under magnification, traceability-ready kit packout</div>
+        </div>
+        <!-- Medical: clean traceability flow -->
+        <svg viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#2a7886" stroke-width="1.2">
+          <!-- center precision target -->
+          <circle cx="250" cy="200" r="80" stroke="#2a7886" stroke-width="1"/>
+          <circle cx="250" cy="200" r="50" stroke="#2a7886" stroke-width="1"/>
+          <circle cx="250" cy="200" r="20" stroke="#EC5826" stroke-width="1.5"/>
+          <circle cx="250" cy="200" r="4" fill="#EC5826"/>
+          <!-- crosshairs -->
+          <line x1="60" y1="200" x2="170" y2="200" stroke="rgba(42,120,134,0.3)"/>
+          <line x1="330" y1="200" x2="440" y2="200" stroke="rgba(42,120,134,0.3)"/>
+          <line x1="250" y1="40" x2="250" y2="120" stroke="rgba(42,120,134,0.3)"/>
+          <line x1="250" y1="280" x2="250" y2="360" stroke="rgba(42,120,134,0.3)"/>
+          <!-- traceability stops -->
+          <g>
+            <circle cx="80" cy="200" r="10" fill="#fff" stroke="#EC5826" stroke-width="1.5"/>
+            <text x="80" y="225" text-anchor="middle" fill="#fff" font-family="Barlow Condensed" font-weight="700" font-size="10" letter-spacing="1.5">INTAKE</text>
+          </g>
+          <g>
+            <circle cx="420" cy="200" r="10" fill="#fff" stroke="#EC5826" stroke-width="1.5"/>
+            <text x="420" y="225" text-anchor="middle" fill="#fff" font-family="Barlow Condensed" font-weight="700" font-size="10" letter-spacing="1.5">RELEASE</text>
+          </g>
+          <g>
+            <circle cx="250" cy="50" r="10" fill="#fff" stroke="#EC5826" stroke-width="1.5"/>
+            <text x="250" y="38" text-anchor="middle" fill="#fff" font-family="Barlow Condensed" font-weight="700" font-size="10" letter-spacing="1.5">VALIDATE</text>
+          </g>
+          <g>
+            <circle cx="250" cy="350" r="10" fill="#fff" stroke="#EC5826" stroke-width="1.5"/>
+            <text x="250" y="375" text-anchor="middle" fill="#fff" font-family="Barlow Condensed" font-weight="700" font-size="10" letter-spacing="1.5">DOCUMENT</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <!-- SECTION B: COMPARISON (with/without RELY) -->
+  <div class="section-compare">
+    <div class="section-inner">
+      <div class="section-head">
+        <div class="section-eyebrow">The decision</div>
+        <h3 class="section-title">Why medical and healthcare manufacturers turn to RELY</h3>
+      </div>
+      <div class="compare-grid">
+        <div class="compare-col without">
+          <div class="compare-col-head"><span class="compare-col-tag">Without</span><span class="compare-col-title">Absorbing it internally</span></div>
+          <ul class="compare-list">
+            <li><span class="compare-mark">✕</span>Quality, engineering, and operations teams get pulled into labor-intensive support work</li>
+            <li><span class="compare-mark">✕</span>Testing, traceability, and support needs compete with higher-value technical priorities</li>
+            <li><span class="compare-mark">✕</span>Launches and ongoing replacement support become harder to manage in parallel</li>
+            <li><span class="compare-mark">✕</span>Problems caught too late create downstream risk, added rework, and operational disruption</li>
+          </ul>
+        </div>
+        <div class="compare-col with">
+          <div class="compare-col-head"><span class="compare-col-tag">With RELY</span><span class="compare-col-title">Scarce expertise, protected</span></div>
+          <ul class="compare-list">
+            <li><span class="compare-mark">✓</span>Execution-heavy support work is handled by a disciplined external partner</li>
+            <li><span class="compare-mark">✓</span>Internal teams stay focused on science, engineering, and core product priorities</li>
+            <li><span class="compare-mark">✓</span>Controlled execution and ongoing support are easier to manage in parallel</li>
+            <li><span class="compare-mark">✓</span>Issues are addressed earlier, helping protect quality and reduce downstream risk</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="section-pressure">
+    <div class="section-inner">
+      <div class="section-head">
+        <div class="section-eyebrow">The pressure stack</div>
+        <h3 class="section-title">How complexity compounds in quality-critical environments</h3>
+      </div>
+      <div class="pressure-stack">
+        <div class="pressure-node"><div class="pressure-num">01</div><div class="pressure-title">Strict Quality Expectations</div><div class="pressure-body">Low tolerance for errors and higher consequences when execution slips.</div></div>
+        <div class="pressure-arrow">→</div>
+        <div class="pressure-node"><div class="pressure-num">02</div><div class="pressure-title">More Traceability & Testing</div><div class="pressure-body">Validation, documentation, inspection, and testing add complexity.</div></div>
+        <div class="pressure-arrow">→</div>
+        <div class="pressure-node"><div class="pressure-num">03</div><div class="pressure-title">More Product & Support Complexity</div><div class="pressure-body">Product variation, kits, and replacement needs continue after launch.</div></div>
+        <div class="pressure-arrow">→</div>
+        <div class="pressure-node"><div class="pressure-num">04</div><div class="pressure-title">More Skilled Resource Strain</div><div class="pressure-body">Quality and engineering teams get pulled into labor-intensive work.</div></div>
+      </div>
+      <div class="pressure-result">
+        <div class="pressure-result-label">The result</div>
+        <div class="pressure-result-text">More operational complexity across launch support, controlled execution, and the work that must be done right every time.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-why">
+    <div class="section-inner">
+      <div class="section-head">
+        <div class="section-eyebrow">Operational pressures</div>
+        <h3 class="section-title">Why medical, dental, and healthcare manufacturers use RELY</h3>
+      </div>
+      <div class="why-grid">
+        <div class="why-tile"><div class="why-tile-icon"><svg viewBox="0 0 48 48"><path d="M24 6L8 14v10c0 9 7 16 16 19 9-3 16-10 16-19V14L24 6z"/><path d="M17 24l5 5 9-9"/></svg></div><div class="why-tile-title">Strict Quality Expectations</div><div class="why-tile-body">Tight quality requirements leave little room for execution error.</div></div>
+        <div class="why-tile"><div class="why-tile-icon"><svg viewBox="0 0 48 48"><rect x="10" y="6" width="28" height="36" rx="1"/><path d="M16 14h16M16 22h16M16 30h10"/></svg></div><div class="why-tile-title">Traceability & Documentation Demands</div><div class="why-tile-body">Documentation and traceability requirements add operating complexity.</div></div>
+        <div class="why-tile"><div class="why-tile-icon"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="14"/><path d="M14 24h20M24 14v20"/></svg></div><div class="why-tile-title">High Testing Requirements</div><div class="why-tile-body">Validation, inspection, and testing work strain internal teams.</div></div>
+        <div class="why-tile"><div class="why-tile-icon"><svg viewBox="0 0 48 48"><rect x="8" y="14" width="32" height="26" rx="1"/><path d="M8 22h32M16 14V8h16v6"/></svg></div><div class="why-tile-title">Product & Kit Complexity</div><div class="why-tile-body">Product variation and kit-related support increase coordination work.</div></div>
+        <div class="why-tile"><div class="why-tile-icon"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="16"/><path d="M24 14v10l7 4M14 24a10 10 0 0010 10"/></svg></div><div class="why-tile-title">Long-Tail Replacement Support</div><div class="why-tile-body">Replacement, service, and ongoing support needs continue after launch.</div></div>
+        <div class="why-tile"><div class="why-tile-icon"><svg viewBox="0 0 48 48"><circle cx="24" cy="14" r="6"/><path d="M14 38c0-6 4-10 10-10s10 4 10 10"/></svg></div><div class="why-tile-title">Skilled Resource Strain</div><div class="why-tile-body">Support work pulls quality, engineering, and operations teams away from higher-value priorities.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-how">
+    <div class="section-inner">
+      <div class="section-head">
+        <div class="section-eyebrow">Our capabilities</div>
+        <h3 class="section-title">How RELY helps medical, dental, and healthcare manufacturers</h3>
+      </div>
+      <div class="how-grid">
+        <div class="how-card"><div><div class="how-card-num">01</div><div class="how-card-illustration"><svg viewBox="0 0 56 56"><circle cx="14" cy="14" r="5"/><circle cx="42" cy="14" r="5"/><circle cx="14" cy="42" r="5"/><circle cx="42" cy="42" r="5"/><path d="M19 14h18M14 19v18M42 19v18M19 42h18"/></svg></div><div class="how-card-title">Controlled Assembly & Subassembly</div><div class="how-card-body">Structured support for detail-sensitive builds and labor-intensive production work.</div></div><span class="how-card-tag">Controlled Layer</span></div>
+        <div class="how-card"><div><div class="how-card-num">02</div><div class="how-card-illustration"><svg viewBox="0 0 56 56"><rect x="8" y="16" width="40" height="32" rx="1"/><path d="M8 26h40M18 16V8h20v8"/></svg></div><div class="how-card-title">Kitting & Packaging Support</div><div class="how-card-body">Support for kits, packaged components, and execution-heavy preparation work.</div></div><span class="how-card-tag">Core Capability</span></div>
+        <div class="how-card"><div><div class="how-card-num">03</div><div class="how-card-illustration"><svg viewBox="0 0 56 56"><path d="M28 8L10 16v12c0 10 8 18 18 22 10-4 18-12 18-22V16L28 8z"/><path d="M20 28l5 5 11-11"/></svg></div><div class="how-card-title">Inspection, Testing & Rework</div><div class="how-card-body">Inspection, testing, sortation, and rework that protect quality before issues travel downstream.</div></div><span class="how-card-tag">Quality Lens</span></div>
+        <div class="how-card"><div><div class="how-card-num">04</div><div class="how-card-illustration"><svg viewBox="0 0 56 56"><path d="M12 44l3-12L40 8l6 6L22 41l-10 3z"/><path d="M34 14l6 6"/></svg></div><div class="how-card-title">Launch & Validation Support</div><div class="how-card-body">Execution support for new product launches, validation-related work, and controlled ramp-ups.</div></div><span class="how-card-tag">Launch Lens</span></div>
+        <div class="how-card"><div><div class="how-card-num">05</div><div class="how-card-illustration"><svg viewBox="0 0 56 56"><rect x="12" y="6" width="32" height="44" rx="1"/><path d="M20 16h16M20 24h16M20 32h12"/></svg></div><div class="how-card-title">Traceability-Ready Work Support</div><div class="how-card-body">Work executed with the structure needed to align with documentation and quality expectations.</div></div><span class="how-card-tag">Structured Execution</span></div>
+        <div class="how-card"><div><div class="how-card-num">06</div><div class="how-card-illustration"><svg viewBox="0 0 56 56"><path d="M48 28a20 20 0 11-6-14"/><path d="M48 8v12h-12"/></svg></div><div class="how-card-title">Long-Tail Product Support</div><div class="how-card-body">Replacement, service, and ongoing support for products that remain active after launch.</div></div><span class="how-card-tag">Long-Tail Support</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="section-proof">
+    <div class="proof-inner">
+      <div class="proof-head">
+        <div class="proof-eyebrow">Proof point — quality at scale</div>
+        <h3 class="proof-title">Testing, inspection, and rework with the volume and speed quality-critical work requires</h3>
+        <p class="proof-narrative">RELY's experience in sortation, testing, and rework has built a disciplined quality mindset that helps customers catch issues before they become downstream problems. In 2025 alone, we supported tens of millions of parts, scaled to multi-million-part peaks, and deployed rapid-response quality support in hours, not days.</p>
+      </div>
+      <div class="proof-grid-with-image">
+        <div class="kpi-grid">
+          <div class="kpi-tile">
+            <div class="kpi-eyebrow">Annual volume</div>
+            <div class="kpi-number">62M+</div>
+            <div class="kpi-label">Parts sorted across customer programs in 2025</div>
+          </div>
+          <div class="kpi-tile">
+            <div class="kpi-eyebrow">Peak week</div>
+            <div class="kpi-number">4.5M</div>
+            <div class="kpi-label">Parts processed in a single week</div>
+          </div>
+          <div class="kpi-tile">
+            <div class="kpi-eyebrow">Response speed</div>
+            <div class="kpi-number">4-Hr</div>
+            <div class="kpi-label">Fastest documented deployment</div>
+          </div>
+        </div>
+        <aside class="proof-image-side">
+          <!-- MEDIA PLACEHOLDER: proof-point supporting photo -->
+          <div class="media-placeholder">
+            <div class="media-placeholder-icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1" fill="none" stroke="#fff" stroke-width="2"/><circle cx="8.5" cy="10.5" r="1.5" fill="#fff"/><polyline points="21 15 16 10 5 21" fill="none" stroke="#fff" stroke-width="2"/></svg></div>
+            <div class="media-placeholder-type">Proof point photo</div>
+            <div class="media-placeholder-title">Real moment from this case</div>
+            <div class="media-placeholder-desc">Quality team at inspection bench — magnification, traceability paperwork visible</div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+
+  <div class="industry-cta">
+    <div class="industry-cta-inner">
+      <h3 class="industry-cta-title">Need a partner for controlled, quality-critical support work?</h3>
+      <p class="industry-cta-body">Whether you need help with assembly, kitting, testing, inspection, rework, launch support, or ongoing replacement-part support, RELY is ready to step in.</p>
+      <a href="#contact" class="btn-primary">Start the Conversation<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TRANSITION → RECREATION (Industry 07)
+     ============================================================ -->
+<div class="transition">
+  <div class="transition-eyebrow">Industry 07</div>
+  <h2 class="transition-name">Recreation, Outdoors & Lifestyle</h2>
+  <p class="transition-quote">From clinical precision to the <span>moments that matter most</span>.</p>
+</div>
+
+<!-- ============================================================
+     INDUSTRY 7: RECREATION
+     ============================================================ -->
+<section class="industry recreation" id="recreation">
+  <div class="industry-hero">
+    <div class="industry-hero-inner">
+      <div>
+        <div class="industry-marker">
+          <span class="industry-number">07 / 07</span>
+          <span class="industry-marker-line"></span>
+          <span class="industry-eyebrow">Industry</span>
+        </div>
+        <h2 class="industry-headline">Built for the seasonality and brand experience behind lifestyle-driven product lines</h2>
+        <p class="industry-intro">Recreation, outdoor, and lifestyle brands often have to manage seasonal demand swings, high product variation, product refresh cycles, and accessory-heavy assortments across channels where timing matters.</p>
+        <p class="industry-intro">RELY helps brands absorb that pressure by taking on the execution-heavy work that supports launches, bundled offerings, and ongoing demand without overloading internal teams.</p>
+      </div>
+      <div class="industry-hero-visual">
+        <!-- ============================================================
+             MEDIA PLACEHOLDER: industry hero photo or video
+             RECOMMENDED: replace the SVG illustration below with real
+             photography or a short video loop for this industry.
+             Spec: photo OR 10-15s video loop · 4:3 or 1:1 aspect · max 540px wide
+             Content: Branded packout with retail aesthetics, gift packs, accessory bundles, seasonal staging
+             The SVG below is a structural fallback only.
+             ============================================================ -->
+        <div class="media-placeholder aspect-4-3" style="margin-bottom: 16px;">
+          <div class="media-placeholder-icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1" fill="none" stroke="#fff" stroke-width="2"/><circle cx="8.5" cy="10.5" r="1.5" fill="#fff"/><polyline points="21 15 16 10 5 21" fill="none" stroke="#fff" stroke-width="2"/></svg></div>
+          <div class="media-placeholder-type">Industry hero photo / video</div>
+          <div class="media-placeholder-title">Lifestyle brand fulfillment</div>
+          <div class="media-placeholder-desc">Branded packout with retail aesthetics, gift packs, accessory bundles, seasonal staging</div>
+        </div>
+        <svg viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#EC5826" stroke-width="1.2">
+          <!-- seasonal peak curve -->
+          <path d="M40 320 Q120 320 160 280 Q200 220 240 100 Q280 220 320 280 Q360 320 460 320" stroke="#EC5826" stroke-width="2"/>
+          <!-- baseline -->
+          <line x1="40" y1="320" x2="460" y2="320" stroke="rgba(255,255,255,0.15)"/>
+          <!-- season labels -->
+          <text x="80" y="350" fill="#888" font-family="Barlow Condensed" font-weight="700" font-size="11" letter-spacing="2">SPRING</text>
+          <text x="180" y="350" fill="#888" font-family="Barlow Condensed" font-weight="700" font-size="11" letter-spacing="2">SUMMER</text>
+          <text x="290" y="350" fill="#888" font-family="Barlow Condensed" font-weight="700" font-size="11" letter-spacing="2">FALL</text>
+          <text x="400" y="350" fill="#888" font-family="Barlow Condensed" font-weight="700" font-size="11" letter-spacing="2">WINTER</text>
+          <!-- peak callout -->
+          <circle cx="240" cy="100" r="6" fill="#EC5826"/>
+          <line x1="240" y1="100" x2="240" y2="60" stroke="#EC5826" stroke-dasharray="2 3"/>
+          <text x="240" y="50" text-anchor="middle" fill="#fff" font-family="Barlow Condensed" font-weight="800" font-size="14" letter-spacing="2">PEAK</text>
+          <text x="240" y="38" text-anchor="middle" fill="#EC5826" font-family="Barlow Condensed" font-weight="700" font-size="10" letter-spacing="3">DEMAND</text>
+          <!-- side markers -->
+          <line x1="40" y1="320" x2="40" y2="80" stroke="rgba(255,255,255,0.1)"/>
+          <text x="20" y="200" text-anchor="middle" fill="#666" font-family="Barlow Condensed" font-weight="700" font-size="10" letter-spacing="2" transform="rotate(-90 20 200)">VOLUME</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <!-- SECTION B: COMPARISON (with/without RELY) -->
+  <div class="section-compare">
+    <div class="section-inner">
+      <div class="section-head">
+        <div class="section-eyebrow">The decision</div>
+        <h3 class="section-title">Why recreation, outdoor, and lifestyle brands turn to RELY</h3>
+      </div>
+      <div class="compare-grid">
+        <div class="compare-col without">
+          <div class="compare-col-head"><span class="compare-col-tag">Without</span><span class="compare-col-title">Absorbing it internally</span></div>
+          <ul class="compare-list">
+            <li><span class="compare-mark">✕</span>Seasonal demand and launches compete with day-to-day operations for time and attention</li>
+            <li><span class="compare-mark">✕</span>Accessory packs, bundles, and prep work consume labor and coordination capacity</li>
+            <li><span class="compare-mark">✕</span>Packout, presentation, and fulfillment inconsistency create customer experience risk</li>
+            <li><span class="compare-mark">✕</span>Internal teams get pulled into execution-heavy support work that slows growth</li>
+          </ul>
+        </div>
+        <div class="compare-col with">
+          <div class="compare-col-head"><span class="compare-col-tag">With RELY</span><span class="compare-col-title">Brand-right execution</span></div>
+          <ul class="compare-list">
+            <li><span class="compare-mark">✓</span>Execution-heavy support work is handled by a disciplined external partner</li>
+            <li><span class="compare-mark">✓</span>Internal teams stay focused on growth, product priorities, and brand strategy</li>
+            <li><span class="compare-mark">✓</span>Launches, peaks, and ongoing channel demand are easier to manage in parallel</li>
+            <li><span class="compare-mark">✓</span>Customer experience is protected through consistent prep, packout, and fulfillment</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="section-pressure">
+    <div class="section-inner">
+      <div class="section-head">
+        <div class="section-eyebrow">The pressure stack</div>
+        <h3 class="section-title">How complexity compounds across seasonal demand</h3>
+      </div>
+      <div class="pressure-stack">
+        <div class="pressure-node"><div class="pressure-num">01</div><div class="pressure-title">Seasonal Demand Swings</div><div class="pressure-body">Peak-season volume creates strain across packout, prep, and fulfillment.</div></div>
+        <div class="pressure-arrow">→</div>
+        <div class="pressure-node"><div class="pressure-num">02</div><div class="pressure-title">More Product Variation</div><div class="pressure-body">More models, colors, bundles, and configurations increase complexity.</div></div>
+        <div class="pressure-arrow">→</div>
+        <div class="pressure-node"><div class="pressure-num">03</div><div class="pressure-title">More Accessory & Bundle Complexity</div><div class="pressure-body">Kits, add-ons, and bundled offerings create more handling and coordination.</div></div>
+        <div class="pressure-arrow">→</div>
+        <div class="pressure-node"><div class="pressure-num">04</div><div class="pressure-title">More Brand Experience Risk</div><div class="pressure-body">Inconsistent execution can affect how every order is received.</div></div>
+      </div>
+      <div class="pressure-result">
+        <div class="pressure-result-label">The result</div>
+        <div class="pressure-result-text">More operational pressure across launches, peak seasons, and every branded customer touchpoint.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-why">
+    <div class="section-inner">
+      <div class="section-head">
+        <div class="section-eyebrow">Operational pressures</div>
+        <h3 class="section-title">Why recreation, outdoor, and lifestyle brands use RELY</h3>
+      </div>
+      <div class="why-grid">
+        <div class="why-tile"><div class="why-tile-icon"><svg viewBox="0 0 48 48"><path d="M6 36L18 28l8 8 16-16"/><path d="M42 12h-10M42 12v10"/></svg></div><div class="why-tile-title">Seasonal Demand Swings</div><div class="why-tile-body">Peak-season volume creates strain across packout, prep, and fulfillment.</div></div>
+        <div class="why-tile"><div class="why-tile-icon"><svg viewBox="0 0 48 48"><path d="M24 8v8M24 8l-8 8M24 8l8 8M16 16v24M32 16v24"/></svg></div><div class="why-tile-title">High Product Variation</div><div class="why-tile-body">More models, colors, bundles, and configurations increase complexity.</div></div>
+        <div class="why-tile"><div class="why-tile-icon"><svg viewBox="0 0 48 48"><path d="M12 38l3-10L36 10l4 4L20 35l-8 3z"/><path d="M30 16l4 4"/></svg></div><div class="why-tile-title">Launch & Refresh Pressure</div><div class="why-tile-body">New drops and refresh cycles compress execution timelines.</div></div>
+        <div class="why-tile"><div class="why-tile-icon"><svg viewBox="0 0 48 48"><circle cx="16" cy="16" r="6"/><circle cx="32" cy="32" r="6"/><path d="M22 16h4a6 6 0 016 6v4"/></svg></div><div class="why-tile-title">Accessory & Bundle Complexity</div><div class="why-tile-body">Kits, add-ons, and bundled offerings add handling and coordination work.</div></div>
+        <div class="why-tile"><div class="why-tile-icon"><svg viewBox="0 0 48 48"><rect x="8" y="14" width="32" height="26" rx="1"/><path d="M16 14V8h16v6M16 24h16"/></svg></div><div class="why-tile-title">Brand Experience Risk</div><div class="why-tile-body">Packout and presentation consistency shape how the brand is received.</div></div>
+        <div class="why-tile"><div class="why-tile-icon"><svg viewBox="0 0 48 48"><rect x="8" y="16" width="32" height="24" rx="1"/><path d="M16 16v-6h16v6M22 28h4"/></svg></div><div class="why-tile-title">Execution-Heavy Support Work</div><div class="why-tile-body">Prep, fulfillment, and value-added work pull focus from core priorities.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-how">
+    <div class="section-inner">
+      <div class="section-head">
+        <div class="section-eyebrow">Our capabilities</div>
+        <h3 class="section-title">How RELY helps recreation, outdoor, and lifestyle brands</h3>
+      </div>
+      <div class="how-grid">
+        <div class="how-card"><div><div class="how-card-num">01</div><div class="how-card-illustration"><svg viewBox="0 0 56 56"><rect x="8" y="16" width="40" height="32" rx="1"/><path d="M8 26h40M18 16V8h20v8M22 36h12"/></svg></div><div class="how-card-title">Kitting & Bundled Packouts</div><div class="how-card-body">Support for kits, bundles, and product groupings tied to lifestyle-driven assortments.</div></div><span class="how-card-tag">Core Capability</span></div>
+        <div class="how-card"><div><div class="how-card-num">02</div><div class="how-card-illustration"><svg viewBox="0 0 56 56"><path d="M18 8h20l4 8H14l4-8z"/><rect x="10" y="16" width="36" height="30" rx="1"/><path d="M20 30l5 5 11-11"/></svg></div><div class="how-card-title">Packout, Prep & Fulfillment</div><div class="how-card-body">Execution support for prep, presentation, and order readiness across channels.</div></div><span class="how-card-tag">Channel Layer</span></div>
+        <div class="how-card"><div><div class="how-card-num">03</div><div class="how-card-illustration"><svg viewBox="0 0 56 56"><path d="M12 44l3-12L40 8l6 6L22 41l-10 3z"/><path d="M34 14l6 6"/></svg></div><div class="how-card-title">Launch & Refresh Support</div><div class="how-card-body">Support for new drops, seasonal launches, and refresh-driven demand.</div></div><span class="how-card-tag">Speed Lens</span></div>
+        <div class="how-card"><div><div class="how-card-num">04</div><div class="how-card-illustration"><svg viewBox="0 0 56 56"><circle cx="18" cy="18" r="7"/><circle cx="38" cy="38" r="7"/><path d="M25 18h6a7 7 0 017 7v6"/></svg></div><div class="how-card-title">Accessory & Add-On Support</div><div class="how-card-body">Execution support for accessory-heavy product lines and bundled offerings.</div></div><span class="how-card-tag">Specialty</span></div>
+        <div class="how-card"><div><div class="how-card-num">05</div><div class="how-card-illustration"><svg viewBox="0 0 56 56"><path d="M28 8L10 16v12c0 10 8 18 18 22 10-4 18-12 18-22V16L28 8z"/><path d="M20 28l5 5 11-11"/></svg></div><div class="how-card-title">Quality Control & Rework</div><div class="how-card-body">Inspection, testing, sortation, and rework that protect the customer experience.</div></div><span class="how-card-tag">Quality Lens</span></div>
+        <div class="how-card"><div><div class="how-card-num">06</div><div class="how-card-illustration"><svg viewBox="0 0 56 56"><path d="M8 44L22 30l8 8 22-22"/><path d="M52 16h-12M52 16v12"/></svg></div><div class="how-card-title">Scalable Execution Support</div><div class="how-card-body">Flexible labor and disciplined process support for peak seasons and demand swings.</div></div><span class="how-card-tag">Scale Layer</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="section-proof">
+    <div class="proof-inner">
+      <div class="proof-head">
+        <div class="proof-eyebrow">Proof point — fast-growing consumer brand</div>
+        <h3 class="proof-title">Scaling fulfillment without slowing the business</h3>
+        <p class="proof-narrative">As growth accelerated, a fast-growing consumer beverage brand needed a partner that could handle SKU complexity, packout variation, and fulfillment execution without slowing the business down. RELY supported 359% FBA volume growth in six months across 194 SKUs and more than 20 packout formats.</p>
+      </div>
+      <div class="proof-grid-with-image">
+        <div class="kpi-grid">
+          <div class="kpi-tile">
+            <div class="kpi-eyebrow">Growth</div>
+            <div class="kpi-number">359%</div>
+            <div class="kpi-label">FBA volume growth in six months</div>
+          </div>
+          <div class="kpi-tile">
+            <div class="kpi-eyebrow">Scope</div>
+            <div class="kpi-number">194</div>
+            <div class="kpi-label">SKUs supported in parallel</div>
+          </div>
+          <div class="kpi-tile">
+            <div class="kpi-eyebrow">Complexity</div>
+            <div class="kpi-number">20+</div>
+            <div class="kpi-label">Packout formats managed</div>
+          </div>
+        </div>
+        <aside class="proof-image-side">
+          <!-- MEDIA PLACEHOLDER: proof-point supporting photo -->
+          <div class="media-placeholder">
+            <div class="media-placeholder-icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1" fill="none" stroke="#fff" stroke-width="2"/><circle cx="8.5" cy="10.5" r="1.5" fill="#fff"/><polyline points="21 15 16 10 5 21" fill="none" stroke="#fff" stroke-width="2"/></svg></div>
+            <div class="media-placeholder-type">Proof point photo</div>
+            <div class="media-placeholder-title">Real moment from this case</div>
+            <div class="media-placeholder-desc">Branded retail-ready packout — gift packs being staged, lifestyle aesthetic</div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+
+  <div class="industry-cta">
+    <div class="industry-cta-inner">
+      <h3 class="industry-cta-title">Ready to grow demand without the operational lift?</h3>
+      <p class="industry-cta-body">RELY helps recreation, outdoor, and lifestyle brands support launches, peak seasons, and channel complexity without building the operational burden internally.</p>
+      <a href="#contact" class="btn-primary">Start the Conversation<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FINAL CTA
+     ============================================================ -->
+<section class="final-cta" id="contact">
+  <!-- ============================================================
+       MEDIA PLACEHOLDER (optional): Final CTA background video
+       Same spec as global hero — short loop, muted, dark grade.
+       Content: a single sustained operational moment (e.g., a wide
+       shot of an active production floor). Lower priority than
+       the hero video — can ship without this.
+       ============================================================ -->
+  <div class="final-inner">
+    <div class="final-eyebrow">— The decision is operational</div>
+    <h2 class="final-title">Built to support complex manufacturing environments across industries</h2>
+    <p class="final-sub">Whether you are managing growth, product variation, supply chain complexity, launch pressure, or execution-heavy operational work, RELY helps manufacturers scale without absorbing all of the strain internally.</p>
+    <a href="mailto:hello@relymfg.com" class="btn-on-orange">
+      Start the Conversation
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</section>
+
+<script>
+const sections = ['automotive', 'electronics', 'food', 'furniture', 'industrial', 'medical', 'recreation'];
+
+function jumpTo(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// Wire any in-page data-target buttons (hero strip, CTA buttons)
+document.querySelectorAll('[data-target]').forEach(btn => {
+  btn.addEventListener('click', () => jumpTo(btn.dataset.target));
+});
+
+// Pressure-stack fade-in on scroll
+const pressureNodes = document.querySelectorAll('.pressure-node');
+if ('IntersectionObserver' in window) {
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('in-view');
+    });
+  }, { threshold: 0.25 });
+  pressureNodes.forEach(n => obs.observe(n));
+} else {
+  pressureNodes.forEach(n => n.classList.add('in-view'));
+}
+
+// Honor hash on load (dev team's nav dropdown will use #anchor links)
+window.addEventListener('load', () => {
+  if (location.hash) {
+    const id = location.hash.replace('#', '');
+    if (sections.includes(id)) {
+      setTimeout(() => jumpTo(id), 100);
+    }
+  }
+});
+</script>
+
+</body>
+</html>
