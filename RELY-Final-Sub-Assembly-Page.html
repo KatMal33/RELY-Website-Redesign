@@ -1,0 +1,1617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Final & Sub-Assembly Services | RELY Contract Manufacturing</title>
+<style>
+  /* ============ DESIGN TOKENS ============ */
+  :root {
+    --orange: #EC5826;
+    --orange-hover: #d44a1c;
+    --black: #0a0a0a;
+    --near-black: #1a1a1a;
+    --dark-gray: #2C2C2C;
+    --mid-gray: #3a3a3a;
+    --light-gray: #f2f0eb;
+    --off-white: #fafaf8;
+    --white: #ffffff;
+    --muted: #8a8a8a;
+    --text-muted: #555555;
+    --border-dark: #2a2a2a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: var(--near-black);
+    background: var(--white);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Barlow Condensed', 'Barlow', sans-serif;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+  }
+
+  .display {
+    font-family: 'Barlow Condensed', 'Barlow', sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.005em;
+  }
+
+  .eyebrow {
+    font-family: 'Barlow', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--orange);
+  }
+
+  .container {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  /* ============ HERO ============ */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
+    background:
+      linear-gradient(110deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.75) 45%, rgba(0,0,0,0.35) 100%),
+      radial-gradient(ellipse at 75% 50%, #3a2818 0%, #1a1410 45%, #0a0a0a 100%);
+    color: var(--white);
+    padding: 120px 0 80px;
+    text-align: left;
+  }
+
+  .hero .container {
+    text-align: left;
+    width: 100%;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(90deg, transparent 0%, transparent 49.5%, rgba(236,88,38,0.04) 49.5%, rgba(236,88,38,0.04) 50%, transparent 50%, transparent 100%),
+      linear-gradient(0deg, transparent 0%, transparent 49.5%, rgba(255,255,255,0.02) 49.5%, rgba(255,255,255,0.02) 50%, transparent 50%, transparent 100%);
+    background-size: 80px 80px, 80px 80px;
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.4) 100%);
+    pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 720px;
+    margin-right: auto;
+    margin-left: 0;
+    text-align: left;
+  }
+
+  .hero-label {
+    display: inline-block;
+    padding: 8px 14px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(0,0,0,0.4);
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 32px;
+    font-size: 11px;
+  }
+
+  .hero h1 {
+    font-size: clamp(44px, 6vw, 76px);
+    font-weight: 800;
+    margin-bottom: 28px;
+    text-transform: uppercase;
+    color: var(--white);
+  }
+
+  .hero p {
+    font-size: clamp(17px, 1.4vw, 20px);
+    color: rgba(255,255,255,0.82);
+    max-width: 600px;
+    margin-bottom: 44px;
+    line-height: 1.55;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 32px;
+    font-family: 'Barlow', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    border: none;
+  }
+
+  .btn-primary {
+    background: var(--orange);
+    color: var(--white);
+  }
+
+  .btn-primary:hover {
+    background: var(--orange-hover);
+    transform: translateY(-1px);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--white);
+    border: 1px solid rgba(255,255,255,0.4);
+  }
+
+  .btn-secondary:hover {
+    background: rgba(255,255,255,0.08);
+    border-color: var(--white);
+  }
+
+  .btn-arrow { font-size: 16px; line-height: 1; }
+
+  .hero-credibility {
+    position: absolute;
+    bottom: 48px;
+    right: 40px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 0.06em;
+  }
+
+  .hero-credibility span {
+    border-right: 2px solid var(--orange);
+    padding-right: 12px;
+  }
+
+  /* ============ SECTION 2 — POSITIONING ============ */
+  .positioning {
+    background: var(--white);
+    padding: 140px 0;
+  }
+
+  .positioning-inner {
+    max-width: 920px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .positioning .eyebrow { margin-bottom: 40px; }
+
+  .positioning .statement {
+    font-size: clamp(36px, 4.5vw, 58px);
+    font-weight: 800;
+    color: var(--near-black);
+    margin-bottom: 48px;
+    line-height: 1.08;
+    text-transform: uppercase;
+    font-family: 'Barlow Condensed', sans-serif;
+  }
+
+  .positioning .body-copy {
+    font-size: 18px;
+    color: var(--text-muted);
+    max-width: 720px;
+    margin: 0 auto 24px;
+    line-height: 1.7;
+  }
+
+  .positioning .body-copy + .body-copy { margin-bottom: 80px; }
+
+  .positioning .pull {
+    font-size: clamp(24px, 2.6vw, 34px);
+    font-weight: 700;
+    color: var(--near-black);
+    margin: 80px auto 70px;
+    max-width: 780px;
+    line-height: 1.25;
+    text-transform: uppercase;
+    font-family: 'Barlow Condensed', sans-serif;
+    letter-spacing: 0.005em;
+  }
+
+  .pull span { color: var(--orange); display: block; }
+
+  /* Pressure stack flow */
+  .pressure-flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: nowrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 0;
+  }
+
+  .pressure-node {
+    padding: 16px 18px;
+    border: 1px solid #e5e3de;
+    background: var(--off-white);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--near-black);
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    flex: 0 1 auto;
+  }
+
+  .pressure-node:last-child {
+    background: var(--orange);
+    color: var(--white);
+    border-color: var(--orange);
+  }
+
+  .pressure-arrow {
+    color: var(--orange);
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  /* ============ SECTION 3 — BUILT FOR OEM ============ */
+  .oem-section {
+    background: var(--light-gray);
+    padding: 140px 0;
+  }
+
+  .split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .image-block {
+    aspect-ratio: 4 / 5;
+    background:
+      linear-gradient(135deg, rgba(236,88,38,0.08) 0%, transparent 50%),
+      linear-gradient(160deg, #2c2c2c 0%, #1a1a1a 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .image-block::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(45deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 2px, transparent 2px, transparent 12px);
+  }
+
+  .image-block::after {
+    content: 'CINEMATIC ASSEMBLY IMAGERY';
+    position: absolute;
+    bottom: 24px;
+    left: 24px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.3);
+  }
+
+  .image-block .corner-mark {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    width: 36px;
+    height: 36px;
+    border-top: 2px solid var(--orange);
+    border-left: 2px solid var(--orange);
+  }
+
+  .image-block .corner-mark.br {
+    top: auto;
+    left: auto;
+    bottom: 24px;
+    right: 24px;
+    border: none;
+    border-bottom: 2px solid var(--orange);
+    border-right: 2px solid var(--orange);
+  }
+
+  .oem-section h2 {
+    font-size: clamp(36px, 3.6vw, 50px);
+    font-weight: 800;
+    text-transform: uppercase;
+    margin: 20px 0 28px;
+    color: var(--near-black);
+  }
+
+  .oem-section p.lead {
+    font-size: 17px;
+    color: var(--text-muted);
+    margin-bottom: 36px;
+    line-height: 1.65;
+  }
+
+  .capability-stack {
+    list-style: none;
+    border-top: 1px solid #d8d6d1;
+  }
+
+  .capability-stack li {
+    padding: 18px 0;
+    border-bottom: 1px solid #d8d6d1;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--near-black);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .capability-stack li::before {
+    content: '';
+    width: 18px;
+    height: 2px;
+    background: var(--orange);
+    flex-shrink: 0;
+  }
+
+  .oem-pull {
+    text-align: center;
+    margin-top: 100px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(22px, 2.2vw, 30px);
+    font-weight: 600;
+    color: var(--near-black);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.3;
+    padding-top: 60px;
+    border-top: 1px solid #d8d6d1;
+  }
+
+  /* ============ SECTION 4 — HOW RELY OPERATES ============ */
+  .operations {
+    background: var(--black);
+    color: var(--white);
+    padding: 140px 0;
+  }
+
+  .operations .eyebrow {
+    color: var(--orange);
+    margin-bottom: 32px;
+    display: block;
+    text-align: center;
+  }
+
+  .operations h2 {
+    text-align: center;
+    font-size: clamp(36px, 4vw, 56px);
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 80px;
+    color: var(--white);
+  }
+
+  .ops-flow {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr) ;
+    gap: 0;
+    position: relative;
+    padding: 40px 0;
+  }
+
+  .ops-step {
+    text-align: center;
+    padding: 0 16px;
+    position: relative;
+  }
+
+  .ops-step:not(:last-child)::after {
+    content: '→';
+    position: absolute;
+    right: -12px;
+    top: 14px;
+    color: var(--orange);
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  .ops-step-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--orange);
+    margin-bottom: 18px;
+  }
+
+  .ops-step-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 17px;
+    text-transform: uppercase;
+    line-height: 1.2;
+    color: var(--white);
+  }
+
+  .operations .support-copy {
+    text-align: center;
+    color: rgba(255,255,255,0.65);
+    max-width: 640px;
+    margin: 64px auto 0;
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  /* ============ SECTION 5 — FINAL ASSEMBLY ============ */
+  .final-assembly {
+    background: var(--white);
+    padding: 140px 0;
+  }
+
+  .full-image {
+    aspect-ratio: 21 / 9;
+    background:
+      linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.7) 100%),
+      linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%);
+    position: relative;
+    margin-bottom: 80px;
+    overflow: hidden;
+  }
+
+  .full-image::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(45deg, rgba(255,255,255,0.025) 0px, rgba(255,255,255,0.025) 1px, transparent 1px, transparent 10px);
+  }
+
+  .full-image-label {
+    position: absolute;
+    bottom: 32px;
+    left: 40px;
+    color: rgba(255,255,255,0.5);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  .full-image-meta {
+    position: absolute;
+    top: 32px;
+    right: 40px;
+    color: rgba(255,255,255,0.4);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-align: right;
+  }
+
+  .full-image-meta strong { color: var(--orange); display: block; }
+
+  .three-col {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-bottom: 100px;
+  }
+
+  .framework-card {
+    padding: 0;
+    border-top: 3px solid var(--orange);
+    padding-top: 28px;
+  }
+
+  .framework-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    color: var(--orange);
+    letter-spacing: 0.15em;
+    margin-bottom: 12px;
+  }
+
+  .framework-card h3 {
+    font-size: 24px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    color: var(--near-black);
+  }
+
+  .framework-card p {
+    color: var(--text-muted);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .final-statement {
+    text-align: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(28px, 3vw, 42px);
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--near-black);
+    max-width: 900px;
+    margin: 0 auto;
+    line-height: 1.15;
+    padding: 60px 0;
+  }
+
+  .final-statement span { color: var(--orange); }
+
+  /* ============ SECTION 6 — SUB-ASSEMBLY ============ */
+  .sub-assembly {
+    background: var(--light-gray);
+    padding: 140px 0;
+  }
+
+  .sub-assembly h2 {
+    font-size: clamp(36px, 3.6vw, 50px);
+    font-weight: 800;
+    text-transform: uppercase;
+    margin: 20px 0 24px;
+    color: var(--near-black);
+  }
+
+  .sub-assembly p.lead {
+    font-size: 17px;
+    color: var(--text-muted);
+    line-height: 1.65;
+  }
+
+  .benefit-stack {
+    display: grid;
+    gap: 32px;
+  }
+
+  .benefit-block {
+    background: var(--white);
+    padding: 32px;
+    border-left: 3px solid var(--orange);
+  }
+
+  .benefit-block h4 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--orange);
+    margin-bottom: 18px;
+  }
+
+  .benefit-block ul {
+    list-style: none;
+  }
+
+  .benefit-block ul li {
+    padding: 8px 0;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--near-black);
+    letter-spacing: 0.03em;
+    position: relative;
+    padding-left: 20px;
+  }
+
+  .benefit-block ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 16px;
+    width: 8px;
+    height: 2px;
+    background: var(--orange);
+  }
+
+  .before-after {
+    margin-top: 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .ba-card {
+    padding: 36px;
+    background: var(--white);
+    position: relative;
+  }
+
+  .ba-card.without {
+    border-top: 3px solid #9a9a9a;
+  }
+
+  .ba-card.with {
+    border-top: 3px solid var(--orange);
+  }
+
+  .ba-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: #9a9a9a;
+    margin-bottom: 16px;
+  }
+
+  .ba-card.with .ba-label { color: var(--orange); }
+
+  .ba-card.without h3 { color: #555555; }
+  .ba-card.with h3 { color: var(--near-black); }
+
+  .ba-card h3 {
+    font-size: 22px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--near-black);
+    line-height: 1.2;
+  }
+
+  /* ============ SECTION 7 — QUALITY ============ */
+  .quality {
+    background: var(--black);
+    color: var(--white);
+    padding: 140px 0;
+  }
+
+  .quality .eyebrow { color: var(--orange); display: block; margin-bottom: 28px; }
+
+  .quality h2 {
+    font-size: clamp(36px, 3.6vw, 52px);
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 64px;
+    color: var(--white);
+    max-width: 800px;
+  }
+
+  .quality-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .quality-image {
+    aspect-ratio: 4 / 5;
+    background:
+      linear-gradient(135deg, rgba(236,88,38,0.06) 0%, transparent 60%),
+      linear-gradient(160deg, #252525 0%, #0f0f0f 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .quality-image::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 14px);
+  }
+
+  .quality-image::after {
+    content: 'INSPECTION • TRACEABILITY • CONTROL';
+    position: absolute;
+    bottom: 24px;
+    left: 24px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.35);
+  }
+
+  .quality-image .corner-mark { border-color: var(--orange); }
+
+  .quality-stack li {
+    padding: 22px 0;
+    border-bottom: 1px solid var(--border-dark);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 19px;
+    text-transform: uppercase;
+    color: var(--white);
+    letter-spacing: 0.03em;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .quality-stack li::before {
+    content: '';
+    width: 18px;
+    height: 2px;
+    background: var(--orange);
+    flex-shrink: 0;
+  }
+
+  .quality-stack li:first-child { border-top: 1px solid var(--border-dark); }
+
+  .quality-pull {
+    text-align: center;
+    margin-top: 100px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(24px, 2.5vw, 34px);
+    font-weight: 600;
+    color: var(--white);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.3;
+    padding-top: 60px;
+    border-top: 1px solid var(--border-dark);
+  }
+
+  .quality-pull span { color: var(--orange); display: block; }
+
+  /* ============ SECTION 8 — SCALABLE CAPACITY ============ */
+  .scalable {
+    background: var(--white);
+    padding: 140px 0;
+    text-align: center;
+  }
+
+  .scalable .eyebrow { display: block; margin-bottom: 28px; }
+
+  .scalable h2 {
+    font-size: clamp(36px, 4vw, 56px);
+    font-weight: 800;
+    text-transform: uppercase;
+    margin: 0 auto 32px;
+    color: var(--near-black);
+    max-width: 900px;
+    line-height: 1.1;
+  }
+
+  .scalable p.lead {
+    font-size: 18px;
+    color: var(--text-muted);
+    max-width: 760px;
+    margin: 0 auto 80px;
+    line-height: 1.65;
+  }
+
+  .capability-bands {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    border-top: 1px solid #e5e3de;
+    border-bottom: 1px solid #e5e3de;
+  }
+
+  .band {
+    padding: 48px 24px;
+    border-right: 1px solid #e5e3de;
+    text-align: left;
+    transition: all 0.35s ease;
+    cursor: default;
+    background: var(--white);
+  }
+
+  .band:last-child { border-right: none; }
+
+  .band-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.2em;
+    margin-bottom: 24px;
+    display: block;
+  }
+
+  .band h4 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--near-black);
+    line-height: 1.2;
+    margin-bottom: 0;
+  }
+
+  .band:hover {
+    background: var(--near-black);
+  }
+
+  .band:hover h4 { color: var(--white); }
+  .band:hover .band-num { color: var(--orange); }
+
+  /* ============ SECTION 9 — WITHOUT / WITH ============ */
+  .comparison {
+    background: var(--light-gray);
+    padding: 140px 0;
+  }
+
+  .comparison-header {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+
+  .comparison-header .eyebrow { display: block; margin-bottom: 28px; }
+
+  .comparison-header h2 {
+    font-size: clamp(34px, 3.4vw, 48px);
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--near-black);
+    max-width: 900px;
+    margin: 0 auto;
+    line-height: 1.1;
+  }
+
+  .comparison-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    background: transparent;
+  }
+
+  .comparison-col {
+    padding: 56px 56px;
+    position: relative;
+  }
+
+  .comparison-col.without {
+    background: #3a3a3a;
+    color: var(--white);
+  }
+
+  .comparison-col.with {
+    background: var(--orange);
+    color: var(--white);
+  }
+
+  .comp-header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding-bottom: 24px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+  }
+
+  .comparison-col.with .comp-header {
+    border-bottom-color: rgba(255,255,255,0.25);
+  }
+
+  .comp-pill {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    padding: 8px 14px;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .comparison-col.without .comp-pill {
+    background: #1f1f1f;
+    color: var(--white);
+  }
+
+  .comparison-col.with .comp-pill {
+    background: #b8421d;
+    color: var(--white);
+  }
+
+  .comp-headline {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    line-height: 1.15;
+    color: var(--white);
+    margin: 0;
+  }
+
+  .comp-list {
+    list-style: none;
+    margin-top: 32px;
+  }
+
+  .comp-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    font-size: 15px;
+    line-height: 1.55;
+    color: rgba(255,255,255,0.92);
+  }
+
+  .comparison-col.with .comp-list li {
+    border-bottom-color: rgba(255,255,255,0.22);
+  }
+
+  .comp-list li:last-child { border-bottom: none; }
+
+  .comp-icon {
+    flex-shrink: 0;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Barlow', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 1;
+    margin-top: 1px;
+  }
+
+  .comparison-col.without .comp-icon {
+    background: #1f1f1f;
+    color: var(--white);
+  }
+
+  .comparison-col.with .comp-icon {
+    background: rgba(255,255,255,0.22);
+    color: var(--white);
+  }
+
+  .comparison-bottom {
+    text-align: center;
+    margin-top: 80px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(22px, 2.2vw, 30px);
+    font-weight: 600;
+    color: var(--near-black);
+    max-width: 880px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.3;
+  }
+
+  /* ============ SECTION 10 — KPI ============ */
+  .kpi-section {
+    background: var(--black);
+    color: var(--white);
+    padding: 140px 0;
+  }
+
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border-dark);
+    border: 1px solid var(--border-dark);
+  }
+
+  .kpi-tile {
+    background: #0f0f0f;
+    padding: 56px 32px;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .kpi-watermark {
+    position: absolute;
+    bottom: -12px;
+    right: -8px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 140px;
+    font-weight: 800;
+    color: rgba(255,255,255,0.04);
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .kpi-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--orange);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    display: block;
+    position: relative;
+  }
+
+  .kpi-main {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(28px, 2.6vw, 36px);
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 1.05;
+    color: var(--white);
+    position: relative;
+  }
+
+  .kpi-sub {
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 16px;
+    letter-spacing: 0.04em;
+    position: relative;
+  }
+
+  /* ============ SECTION 11 — FINAL CTA ============ */
+  .final-cta {
+    background: var(--orange);
+    color: var(--white);
+    padding: 120px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .final-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(45deg, rgba(255,255,255,0.04) 0px, rgba(255,255,255,0.04) 1px, transparent 1px, transparent 24px);
+    pointer-events: none;
+  }
+
+  .final-cta-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 880px;
+    margin: 0 auto;
+  }
+
+  .final-cta h2 {
+    font-size: clamp(40px, 4.5vw, 64px);
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 1.05;
+    margin-bottom: 32px;
+    color: var(--white);
+  }
+
+  .final-cta p {
+    font-size: 18px;
+    color: rgba(255,255,255,0.92);
+    margin-bottom: 48px;
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.55;
+  }
+
+  .btn-cta {
+    background: var(--white);
+    color: var(--orange);
+    padding: 18px 40px;
+    font-size: 14px;
+  }
+
+  .btn-cta:hover {
+    background: var(--near-black);
+    color: var(--white);
+  }
+
+  /* ============ ANIMATIONS ============ */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .fade-up.in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 960px) {
+    .container { padding: 0 24px; }
+    .hero { min-height: auto; padding: 100px 0 80px; }
+    .hero-credibility { position: static; align-items: flex-start; margin-top: 48px; }
+    .hero-credibility span { border-right: none; border-left: 2px solid var(--orange); padding-right: 0; padding-left: 12px; }
+    .split, .quality-grid { grid-template-columns: 1fr; gap: 48px; }
+    .three-col { grid-template-columns: 1fr; gap: 32px; }
+    .ops-flow { grid-template-columns: 1fr; gap: 24px; }
+    .ops-step:not(:last-child)::after { content: '↓'; right: 50%; top: auto; bottom: -22px; transform: translateX(50%); }
+    .capability-bands { grid-template-columns: 1fr 1fr; }
+    .band:nth-child(even) { border-right: none; }
+    .band { border-bottom: 1px solid #e5e3de; }
+    .kpi-grid { grid-template-columns: 1fr 1fr; }
+    .comparison-grid { grid-template-columns: 1fr; gap: 16px; }
+    .before-after { grid-template-columns: 1fr; }
+    .pressure-flow { flex-direction: column; flex-wrap: wrap; }
+    .pressure-arrow { transform: rotate(90deg); }
+    .positioning, .oem-section, .operations, .final-assembly, .sub-assembly,
+    .quality, .scalable, .comparison, .kpi-section { padding: 80px 0; }
+  }
+
+  @media (max-width: 600px) {
+    .capability-bands { grid-template-columns: 1fr; }
+    .band { border-right: none; }
+    .kpi-grid { grid-template-columns: 1fr; }
+    .comparison-col { padding: 40px 28px; }
+  }
+
+  /* ============ MEDIA PLACEHOLDERS (for dev handoff) ============ */
+  .media-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 32px 40px;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .media-tag {
+    display: inline-block;
+    align-self: flex-start;
+    background: var(--orange);
+    color: var(--white);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    margin-bottom: 16px;
+  }
+
+  .media-tag.video { background: #b8421d; }
+
+  .media-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: rgba(255,255,255,0.95);
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+
+  .media-spec {
+    font-family: 'Barlow', sans-serif;
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.55;
+    max-width: 360px;
+  }
+
+  .media-spec strong {
+    color: rgba(255,255,255,0.85);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  /* Override the old generated labels so they don't conflict */
+  .image-block::after,
+  .quality-image::after {
+    display: none;
+  }
+
+  .hero-media-tag {
+    position: absolute;
+    top: 24px;
+    left: 40px;
+    z-index: 3;
+    background: rgba(236,88,38,0.95);
+    color: var(--white);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+  }
+
+  .hero-media-spec {
+    position: absolute;
+    bottom: 24px;
+    left: 40px;
+    z-index: 3;
+    color: rgba(255,255,255,0.5);
+    font-family: 'Barlow', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    max-width: 440px;
+    line-height: 1.5;
+    padding: 10px 14px;
+    border-left: 2px solid var(--orange);
+    background: rgba(0,0,0,0.4);
+  }
+
+  .hero-media-spec strong {
+    color: rgba(255,255,255,0.9);
+    display: block;
+    font-weight: 700;
+    font-family: 'Barlow Condensed', sans-serif;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-size: 11px;
+    margin-bottom: 4px;
+  }
+
+  @media (max-width: 960px) {
+    .media-placeholder { padding: 24px; }
+    .media-title { font-size: 16px; }
+    .media-spec { font-size: 11px; }
+    .hero-media-spec { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ SECTION 1: HERO ============ -->
+<section class="hero">
+  <div class="hero-media-tag">▶ HERO VIDEO ZONE</div>
+  <div class="hero-media-spec">
+    <strong>Background Video — Cinematic Assembly Footage</strong>
+    Operators assembling electromechanical systems, harness routing, torque verification, kitting, box-build integration, QC inspections. Controlled, disciplined, high-mix energy. Loop, muted, autoplay. Heavy black gradient overlay on left 50%.
+  </div>
+  <div class="container">
+    <div class="hero-content">
+      <span class="hero-label">FINAL & SUB-ASSEMBLY</span>
+      <h1>Built for the Complexity Inside OEM Assembly Programs</h1>
+      <p>RELY helps manufacturers absorb execution-heavy assembly work that strains internal operations, slows throughput, and increases operational risk as complexity grows.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-primary">Talk With Our Team <span class="btn-arrow">→</span></a>
+        <a href="#capabilities" class="btn btn-secondary">Explore Capabilities</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-credibility">
+    <span>High-Mix Assembly</span>
+    <span>Electromechanical Builds</span>
+    <span>ISO 9001:2015 Certified</span>
+    <span>Scalable OEM Support</span>
+  </div>
+</section>
+
+<!-- ============ SECTION 2: POSITIONING ============ -->
+<section class="positioning">
+  <div class="container">
+    <div class="positioning-inner">
+      <span class="eyebrow">Final & Sub-Assembly</span>
+      <h2 class="statement fade-up">OEM production lines rarely slow down because of one major issue.</h2>
+      <p class="body-copy fade-up">They slow down when labor gaps, high-mix requirements, shifting demand, material coordination, and inconsistent execution begin compounding inside the operation.</p>
+      <p class="body-copy fade-up">RELY helps absorb that pressure through structured assembly support designed to stabilize production without increasing internal operational strain.</p>
+
+      <div class="pressure-flow fade-up">
+        <div class="pressure-node">Labor Gaps</div>
+        <div class="pressure-arrow">→</div>
+        <div class="pressure-node">High-Mix Complexity</div>
+        <div class="pressure-arrow">→</div>
+        <div class="pressure-node">Execution Variability</div>
+        <div class="pressure-arrow">→</div>
+        <div class="pressure-node">Requires External Support</div>
+      </div>
+
+      <h3 class="pull fade-up">The objective is not simply added capacity.<span>The objective is stable, repeatable execution.</span></h3>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 3: BUILT FOR OEM DEMANDS ============ -->
+<section class="oem-section" id="capabilities">
+  <div class="container">
+    <div class="split">
+      <div class="image-block fade-up">
+        <div class="corner-mark"></div>
+        <div class="corner-mark br"></div>
+        <div class="media-placeholder">
+          <span class="media-tag">Image · Section 3</span>
+          <div class="media-title">OEM Capability Hero Image</div>
+          <div class="media-spec">
+            <strong>Shot direction</strong>
+            Large cinematic assembly cell shot — operator hands working a harness or electromechanical build, organized staged materials in foreground, shallow depth of field. Industrial lighting, not stock-photo bright. Vertical orientation (4:5 aspect ratio).
+          </div>
+        </div>
+      </div>
+      <div class="fade-up">
+        <span class="eyebrow">Capability Architecture</span>
+        <h2>Contract Manufacturing Built for OEM Demands</h2>
+        <p class="lead">Outsourced assembly only works when it reduces complexity. If it creates more coordination, more variability, or more risk, it becomes another problem to manage. RELY is built to support assembly programs where execution discipline matters.</p>
+        <ul class="capability-stack">
+          <li>High-Mix Assembly Programs</li>
+          <li>Mechanical & Electromechanical Builds</li>
+          <li>Mixed-Technology Assemblies</li>
+          <li>Labor-Intensive Subassemblies</li>
+          <li>Structured Production Control</li>
+        </ul>
+      </div>
+    </div>
+    <p class="oem-pull fade-up">Complex assembly work only scales when execution stays controlled.</p>
+  </div>
+</section>
+
+<!-- ============ SECTION 4: HOW RELY OPERATES ============ -->
+<section class="operations">
+  <div class="container">
+    <span class="eyebrow">Operating System</span>
+    <h2>Assembly Systems Built for Repeatable Execution</h2>
+    <div class="ops-flow">
+      <div class="ops-step fade-up">
+        <div class="ops-step-num">01</div>
+        <div class="ops-step-title">Material Flow</div>
+      </div>
+      <div class="ops-step fade-up">
+        <div class="ops-step-num">02</div>
+        <div class="ops-step-title">Structured Work Instructions</div>
+      </div>
+      <div class="ops-step fade-up">
+        <div class="ops-step-num">03</div>
+        <div class="ops-step-title">Defined Checkpoints</div>
+      </div>
+      <div class="ops-step fade-up">
+        <div class="ops-step-num">04</div>
+        <div class="ops-step-title">Verification</div>
+      </div>
+      <div class="ops-step fade-up">
+        <div class="ops-step-num">05</div>
+        <div class="ops-step-title">Stable Output</div>
+      </div>
+    </div>
+    <p class="support-copy fade-up">Each step is owned, documented, and verified. The result is assembly output customers can plan around.</p>
+  </div>
+</section>
+
+<!-- ============ SECTION 5: FINAL ASSEMBLY & BOX-BUILD ============ -->
+<section class="final-assembly">
+  <div class="container">
+    <div class="full-image fade-up">
+      <div class="media-placeholder">
+        <span class="media-tag">Image · Section 5</span>
+        <div class="media-title">Box-Build Integration Hero</div>
+        <div class="media-spec">
+          <strong>Shot direction</strong>
+          Massive cinematic box-build moment — enclosure assembly with wire routing in progress, torque tools or QC verification visible, operator working with focus. Wide cinematic crop (21:9). Avoid generic electronics stock; we want the discipline visible in the frame.
+        </div>
+      </div>
+    </div>
+
+    <div class="three-col">
+      <div class="framework-card fade-up">
+        <div class="framework-num">01 · SEQUENCE</div>
+        <h3>Controlled Assembly Sequence</h3>
+        <p>Build order, configuration, and execution discipline defined before the first unit is touched.</p>
+      </div>
+      <div class="framework-card fade-up">
+        <div class="framework-num">02 · VERIFICATION</div>
+        <h3>Embedded Verification</h3>
+        <p>Functional checks and inspection points built into the process, not bolted on at the end.</p>
+      </div>
+      <div class="framework-card fade-up">
+        <div class="framework-num">03 · RELEASE</div>
+        <h3>Release Readiness</h3>
+        <p>Configuration accuracy, labeling, fit and finish, and customer-specific requirements verified before release.</p>
+      </div>
+    </div>
+
+    <p class="final-statement fade-up">Final assembly is where <span>hidden process instability</span> becomes visible.</p>
+  </div>
+</section>
+
+<!-- ============ SECTION 6: SUB-ASSEMBLY ============ -->
+<section class="sub-assembly">
+  <div class="container">
+    <div class="split">
+      <div class="fade-up">
+        <span class="eyebrow">Pre-Build Manufacturing</span>
+        <h2>Sub-Assembly and Pre-Build Manufacturing</h2>
+        <p class="lead">Sub-assembly work becomes a bottleneck when it is handled reactively on the main production line. RELY takes that work off the line and builds it in a controlled production environment so customer teams can stay focused on higher-value output.</p>
+      </div>
+      <div class="benefit-stack fade-up">
+        <div class="benefit-block">
+          <h4>What RELY Builds</h4>
+          <ul>
+            <li>Mechanical Assemblies</li>
+            <li>Wire Harnesses</li>
+            <li>Electromechanical Modules</li>
+            <li>PVC Subassemblies</li>
+          </ul>
+        </div>
+        <div class="benefit-block">
+          <h4>What Customers Receive</h4>
+          <ul>
+            <li>Line-Ready Kits</li>
+            <li>Revision-Controlled Builds</li>
+            <li>Labeled Assemblies</li>
+            <li>Faster Install Readiness</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 7: QUALITY & TRACEABILITY ============ -->
+<section class="quality">
+  <div class="container">
+    <span class="eyebrow">Quality System</span>
+    <h2>Quality and Traceability Built Into the Process</h2>
+    <div class="quality-grid">
+      <div class="quality-image fade-up">
+        <div class="corner-mark"></div>
+        <div class="corner-mark br"></div>
+        <div class="media-placeholder">
+          <span class="media-tag">Image · Section 7</span>
+          <div class="media-title">Quality & Traceability Image</div>
+          <div class="media-spec">
+            <strong>Shot direction</strong>
+            Production-quality moment — barcode/lot scanning, picture-based work instruction at a station, or inspection in progress at a fixture. Tight crop, focused hands, ERP screen or printed WI sheet visible if possible. Vertical (4:5).
+          </div>
+        </div>
+      </div>
+      <div class="fade-up">
+        <ul class="quality-stack">
+          <li>Inspection Checkpoints</li>
+          <li>Picture-Based Work Instructions</li>
+          <li>Lot Traceability</li>
+          <li>Nonconformance Control</li>
+          <li>ERP-Supported Production Visibility</li>
+        </ul>
+      </div>
+    </div>
+    <p class="quality-pull fade-up">The goal is not reactive inspection.<span>The goal is controlled execution from the start.</span></p>
+  </div>
+</section>
+
+<!-- ============ SECTION 8: SCALABLE CAPACITY ============ -->
+<section class="scalable">
+  <div class="container">
+    <span class="eyebrow">Capacity & Lifecycle</span>
+    <h2>Scalable Capacity Without Permanent Internal Overhead</h2>
+    <p class="lead">RELY helps manufacturers scale assembly support across launches, demand swings, long-tail programs, and execution-heavy production requirements without overloading internal operations.</p>
+
+    <div class="capability-bands">
+      <div class="band fade-up"><span class="band-num">01</span><h4>Product Launches</h4></div>
+      <div class="band fade-up"><span class="band-num">02</span><h4>Volume Swings</h4></div>
+      <div class="band fade-up"><span class="band-num">03</span><h4>High-Mix Production</h4></div>
+      <div class="band fade-up"><span class="band-num">04</span><h4>Service & Replacement</h4></div>
+      <div class="band fade-up"><span class="band-num">05</span><h4>Long-Tail Programs</h4></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 9: WITHOUT / WITH RELY ============ -->
+<section class="comparison">
+  <div class="container">
+    <div class="comparison-header">
+      <span class="eyebrow">Operational Impact</span>
+      <h2>What This Means for Customers</h2>
+    </div>
+    <div class="comparison-grid fade-up">
+      <div class="comparison-col without">
+        <div class="comp-header">
+          <span class="comp-pill">Without RELY</span>
+          <h3 class="comp-headline">Absorbing It Internally</h3>
+        </div>
+        <ul class="comp-list">
+          <li><span class="comp-icon">×</span><span>Skilled production teams get pulled into support and assembly work</span></li>
+          <li><span class="comp-icon">×</span><span>High-mix builds create scheduling instability and execution strain</span></li>
+          <li><span class="comp-icon">×</span><span>Subassemblies and configuration work increase rework risk downstream</span></li>
+          <li><span class="comp-icon">×</span><span>Demand swings and program changes strain internal capacity</span></li>
+          <li><span class="comp-icon">×</span><span>Production teams spend more time managing disruption than driving output</span></li>
+        </ul>
+      </div>
+      <div class="comparison-col with">
+        <div class="comp-header">
+          <span class="comp-pill">With RELY</span>
+          <h3 class="comp-headline">A Structured OEM Partner</h3>
+        </div>
+        <ul class="comp-list">
+          <li><span class="comp-icon">✓</span><span>Execution-heavy assembly work is handled by a disciplined external partner</span></li>
+          <li><span class="comp-icon">✓</span><span>Internal teams stay focused on production and higher-value priorities</span></li>
+          <li><span class="comp-icon">✓</span><span>Subassemblies and final builds follow controlled, repeatable processes</span></li>
+          <li><span class="comp-icon">✓</span><span>Programs scale more smoothly across demand and configuration changes</span></li>
+          <li><span class="comp-icon">✓</span><span>Operational strain is reduced while throughput stability improves</span></li>
+        </ul>
+      </div>
+    </div>
+    <p class="comparison-bottom fade-up">RELY helps manufacturers scale assembly support without absorbing all of the operational strain internally.</p>
+  </div>
+</section>
+
+<!-- ============ SECTION 10: KPI ============ -->
+<section class="kpi-section">
+  <div class="container">
+    <div class="kpi-grid">
+      <div class="kpi-tile fade-up">
+        <span class="kpi-watermark">01</span>
+        <span class="kpi-eyebrow">Certification</span>
+        <div class="kpi-main">ISO 9001:<br>2015 Certified</div>
+        <div class="kpi-sub">Quality management system</div>
+      </div>
+      <div class="kpi-tile fade-up">
+        <span class="kpi-watermark">02</span>
+        <span class="kpi-eyebrow">Production Mix</span>
+        <div class="kpi-main">High-Mix<br>Assembly Support</div>
+        <div class="kpi-sub">Built for frequent changeovers</div>
+      </div>
+      <div class="kpi-tile fade-up">
+        <span class="kpi-watermark">03</span>
+        <span class="kpi-eyebrow">Capability</span>
+        <div class="kpi-main">Electromechanical<br>Build Capability</div>
+        <div class="kpi-sub">Mechanical, wire, electrical</div>
+      </div>
+      <div class="kpi-tile fade-up">
+        <span class="kpi-watermark">04</span>
+        <span class="kpi-eyebrow">Scale</span>
+        <div class="kpi-main">Scalable OEM<br>Production Support</div>
+        <div class="kpi-sub">Launch to long-tail</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 11: FINAL CTA ============ -->
+<section class="final-cta" id="contact">
+  <div class="container">
+    <div class="final-cta-inner">
+      <h2>Ready to Reduce Assembly Friction Without Adding Internal Overhead?</h2>
+      <p>RELY helps OEMs stabilize execution-heavy assembly work through structured systems, disciplined production support, and scalable operational capacity.</p>
+      <a href="#" class="btn btn-cta">Start the Conversation <span class="btn-arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Fade-up on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('in'), i * 60);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
