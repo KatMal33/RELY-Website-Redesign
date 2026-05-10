@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meet Our Team | RELY Contract Manufacturing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Squada+One&family=Inter:wght@300;400;500;600;700&family=Roboto:wght@900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --orange: #EC5826;
+    --black: #1a1a1a;
+    --dark: #252525;
+    --gray-light: #f2f0eb;
+    --gray-mid: #555;
+    --white: #ffffff;
+    --headline: 'Squada One', Impact, sans-serif;
+    --body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --logo: 'Roboto', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--body);
+    color: var(--black);
+    background: var(--white);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* ===== TOP NAV ===== */
+  .nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 20px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0));
+    transition: background 0.3s ease;
+  }
+  .nav.scrolled {
+    background: rgba(26,26,26,0.95);
+    padding: 14px 48px;
+  }
+  .logo {
+    font-family: var(--logo);
+    font-weight: 900;
+    color: var(--white);
+    font-size: 22px;
+    letter-spacing: 1px;
+  }
+  .logo span { color: var(--orange); }
+  .nav-links { display: flex; gap: 36px; }
+  .nav-links a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--orange); }
+
+  /* ===== HERO ===== */
+  .hero {
+    position: relative;
+    height: 100vh;
+    min-height: 700px;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    background: var(--black);
+  }
+  .hero-video {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    z-index: 1;
+  }
+  /* Placeholder visual while video is loaded */
+  .hero-placeholder {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+      linear-gradient(135deg, rgba(26,26,26,0.4) 0%, rgba(26,26,26,0.8) 100%),
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'><defs><pattern id='g' width='40' height='40' patternUnits='userSpaceOnUse'><path d='M0 40L40 0' stroke='%23333' stroke-width='0.5'/></pattern></defs><rect width='1600' height='900' fill='%231a1a1a'/><rect width='1600' height='900' fill='url(%23g)'/><circle cx='400' cy='400' r='200' fill='%23222' opacity='0.6'/><circle cx='1200' cy='600' r='280' fill='%23252525' opacity='0.5'/></svg>");
+    background-size: cover;
+    background-position: center;
+  }
+  .hero-gradient {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background: linear-gradient(90deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.2) 100%);
+  }
+  .hero-content {
+    position: relative;
+    z-index: 3;
+    max-width: 720px;
+    padding: 0 48px 0 80px;
+    color: var(--white);
+  }
+  .hero-eyebrow {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards;
+  }
+  .hero h1 {
+    font-family: var(--headline);
+    font-size: clamp(44px, 6vw, 78px);
+    line-height: 1.02;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.15s ease forwards;
+  }
+  .hero p {
+    font-size: 18px;
+    line-height: 1.6;
+    font-weight: 300;
+    color: #d8d8d8;
+    margin-bottom: 40px;
+    max-width: 600px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.3s ease forwards;
+  }
+  .hero-ctas {
+    display: flex;
+    gap: 16px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.45s ease forwards;
+  }
+  .btn {
+    display: inline-block;
+    padding: 16px 32px;
+    font-family: var(--body);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    cursor: pointer;
+    border: none;
+  }
+  .btn-primary {
+    background: var(--orange);
+    color: var(--white);
+  }
+  .btn-primary:hover { background: #d44a1c; transform: translateY(-2px); }
+  .btn-secondary {
+    background: transparent;
+    color: var(--white);
+    border: 1.5px solid rgba(255,255,255,0.4);
+  }
+  .btn-secondary:hover { border-color: var(--white); background: rgba(255,255,255,0.05); }
+
+  .hero-credibility {
+    position: absolute;
+    bottom: 48px;
+    right: 48px;
+    z-index: 3;
+    text-align: right;
+    color: rgba(255,255,255,0.7);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    line-height: 2.4;
+    opacity: 0;
+    animation: fadeIn 1s 0.8s ease forwards;
+  }
+  .hero-credibility div::before {
+    content: "";
+    display: inline-block;
+    width: 14px;
+    height: 1px;
+    background: var(--orange);
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* ===== POSITIONING SECTION ===== */
+  .positioning {
+    background: var(--white);
+    padding: 140px 48px 160px;
+    text-align: center;
+  }
+  .positioning-inner { max-width: 1180px; margin: 0 auto; }
+  .positioning-inner .label,
+  .positioning-inner h2,
+  .positioning-inner p,
+  .positioning-inner .accent-line { max-width: 980px; margin-left: auto; margin-right: auto; }
+  .label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 36px;
+    display: inline-block;
+  }
+  .label::before, .label::after {
+    content: "";
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background: var(--orange);
+    vertical-align: middle;
+    margin: 0 14px;
+  }
+  .positioning h2 {
+    font-family: var(--headline);
+    font-size: clamp(40px, 5vw, 64px);
+    line-height: 1.1;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 56px;
+    color: var(--black);
+  }
+  .positioning p {
+    font-size: 18px;
+    line-height: 1.75;
+    color: var(--gray-mid);
+    max-width: 760px;
+    margin: 0 auto 28px;
+  }
+  .positioning .accent-line {
+    font-family: var(--headline);
+    font-size: clamp(24px, 3vw, 36px);
+    color: var(--black);
+    margin: 72px auto 0;
+    max-width: 800px;
+    line-height: 1.3;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  /* ===== CAPABILITY TILE GRID ===== */
+  .ecosystem-grid {
+    margin-top: 100px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    border-left: 1px solid rgba(0,0,0,0.1);
+    text-align: left;
+  }
+  .cap-tile {
+    padding: 40px 32px;
+    border-right: 1px solid rgba(0,0,0,0.1);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    transition: background 0.25s ease;
+    position: relative;
+  }
+  .cap-tile:hover { background: var(--gray-light); }
+  .cap-tile-num {
+    font-family: var(--headline);
+    font-size: 28px;
+    color: var(--orange);
+    margin-bottom: 16px;
+    display: block;
+    letter-spacing: 1px;
+  }
+  .cap-tile-title {
+    font-family: var(--body);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--black);
+    margin-bottom: 12px;
+  }
+  .cap-tile-desc {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--gray-mid);
+  }
+  @media (max-width: 968px) {
+    .ecosystem-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 560px) {
+    .ecosystem-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ===== EXECUTIVE SECTIONS ===== */
+  .exec-section {
+    padding: 120px 64px;
+    position: relative;
+  }
+  .exec-section.light { background: var(--gray-light); }
+  .exec-section.white { background: var(--white); }
+  .exec-section.dark { background: var(--black); color: var(--white); }
+  .exec-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .exec-inner.reverse .exec-image { order: 2; }
+  .exec-inner.reverse .exec-copy { order: 1; }
+
+  .exec-image {
+    aspect-ratio: 4 / 5;
+    background: var(--dark);
+    position: relative;
+    overflow: hidden;
+  }
+  /* Stylized placeholder imagery — to be replaced with environmental B&W portraits */
+  .exec-image .img-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.7) 100%);
+    z-index: 2;
+  }
+  .exec-image .img-label {
+    position: absolute;
+    bottom: 32px;
+    left: 32px;
+    z-index: 3;
+    color: var(--white);
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+  .exec-image .img-label::before {
+    content: "";
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background: var(--orange);
+    margin-right: 12px;
+    vertical-align: middle;
+  }
+
+  /* Each exec gets a different abstract industrial pattern */
+  .img-kim { background:
+    linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 500'><rect fill='%23222' width='400' height='500'/></svg>");
+    background-size: cover;
+  }
+  .img-kim::after {
+    content: ""; position: absolute; inset: 0; z-index: 1;
+    background-image:
+      linear-gradient(90deg, transparent 49%, rgba(236,88,38,0.15) 50%, transparent 51%),
+      radial-gradient(circle at 30% 40%, rgba(255,255,255,0.06) 0%, transparent 50%);
+  }
+
+  .img-katie { background: linear-gradient(135deg, #333 0%, #1a1a1a 100%); }
+  .img-katie::after {
+    content: ""; position: absolute; inset: 0; z-index: 1;
+    background-image:
+      repeating-linear-gradient(45deg, transparent 0, transparent 30px, rgba(255,255,255,0.03) 30px, rgba(255,255,255,0.03) 31px),
+      radial-gradient(ellipse at center, rgba(236,88,38,0.12) 0%, transparent 60%);
+  }
+
+  .img-erin { background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%); }
+  .img-erin::after {
+    content: ""; position: absolute; inset: 0; z-index: 1;
+    background-image:
+      linear-gradient(0deg, transparent 49%, rgba(255,255,255,0.04) 50%, transparent 51%),
+      linear-gradient(90deg, transparent 49%, rgba(255,255,255,0.04) 50%, transparent 51%),
+      radial-gradient(circle at 70% 30%, rgba(236,88,38,0.1) 0%, transparent 50%);
+    background-size: 60px 60px, 60px 60px, 100% 100%;
+  }
+
+  .img-jim { background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%); }
+  .img-jim::after {
+    content: ""; position: absolute; inset: 0; z-index: 1;
+    background-image:
+      repeating-linear-gradient(90deg, transparent 0, transparent 40px, rgba(255,255,255,0.04) 40px, rgba(255,255,255,0.04) 41px),
+      radial-gradient(circle at 40% 60%, rgba(236,88,38,0.12) 0%, transparent 50%);
+  }
+
+  .img-kimmi { background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%); }
+  .img-kimmi::after {
+    content: ""; position: absolute; inset: 0; z-index: 1;
+    background-image:
+      repeating-linear-gradient(135deg, transparent 0, transparent 25px, rgba(255,255,255,0.03) 25px, rgba(255,255,255,0.03) 26px),
+      radial-gradient(circle at 50% 50%, rgba(236,88,38,0.1) 0%, transparent 55%);
+  }
+
+  .img-clay { background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%); }
+  .img-clay::after {
+    content: ""; position: absolute; inset: 0; z-index: 1;
+    background-image:
+      linear-gradient(45deg, transparent 49%, rgba(255,255,255,0.04) 50%, transparent 51%),
+      radial-gradient(circle at 30% 70%, rgba(236,88,38,0.1) 0%, transparent 50%);
+    background-size: 80px 80px, 100% 100%;
+  }
+
+  .img-ryan { background: linear-gradient(135deg, #333 0%, #1a1a1a 100%); }
+  .img-ryan::after {
+    content: ""; position: absolute; inset: 0; z-index: 1;
+    background-image:
+      repeating-linear-gradient(0deg, transparent 0, transparent 35px, rgba(255,255,255,0.04) 35px, rgba(255,255,255,0.04) 36px),
+      repeating-linear-gradient(90deg, transparent 0, transparent 35px, rgba(255,255,255,0.04) 35px, rgba(255,255,255,0.04) 36px),
+      radial-gradient(circle at 60% 40%, rgba(236,88,38,0.12) 0%, transparent 50%);
+  }
+
+  .exec-copy { max-width: 540px; }
+  .exec-name {
+    font-family: var(--headline);
+    font-size: clamp(36px, 4vw, 52px);
+    line-height: 1.05;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .exec-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+  .dark .exec-title { border-bottom-color: rgba(255,255,255,0.15); }
+  .exec-bio p {
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--gray-mid);
+    margin-bottom: 18px;
+  }
+  .dark .exec-bio p { color: #b8b8b8; }
+
+  .exec-focus {
+    margin-top: 36px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(0,0,0,0.1);
+  }
+  .dark .exec-focus { border-top-color: rgba(255,255,255,0.15); }
+  .focus-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 16px;
+  }
+  .focus-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 0;
+  }
+  .focus-list li {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--black);
+    padding: 6px 14px 6px 0;
+    margin-right: 14px;
+    border-right: 1px solid rgba(0,0,0,0.15);
+  }
+  .dark .focus-list li { color: var(--white); border-right-color: rgba(255,255,255,0.2); }
+  .focus-list li:last-child { border-right: none; margin-right: 0; }
+
+  .pull-quote {
+    font-family: var(--headline);
+    font-size: clamp(22px, 2.2vw, 30px);
+    line-height: 1.3;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-top: 36px;
+    padding-left: 24px;
+    border-left: 3px solid var(--orange);
+  }
+
+  /* Katie special treatment — full-width pull quote band */
+  .katie-quote-band {
+    background: var(--black);
+    color: var(--white);
+    padding: 80px 48px;
+    text-align: center;
+  }
+  .katie-quote-band .quote-large {
+    font-family: var(--headline);
+    font-size: clamp(36px, 5vw, 64px);
+    line-height: 1.1;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .katie-quote-band .quote-large span { color: var(--orange); }
+
+  /* ===== WHY THIS TEAM MATTERS ===== */
+  .why-team {
+    background: var(--white);
+    padding: 160px 48px;
+    text-align: center;
+  }
+  .why-team-inner { max-width: 1100px; margin: 0 auto; }
+  .why-team h2 {
+    font-family: var(--headline);
+    font-size: clamp(44px, 5vw, 68px);
+    line-height: 1.05;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 36px;
+  }
+  .why-team .lead {
+    font-size: 18px;
+    line-height: 1.75;
+    color: var(--gray-mid);
+    max-width: 820px;
+    margin: 0 auto 80px;
+  }
+  .capability-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    margin-bottom: 80px;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    border-left: 1px solid rgba(0,0,0,0.1);
+  }
+  .capability {
+    padding: 40px 24px;
+    border-right: 1px solid rgba(0,0,0,0.1);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    text-align: left;
+    transition: background 0.25s ease;
+  }
+  .capability:hover { background: var(--gray-light); }
+  .cap-num {
+    font-family: var(--headline);
+    font-size: 28px;
+    color: var(--orange);
+    margin-bottom: 14px;
+    display: block;
+  }
+  .cap-title {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--black);
+  }
+  .why-team .closing {
+    font-family: var(--headline);
+    font-size: clamp(22px, 2.4vw, 32px);
+    line-height: 1.3;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    max-width: 800px;
+    margin: 0 auto;
+    color: var(--black);
+  }
+  .why-team .closing span { color: var(--orange); }
+
+  /* ===== FINAL CTA ===== */
+  .final-cta {
+    background: var(--orange);
+    color: var(--white);
+    padding: 130px 48px;
+    text-align: center;
+  }
+  .final-cta-inner { max-width: 900px; margin: 0 auto; }
+  .final-cta h2 {
+    font-family: var(--headline);
+    font-size: clamp(40px, 5vw, 60px);
+    line-height: 1.1;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 28px;
+  }
+  .final-cta p {
+    font-size: 18px;
+    line-height: 1.7;
+    max-width: 700px;
+    margin: 0 auto 44px;
+    opacity: 0.95;
+  }
+  .btn-white {
+    background: var(--white);
+    color: var(--orange);
+    padding: 18px 40px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+  }
+  .btn-white:hover { background: var(--black); color: var(--white); transform: translateY(-2px); }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    background: var(--black);
+    color: rgba(255,255,255,0.6);
+    padding: 40px 48px;
+    text-align: center;
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 968px) {
+    .nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    .hero-content { padding: 0 24px; }
+    .hero-credibility { display: none; }
+    .positioning, .exec-section, .why-team, .final-cta { padding-left: 24px; padding-right: 24px; }
+    .exec-section { padding-top: 80px; padding-bottom: 80px; }
+    .exec-inner {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+    .exec-inner.reverse .exec-image { order: 1; }
+    .exec-inner.reverse .exec-copy { order: 2; }
+    .capability-grid { grid-template-columns: repeat(2, 1fr); }
+    .positioning, .why-team { padding-top: 80px; padding-bottom: 80px; }
+  }
+  @media (max-width: 560px) {
+    .capability-grid { grid-template-columns: 1fr; }
+    .hero-ctas { flex-direction: column; }
+    .btn { text-align: center; }
+  }
+
+  /* Scroll reveal */
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="logo">RE<span>L</span>Y</div>
+  <div class="nav-links">
+    <a href="#">Capabilities</a>
+    <a href="#">Industries</a>
+    <a href="#">Team</a>
+    <a href="#">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <!-- Drop your hero video here when ready: <video class="hero-video" autoplay muted loop playsinline poster="hero-poster.jpg"><source src="hero.mp4" type="video/mp4"></video> -->
+  <div class="hero-placeholder"></div>
+  <div class="hero-gradient"></div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">Leadership Team</div>
+    <h1>Built by Operators<br>Who Have Scaled<br>Manufacturing in the<br>Real World</h1>
+    <p>Our leadership team has operated plants, scaled manufacturers, built workforce systems, supported complex production environments, and solved operational challenges firsthand. That experience shapes how RELY executes every day.</p>
+    <div class="hero-ctas">
+      <a href="#contact" class="btn btn-primary">Talk With Our Team</a>
+      <a href="#" class="btn btn-secondary">Explore RELY</a>
+    </div>
+  </div>
+
+  <div class="hero-credibility">
+    <div>Manufacturing Leadership</div>
+    <div>Engineering &amp; Automation</div>
+    <div>E-Commerce &amp; Fulfillment</div>
+    <div>Operational Scale-Up Experience</div>
+  </div>
+</section>
+
+<!-- POSITIONING -->
+<section class="positioning">
+  <div class="positioning-inner">
+    <div class="label">Leadership Team</div>
+    <h2>We Do Not Lead<br>Manufacturing From<br>Conference Rooms.</h2>
+    <p>RELY leadership is deeply connected to day-to-day operations because the company was built by people who have spent their careers inside manufacturing environments solving real operational problems.</p>
+    <p>The team combines experience across manufacturing operations, engineering, quality systems, supply chain, workforce development, automation, and e-commerce scalability.</p>
+    <div class="accent-line">Operational credibility matters when execution is on the line.</div>
+
+    <!-- Capability Grid -->
+    <div class="ecosystem-grid">
+      <div class="cap-tile">
+        <span class="cap-tile-num">01</span>
+        <div class="cap-tile-title">Operations</div>
+        <div class="cap-tile-desc">Floor-led execution discipline across high-mix environments.</div>
+      </div>
+      <div class="cap-tile">
+        <span class="cap-tile-num">02</span>
+        <div class="cap-tile-title">Engineering &amp; Automation</div>
+        <div class="cap-tile-desc">Technical systems and automation built for repeatable, scalable production.</div>
+      </div>
+      <div class="cap-tile">
+        <span class="cap-tile-num">03</span>
+        <div class="cap-tile-title">Quality</div>
+        <div class="cap-tile-desc">ISO-grounded process control and audit-ready documentation.</div>
+      </div>
+      <div class="cap-tile">
+        <span class="cap-tile-num">04</span>
+        <div class="cap-tile-title">Workforce Strategy</div>
+        <div class="cap-tile-desc">Labor planning and team design that scales with program complexity.</div>
+      </div>
+      <div class="cap-tile">
+        <span class="cap-tile-num">05</span>
+        <div class="cap-tile-title">Scalability</div>
+        <div class="cap-tile-desc">Operating systems designed to grow without losing control.</div>
+      </div>
+      <div class="cap-tile">
+        <span class="cap-tile-num">06</span>
+        <div class="cap-tile-title">Go-to-Market Strategy</div>
+        <div class="cap-tile-desc">Marketplace, channel, and commercial scale across retail and e-commerce.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KIM KORTH -->
+<section class="exec-section white">
+  <div class="exec-inner reveal">
+    <div class="exec-image img-kim">
+      <div class="img-overlay"></div>
+      <div class="img-label">Strategic Leadership</div>
+    </div>
+    <div class="exec-copy">
+      <div class="exec-name">Kim Korth</div>
+      <div class="exec-title">Chief Executive Officer  /  Owner</div>
+      <div class="exec-bio">
+        <p>Kim brings over 30 years of executive leadership across manufacturing, product development, and industrial services. As former CEO of global manufacturers and a board member for both public and private companies, she has led organizations through transformation, growth, and operational turnaround.</p>
+        <p>At RELY, Kim sets the strategic direction and ensures the business is built to scale, combining disciplined operating systems with long-term growth strategy. Her experience helps customers build operations that perform consistently, not just react in the moment.</p>
+      </div>
+      <div class="exec-focus">
+        <div class="focus-label">Operational Focus</div>
+        <ul class="focus-list">
+          <li>Operational Turnarounds</li>
+          <li>Manufacturing Scalability</li>
+          <li>Structured Systems</li>
+          <li>Global Leadership</li>
+        </ul>
+      </div>
+      <div class="pull-quote">Built to scale with operational discipline.</div>
+    </div>
+  </div>
+</section>
+
+<!-- KATIE — DARK -->
+<section class="exec-section dark">
+  <div class="exec-inner reverse reveal">
+    <div class="exec-image img-katie">
+      <div class="img-overlay"></div>
+      <div class="img-label">Execution Leadership</div>
+    </div>
+    <div class="exec-copy">
+      <div class="exec-name">Katie Malnight Meisinger</div>
+      <div class="exec-title">President  /  Owner</div>
+      <div class="exec-bio">
+        <p>Katie leads RELY&rsquo;s growth, operations, and customer strategy with a focus on one outcome: removing the bottlenecks that limit scale.</p>
+        <p>With experience across hundreds of manufacturing environments, she specializes in identifying where labor, process, and execution break down, and replacing that friction with structured, scalable solutions. Her background includes hands-on quality leadership as a certified ISO and IATF internal auditor, giving her a deep understanding of how disciplined systems, process control, and documentation translate into real-world execution.</p>
+        <p>That perspective shows up in how RELY operates: balancing speed and flexibility with the structure required to deliver consistent, audit-ready results.</p>
+      </div>
+      <div class="exec-focus">
+        <div class="focus-label">Operational Focus</div>
+        <ul class="focus-list">
+          <li>Workforce Strategy</li>
+          <li>Operational Scalability</li>
+          <li>Quality Systems</li>
+          <li>Process Control</li>
+          <li>Execution-Heavy Support</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Katie pull-quote band -->
+<section class="katie-quote-band">
+  <div class="quote-large">Removing the bottlenecks<br>that <span>limit scale.</span></div>
+</section>
+
+<!-- JIM -->
+<section class="exec-section light">
+  <div class="exec-inner reveal">
+    <div class="exec-image img-jim">
+      <div class="img-overlay"></div>
+      <div class="img-label">Engineering &amp; Technology</div>
+    </div>
+    <div class="exec-copy">
+      <div class="exec-name">Jim Lowe</div>
+      <div class="exec-title">VP of Engineering &amp; Technology  /  Owner</div>
+      <div class="exec-bio">
+        <p>Jim leads RELY&rsquo;s engineering strategy, technical capabilities, and systems that enable scalable, repeatable execution.</p>
+        <p>With experience across plastics, metal fabrication, automation, and product development, he ensures RELY can take on increasingly complex work without sacrificing speed or quality. From process design and testing strategy to capital investment and automation, Jim builds the technical backbone that supports consistent execution.</p>
+        <p>For customers, that means stronger launches, fewer surprises, and solutions that hold up in production.</p>
+      </div>
+      <div class="exec-focus">
+        <div class="focus-label">Operational Focus</div>
+        <ul class="focus-list">
+          <li>Process Design</li>
+          <li>Automation</li>
+          <li>Testing Strategy</li>
+          <li>Capital Investment</li>
+        </ul>
+      </div>
+      <div class="pull-quote">Engineering systems built for repeatable execution.</div>
+    </div>
+  </div>
+</section>
+
+<!-- KIMMI -->
+<section class="exec-section white">
+  <div class="exec-inner reverse reveal">
+    <div class="exec-image img-kimmi">
+      <div class="img-overlay"></div>
+      <div class="img-label">Plant Operations</div>
+    </div>
+    <div class="exec-copy">
+      <div class="exec-name">Kimmi Roerhborn</div>
+      <div class="exec-title">Plant Manager</div>
+      <div class="exec-bio">
+        <p>Kimmi leads day-to-day operations on the floor, ensuring production runs efficiently, teams are aligned, and customer expectations are met.</p>
+        <p>With over 15 years of hands-on manufacturing experience, from machine operator to plant leadership, she understands exactly what it takes to execute in high-pressure, high-mix environments. Her background in plastics manufacturing and workforce leadership allows her to build teams that perform consistently across shifts.</p>
+        <p>For customers, that translates to reliable execution and operations that stay on track as complexity increases.</p>
+      </div>
+      <div class="exec-focus">
+        <div class="focus-label">Operational Focus</div>
+        <ul class="focus-list">
+          <li>Floor Leadership</li>
+          <li>High-Mix Execution</li>
+          <li>Cross-Shift Consistency</li>
+          <li>Team Development</li>
+        </ul>
+      </div>
+      <div class="pull-quote">Operational consistency starts on the floor.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CLAY -->
+<section class="exec-section light">
+  <div class="exec-inner reveal">
+    <div class="exec-image img-clay">
+      <div class="img-overlay"></div>
+      <div class="img-label">Commercial Execution</div>
+    </div>
+    <div class="exec-copy">
+      <div class="exec-name">Clay Giese</div>
+      <div class="exec-title">National Sales Manager</div>
+      <div class="exec-bio">
+        <p>Clay leads RELY&rsquo;s sales function and works directly with customers to identify where RELY can remove operational friction and improve performance.</p>
+        <p>With experience managing full program lifecycles, from quoting and launch through execution, he ensures a smooth transition from initial conversation to production. His approach is practical and execution-focused, aligning customer needs with solutions that actually work on the floor.</p>
+        <p>For customers, that means clear communication, fast response, and fewer surprises.</p>
+      </div>
+      <div class="exec-focus">
+        <div class="focus-label">Operational Focus</div>
+        <ul class="focus-list">
+          <li>Program Lifecycle</li>
+          <li>Quoting &amp; Launch</li>
+          <li>Customer Strategy</li>
+          <li>Execution Alignment</li>
+        </ul>
+      </div>
+      <div class="pull-quote">Execution-focused customer support from quote through launch.</div>
+    </div>
+  </div>
+</section>
+
+<!-- RYAN — DARK -->
+<section class="exec-section dark">
+  <div class="exec-inner reverse reveal">
+    <div class="exec-image img-ryan">
+      <div class="img-overlay"></div>
+      <div class="img-label">Maintenance &amp; Reliability</div>
+    </div>
+    <div class="exec-copy">
+      <div class="exec-name">Ryan Meisinger</div>
+      <div class="exec-title">Maintenance &amp; Continuous Improvement Lead</div>
+      <div class="exec-bio">
+        <p>Ryan brings over a decade of hands-on experience in equipment maintenance, troubleshooting, and production support across complex manufacturing environments.</p>
+        <p>With deep expertise in electrical, hydraulic, pneumatic, and mechanical systems, he plays a critical role in keeping operations running efficiently and minimizing downtime. His background includes leading maintenance teams, installing new equipment, and improving system reliability.</p>
+        <p>For customers, that means stronger uptime, faster issue resolution, and production environments that stay running when it matters most.</p>
+      </div>
+      <div class="exec-focus">
+        <div class="focus-label">Operational Focus</div>
+        <ul class="focus-list">
+          <li>Equipment Reliability</li>
+          <li>Electrical &amp; Mechanical</li>
+          <li>Uptime Optimization</li>
+          <li>Continuous Improvement</li>
+        </ul>
+      </div>
+      <div class="pull-quote">Reliable operations depend on reliable systems.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ERIN -->
+<section class="exec-section white">
+  <div class="exec-inner reveal">
+    <div class="exec-image img-erin">
+      <div class="img-overlay"></div>
+      <div class="img-label">Commercial Strategy</div>
+    </div>
+    <div class="exec-copy">
+      <div class="exec-name">Erin Greenwald</div>
+      <div class="exec-title">E-Commerce Consultant  /  Owner</div>
+      <div class="exec-bio">
+        <p>Erin brings deep expertise in e-commerce, marketplace strategy, and emerging brand growth from leadership roles at Walmart eCommerce and Jet.com.</p>
+        <p>She has worked directly with brands to scale within complex retail ecosystems, optimizing assortment, pricing, and execution while navigating platform requirements. Combined with her background in strategy consulting, Erin understands both how platforms operate and where brands struggle as they grow.</p>
+        <p>At RELY, she helps shape fulfillment and kitting programs that align with real-world marketplace demands, enabling customers to scale across Amazon, retail, and omni-channel environments.</p>
+      </div>
+      <div class="exec-focus">
+        <div class="focus-label">Operational Focus</div>
+        <ul class="focus-list">
+          <li>Marketplace Strategy</li>
+          <li>Fulfillment Design</li>
+          <li>Omni-Channel Scale</li>
+          <li>Brand Growth</li>
+        </ul>
+      </div>
+      <div class="pull-quote">Connecting operational execution with marketplace scalability.</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY THIS TEAM MATTERS -->
+<section class="why-team">
+  <div class="why-team-inner reveal">
+    <div class="label">Why This Team Matters</div>
+    <h2>Built for<br>Operational Complexity</h2>
+    <p class="lead">The RELY leadership team combines real-world experience across manufacturing operations, engineering, quality systems, workforce development, automation, e-commerce fulfillment, and operational scalability. That combination allows RELY to move quickly, solve problems correctly, and support customers through complex operational environments without sacrificing execution discipline.</p>
+
+    <div class="capability-grid">
+      <div class="capability">
+        <span class="cap-num">01</span>
+        <div class="cap-title">Global Manufacturing Leadership</div>
+      </div>
+      <div class="capability">
+        <span class="cap-num">02</span>
+        <div class="cap-title">High-Mix Manufacturing</div>
+      </div>
+      <div class="capability">
+        <span class="cap-num">03</span>
+        <div class="cap-title">Engineering &amp; Automation</div>
+      </div>
+      <div class="capability">
+        <span class="cap-num">04</span>
+        <div class="cap-title">Workforce Scalability</div>
+      </div>
+      <div class="capability">
+        <span class="cap-num">05</span>
+        <div class="cap-title">E-Commerce Fulfillment</div>
+      </div>
+      <div class="capability">
+        <span class="cap-num">06</span>
+        <div class="cap-title">Operational Turnarounds</div>
+      </div>
+    </div>
+
+    <div class="closing">The objective is not simply to support production.<br>The objective is to help customers <span>scale more effectively.</span></div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta" id="contact">
+  <div class="final-cta-inner">
+    <h2>Looking for a Manufacturing Partner Built by Operators?</h2>
+    <p>RELY combines operational leadership, manufacturing discipline, and execution-focused support to help customers scale with less friction.</p>
+    <a href="#" class="btn btn-white">Start the Conversation</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  &copy; 2026 RELY Contract Manufacturing  /  Menomonee Falls, WI
+</footer>
+
+<script>
+  // Nav background on scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
