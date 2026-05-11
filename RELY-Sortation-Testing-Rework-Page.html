@@ -1,0 +1,1519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sortation, Testing, Validation & Rework Services | RELY Contract Manufacturing</title>
+<style>
+  :root {
+    --orange: #EC5826;
+    --orange-hover: #d44a1c;
+    --black: #0a0a0a;
+    --near-black: #1a1a1a;
+    --dark-gray: #2C2C2C;
+    --mid-gray: #3a3a3a;
+    --light-gray: #f2f0eb;
+    --off-white: #fafaf8;
+    --white: #ffffff;
+    --muted: #8a8a8a;
+    --text-muted: #555555;
+    --border-dark: #2a2a2a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: var(--near-black);
+    background: var(--white);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Barlow Condensed', 'Barlow', sans-serif;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+  }
+
+  .eyebrow {
+    font-family: 'Barlow', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--orange);
+  }
+
+  .container {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  /* ============ HERO ============ */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
+    background:
+      linear-gradient(110deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.75) 45%, rgba(0,0,0,0.35) 100%),
+      radial-gradient(ellipse at 75% 50%, #3a2818 0%, #1a1410 45%, #0a0a0a 100%);
+    color: var(--white);
+    padding: 120px 0 80px;
+    text-align: left;
+  }
+
+  .hero .container { text-align: left; width: 100%; }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(90deg, transparent 0%, transparent 49.5%, rgba(236,88,38,0.04) 49.5%, rgba(236,88,38,0.04) 50%, transparent 50%, transparent 100%),
+      linear-gradient(0deg, transparent 0%, transparent 49.5%, rgba(255,255,255,0.02) 49.5%, rgba(255,255,255,0.02) 50%, transparent 50%, transparent 100%);
+    background-size: 80px 80px, 80px 80px;
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.4) 100%);
+    pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin-right: auto;
+    margin-left: 0;
+    text-align: left;
+  }
+
+  .hero-label {
+    display: inline-block;
+    padding: 8px 14px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(0,0,0,0.4);
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 32px;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  /* Urgency pill on this hero */
+  .hero-urgency {
+    display: inline-block;
+    background: var(--orange);
+    color: var(--white);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 8px 14px;
+    margin-left: 12px;
+    margin-bottom: 32px;
+  }
+
+  .hero h1 {
+    font-size: clamp(44px, 6vw, 76px);
+    font-weight: 800;
+    margin-bottom: 28px;
+    text-transform: uppercase;
+    color: var(--white);
+  }
+
+  .hero p.hero-sub {
+    font-size: clamp(18px, 1.5vw, 22px);
+    color: rgba(255,255,255,0.92);
+    max-width: 680px;
+    margin-bottom: 24px;
+    line-height: 1.45;
+    font-weight: 500;
+  }
+
+  .hero p.hero-intro {
+    font-size: 16px;
+    color: rgba(255,255,255,0.72);
+    max-width: 680px;
+    margin-bottom: 40px;
+    line-height: 1.65;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 32px;
+    font-family: 'Barlow', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    border: none;
+  }
+
+  .btn-primary { background: var(--orange); color: var(--white); }
+  .btn-primary:hover { background: var(--orange-hover); transform: translateY(-1px); }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--white);
+    border: 1px solid rgba(255,255,255,0.4);
+  }
+  .btn-secondary:hover { background: rgba(255,255,255,0.08); border-color: var(--white); }
+
+  .btn-arrow { font-size: 16px; line-height: 1; }
+
+  .hero-credibility {
+    position: absolute;
+    bottom: 48px;
+    right: 40px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 0.06em;
+  }
+
+  .hero-credibility span {
+    border-right: 2px solid var(--orange);
+    padding-right: 12px;
+  }
+
+  /* ============ SECTION 1 — WHERE RELY FITS ============ */
+  .where-fits { background: var(--white); padding: 140px 0; }
+
+  .where-fits-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .where-fits .eyebrow { display: block; margin-bottom: 20px; }
+
+  .where-fits h2 {
+    font-size: clamp(36px, 3.6vw, 52px);
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--near-black);
+    line-height: 1.1;
+    margin-bottom: 32px;
+  }
+
+  .where-fits p {
+    font-size: 17px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .supports-block {
+    background: var(--light-gray);
+    padding: 40px 36px;
+    border-left: 3px solid var(--orange);
+  }
+
+  .supports-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 24px;
+  }
+
+  .supports-list { list-style: none; }
+
+  .supports-list li {
+    padding: 14px 0;
+    border-bottom: 1px solid #d8d6d1;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: var(--near-black);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .supports-list li:last-child { border-bottom: none; }
+  .supports-list li::before {
+    content: '';
+    width: 16px;
+    height: 2px;
+    background: var(--orange);
+    flex-shrink: 0;
+  }
+
+  /* ============ SECTION 2 — SORTATION & CONTAINMENT ============ */
+  .sortation { background: var(--near-black); color: var(--white); padding: 140px 0; }
+  .sortation .eyebrow { display: block; margin-bottom: 20px; }
+  .sortation h2 {
+    font-size: clamp(36px, 3.6vw, 52px);
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 32px;
+    max-width: 800px;
+  }
+  .sortation p.lead {
+    font-size: 17px;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.7;
+    max-width: 800px;
+    margin-bottom: 64px;
+  }
+
+  /* Proof point band inside sortation section */
+  .response-band {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top: 2px solid var(--orange);
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    margin-bottom: 64px;
+  }
+
+  .response-tile {
+    padding: 36px 32px;
+    border-right: 1px solid rgba(255,255,255,0.15);
+    background: rgba(236,88,38,0.04);
+  }
+
+  .response-tile:last-child { border-right: none; }
+
+  .response-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  .response-number {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(34px, 3.4vw, 46px);
+    font-weight: 800;
+    line-height: 1;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .response-label {
+    font-size: 13px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.45;
+  }
+
+  .cap-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    border-left: 1px solid rgba(255,255,255,0.15);
+  }
+
+  .cap-item {
+    padding: 24px 28px;
+    border-right: 1px solid rgba(255,255,255,0.15);
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    transition: background 0.3s ease;
+  }
+
+  .cap-item:hover { background: rgba(236,88,38,0.08); }
+
+  .cap-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    color: var(--orange);
+    flex-shrink: 0;
+    min-width: 24px;
+  }
+
+  .cap-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: var(--white);
+    line-height: 1.3;
+  }
+
+  /* ============ SECTION 3 — TESTING & VALIDATION ============ */
+  .testing { background: var(--light-gray); padding: 140px 0; }
+  .testing .eyebrow { display: block; margin-bottom: 20px; }
+  .testing h2 {
+    font-size: clamp(36px, 3.6vw, 52px);
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--near-black);
+    line-height: 1.1;
+    margin-bottom: 32px;
+    max-width: 800px;
+  }
+  .testing p.lead {
+    font-size: 17px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    max-width: 800px;
+    margin-bottom: 64px;
+  }
+
+  .testing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top: 1px solid #d8d6d1;
+    border-left: 1px solid #d8d6d1;
+  }
+
+  .testing-item {
+    padding: 28px 24px;
+    border-right: 1px solid #d8d6d1;
+    border-bottom: 1px solid #d8d6d1;
+    background: var(--white);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .testing-item:hover { background: var(--near-black); }
+  .testing-item:hover .testing-label { color: var(--white); }
+  .testing-item:hover .testing-num { color: var(--orange); }
+
+  .testing-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    color: var(--orange);
+    flex-shrink: 0;
+    min-width: 24px;
+    transition: color 0.3s ease;
+  }
+
+  .testing-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: var(--near-black);
+    line-height: 1.3;
+    transition: color 0.3s ease;
+  }
+
+  /* ============ SECTION 4 — REWORK ============ */
+  .rework { background: var(--white); padding: 140px 0; }
+  .rework .eyebrow { display: block; margin-bottom: 20px; }
+  .rework h2 {
+    font-size: clamp(36px, 3.6vw, 52px);
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--near-black);
+    line-height: 1.1;
+    margin-bottom: 32px;
+    max-width: 800px;
+  }
+  .rework p.lead {
+    font-size: 17px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    max-width: 800px;
+    margin-bottom: 64px;
+  }
+
+  .rework-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .rework-card {
+    background: var(--light-gray);
+    padding: 40px 36px;
+    border-top: 3px solid var(--orange);
+  }
+
+  .rework-card h4 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 24px;
+  }
+
+  .rework-card ul { list-style: none; }
+
+  .rework-card ul li {
+    padding: 12px 0;
+    border-bottom: 1px solid #d8d6d1;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: var(--near-black);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .rework-card ul li:last-child { border-bottom: none; }
+
+  .rework-card ul li::before {
+    content: '';
+    width: 14px;
+    height: 2px;
+    background: var(--orange);
+    flex-shrink: 0;
+  }
+
+  /* ============ SECTION 5 — RECLAMATION ============ */
+  .reclamation { background: var(--near-black); color: var(--white); padding: 140px 0; }
+  .reclamation .eyebrow { display: block; margin-bottom: 20px; }
+  .reclamation h2 {
+    font-size: clamp(36px, 3.6vw, 52px);
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 32px;
+    max-width: 800px;
+  }
+  .reclamation p.lead {
+    font-size: 17px;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.7;
+    max-width: 800px;
+    margin-bottom: 64px;
+  }
+
+  .reclamation-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    border-left: 1px solid rgba(255,255,255,0.15);
+  }
+
+  .reclamation-grid .cap-item { background: transparent; }
+
+  /* ============ SECTION 6 — QUALITY & REPORTING ============ */
+  .reporting { background: var(--white); padding: 140px 0; }
+  .reporting .eyebrow { display: block; margin-bottom: 20px; }
+  .reporting h2 {
+    font-size: clamp(36px, 3.6vw, 52px);
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--near-black);
+    line-height: 1.1;
+    margin-bottom: 32px;
+    max-width: 800px;
+  }
+  .reporting p.lead {
+    font-size: 17px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    max-width: 800px;
+    margin-bottom: 64px;
+  }
+
+  .reporting-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .reporting-card {
+    background: var(--off-white);
+    border: 1px solid #e5e3de;
+    padding: 40px 36px;
+  }
+
+  .reporting-card-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  .reporting-card h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--near-black);
+    margin-bottom: 28px;
+    line-height: 1.15;
+  }
+
+  .reporting-card ul { list-style: none; }
+
+  .reporting-card ul li {
+    padding: 12px 0;
+    border-bottom: 1px solid #e5e3de;
+    font-size: 14px;
+    color: var(--near-black);
+    line-height: 1.5;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .reporting-card ul li:last-child { border-bottom: none; }
+
+  .reporting-card ul li::before {
+    content: '';
+    width: 14px;
+    height: 2px;
+    background: var(--orange);
+    flex-shrink: 0;
+    margin-top: 10px;
+  }
+
+  /* ============ SECTION 7 — LIFECYCLE & SCALE ============ */
+  .lifecycle { background: var(--light-gray); padding: 140px 0; }
+  .lifecycle .eyebrow { display: block; margin-bottom: 20px; }
+  .lifecycle h2 {
+    font-size: clamp(36px, 3.6vw, 52px);
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--near-black);
+    line-height: 1.1;
+    margin-bottom: 32px;
+    max-width: 800px;
+  }
+  .lifecycle p.lead {
+    font-size: 17px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    max-width: 800px;
+    margin-bottom: 80px;
+  }
+
+  .lifecycle-flow {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top: 1px solid #d8d6d1;
+    border-bottom: 1px solid #d8d6d1;
+  }
+
+  .lifecycle-stage {
+    padding: 40px 28px;
+    border-right: 1px solid #d8d6d1;
+    border-bottom: 1px solid #d8d6d1;
+    background: var(--white);
+    transition: all 0.3s ease;
+  }
+
+  .lifecycle-stage:nth-child(3n) { border-right: none; }
+  .lifecycle-stage:nth-last-child(-n+3) { border-bottom: none; }
+
+  .lifecycle-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--orange);
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .lifecycle-stage h4 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--near-black);
+    line-height: 1.2;
+  }
+
+  .lifecycle-stage:hover { background: var(--near-black); }
+  .lifecycle-stage:hover h4 { color: var(--white); }
+
+  /* ============ SECTION 8 — WHY IT MATTERS / WITH-WITHOUT ============ */
+  .why-matters { background: var(--white); padding: 140px 0; }
+
+  .why-matters-header {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+
+  .why-matters-header .eyebrow { display: block; margin-bottom: 24px; }
+
+  .why-matters-header h2 {
+    font-size: clamp(36px, 3.8vw, 56px);
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--near-black);
+    max-width: 920px;
+    margin: 0 auto 28px;
+    line-height: 1.1;
+  }
+
+  .why-matters-header p {
+    font-size: 17px;
+    color: var(--text-muted);
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.65;
+  }
+
+  .comparison-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .comparison-col {
+    padding: 56px 56px;
+    position: relative;
+  }
+
+  .comparison-col.without { background: #3a3a3a; color: var(--white); }
+  .comparison-col.with { background: var(--orange); color: var(--white); }
+
+  .comp-header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding-bottom: 24px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+  }
+
+  .comparison-col.with .comp-header { border-bottom-color: rgba(255,255,255,0.25); }
+
+  .comp-pill {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    padding: 8px 14px;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .comparison-col.without .comp-pill { background: #1f1f1f; color: var(--white); }
+  .comparison-col.with .comp-pill { background: #b8421d; color: var(--white); }
+
+  .comp-headline {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    line-height: 1.15;
+    color: var(--white);
+    margin: 0;
+  }
+
+  .comp-list { list-style: none; margin-top: 32px; }
+
+  .comp-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    font-size: 15px;
+    line-height: 1.55;
+    color: rgba(255,255,255,0.92);
+  }
+
+  .comparison-col.with .comp-list li { border-bottom-color: rgba(255,255,255,0.22); }
+  .comp-list li:last-child { border-bottom: none; }
+
+  .comp-icon {
+    flex-shrink: 0;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Barlow', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 1;
+    margin-top: 1px;
+    color: var(--white);
+  }
+
+  .comparison-col.without .comp-icon { background: #1f1f1f; }
+  .comparison-col.with .comp-icon { background: rgba(255,255,255,0.22); }
+
+  /* Approach strip */
+  .approach-strip {
+    margin-top: 80px;
+    background: var(--light-gray);
+    padding: 56px 48px;
+    text-align: center;
+  }
+
+  .approach-strip .approach-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 24px;
+  }
+
+  .approach-strip h3 {
+    font-size: 28px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--near-black);
+    margin-bottom: 36px;
+  }
+
+  .approach-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+  }
+
+  .approach-pill {
+    padding: 12px 20px;
+    background: var(--white);
+    border: 1px solid #d8d6d1;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--near-black);
+  }
+
+  .approach-pill.featured {
+    background: var(--orange);
+    color: var(--white);
+    border-color: var(--orange);
+  }
+
+  /* ============ KPI ============ */
+  .kpi-section { background: var(--black); color: var(--white); padding: 140px 0; }
+
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border-dark);
+    border: 1px solid var(--border-dark);
+  }
+
+  .kpi-tile {
+    background: #0f0f0f;
+    padding: 56px 32px;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .kpi-watermark {
+    position: absolute;
+    bottom: -12px;
+    right: -8px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 140px;
+    font-weight: 800;
+    color: rgba(255,255,255,0.04);
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .kpi-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--orange);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    display: block;
+    position: relative;
+  }
+
+  .kpi-main {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(26px, 2.4vw, 32px);
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 1.05;
+    color: var(--white);
+    position: relative;
+  }
+
+  .kpi-sub {
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 16px;
+    letter-spacing: 0.04em;
+    position: relative;
+  }
+
+  /* ============ FINAL CTA ============ */
+  .final-cta {
+    background: var(--orange);
+    color: var(--white);
+    padding: 120px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .final-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(45deg, rgba(255,255,255,0.04) 0px, rgba(255,255,255,0.04) 1px, transparent 1px, transparent 24px);
+    pointer-events: none;
+  }
+
+  .final-cta-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 880px;
+    margin: 0 auto;
+  }
+
+  .final-cta .eyebrow {
+    color: rgba(255,255,255,0.85);
+    display: block;
+    margin-bottom: 24px;
+  }
+
+  .final-cta h2 {
+    font-size: clamp(40px, 4.5vw, 64px);
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 1.05;
+    margin-bottom: 32px;
+    color: var(--white);
+  }
+
+  .final-cta p {
+    font-size: 18px;
+    color: rgba(255,255,255,0.92);
+    margin-bottom: 48px;
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.55;
+  }
+
+  .btn-cta {
+    background: var(--white);
+    color: var(--orange);
+    padding: 18px 40px;
+    font-size: 14px;
+  }
+
+  .btn-cta:hover { background: var(--near-black); color: var(--white); }
+
+  /* ============ ANIMATIONS ============ */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .fade-up.in { opacity: 1; transform: translateY(0); }
+
+  /* ============ MEDIA PLACEHOLDERS ============ */
+  .media-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 32px 40px;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .media-tag {
+    display: inline-block;
+    align-self: flex-start;
+    background: var(--orange);
+    color: var(--white);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    margin-bottom: 16px;
+  }
+
+  .media-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: rgba(255,255,255,0.95);
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+
+  .media-spec {
+    font-family: 'Barlow', sans-serif;
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.55;
+    max-width: 360px;
+  }
+
+  .media-spec strong {
+    color: rgba(255,255,255,0.85);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .hero-media-tag {
+    position: absolute;
+    top: 24px;
+    left: 40px;
+    z-index: 3;
+    background: rgba(236,88,38,0.95);
+    color: var(--white);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+  }
+
+  .hero-media-spec {
+    position: absolute;
+    bottom: 24px;
+    left: 40px;
+    z-index: 3;
+    color: rgba(255,255,255,0.5);
+    font-family: 'Barlow', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    max-width: 440px;
+    line-height: 1.5;
+    padding: 10px 14px;
+    border-left: 2px solid var(--orange);
+    background: rgba(0,0,0,0.4);
+  }
+
+  .hero-media-spec strong {
+    color: rgba(255,255,255,0.9);
+    display: block;
+    font-weight: 700;
+    font-family: 'Barlow Condensed', sans-serif;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-size: 11px;
+    margin-bottom: 4px;
+  }
+
+  .section-banner {
+    position: relative;
+    aspect-ratio: 21 / 6;
+    background:
+      linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.75) 100%),
+      linear-gradient(135deg, #1f1f1f 0%, #0a0a0a 100%);
+    overflow: hidden;
+  }
+
+  .section-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(45deg, rgba(255,255,255,0.025) 0px, rgba(255,255,255,0.025) 1px, transparent 1px, transparent 10px);
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 960px) {
+    .container { padding: 0 24px; }
+    .hero { min-height: auto; padding: 100px 0 80px; }
+    .hero-credibility { position: static; align-items: flex-start; margin-top: 48px; }
+    .hero-credibility span { border-right: none; border-left: 2px solid var(--orange); padding-right: 0; padding-left: 12px; }
+    .where-fits-grid { grid-template-columns: 1fr; gap: 48px; }
+    .response-band { grid-template-columns: 1fr; }
+    .response-tile { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.15); }
+    .cap-grid, .reclamation-grid { grid-template-columns: 1fr; }
+    .testing-grid { grid-template-columns: 1fr 1fr; }
+    .testing-item:nth-child(3n) { border-right: 1px solid #d8d6d1; }
+    .testing-item:nth-child(2n) { border-right: none; }
+    .rework-split, .reporting-split { grid-template-columns: 1fr; }
+    .lifecycle-flow { grid-template-columns: 1fr 1fr; }
+    .lifecycle-stage:nth-child(3n) { border-right: 1px solid #d8d6d1; }
+    .lifecycle-stage:nth-child(2n) { border-right: none; }
+    .kpi-grid { grid-template-columns: 1fr 1fr; }
+    .comparison-grid { grid-template-columns: 1fr; gap: 16px; }
+    .where-fits, .sortation, .testing, .rework, .reclamation,
+    .reporting, .lifecycle, .why-matters, .kpi-section { padding: 80px 0; }
+    .media-placeholder { padding: 24px; }
+    .media-title { font-size: 16px; }
+    .media-spec { font-size: 11px; }
+    .hero-media-spec { display: none; }
+  }
+
+  @media (max-width: 600px) {
+    .testing-grid { grid-template-columns: 1fr; }
+    .testing-item { border-right: none !important; }
+    .lifecycle-flow { grid-template-columns: 1fr; }
+    .lifecycle-stage { border-right: none !important; }
+    .kpi-grid { grid-template-columns: 1fr; }
+    .comparison-col { padding: 40px 28px; }
+    .approach-strip { padding: 40px 24px; }
+    .rework-card, .reporting-card { padding: 36px 28px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-media-tag">▶ HERO VIDEO ZONE</div>
+  <div class="hero-media-spec">
+    <strong>Background Video — Sortation & Containment in Action</strong>
+    Containment cell active — operators sorting suspect parts at inspection stations, bins of segregated lots, scanner verifying lot tags, daily fallout sheet on a clipboard. Urgent but disciplined energy. Loop, muted, autoplay. Heavy black gradient overlay on left 50%.
+  </div>
+  <div class="container">
+    <div class="hero-content">
+      <span class="hero-label">Sortation, Testing, Validation & Rework</span>
+      <span class="hero-urgency">Rapid Response</span>
+      <h1>Quality Containment Built for Speed, Control, and Recovery</h1>
+      <p class="hero-sub">Rapid quality containment, inspection, testing, rework, and reclamation support built to protect production flow and customer commitments.</p>
+      <p class="hero-intro">Quality issues do not stay contained on their own. One suspect lot can turn into missed shipments, line-down risk, customer escalation, supplier disputes, and internal teams pulled away from the work they should be doing. RELY supports manufacturers with sortation, testing, validation, rework, and reclamation services that help contain quality issues quickly, recover usable product, and keep production moving.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-primary">Talk to RELY About Sortation & Rework <span class="btn-arrow">→</span></a>
+        <a href="#capabilities" class="btn btn-secondary">Explore Capabilities</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-credibility">
+    <span>4-Hour Fastest Deployment</span>
+    <span>61M+ Parts Processed Annually</span>
+    <span>ISO 9001:2015 Certified</span>
+    <span>On-Site & Off-Site Capable</span>
+  </div>
+</section>
+
+<!-- ============ SECTION 1: WHERE RELY FITS ============ -->
+<section class="where-fits" id="capabilities">
+  <div class="container">
+    <div class="where-fits-grid">
+      <div class="fade-up">
+        <span class="eyebrow">Where RELY Fits</span>
+        <h2>Quality Support That Takes Pressure Off Your Operation</h2>
+        <p>Quality issues create pressure fast because the clock starts immediately. Production still needs parts. Customers still expect shipments. Suppliers need clear feedback. Internal teams need accurate data. Leadership needs to know whether the issue is contained or spreading.</p>
+        <p>RELY gives manufacturers a controlled outside partner for quality work that needs speed, scale, documentation, and discipline.</p>
+      </div>
+      <div class="supports-block fade-up">
+        <div class="supports-label">RELY Supports</div>
+        <ul class="supports-list">
+          <li>Supplier Quality Issues</li>
+          <li>Suspect or Mixed Lots</li>
+          <li>In-Process Escapes</li>
+          <li>Customer Returns or Complaints</li>
+          <li>Line-Down or Near Line-Down Risk</li>
+          <li>High-Volume Visual Inspection</li>
+          <li>Functional Testing & Validation</li>
+          <li>Controlled Rework or Configuration Fixes</li>
+          <li>Reclamation & Component Recovery</li>
+          <li>Daily Reporting & Customer Communication</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-banner fade-up" style="margin-top: 80px;">
+      <div class="media-placeholder">
+        <span class="media-tag">Image · Section 1</span>
+        <div class="media-title">Containment Floor Banner</div>
+        <div class="media-spec">
+          <strong>Shot direction</strong>
+          Wide cinematic banner — active containment floor: inspection stations on one side, segregated bins (PASS/FAIL/HOLD) in the middle, lot tracking station on the other end. Operators in motion, scanners in use, clear lot tags. Wide crop (21:6). Industrial lighting.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 2: SORTATION & CONTAINMENT ============ -->
+<section class="sortation">
+  <div class="container">
+    <span class="eyebrow">Sortation & Containment</span>
+    <h2>Built for Fast, Controlled Response</h2>
+    <p class="lead">Containment only works if it happens quickly and stays controlled. RELY deploys trained teams to sort, inspect, segregate, and report on suspect product so conforming parts can keep moving and nonconforming parts are controlled.</p>
+
+    <div class="response-band fade-up">
+      <div class="response-tile">
+        <span class="response-eyebrow">Fastest Deployment</span>
+        <div class="response-number">4 Hours</div>
+        <div class="response-label">From call to boots on the floor</div>
+      </div>
+      <div class="response-tile">
+        <span class="response-eyebrow">Peak Single-Week Volume</span>
+        <div class="response-number">4.5M</div>
+        <div class="response-label">Parts processed in a single week</div>
+      </div>
+      <div class="response-tile">
+        <span class="response-eyebrow">Annual Throughput</span>
+        <div class="response-number">61M+</div>
+        <div class="response-label">Parts processed annually</div>
+      </div>
+    </div>
+
+    <div class="cap-grid">
+      <div class="cap-item"><div class="cap-num">01</div><div class="cap-label">Visual Inspection</div></div>
+      <div class="cap-item"><div class="cap-num">02</div><div class="cap-label">Dimensional Checks Against Defined Criteria</div></div>
+      <div class="cap-item"><div class="cap-num">03</div><div class="cap-label">Go/No-Go Inspection</div></div>
+      <div class="cap-item"><div class="cap-num">04</div><div class="cap-label">Lot Segregation</div></div>
+      <div class="cap-item"><div class="cap-num">05</div><div class="cap-label">Defect Identification & Classification</div></div>
+      <div class="cap-item"><div class="cap-num">06</div><div class="cap-label">Supplier-Billed Containment Programs</div></div>
+      <div class="cap-item"><div class="cap-num">07</div><div class="cap-label">Customer-Specific Sorting Instructions</div></div>
+      <div class="cap-item"><div class="cap-num">08</div><div class="cap-label">On-Site Containment at Your Facility</div></div>
+      <div class="cap-item"><div class="cap-num">09</div><div class="cap-label">Off-Site Containment at RELY</div></div>
+      <div class="cap-item"><div class="cap-num">10</div><div class="cap-label">Daily Shipment Support</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 3: TESTING & VALIDATION ============ -->
+<section class="testing">
+  <div class="container">
+    <span class="eyebrow">Testing & Validation</span>
+    <h2>Verified Before Product Moves Forward</h2>
+    <p class="lead">You cannot release product unless you know it works. In a containment event, you need that answer fast — and you need it documented clearly enough to support customer, supplier, and internal decisions. RELY performs electrical, mechanical, and functional testing based on your requirements, your fixtures, or RELY-built setups.</p>
+
+    <div class="section-banner fade-up" style="margin-bottom: 64px;">
+      <div class="media-placeholder">
+        <span class="media-tag">Image · Section 3</span>
+        <div class="media-title">Testing & Validation Station</div>
+        <div class="media-spec">
+          <strong>Shot direction</strong>
+          Active functional test station — Hi-Pot or continuity tester in use, fixture with product under test, pass/fail indicators visible, documented results on a tablet or sheet. Show the technical discipline of the process. Wide crop (21:6). Industrial lighting.
+        </div>
+      </div>
+    </div>
+
+    <div class="testing-grid">
+      <div class="testing-item"><div class="testing-num">01</div><div class="testing-label">Functional Validation</div></div>
+      <div class="testing-item"><div class="testing-num">02</div><div class="testing-label">Electrical Testing</div></div>
+      <div class="testing-item"><div class="testing-num">03</div><div class="testing-label">Continuity Testing</div></div>
+      <div class="testing-item"><div class="testing-num">04</div><div class="testing-label">Resistance Testing</div></div>
+      <div class="testing-item"><div class="testing-num">05</div><div class="testing-label">Hi-Pot Testing</div></div>
+      <div class="testing-item"><div class="testing-num">06</div><div class="testing-label">Surge Testing</div></div>
+      <div class="testing-item"><div class="testing-num">07</div><div class="testing-label">Mechanical Checks</div></div>
+      <div class="testing-item"><div class="testing-num">08</div><div class="testing-label">Dimensional Verification</div></div>
+      <div class="testing-item"><div class="testing-num">09</div><div class="testing-label">Fixture-Based Testing</div></div>
+      <div class="testing-item"><div class="testing-num">10</div><div class="testing-label">Pass/Fail Segregation</div></div>
+      <div class="testing-item"><div class="testing-num">11</div><div class="testing-label">Batch & Lot Documentation</div></div>
+      <div class="testing-item"><div class="testing-num">12</div><div class="testing-label">Unit-Level Traceability</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 4: CONTROLLED REWORK ============ -->
+<section class="rework">
+  <div class="container">
+    <span class="eyebrow">Controlled Rework</span>
+    <h2>Recover Product Without Creating New Risk</h2>
+    <p class="lead">Not every nonconforming product needs to be scrapped. The key is controlled, documented recovery. RELY performs rework to approved work instructions, engineering disposition, or customer-defined requirements. Once rework is complete, product is inspected, tested, and validated before release.</p>
+
+    <div class="rework-split fade-up">
+      <div class="rework-card">
+        <h4>Rework Capabilities</h4>
+        <ul>
+          <li>Wiring Corrections</li>
+          <li>Component Replacement</li>
+          <li>Labeling Updates</li>
+          <li>Marking Corrections</li>
+          <li>Retrofits</li>
+          <li>Configuration Fixes</li>
+          <li>Assembly Adjustments</li>
+          <li>Packaging Corrections</li>
+          <li>Customer-Approved Repair Steps</li>
+          <li>Re-Test & Final Verification</li>
+        </ul>
+      </div>
+      <div class="rework-card">
+        <h4>Defect Data Captured</h4>
+        <ul>
+          <li>Defect Codes</li>
+          <li>Photos</li>
+          <li>Counts by Defect Type</li>
+          <li>Lot Traceability</li>
+          <li>Operator or Station-Level Data</li>
+          <li>Containment Status</li>
+          <li>Rework Status</li>
+          <li>Release Status</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 5: RECLAMATION & VALUE RECOVERY ============ -->
+<section class="reclamation">
+  <div class="container">
+    <span class="eyebrow">Reclamation & Value Recovery</span>
+    <h2>Recover What Can Be Saved</h2>
+    <p class="lead">When product cannot ship as-is, that does not automatically mean the value is lost. RELY supports reclamation programs that help manufacturers recover usable components, reduce scrap, and preserve material value during quality events, product changes, or returned-goods programs.</p>
+
+    <div class="reclamation-grid">
+      <div class="cap-item"><div class="cap-num">01</div><div class="cap-label">Disassembly of Assemblies or Finished Goods</div></div>
+      <div class="cap-item"><div class="cap-num">02</div><div class="cap-label">Separation of Usable & Scrap Components</div></div>
+      <div class="cap-item"><div class="cap-num">03</div><div class="cap-label">Component Recovery</div></div>
+      <div class="cap-item"><div class="cap-num">04</div><div class="cap-label">Return-to-Stock Preparation</div></div>
+      <div class="cap-item"><div class="cap-num">05</div><div class="cap-label">Inspection of Recovered Materials</div></div>
+      <div class="cap-item"><div class="cap-num">06</div><div class="cap-label">Repackaging & Relabeling</div></div>
+      <div class="cap-item"><div class="cap-num">07</div><div class="cap-label">Material Segregation</div></div>
+      <div class="cap-item"><div class="cap-num">08</div><div class="cap-label">Scrap Documentation</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 6: QUALITY & REPORTING ============ -->
+<section class="reporting">
+  <div class="container">
+    <span class="eyebrow">Quality & Reporting</span>
+    <h2>Audit-Ready Documentation and Clear Visibility</h2>
+    <p class="lead">Speed matters, but speed without control creates more risk. RELY operates sortation, testing, validation, rework, and reclamation programs with documented processes, trained teams, defined criteria, and traceable results.</p>
+
+    <div class="section-banner fade-up" style="margin-bottom: 64px;">
+      <div class="media-placeholder">
+        <span class="media-tag">Image · Section 6</span>
+        <div class="media-title">Daily Reporting in Action</div>
+        <div class="media-spec">
+          <strong>Shot direction</strong>
+          Documentation moment — daily fallout report on a clipboard or tablet, defect tracking sheet with photos, lot-level traceability tags visible. Show the discipline behind the data. Wide crop (21:6). Industrial lighting.
+        </div>
+      </div>
+    </div>
+
+    <div class="reporting-split fade-up">
+      <div class="reporting-card">
+        <span class="reporting-card-eyebrow">Our Quality Approach Includes</span>
+        <h3>Process Discipline</h3>
+        <ul>
+          <li>Documented Work Instructions</li>
+          <li>Inspection Standards and Visual Criteria</li>
+          <li>Training Records</li>
+          <li>Nonconformance Tracking</li>
+          <li>Lot-Level Traceability</li>
+          <li>Containment Logs</li>
+          <li>Daily Production and Fallout Reporting</li>
+          <li>Escalation Paths for Unclear Defects</li>
+          <li>Photo Documentation</li>
+          <li>Customer or Supplier Reporting Support</li>
+        </ul>
+      </div>
+      <div class="reporting-card">
+        <span class="reporting-card-eyebrow">Reporting Can Show</span>
+        <h3>Clear Visibility</h3>
+        <ul>
+          <li>How Many Parts Were Inspected</li>
+          <li>How Many Passed</li>
+          <li>How Many Failed</li>
+          <li>What Defect Types Were Found</li>
+          <li>Which Lots Were Affected</li>
+          <li>What Product Was Released</li>
+          <li>What Product Remains on Hold</li>
+          <li>What Needs Customer or Engineering Disposition</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 7: LIFECYCLE & SCALE SUPPORT ============ -->
+<section class="lifecycle">
+  <div class="container">
+    <span class="eyebrow">Lifecycle & Scale Support</span>
+    <h2>Built for Rapid Response and Sustained Support</h2>
+    <p class="lead">Some quality events require immediate containment. Others require sustained support over weeks, months, or ongoing supplier programs. RELY can support both. As volume changes, we scale through trained operators, defined workflows, documented inspection criteria, and clear production reporting.</p>
+
+    <div class="lifecycle-flow">
+      <div class="lifecycle-stage fade-up"><span class="lifecycle-num">01</span><h4>Rapid Deployment</h4></div>
+      <div class="lifecycle-stage fade-up"><span class="lifecycle-num">02</span><h4>On-Site Containment Teams</h4></div>
+      <div class="lifecycle-stage fade-up"><span class="lifecycle-num">03</span><h4>Off-Site Containment & Processing</h4></div>
+      <div class="lifecycle-stage fade-up"><span class="lifecycle-num">04</span><h4>Daily Shipment Capability</h4></div>
+      <div class="lifecycle-stage fade-up"><span class="lifecycle-num">05</span><h4>High-Volume Inspection & Sorting</h4></div>
+      <div class="lifecycle-stage fade-up"><span class="lifecycle-num">06</span><h4>Short-Term Surge Support</h4></div>
+      <div class="lifecycle-stage fade-up"><span class="lifecycle-num">07</span><h4>Ongoing Supplier Quality Support</h4></div>
+      <div class="lifecycle-stage fade-up"><span class="lifecycle-num">08</span><h4>Flexible Staffing for Changing Volumes</h4></div>
+      <div class="lifecycle-stage fade-up"><span class="lifecycle-num">09</span><h4>Structured Handoff & Communication</h4></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 8: WHY IT MATTERS / WITH-WITHOUT ============ -->
+<section class="why-matters">
+  <div class="container">
+    <div class="why-matters-header">
+      <span class="eyebrow">Why It Matters</span>
+      <h2>Stabilize Quality Issues Without Stopping Production</h2>
+      <p>Quality events do not have to shut down your operation. RELY helps manufacturers contain issues quickly, recover usable product, maintain production flow, and protect customer relationships while the root cause is being addressed.</p>
+    </div>
+
+    <div class="comparison-grid fade-up">
+      <div class="comparison-col without">
+        <div class="comp-header">
+          <span class="comp-pill">Without RELY</span>
+          <h3 class="comp-headline">Absorbing It Internally</h3>
+        </div>
+        <ul class="comp-list">
+          <li><span class="comp-icon">×</span><span>Quality issues create downstream disruption and internal fire drills</span></li>
+          <li><span class="comp-icon">×</span><span>Production teams get pulled into containment and inspection activity</span></li>
+          <li><span class="comp-icon">×</span><span>Supplier issues consume skilled labor and operational attention</span></li>
+          <li><span class="comp-icon">×</span><span>Problems caught late increase scrap, downtime, and customer risk</span></li>
+          <li><span class="comp-icon">×</span><span>Containment work competes with core production for time and resources</span></li>
+        </ul>
+      </div>
+      <div class="comparison-col with">
+        <div class="comp-header">
+          <span class="comp-pill">With RELY</span>
+          <h3 class="comp-headline">A Disciplined Quality Partner</h3>
+        </div>
+        <ul class="comp-list">
+          <li><span class="comp-icon">✓</span><span>Containment, testing, and rework are handled by a structured external team</span></li>
+          <li><span class="comp-icon">✓</span><span>Internal operations stay focused on production and customer delivery</span></li>
+          <li><span class="comp-icon">✓</span><span>Supplier-driven issues are addressed faster with controlled execution</span></li>
+          <li><span class="comp-icon">✓</span><span>Earlier issue identification helps reduce downstream disruption and cost</span></li>
+          <li><span class="comp-icon">✓</span><span>Production continuity improves without overloading internal resources</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="approach-strip fade-up">
+      <div class="approach-label">Our Approach Is Built On</div>
+      <h3>Discipline Under Pressure</h3>
+      <div class="approach-pills">
+        <span class="approach-pill featured">Rapid Response</span>
+        <span class="approach-pill">Clear Inspection Criteria</span>
+        <span class="approach-pill">Documented Work Instructions</span>
+        <span class="approach-pill">Trained Operators</span>
+        <span class="approach-pill featured">Structured Sorting & Testing</span>
+        <span class="approach-pill">Controlled Rework</span>
+        <span class="approach-pill">Lot-Level Traceability</span>
+        <span class="approach-pill featured">Daily Reporting</span>
+        <span class="approach-pill">ISO 9001-Certified Quality</span>
+        <span class="approach-pill">On-Site & Off-Site Support</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KPI ============ -->
+<section class="kpi-section">
+  <div class="container">
+    <div class="kpi-grid">
+      <div class="kpi-tile fade-up">
+        <span class="kpi-watermark">01</span>
+        <span class="kpi-eyebrow">Response</span>
+        <div class="kpi-main">4-Hour<br>Fastest<br>Deployment</div>
+        <div class="kpi-sub">Boots on the floor, fast</div>
+      </div>
+      <div class="kpi-tile fade-up">
+        <span class="kpi-watermark">02</span>
+        <span class="kpi-eyebrow">Peak Week</span>
+        <div class="kpi-main">4.5M<br>Parts Processed<br>In One Week</div>
+        <div class="kpi-sub">High-volume surge capability</div>
+      </div>
+      <div class="kpi-tile fade-up">
+        <span class="kpi-watermark">03</span>
+        <span class="kpi-eyebrow">Annual Volume</span>
+        <div class="kpi-main">61M+<br>Parts Processed<br>Annually</div>
+        <div class="kpi-sub">Sustained containment capacity</div>
+      </div>
+      <div class="kpi-tile fade-up">
+        <span class="kpi-watermark">04</span>
+        <span class="kpi-eyebrow">Standard</span>
+        <div class="kpi-main">ISO 9001:<br>2015 Certified<br>Quality System</div>
+        <div class="kpi-sub">Audit-ready by design</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final-cta" id="contact">
+  <div class="container">
+    <div class="final-cta-inner">
+      <span class="eyebrow">Let's Talk</span>
+      <h2>Need Quality Containment Support?</h2>
+      <p>If you are dealing with a quality issue, customer escalation, supplier defect, or potential line-down situation, do not wait. We can mobilize quickly, contain the issue, recover usable product, and help you get back to shipping.</p>
+      <a href="https://relycm.com/contact/" class="btn btn-cta">Talk to RELY About Sortation & Rework <span class="btn-arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('in'), i * 60);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
